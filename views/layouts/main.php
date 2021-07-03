@@ -9,6 +9,7 @@ use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
+use \app\components\LanguageDropdown;
 
 AppAsset::register($this);
 ?>
@@ -52,7 +53,8 @@ AppAsset::register($this);
                 )
                 . Html::endForm()
                 . '</li>'
-            )
+            ),
+          ['label' => LanguageDropdown::label(Yii::$app->language), 'items' => LanguageDropdown::widget()]
         ],
     ]);
     NavBar::end();
@@ -68,11 +70,6 @@ AppAsset::register($this);
 </div>
 
 <footer class="footer">
-    <div class="container">
-        <p class="pull-left">&copy; My Company <?= date('Y') ?></p>
-
-        <p class="pull-right"><?= Yii::powered() ?></p>
-    </div>
 </footer>
 
 <?php $this->endBody() ?>
