@@ -15,6 +15,15 @@ class SiteController extends Controller
     /**
      * {@inheritdoc}
      */
+
+    public $layout;
+
+    public function init()
+    {
+    parent::init();
+        $this->layout = 'site';
+    }
+
     public function behaviors()
     {
         return [
@@ -124,5 +133,50 @@ class SiteController extends Controller
     public function actionAbout()
     {
         return $this->render('about');
+    }
+
+    public function actionCart()
+    {
+        return $this->render('cart');
+    }
+
+    public function actionCatalog()
+    {
+        return $this->render('catalog');
+    }
+
+    public function actionCompare()
+    {
+        return $this->render('compare');
+    }
+
+    public function actionDelivery()
+    {
+        return $this->render('delivery');
+    }
+
+    public function actionFaq()
+    {
+        return $this->render('faq');
+    }
+
+    public function actionNews()
+    {
+        return $this->render('news');
+    }
+
+    public function actionProduct()
+    {
+        return $this->render('product');
+    }
+
+    public function actionWarranty()
+    {
+        return $this->render('warranty');
+    }
+
+    public function actionWishlist()
+    {
+        return $this->render('wishlist');
     }
 }

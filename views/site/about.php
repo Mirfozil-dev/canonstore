@@ -1,18 +1,62 @@
-<?php
+<!------------------- beginning of body --------------------->
+<div style="height: 180px;"></div>
+<div class="about">
+  <div class="container">
+    <div class="about-wrapper">
+      <ul class="breadcrumbs-list">
+        <li><a href="/">Главная</a></li>
+        <li>О магазине</li>
+      </ul>
+      <h1 class="page-title">О магазине</h1>
+      <div class="nav-tag-panel">
+        <ul class="nav-tags-list">
+          <li class="tag-active"><a class="nav-tag" href="./about.html">О Магазине </a></li>
+          <li><a class="nav-tag tag1" href="./news.html">Новости</a></li>
+          <li><a class="nav-tag tag2" href="./delivery_payments.html">Доставка и оплата</a></li>
+          <li><a class="nav-tag tag3" href="./warranty.html">Гарантия и сервис</a></li>
+          <li><a class="nav-tag tag4" href="./contact.html">Контакты</a></li>
+          <li><a class="nav-tag tag5" href="./faq.html">FAQ</a></li>
 
-/* @var $this yii\web\View */
 
-use yii\helpers\Html;
+          <li class="flexMenu-viewMore">
+            <a href="#" title="View More"><i class="fas fa-chevron-down"></i></a>
+            <ul class="flexMenu-popup">
+              <li class="tag11"><a class="nav-tag tag11" href="./delivery_payments.html">Доставка и оплата</a></li>
+              <li class="tag22"><a class="nav-tag tag22" href="./warranty.html">Гарантия и сервис</a></li>
+              <li class="tag33"><a class="nav-tag tag33" href="./contact.html">Контакты</a></li>
+              <li class="tag44"><a class="nav-tag tag44" href="./faq.html">FAQ</a></li>
 
-$this->title = 'About';
-$this->params['breadcrumbs'][] = $this->title;
-?>
-<div class="site-about">
-    <h1><?= Html::encode($this->title) ?></h1>
-
-    <p>
-        This is the About page. You may modify the following file to customize its content:
-    </p>
-
-    <code><?= __FILE__ ?></code>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <h3><b>Добро пожаловать в магазины Nikon Store</b></h3>
+      <div class="b-content_narrow" style="text-align: justify;">
+        <p><b>Nikon Store</b>  — это единственный фирменный магазин техники Nikon в России.</p>
+        <p>Нас легко найти, мы находимся в центре Москвы по адресу:
+          <b> метро Баррикадная, Новинский бульвар д.31.</b>
+        </p>
+        <p><b>У нас Вы найдете:</b></p>
+        <ul class="faq_content_list">
+          <li>самый полный и актуальный ассортимент фототехники Nikon, а также оптических устройств Nikon Sport Optics</li>
+          <li>широкий спектр аксессуаров и сувенирной продукции</li>
+          <li>профессиональную консультацию от представителей компании</li>
+          <li>возможность непосредственно на месте познакомится и оценить качество продукции Nikon</li>
+          <li>оптимальные цены рекомендованные производителем</li>
+          <li>акции и специальные предложения от компании Nikon</li>
+          <li>широкий выбор способа оплаты покупки</li>
+          <li>дополнительный год сервисного обслуживания при покупке фотокамер и объективов.</li>
+        </ul>
+        <p>Мы работаем для вас <b>по будням с 10.00 до 20.00 часов, без выходных.</b></p>
+        <p>А тем, кто ценит удобства дистанционного способа покупки, мы предлагаем воспользоваться услугами фирменного <nobr>Интернет-магазин</nobr> техники Nikon <a href="/">www.nikonstore.ru</a></p>
+        <p>Наш сайт дает полную, достоверную и объективную информацию о продуктах компании Nikon, специалисты <nobr>Интернет-магазина</nobr> готовы оказать профессиональную помощь в выборе модели, посоветовать аксессуар или сумку, предложить различные варианты оплаты и доставки приобретаемого товара по Москве или в регионы.</p>
+        <p>На нашем сайте Вы легко найдете интересующий Вас товар, воспользовавшись интеллектуальным поиском на сайте, а так же путем выбора нужной вам категории в каталоге.</p>
+        <p>Разместить заказ на товар, имеющийся в наличии в <nobr>Интернет-магазине</nobr>, Вы можете <b>круглосуточно через Интернет</b> или с <b>понедельника по воскресенье с 10.00 до 18.00</b> по телефону <b> </b> <b>8-800-700-73-05</b></p>
+        <p>
+          Деятельность <nobr>Интернет-магазина</nobr> Nikon Store, расположенного по адресу <a href="/">www.nikonstore.ru</a> и фирменного магазина Nikon Store осуществляется в соответствии с действующим российским законодательством и, в частности, в соответствии с «Законом о защите прав потребителей» № 2300–1 от 07/02.1992.
+        </p>
+      </div>
+    </div>
+  </div>
 </div>
+<!------------------ end of body ---------------------------->

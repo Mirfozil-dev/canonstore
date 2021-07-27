@@ -9,7 +9,7 @@ use yii\helpers\Html;
 
 $this->title = $name;
 ?>
-<section class="content">
+<section class="content container mb-5" style="margin-top: 150px;">
 
     <div class="error-page">
         <h2 class="headline text-info"><i class="fa fa-warning text-yellow"></i></h2>
@@ -33,7 +33,7 @@ $this->title = $name;
                     <input type="text" name="search" class='form-control' placeholder="Search"/>
 
                     <div class="input-group-btn">
-                        <button type="submit" name="submit" class="btn btn-primary"><i class="fa fa-search"></i>
+                        <button type="submit" name="submit" class="btn btn-primary m-0" style="height: 34px;"><i class="fa fa-search"></i>
                         </button>
                     </div>
                 </div>
