@@ -27,7 +27,7 @@
                     <div class="product-info-0">Скидка на комплект</div>
                 </div>
                 <div class="img-container">
-                    <img src="images/KIT-Z50_.jpg" alt="alt">
+                    <img src="<?=Yii::getAlias('@web'); ?>/images/KIT-Z50_.jpg" alt="alt">
                 </div>
                 <div class="under-img-btn">
                     <a href="#popup_product">

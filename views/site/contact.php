@@ -125,7 +125,7 @@
             <div class="consultants-list__item">
               <div class="consultants-list__item-holder">
                 <div class="consultants-list__item-img" style="overflow: hidden;">
-                  <img src="images/2019_10_24-13.32.242.JPG" width alt>
+                  <img src="<?=Yii::getAlias('@web'); ?>/images/2019_10_24-13.32.242.JPG" width alt>
                 </div>
                 <div class="consultants-list__item-name">Даниил</div>
                 <div class="consultants-list__item-about">
@@ -146,7 +146,7 @@
             <div class="consultants-list__item">
               <div class="consultants-list__item-holder">
                 <div class="consultants-list__item-img" style="overflow: hidden;">
-                  <img src="images/1795d9.png" width alt>
+                  <img src="<?=Yii::getAlias('@web'); ?>/images/1795d9.png" width alt>
                 </div>
                 <div class="consultants-list__item-name">Константин</div>
                 <div class="consultants-list__item-about">
@@ -169,7 +169,7 @@
             <div class="consultants-list__item">
               <div class="consultants-list__item-holder">
                 <div class="consultants-list__item-img" style="overflow: hidden;">
-                  <img src="images/2017_08_01-16_53_24.JPG" width alt>
+                  <img src="<?=Yii::getAlias('@web'); ?>/images/2017_08_01-16_53_24.JPG" width alt>
                 </div>
                 <div class="consultants-list__item-name">Никита</div>
                 <div class="consultants-list__item-about">

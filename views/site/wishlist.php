@@ -22,7 +22,7 @@
             <a href="#" class="discount_href2 active">Избранные товары</a>
             <a href="#" class="discount_href3">Управление подписками</a>
             <div href="#" class="drop_discount_hiddens"><img
-                    src="./images/line-angle-right.png"
+                    src="<?=Yii::getAlias('@web'); ?>/images/line-angle-right.png"
                     width="10px"
                     style="transform: rotate(90deg);"
                     alt="">
@@ -46,7 +46,7 @@
 <div class="container" style="margin-top:  250px;">
     <div class="img_container_carusel_like">
         <div class="img_carusel_like">
-            <img src="./images/home_img/carusel_item.jpg" alt="">
+            <img src="<?=Yii::getAlias('@web'); ?>/images/home_img/carusel_item.jpg" alt="">
             <div class="skitka">
                 <div class="skitka_item">Скидка на комплект</div>
 
@@ -66,7 +66,7 @@
         </div>
         <!-- 2 offer -->
         <div class="img_carusel_like">
-            <img src="./images/home_img/carusel_item.jpg" alt="">
+            <img src="<?=Yii::getAlias('@web'); ?>/images/home_img/carusel_item.jpg" alt="">
             <div class="skitka">
 
                 <div class="skitka_item">В кредит</div>
@@ -86,7 +86,7 @@
         </div>
         <!-- 3 offer -->
         <div class="img_carusel_like">
-            <img src="./images/home_img/carusel_item.jpg" alt="">
+            <img src="<?=Yii::getAlias('@web'); ?>/images/home_img/carusel_item.jpg" alt="">
             <div class="skitka">
                 <div class="skitka_item">Скидка на комплект</div>
 
@@ -107,7 +107,7 @@
         </div>
         <!-- 4 offer -->
         <div class="img_carusel_like">
-            <img src="./images/home_img/carusel_item.jpg" alt="">
+            <img src="<?=Yii::getAlias('@web'); ?>/images/home_img/carusel_item.jpg" alt="">
             <div class="skitka">
 
                 <div class="skitka_item">В кредит</div>

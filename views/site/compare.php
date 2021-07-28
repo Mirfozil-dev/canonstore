@@ -31,7 +31,7 @@
         <div class="scale_top_details">
             <div class="property_list">
                 <div class="scale_filter">
-                    <div class="filter_box"><span>Все разделы</span><img class="drop_icon" src="./images/line-angle-right.png" alt="">
+                    <div class="filter_box"><span>Все разделы</span><img class="drop_icon" src="<?=Yii::getAlias('@web'); ?>/images/line-angle-right.png" alt="">
                         <div class="filter_box_dropDown">
                             <div class="filter_box_dropDown_item active"><span></span>Все разделы</div>
                             <div class="filter_box_dropDown_item"><span></span>Для любителей</div>
@@ -81,7 +81,7 @@
             </div>
             <div class="product_box">
                 <div class="img_carusel_scale">
-                    <img src="./images/home_img/carusel_item.jpg" alt="">
+                    <img src="<?=Yii::getAlias('@web'); ?>/images/home_img/carusel_item.jpg" alt="">
                     <div class="skitka">
                         <!-- <div class="skitka_item"></div>
                         <div class="skitka_item"></div> -->
@@ -136,7 +136,7 @@
             </div>
             <div class="product_box">
                 <div class="img_carusel_scale">
-                    <img src="./images/home_img/carusel_item.jpg" alt="">
+                    <img src="<?=Yii::getAlias('@web'); ?>/images/home_img/carusel_item.jpg" alt="">
                     <div class="skitka">
                         <!-- <div class="skitka_item"></div>
                         <div class="skitka_item"></div> -->
@@ -191,7 +191,7 @@
             </div>
             <div class="product_box">
                 <div class="img_carusel_scale">
-                    <img src="./images/home_img/carusel_item.jpg" alt="">
+                    <img src="<?=Yii::getAlias('@web'); ?>/images/home_img/carusel_item.jpg" alt="">
                     <div class="skitka">
                         <!-- <div class="skitka_item"></div>
                         <div class="skitka_item"></div> -->

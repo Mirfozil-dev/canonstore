@@ -34,7 +34,7 @@
             <div class="img_place">
                 <img
                     class="img_place_item"
-                    src="./images/home_img/carusel_item.jpg"
+                    src="<?=Yii::getAlias('@web'); ?>/images/home_img/carusel_item.jpg"
                     alt=""
                     width="100%">
             </div>

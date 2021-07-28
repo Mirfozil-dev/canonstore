@@ -34,7 +34,7 @@
                 </ul>
             </div>
 
-            <div class="delivery_img"><img alt="Доставка и оплата" src="./images/delivery_img.jpg"></div>
+            <div class="delivery_img"><img alt="Доставка и оплата" src="<?=Yii::getAlias('@web'); ?>/images/delivery_img.jpg"></div>
 
             <div class="b-slider">
                 <div class="b-slider_opener faq_item_opener">Доставка</div>
