@@ -73,10 +73,10 @@ AppAsset::register($this);
 
                 <div class="drop_down_catalog_items">
                     <div class="drop_down_catalog_item">
-                        <img src="<?=Yii::getAlias('@web'); ?>/images/drop_down_items/percentage.png" alt="" width="16px"><a class="href_catalog" href="/site/cart">АКЦИЯ</a>
+                        <img src="<?=Yii::getAlias('@web'); ?>/images/drop_down_items/percentage.png" alt="" width="16px"><a class="href_catalog" href="/site/catalog">АКЦИЯ</a>
                     </div>
                     <div class="drop_down_catalog_item" id="camera_navbar">
-                        <img src="<?=Yii::getAlias('@web'); ?>/images/drop_down_items/black-camera.png" alt="" width="16px"><a class="href_catalog" href="/site/cart">ФОТОКАМЕРЫ</a>
+                        <img src="<?=Yii::getAlias('@web'); ?>/images/drop_down_items/black-camera.png" alt="" width="16px"><a class="href_catalog" href="/site/catalog">ФОТОКАМЕРЫ</a>
                         <img
                             class="angle-right"
                             src="<?=Yii::getAlias('@web'); ?>/images/line-angle-right.png"
@@ -86,28 +86,28 @@ AppAsset::register($this);
 
                         <div class="drop_camera_scroll row">
                             <div class="drop_camera_item_scroll col-md-5">
-                                <h6 class="camera_header_scroll"><a class="href_catalog1" href="/site/cart">ЗЕРКАЛЬНЫЕ ФОТОКАМЕРЫ</a></h6>
-                                <p><a class="href_catalog1" href="/site/cart">Для начинающих</a></p>
-                                <p><a class="href_catalog1" href="/site/cart">Для любителей</a></p>
-                                <p><a class="href_catalog1" href="/site/cart">Для профессионалов</a></p>
+                                <h6 class="camera_header_scroll"><a class="href_catalog1" href="/site/catalog">ЗЕРКАЛЬНЫЕ ФОТОКАМЕРЫ</a></h6>
+                                <p><a class="href_catalog1" href="/site/catalog">Для начинающих</a></p>
+                                <p><a class="href_catalog1" href="/site/catalog">Для любителей</a></p>
+                                <p><a class="href_catalog1" href="/site/catalog">Для профессионалов</a></p>
                             </div>
 
                             <div class="drop_camera_item_scroll col-md-7">
-                                <h6 class="camera_header_scroll"><a class="href_catalog1" href="/site/cart">БЕЗЗЕРКАЛЬНЫЕ ФОТОКАМЕРЫ NIKON Z</a></h6>
-                                <p><a class="href_catalog1" href="/site/cart">Для любителей</a></p>
-                                <p><a class="href_catalog1" href="/site/cart">Для профессионалов</a></p>
+                                <h6 class="camera_header_scroll"><a class="href_catalog1" href="/site/catalog">БЕЗЗЕРКАЛЬНЫЕ ФОТОКАМЕРЫ NIKON Z</a></h6>
+                                <p><a class="href_catalog1" href="/site/catalog">Для любителей</a></p>
+                                <p><a class="href_catalog1" href="/site/catalog">Для профессионалов</a></p>
                             </div>
 
                             <div class="drop_camera_item_scroll col-md-6">
-                                <h6 class="camera_header_scroll"><a class="href_catalog1" href="/site/cart">КОМПАКТНЫЕ ФОТОКАМЕРЫ</a></h6>
-                                <p><a class="href_catalog1" href="/site/cart">Компактные</a></p>
-                                <p><a class="href_catalog1" href="/site/cart">Супер-Зум</a></p>
-                                <p><a class="href_catalog1" href="/site/cart">Водозащищенные</a></p>
+                                <h6 class="camera_header_scroll"><a class="href_catalog1" href="/site/catalog">КОМПАКТНЫЕ ФОТОКАМЕРЫ</a></h6>
+                                <p><a class="href_catalog1" href="/site/catalog">Компактные</a></p>
+                                <p><a class="href_catalog1" href="/site/catalog">Супер-Зум</a></p>
+                                <p><a class="href_catalog1" href="/site/catalog">Водозащищенные</a></p>
                             </div>
                         </div>
                     </div>
                     <div class="drop_down_catalog_item" id="obective_navbar">
-                        <img src="<?=Yii::getAlias('@web'); ?>/images/drop_down_items/obektive.png" alt="" width="17px"><a class="href_catalog" href="/site/cart">ОБЪЕКТИВЫ</a>
+                        <img src="<?=Yii::getAlias('@web'); ?>/images/drop_down_items/obektive.png" alt="" width="17px"><a class="href_catalog" href="/site/catalog">ОБЪЕКТИВЫ</a>
                         <img
                             class="angle-right"
                             src="<?=Yii::getAlias('@web'); ?>/images/line-angle-right.png"
@@ -116,27 +116,27 @@ AppAsset::register($this);
                             style="position:absolute; right: 1px;">
                         <div class="drop_obektive_scroll row">
                             <div class="drop_camera_item_scroll col-md-6">
-                                <h6 class="camera_header_scroll"><a class="href_catalog1" href="/site/cart">ОБЪЕКТИВЫ ДЛЯ DX</a></h6>
-                                <p><a class="href_catalog1" href="/site/cart">Универсальные</p>
-                                <p><a class="href_catalog1" href="/site/cart">Широкоугольные</p>
-                                <p><a class="href_catalog1" href="/site/cart">Телеобъективы</p>
-                                <p><a class="href_catalog1" href="/site/cart">Макро</p>
-                                <h6 class="camera_header_scroll"><a class="href_catalog1" href="/site/cart">ОБЪЕКТИВЫ ДЛЯ FX</a></h6>
+                                <h6 class="camera_header_scroll"><a class="href_catalog1" href="/site/catalog">ОБЪЕКТИВЫ ДЛЯ DX</a></h6>
+                                <p><a class="href_catalog1" href="/site/catalog">Универсальные</p>
+                                <p><a class="href_catalog1" href="/site/catalog">Широкоугольные</p>
+                                <p><a class="href_catalog1" href="/site/catalog">Телеобъективы</p>
+                                <p><a class="href_catalog1" href="/site/catalog">Макро</p>
+                                <h6 class="camera_header_scroll"><a class="href_catalog1" href="/site/catalog">ОБЪЕКТИВЫ ДЛЯ FX</a></h6>
                             </div>
 
                             <div class="drop_camera_item_scroll col-md-6">
-                                <h6 class="camera_header_scroll"><a class="href_catalog1" href="/site/cart">ОБЪЕКТИВЫ NIKKOR Z</a></h6>
-                                <p><a class="href_catalog1" href="/site/cart">Универсальные</a></p>
-                                <p><a class="href_catalog1" href="/site/cart">Широкоугольные</a></p>
-                                <p><a class="href_catalog1" href="/site/cart">Телеобъективы</a></p>
-                                <p><a class="href_catalog1" href="/site/cart">Специальные</a></p>
-                                <p><a class="href_catalog1" href="/site/cart">Макро</a></p>
-                                <p><a class="href_catalog1" href="/site/cart">Телеконверторы</a></p>
+                                <h6 class="camera_header_scroll"><a class="href_catalog1" href="/site/catalog">ОБЪЕКТИВЫ NIKKOR Z</a></h6>
+                                <p><a class="href_catalog1" href="/site/catalog">Универсальные</a></p>
+                                <p><a class="href_catalog1" href="/site/catalog">Широкоугольные</a></p>
+                                <p><a class="href_catalog1" href="/site/catalog">Телеобъективы</a></p>
+                                <p><a class="href_catalog1" href="/site/catalog">Специальные</a></p>
+                                <p><a class="href_catalog1" href="/site/catalog">Макро</a></p>
+                                <p><a class="href_catalog1" href="/site/catalog">Телеконверторы</a></p>
                             </div>
                         </div>
                     </div>
                     <div class="drop_down_catalog_item" id="accessory_navbar">
-                        <img src="<?=Yii::getAlias('@web'); ?>/images/drop_down_items/briefcase.png" alt="" width="17px"><a class="href_catalog" href="/site/cart">АКСЕССУАРЫ</a><img
+                        <img src="<?=Yii::getAlias('@web'); ?>/images/drop_down_items/briefcase.png" alt="" width="17px"><a class="href_catalog" href="/site/catalog">АКСЕССУАРЫ</a><img
                             class="angle-right"
                             src="<?=Yii::getAlias('@web'); ?>/images/line-angle-right.png"
                             alt=""
@@ -144,52 +144,52 @@ AppAsset::register($this);
                             style="position:absolute; right: 1px;">
                         <div class="drop_accessory_scroll row">
                             <div class="drop_camera_item_scroll col-md-6">
-                                <h6 class="camera_header_scroll"><a class="href_catalog1" href="/site/cart">ДЛЯ ФОТОКАМЕРЫ</a></h6>
-                                <p><a class="href_catalog1" href="/site/cart">Карты памяти</a></p>
-                                <p><a class="href_catalog1" href="/site/cart">Питание фотокамер</a></p>
-                                <p><a class="href_catalog1" href="/site/cart">Штативы, моноподы</a></p>
-                                <p><a class="href_catalog1" href="/site/cart">Сумки, рюкзаки, чехлы, ремни</a></p>
-                                <p><a class="href_catalog1" href="/site/cart">Защита фотокамер</a></p>
-                                <p><a class="href_catalog1" href="/site/cart">Управление фотокамерами</a></p>
-                                <p><a class="href_catalog1" href="/site/cart">Аксессуары для подключения</a></p>
-                                <p><a class="href_catalog1" href="/site/cart">Аксессуары для визирования</a></p>
-                                <p><a class="href_catalog1" href="/site/cart">Аксессуары для видеосъемки</a></p>
-                                <p><a class="href_catalog1" href="/site/cart">Программное обеспечение</a></p>
+                                <h6 class="camera_header_scroll"><a class="href_catalog1" href="/site/catalog">ДЛЯ ФОТОКАМЕРЫ</a></h6>
+                                <p><a class="href_catalog1" href="/site/catalog">Карты памяти</a></p>
+                                <p><a class="href_catalog1" href="/site/catalog">Питание фотокамер</a></p>
+                                <p><a class="href_catalog1" href="/site/catalog">Штативы, моноподы</a></p>
+                                <p><a class="href_catalog1" href="/site/catalog">Сумки, рюкзаки, чехлы, ремни</a></p>
+                                <p><a class="href_catalog1" href="/site/catalog">Защита фотокамер</a></p>
+                                <p><a class="href_catalog1" href="/site/catalog">Управление фотокамерами</a></p>
+                                <p><a class="href_catalog1" href="/site/catalog">Аксессуары для подключения</a></p>
+                                <p><a class="href_catalog1" href="/site/catalog">Аксессуары для визирования</a></p>
+                                <p><a class="href_catalog1" href="/site/catalog">Аксессуары для видеосъемки</a></p>
+                                <p><a class="href_catalog1" href="/site/catalog">Программное обеспечение</a></p>
                             </div>
 
                             <div class="drop_camera_item_scroll col-md-6">
-                                <h6 class="camera_header_scroll"><a class="href_catalog1" href="/site/cart">ДЛЯ ОБЪЕКТИВОВ NIKKOR</a></h6>
-                                <p><a class="href_catalog1" href="/site/cart">Крышки, фильтры</a></p>
-                                <p><a class="href_catalog1" href="/site/cart">Чехлы</a></p>
-                                <p><a class="href_catalog1" href="/site/cart">Средства для чистки оптики</a></p>
-                                <p><a class="href_catalog1" href="/site/cart">Прочее</a></p>
-                                <h6 class="camera_header_scroll"><a class="href_catalog1" href="/site/cart">ДЛЯ СПОРТИВНОЙ ОПТИКИ</a></h6>
-                                <p><a class="href_catalog1" href="/site/cart">Конверторы</a></p>
-                                <p><a class="href_catalog1" href="/site/cart">Окуляры</a></p>
-                                <h6 class="camera_header_scroll"><a class="href_catalog1" href="/site/cart">ДЛЯ ЭКШН-КАМЕР</a></h6>
+                                <h6 class="camera_header_scroll"><a class="href_catalog1" href="/site/catalog">ДЛЯ ОБЪЕКТИВОВ NIKKOR</a></h6>
+                                <p><a class="href_catalog1" href="/site/catalog">Крышки, фильтры</a></p>
+                                <p><a class="href_catalog1" href="/site/catalog">Чехлы</a></p>
+                                <p><a class="href_catalog1" href="/site/catalog">Средства для чистки оптики</a></p>
+                                <p><a class="href_catalog1" href="/site/catalog">Прочее</a></p>
+                                <h6 class="camera_header_scroll"><a class="href_catalog1" href="/site/catalog">ДЛЯ СПОРТИВНОЙ ОПТИКИ</a></h6>
+                                <p><a class="href_catalog1" href="/site/catalog">Конверторы</a></p>
+                                <p><a class="href_catalog1" href="/site/catalog">Окуляры</a></p>
+                                <h6 class="camera_header_scroll"><a class="href_catalog1" href="/site/catalog">ДЛЯ ЭКШН-КАМЕР</a></h6>
                             </div>
 
                             <div class="drop_camera_item col-md-6">
-                                <h6 class="camera_header_scroll"><a class="href_catalog1" href="/site/cart">ДЛЯ ВИДЕО</a></h6>
+                                <h6 class="camera_header_scroll"><a class="href_catalog1" href="/site/catalog">ДЛЯ ВИДЕО</a></h6>
                             </div>
                         </div>
                     </div>
                     <div class="drop_down_catalog_item">
-                        <img src="<?=Yii::getAlias('@web'); ?>/images/drop_down_items/spark.png" alt="" width="17px"><a class="href_catalog" href="/site/cart">ВСПЫШКИ</a>
+                        <img src="<?=Yii::getAlias('@web'); ?>/images/drop_down_items/spark.png" alt="" width="17px"><a class="href_catalog" href="/site/catalog">ВСПЫШКИ</a>
                     </div>
                     <div class="drop_down_catalog_item">
                         <img
                             src="<?=Yii::getAlias('@web'); ?>/images/drop_down_items/shirt.png"
                             alt=""
                             width="23px"
-                            style="margin-right: 14px;"><a class="href_catalog" href="/site/cart">СУВЕНИРНАЯ ПРОДУКЦИЯ</a>
+                            style="margin-right: 14px;"><a class="href_catalog" href="/site/catalog">СУВЕНИРНАЯ ПРОДУКЦИЯ</a>
                     </div>
                     <div class="drop_down_catalog_item" id="sport_navbar">
                         <img
                             src="<?=Yii::getAlias('@web'); ?>/images/drop_down_items/jump.png"
                             alt=""
                             width="23px"
-                            style="margin-right: 14px;"><a class="href_catalog" href="/site/cart">СПОРТИВНАЯ ОПТИКА</a><img
+                            style="margin-right: 14px;"><a class="href_catalog" href="/site/catalog">СПОРТИВНАЯ ОПТИКА</a><img
                             class="angle-right"
                             src="<?=Yii::getAlias('@web'); ?>/images/line-angle-right.png"
                             alt=""
@@ -197,23 +197,23 @@ AppAsset::register($this);
                             style="position:absolute; right: 1px;">
                         <div class="drop_sport_scroll row">
                             <div class="drop_camera_item_scroll col-md-6">
-                                <h6 class="camera_header_scroll"><a class="href_catalog1" href="/site/cart">ЗЕРКАЛЬНЫЕ ФОТОКАМЕРЫ</a></h6>
-                                <p><a class="href_catalog1" href="/site/cart">Для начинающих</a></p>
-                                <p><a class="href_catalog1" href="/site/cart">Для любителей</a></p>
-                                <p><a class="href_catalog1" href="/site/cart">Для профессионалов</a></p>
+                                <h6 class="camera_header_scroll"><a class="href_catalog1" href="/site/catalog">ЗЕРКАЛЬНЫЕ ФОТОКАМЕРЫ</a></h6>
+                                <p><a class="href_catalog1" href="/site/catalog">Для начинающих</a></p>
+                                <p><a class="href_catalog1" href="/site/catalog">Для любителей</a></p>
+                                <p><a class="href_catalog1" href="/site/catalog">Для профессионалов</a></p>
                             </div>
 
                             <div class="drop_camera_item_scroll col-md-6">
-                                <h6 class="camera_heade_scrollr"><a class="href_catalog1" href="/site/cart">БЕЗЗЕРКАЛЬНЫЕ ФОТОКАМЕРЫ NIKON Z</a></h6>
-                                <p><a class="href_catalog1" href="/site/cart">Для любителей</a></p>
-                                <p><a class="href_catalog1" href="/site/cart">Для профессионалов</a></p>
+                                <h6 class="camera_heade_scrollr"><a class="href_catalog1" href="/site/catalog">БЕЗЗЕРКАЛЬНЫЕ ФОТОКАМЕРЫ NIKON Z</a></h6>
+                                <p><a class="href_catalog1" href="/site/catalog">Для любителей</a></p>
+                                <p><a class="href_catalog1" href="/site/catalog">Для профессионалов</a></p>
                             </div>
 
                             <div class="drop_camera_item_scroll col-md-6">
-                                <h6 class="camera_header_scroll"><a class="href_catalog1" href="/site/cart">КОМПАКТНЫЕ ФОТОКАМЕРЫ</a></h6>
-                                <p><a class="href_catalog1" href="/site/cart">Компактные</a></p>
-                                <p><a class="href_catalog1" href="/site/cart">Супер-Зум</a></p>
-                                <p><a class="href_catalog1" href="/site/cart">Водозащищенные</a></p>
+                                <h6 class="camera_header_scroll"><a class="href_catalog1" href="/site/catalog">КОМПАКТНЫЕ ФОТОКАМЕРЫ</a></h6>
+                                <p><a class="href_catalog1" href="/site/catalog">Компактные</a></p>
+                                <p><a class="href_catalog1" href="/site/catalog">Супер-Зум</a></p>
+                                <p><a class="href_catalog1" href="/site/catalog">Водозащищенные</a></p>
                             </div>
                         </div>
                     </div>
@@ -266,44 +266,44 @@ AppAsset::register($this);
                     src="<?=Yii::getAlias('@web'); ?>/images/drop_down_items/percentage.png"
                     alt=""
                     width="16px"
-                    style="margin-right: 14px;"><a class="href_catalog" href="/site/cart">АКЦИЯ</a></div>
+                    style="margin-right: 14px;"><a class="href_catalog" href="/site/catalog">АКЦИЯ</a></div>
             <div class="col-md-12 click_cotalog_item"><img
                     src="<?=Yii::getAlias('@web'); ?>/images/drop_down_items/black-camera.png"
                     alt=""
                     width="16px"
-                    style="margin-right: 14px;"><a class="href_catalog" href="/site/cart">ФОТОКАМЕРЫ</a></div>
+                    style="margin-right: 14px;"><a class="href_catalog" href="/site/catalog">ФОТОКАМЕРЫ</a></div>
             <div class="col-md-12 click_cotalog_item">
                 <img
                     src="<?=Yii::getAlias('@web'); ?>/images/drop_down_items/obektive.png"
                     alt=""
                     width="17px"
-                    style="margin-right: 14px;"><a class="href_catalog" href="/site/cart">ОБЪЕКТИВЫ</a></div>
+                    style="margin-right: 14px;"><a class="href_catalog" href="/site/catalog">ОБЪЕКТИВЫ</a></div>
             <div class="col-md-12 click_cotalog_item">
                 <img
                     src="<?=Yii::getAlias('@web'); ?>/images/drop_down_items/spark.png"
                     alt=""
                     width="17px"
-                    style="margin-right: 14px;"><a class="href_catalog" href="/site/cart">ВСПЫШКИ</a></div>
+                    style="margin-right: 14px;"><a class="href_catalog" href="/site/catalog">ВСПЫШКИ</a></div>
             <div class="col-md-12 click_cotalog_item">
                 <img
                     src="<?=Yii::getAlias('@web'); ?>/images/drop_down_items/briefcase.png"
                     alt=""
                     width="17px"
-                    style="margin-right: 14px;"><a class="href_catalog" href="/site/cart">АКСЕССУАРЫ</a></div>
+                    style="margin-right: 14px;"><a class="href_catalog" href="/site/catalog">АКСЕССУАРЫ</a></div>
             <div class="col-md-12 click_cotalog_item">
                 <img
                     src="<?=Yii::getAlias('@web'); ?>/images/drop_down_items/shirt.png"
                     alt=""
                     width="23px"
-                    style="margin-right: 10px;"><a class="href_catalog" href="/site/cart">СУВЕНИРНАЯ ПРОДУКЦИЯ</a></div>
+                    style="margin-right: 10px;"><a class="href_catalog" href="/site/catalog">СУВЕНИРНАЯ ПРОДУКЦИЯ</a></div>
             <div class="col-md-12 click_cotalog_item">
                 <img
                     src="<?=Yii::getAlias('@web'); ?>/images/drop_down_items/jump.png"
                     alt=""
                     width="23px"
-                    style="margin-right: 10px;"><a class="href_catalog" href="/site/cart">СПОРТИВНАЯ ОПТИКА</a></div>
+                    style="margin-right: 10px;"><a class="href_catalog" href="/site/catalog">СПОРТИВНАЯ ОПТИКА</a></div>
         </div>
-        <div class="click_info"><a class="href_catalog" href="/site/cart">ИНФОРМАЦИЯ</a>
+        <div class="click_info"><a class="href_catalog" href="/site/catalog">ИНФОРМАЦИЯ</a>
             <img
                 src="<?=Yii::getAlias('@web'); ?>/images/line-angle-right.png"
                 alt=""
@@ -372,11 +372,11 @@ AppAsset::register($this);
                 <span class="img_angle"><i class="fas fa-angle-right line-angle-right"></i> </span>
                 <div class="dropDownItems" id="dropDownItems">
                     <div class="dropDownItem">
-                        <img src="<?=Yii::getAlias('@web'); ?>/images/drop_down_items/percentage.png" alt="" width="16px"><a class="href_catalog" href="/site/cart">АКЦИЯ</a>
+                        <img src="<?=Yii::getAlias('@web'); ?>/images/drop_down_items/percentage.png" alt="" width="16px"><a class="href_catalog" href="/site/catalog">АКЦИЯ</a>
                     </div>
 
                     <div class="dropDownItem2">
-                        <img src="<?=Yii::getAlias('@web'); ?>/images/drop_down_items/black-camera.png" alt="" width="16px"><a class="href_catalog" href="/site/cart">ФОТОКАМЕРЫ</a>
+                        <img src="<?=Yii::getAlias('@web'); ?>/images/drop_down_items/black-camera.png" alt="" width="16px"><a class="href_catalog" href="/site/catalog">ФОТОКАМЕРЫ</a>
                         <img
                             src="<?=Yii::getAlias('@web'); ?>/images/line-angle-right.png"
                             alt=""
@@ -384,29 +384,29 @@ AppAsset::register($this);
                             style="position: absolute; right: 1px;">
                         <div class="drop_camera row">
                             <div class="drop_camera_item col-md-6">
-                                <h6 class="camera_header"><a class="href_catalog1" href="/site/cart">ЗЕРКАЛЬНЫЕ ФОТОКАМЕРЫ</a></h6>
-                                <p><a class="href_catalog1" href="/site/cart">Для начинающих</a></p>
-                                <p><a class="href_catalog1" href="/site/cart">Для любителей</a></p>
-                                <p><a class="href_catalog1" href="/site/cart">Для профессионалов</a></p>
+                                <h6 class="camera_header"><a class="href_catalog1" href="/site/catalog">ЗЕРКАЛЬНЫЕ ФОТОКАМЕРЫ</a></h6>
+                                <p><a class="href_catalog1" href="/site/catalog">Для начинающих</a></p>
+                                <p><a class="href_catalog1" href="/site/catalog">Для любителей</a></p>
+                                <p><a class="href_catalog1" href="/site/catalog">Для профессионалов</a></p>
                             </div>
 
                             <div class="drop_camera_item col-md-6">
-                                <h6 class="camera_header"><a class="href_catalog1" href="/site/cart">БЕЗЗЕРКАЛЬНЫЕ ФОТОКАМЕРЫ NIKON Z</a></h6>
-                                <p><a class="href_catalog1" href="/site/cart">Для любителей</a></p>
-                                <p><a class="href_catalog1" href="/site/cart">Для профессионалов</a></p>
+                                <h6 class="camera_header"><a class="href_catalog1" href="/site/catalog">БЕЗЗЕРКАЛЬНЫЕ ФОТОКАМЕРЫ NIKON Z</a></h6>
+                                <p><a class="href_catalog1" href="/site/catalog">Для любителей</a></p>
+                                <p><a class="href_catalog1" href="/site/catalog">Для профессионалов</a></p>
                             </div>
 
                             <div class="drop_camera_item col-md-6">
-                                <h6 class="camera_header"><a class="href_catalog1" href="/site/cart">КОМПАКТНЫЕ ФОТОКАМЕРЫ</a></h6>
-                                <p><a class="href_catalog1" href="/site/cart">Компактные</a></p>
-                                <p><a class="href_catalog1" href="/site/cart">Супер-Зум</a></p>
-                                <p><a class="href_catalog1" href="/site/cart">Водозащищенные</a></p>
+                                <h6 class="camera_header"><a class="href_catalog1" href="/site/catalog">КОМПАКТНЫЕ ФОТОКАМЕРЫ</a></h6>
+                                <p><a class="href_catalog1" href="/site/catalog">Компактные</a></p>
+                                <p><a class="href_catalog1" href="/site/catalog">Супер-Зум</a></p>
+                                <p><a class="href_catalog1" href="/site/catalog">Водозащищенные</a></p>
                             </div>
                         </div>
                     </div>
 
                     <div class="dropDownItem3">
-                        <img src="<?=Yii::getAlias('@web'); ?>/images/drop_down_items/obektive.png" alt="" width="17px"><a class="href_catalog" href="/site/cart">ОБЪЕКТИВЫ</a>
+                        <img src="<?=Yii::getAlias('@web'); ?>/images/drop_down_items/obektive.png" alt="" width="17px"><a class="href_catalog" href="/site/catalog">ОБЪЕКТИВЫ</a>
                         <img
                             src="<?=Yii::getAlias('@web'); ?>/images/line-angle-right.png"
                             alt=""
@@ -414,66 +414,66 @@ AppAsset::register($this);
                             style="position:absolute; right: 1px;">
                         <div class="drop_obektive row">
                             <div class="drop_camera_item col-md-6">
-                                <h6 class="camera_header"><a class="href_catalog1" href="/site/cart">ОБЪЕКТИВЫ ДЛЯ DX</a></h6>
-                                <p><a class="href_catalog1" href="/site/cart">Универсальные</p>
-                                <p><a class="href_catalog1" href="/site/cart">Широкоугольные</p>
-                                <p><a class="href_catalog1" href="/site/cart">Телеобъективы</p>
-                                <p><a class="href_catalog1" href="/site/cart">Макро</p>
-                                <h6 class="camera_header"><a class="href_catalog1" href="/site/cart">ОБЪЕКТИВЫ ДЛЯ FX</a></h6>
+                                <h6 class="camera_header"><a class="href_catalog1" href="/site/catalog">ОБЪЕКТИВЫ ДЛЯ DX</a></h6>
+                                <p><a class="href_catalog1" href="/site/catalog">Универсальные</p>
+                                <p><a class="href_catalog1" href="/site/catalog">Широкоугольные</p>
+                                <p><a class="href_catalog1" href="/site/catalog">Телеобъективы</p>
+                                <p><a class="href_catalog1" href="/site/catalog">Макро</p>
+                                <h6 class="camera_header"><a class="href_catalog1" href="/site/catalog">ОБЪЕКТИВЫ ДЛЯ FX</a></h6>
                             </div>
 
                             <div class="drop_camera_item col-md-6">
-                                <h6 class="camera_header"><a class="href_catalog1" href="/site/cart">ОБЪЕКТИВЫ NIKKOR Z</a></h6>
-                                <p><a class="href_catalog1" href="/site/cart">Универсальные</p>
-                                <p><a class="href_catalog1" href="/site/cart">Широкоугольные</p>
-                                <p><a class="href_catalog1" href="/site/cart">Телеобъективы</p>
-                                <p><a class="href_catalog1" href="/site/cart">Специальные</p>
-                                <p><a class="href_catalog1" href="/site/cart">Макро</p>
-                                <p><a class="href_catalog1" href="/site/cart">Телеконверторы</p>
+                                <h6 class="camera_header"><a class="href_catalog1" href="/site/catalog">ОБЪЕКТИВЫ NIKKOR Z</a></h6>
+                                <p><a class="href_catalog1" href="/site/catalog">Универсальные</p>
+                                <p><a class="href_catalog1" href="/site/catalog">Широкоугольные</p>
+                                <p><a class="href_catalog1" href="/site/catalog">Телеобъективы</p>
+                                <p><a class="href_catalog1" href="/site/catalog">Специальные</p>
+                                <p><a class="href_catalog1" href="/site/catalog">Макро</p>
+                                <p><a class="href_catalog1" href="/site/catalog">Телеконверторы</p>
                             </div>
                         </div>
                     </div>
 
                     <div class="dropDownItem">
-                        <img src="<?=Yii::getAlias('@web'); ?>/images/drop_down_items/spark.png" alt="" width="17px"><a class="href_catalog" href="/site/cart">ВСПЫШКИ</a>
+                        <img src="<?=Yii::getAlias('@web'); ?>/images/drop_down_items/spark.png" alt="" width="17px"><a class="href_catalog" href="/site/catalog">ВСПЫШКИ</a>
                     </div>
 
                     <div class="dropDownItem4">
-                        <img src="<?=Yii::getAlias('@web'); ?>/images/drop_down_items/briefcase.png" alt="" width="17px"><a class="href_catalog" href="/site/cart">АКСЕССУАРЫ</a><img
+                        <img src="<?=Yii::getAlias('@web'); ?>/images/drop_down_items/briefcase.png" alt="" width="17px"><a class="href_catalog" href="/site/catalog">АКСЕССУАРЫ</a><img
                             src="<?=Yii::getAlias('@web'); ?>/images/line-angle-right.png"
                             alt=""
                             width="6px"
                             style="position:absolute; right: 1px;">
                         <div class="drop_accessory row">
                             <div class="drop_camera_item col-md-6">
-                                <h6 class="camera_header"><a class="href_catalog1" href="/site/cart">ДЛЯ ФОТОКАМЕР</a></h6>
-                                <p><a class="href_catalog1" href="/site/cart">Карты памяти</a></p>
-                                <p><a class="href_catalog1" href="/site/cart">Питание фотокамер</a></p>
-                                <p><a class="href_catalog1" href="/site/cart">Штативы, моноподы</a></p>
-                                <p><a class="href_catalog1" href="/site/cart">Сумки, рюкзаки, чехлы, ремни</a></p>
-                                <p><a class="href_catalog1" href="/site/cart">Защита фотокамер</a></p>
-                                <p><a class="href_catalog1" href="/site/cart">Управление фотокамерами</a></p>
-                                <p><a class="href_catalog1" href="/site/cart">Аксессуары для подключения</a></p>
-                                <p><a class="href_catalog1" href="/site/cart">Аксессуары для визирования</a></p>
-                                <p><a class="href_catalog1" href="/site/cart">Аксессуары для видеосъемки</a></p>
-                                <p><a class="href_catalog1" href="/site/cart">Программное обеспечение</a></p>
+                                <h6 class="camera_header"><a class="href_catalog1" href="/site/catalog">ДЛЯ ФОТОКАМЕР</a></h6>
+                                <p><a class="href_catalog1" href="/site/catalog">Карты памяти</a></p>
+                                <p><a class="href_catalog1" href="/site/catalog">Питание фотокамер</a></p>
+                                <p><a class="href_catalog1" href="/site/catalog">Штативы, моноподы</a></p>
+                                <p><a class="href_catalog1" href="/site/catalog">Сумки, рюкзаки, чехлы, ремни</a></p>
+                                <p><a class="href_catalog1" href="/site/catalog">Защита фотокамер</a></p>
+                                <p><a class="href_catalog1" href="/site/catalog">Управление фотокамерами</a></p>
+                                <p><a class="href_catalog1" href="/site/catalog">Аксессуары для подключения</a></p>
+                                <p><a class="href_catalog1" href="/site/catalog">Аксессуары для визирования</a></p>
+                                <p><a class="href_catalog1" href="/site/catalog">Аксессуары для видеосъемки</a></p>
+                                <p><a class="href_catalog1" href="/site/catalog">Программное обеспечение</a></p>
                             </div>
 
                             <div class="drop_camera_item col-md-6">
-                                <h6 class="camera_header"><a class="href_catalog1" href="/site/cart">ДЛЯ ВИДЕО</a></h6>
-                                <h6 class="camera_header"><a class="href_catalog1" href="/site/cart">ДЛЯ ОБЪЕКТИВОВ NIKKOR</a></h6>
-                                <p><a class="href_catalog1" href="/site/cart">Крышки, фильтры</a></p>
-                                <p><a class="href_catalog1" href="/site/cart">Бленды</a></p>
-                                <p><a class="href_catalog1" href="/site/cart">Чехлы</a></p>
-                                <p><a class="href_catalog1" href="/site/cart">Средства для чистки оптики</a></p>
-                                <p><a class="href_catalog1" href="/site/cart">Прочее</a></p>
+                                <h6 class="camera_header"><a class="href_catalog1" href="/site/catalog">ДЛЯ ВИДЕО</a></h6>
+                                <h6 class="camera_header"><a class="href_catalog1" href="/site/catalog">ДЛЯ ОБЪЕКТИВОВ NIKKOR</a></h6>
+                                <p><a class="href_catalog1" href="/site/catalog">Крышки, фильтры</a></p>
+                                <p><a class="href_catalog1" href="/site/catalog">Бленды</a></p>
+                                <p><a class="href_catalog1" href="/site/catalog">Чехлы</a></p>
+                                <p><a class="href_catalog1" href="/site/catalog">Средства для чистки оптики</a></p>
+                                <p><a class="href_catalog1" href="/site/catalog">Прочее</a></p>
                             </div>
 
                             <div class="drop_camera_item col-md-6">
-                                <h6 class="camera_header"><a class="href_catalog1" href="/site/cart">ДЛЯ СПОРТИВНОЙ ОПТИКИ</a></h6>
-                                <p><a class="href_catalog1" href="/site/cart">Конверторы</a></p>
-                                <p><a class="href_catalog1" href="/site/cart">Окуляры</a></p>
-                                <h6 class="camera_header"><a class="href_catalog1" href="/site/cart">ДЛЯ ЭКШН-КАМЕР</a></h6>
+                                <h6 class="camera_header"><a class="href_catalog1" href="/site/catalog">ДЛЯ СПОРТИВНОЙ ОПТИКИ</a></h6>
+                                <p><a class="href_catalog1" href="/site/catalog">Конверторы</a></p>
+                                <p><a class="href_catalog1" href="/site/catalog">Окуляры</a></p>
+                                <h6 class="camera_header"><a class="href_catalog1" href="/site/catalog">ДЛЯ ЭКШН-КАМЕР</a></h6>
                             </div>
                         </div>
                     </div>
@@ -483,7 +483,7 @@ AppAsset::register($this);
                             src="<?=Yii::getAlias('@web'); ?>/images/drop_down_items/shirt.png"
                             alt=""
                             width="23px"
-                            style="margin-right: 14px;"><a class="href_catalog" href="/site/cart">СУВЕНИРНАЯ ПРОДУКЦИЯ</a>
+                            style="margin-right: 14px;"><a class="href_catalog" href="/site/catalog">СУВЕНИРНАЯ ПРОДУКЦИЯ</a>
                     </div>
 
                     <div class="dropDownItem5">
@@ -491,30 +491,30 @@ AppAsset::register($this);
                             src="<?=Yii::getAlias('@web'); ?>/images/drop_down_items/jump.png"
                             alt=""
                             width="23px"
-                            style="margin-right: 14px;"><a class="href_catalog" href="/site/cart">СПОРТИВНАЯ ОПТИКА</a><img
+                            style="margin-right: 14px;"><a class="href_catalog" href="/site/catalog">СПОРТИВНАЯ ОПТИКА</a><img
                             src="<?=Yii::getAlias('@web'); ?>/images/line-angle-right.png"
                             alt=""
                             width="6px"
                             style="position:absolute; right: 1px;">
                         <div class="drop_sport row">
                             <div class="drop_camera_item col-md-6">
-                                <h6 class="camera_header"><a class="href_catalog1" href="/site/cart">ЗЕРКАЛЬНЫЕ ФОТОКАМЕРЫ</a></h6>
-                                <p><a class="href_catalog1" href="/site/cart">Для начинающих</a></p>
-                                <p><a class="href_catalog1" href="/site/cart">Для любителей</a></p>
-                                <p><a class="href_catalog1" href="/site/cart">Для профессионалов</a></p>
+                                <h6 class="camera_header"><a class="href_catalog1" href="/site/catalog">ЗЕРКАЛЬНЫЕ ФОТОКАМЕРЫ</a></h6>
+                                <p><a class="href_catalog1" href="/site/catalog">Для начинающих</a></p>
+                                <p><a class="href_catalog1" href="/site/catalog">Для любителей</a></p>
+                                <p><a class="href_catalog1" href="/site/catalog">Для профессионалов</a></p>
                             </div>
 
                             <div class="drop_camera_item col-md-6">
-                                <h6 class="camera_header"><a class="href_catalog1" href="/site/cart">БЕЗЗЕРКАЛЬНЫЕ ФОТОКАМЕРЫ NIKON Z</a></h6>
-                                <p><a class="href_catalog1" href="/site/cart">Для любителей</a></p>
-                                <p><a class="href_catalog1" href="/site/cart">Для профессионалов</a></p>
+                                <h6 class="camera_header"><a class="href_catalog1" href="/site/catalog">БЕЗЗЕРКАЛЬНЫЕ ФОТОКАМЕРЫ NIKON Z</a></h6>
+                                <p><a class="href_catalog1" href="/site/catalog">Для любителей</a></p>
+                                <p><a class="href_catalog1" href="/site/catalog">Для профессионалов</a></p>
                             </div>
 
                             <div class="drop_camera_item col-md-6">
-                                <h6 class="camera_header"><a class="href_catalog1" href="/site/cart">КОМПАКТНЫЕ ФОТОКАМЕРЫ</a></h6>
-                                <p><a class="href_catalog1" href="/site/cart">Компактные</a></p>
-                                <p><a class="href_catalog1" href="/site/cart">Супер-Зум</a></p>
-                                <p><a class="href_catalog1" href="/site/cart">Водозащищенные</a></p>
+                                <h6 class="camera_header"><a class="href_catalog1" href="/site/catalog">КОМПАКТНЫЕ ФОТОКАМЕРЫ</a></h6>
+                                <p><a class="href_catalog1" href="/site/catalog">Компактные</a></p>
+                                <p><a class="href_catalog1" href="/site/catalog">Супер-Зум</a></p>
+                                <p><a class="href_catalog1" href="/site/catalog">Водозащищенные</a></p>
                             </div>
                         </div>
                     </div>

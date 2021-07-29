@@ -8,7 +8,7 @@ use yii\db\Migration;
  *
  * - `{{%categories}}`
  */
-class m210710_103625_create_products_table extends Migration
+class m210710_104013_create_products_table extends Migration
 {
     /**
      * {@inheritdoc}

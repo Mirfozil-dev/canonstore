@@ -1,5 +1,5 @@
 <!------------------- beginning of body --------------------->
-<div class="catalog">
+<div class="catalog" style="margin-top: 150px;">
     <div class="container">
 
         <!-- ------------------------ beginning of navbar path ----------------------- -->
