@@ -7,13 +7,13 @@
                     <a href="/">Главная</a>
                 </li>
                 <li>
-                    <a href="/catalog/fotokamery/">Фотокамеры</a>
+                    <a href="/site/catalog/">Фотокамеры</a>
                 </li>
                 <li>
-                    <a href="/catalog/fotokamery/zerkalnye-fotokamery/">Зеркальные фотокамеры</a>
+                    <a href="/site/catalog/">Зеркальные фотокамеры</a>
                 </li>
                 <li>
-                    <a href="/catalog/fotokamery/zerkalnye-fotokamery/lyubitelskie/">Для любителей</a>
+                    <a href="/site/catalog">Для любителей</a>
                 </li>
                 <li>Z50 Blogger Kit</li>
             </ul>

@@ -62,7 +62,7 @@
             </ul>
             <div class="offer_status">В наличии</div>
             <div class="offer_cost">84 999 ₽</div>
-            <a href="./product.html" class="offer_to_cart">В корзину</a>
+            <a href="/site/product" class="offer_to_cart">В корзину</a>
         </div>
         <!-- 2 offer -->
         <div class="img_carusel_like">
@@ -82,7 +82,7 @@
             </ul>
             <div class="offer_status">В наличии</div>
             <div class="offer_cost">84 999 ₽</div>
-            <a href="./product.html" class="offer_to_cart">В корзину</a>
+            <a href="/site/product" class="offer_to_cart">В корзину</a>
         </div>
         <!-- 3 offer -->
         <div class="img_carusel_like">
@@ -103,7 +103,7 @@
             </ul>
             <div class="offer_status">В наличии</div>
             <div class="offer_cost">84 999 ₽</div>
-            <a href="./product.html" class="offer_to_cart">В корзину</a>
+            <a href="/site/product" class="offer_to_cart">В корзину</a>
         </div>
         <!-- 4 offer -->
         <div class="img_carusel_like">
@@ -123,7 +123,7 @@
             </ul>
             <div class="offer_status">В наличии</div>
             <div class="offer_cost">84 999 ₽</div>
-            <a href="./product.html" class="offer_to_cart">В корзину</a>
+            <a href="/site/product" class="offer_to_cart">В корзину</a>
         </div>
     </div>            </div>
 

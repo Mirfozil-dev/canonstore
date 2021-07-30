@@ -8,13 +8,13 @@
                     <a href="/">Главная</a>
                 </li>
                 <li>
-                    <a href="/catalog/fotokamery/">Фотокамеры</a>
+                    <a href="/site/catalog/">Фотокамеры</a>
                 </li>
                 <li>
-                    <a href="/catalog/fotokamery/zerkalnye-fotokamery/">Зеркальные фотокамеры</a>
+                    <a href="/site/catalog/">Зеркальные фотокамеры</a>
                 </li>
                 <li>
-                    <a href="/catalog/fotokamery/zerkalnye-fotokamery/lyubitelskie/">Для любителей</a>
+                    <a href="/site/catalog/">Для любителей</a>
                 </li>
                 <li>Z50 Blogger Kit</li>
             </ul>
@@ -97,7 +97,7 @@
                     </ul>
                     <div class="offer_status">В наличии</div>
                     <div class="offer_cost">84 999 ₽</div>
-                    <a href="./product.html" class="offer_to_cart">В корзину</a>
+                    <a href="/site/product" class="offer_to_cart">В корзину</a>
                 </div>
                 <div class="product_properties_products">
                     <p class="product_properties_info1">Формат матрицы</p>
@@ -152,7 +152,7 @@
                     </ul>
                     <div class="offer_status">В наличии</div>
                     <div class="offer_cost">84 999 ₽</div>
-                    <a href="./product.html" class="offer_to_cart">В корзину</a>
+                    <a href="/site/product" class="offer_to_cart">В корзину</a>
                 </div>
                 <div class="product_properties_products">
                     <p class="product_properties_info1">Формат матрицы</p>
@@ -207,7 +207,7 @@
                     </ul>
                     <div class="offer_status">В наличии</div>
                     <div class="offer_cost">84 999 ₽</div>
-                    <a href="./product.html" class="offer_to_cart">В корзину</a>
+                    <a href="/site/product" class="offer_to_cart">В корзину</a>
                 </div>
                 <div class="product_properties_products">
                     <p class="product_properties_info1">Формат матрицы</p>

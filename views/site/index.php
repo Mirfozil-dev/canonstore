@@ -217,7 +217,7 @@
         </ul>
         <div class="offer_status">В наличии</div>
         <div class="offer_cost">84 999 ₽</div>
-        <a href="./product.html" class="offer_to_cart">В корзину</a>
+        <a href="/site/product" class="offer_to_cart">В корзину</a>
       </div>
       <!-- 2 offer -->
       <div class="img_carusel">
@@ -237,7 +237,7 @@
         </ul>
         <div class="offer_status">В наличии</div>
         <div class="offer_cost">84 999 ₽</div>
-        <a href="./product.html" class="offer_to_cart">В корзину</a>
+        <a href="/site/product" class="offer_to_cart">В корзину</a>
       </div>
       <!-- 3 offer -->
       <div class="img_carusel">
@@ -258,7 +258,7 @@
         </ul>
         <div class="offer_status">В наличии</div>
         <div class="offer_cost">84 999 ₽</div>
-        <a href="./product.html" class="offer_to_cart">В корзину</a>
+        <a href="/site/product" class="offer_to_cart">В корзину</a>
       </div>
       <!-- 4 offer -->
       <div class="img_carusel">
@@ -278,7 +278,7 @@
         </ul>
         <div class="offer_status">В наличии</div>
         <div class="offer_cost">84 999 ₽</div>
-        <a href="./product.html" class="offer_to_cart">В корзину</a>
+        <a href="/site/product" class="offer_to_cart">В корзину</a>
       </div>
       <!-- 5 offer -->
       <div class="img_carusel">
@@ -298,7 +298,7 @@
         </ul>
         <div class="offer_status">В наличии</div>
         <div class="offer_cost">84 999 ₽</div>
-        <a href="./product.html" class="offer_to_cart">В корзину</a>
+        <a href="/site/product" class="offer_to_cart">В корзину</a>
       </div>
       <!-- 6 offer -->
       <div class="img_carusel">
@@ -318,7 +318,7 @@
         </ul>
         <div class="offer_status">В наличии</div>
         <div class="offer_cost">84 999 ₽</div>
-        <a href="./product.html" class="offer_to_cart">В корзину</a>
+        <a href="/site/product" class="offer_to_cart">В корзину</a>
       </div>
       <!-- 7 offer -->
       <div class="img_carusel">
@@ -338,7 +338,7 @@
         </ul>
         <div class="offer_status">В наличии</div>
         <div class="offer_cost">84 999 ₽</div>
-        <a href="./product.html" class="offer_to_cart">В корзину</a>
+        <a href="/site/product" class="offer_to_cart">В корзину</a>
       </div>
       <!-- 8 offer -->
       <div class="img_carusel">
@@ -358,7 +358,7 @@
         </ul>
         <div class="offer_status">В наличии</div>
         <div class="offer_cost">84 999 ₽</div>
-        <a href="./product.html" class="offer_to_cart">В корзину</a>
+        <a href="/site/product" class="offer_to_cart">В корзину</a>
       </div>
       <!-- 9 offer -->
       <div class="img_carusel">
@@ -378,7 +378,7 @@
         </ul>
         <div class="offer_status">В наличии</div>
         <div class="offer_cost">84 999 ₽</div>
-        <a href="./product.html" class="offer_to_cart">В корзину</a>
+        <a href="/site/product" class="offer_to_cart">В корзину</a>
       </div>
       <!-- 10 offer -->
       <div class="img_carusel">
@@ -398,7 +398,7 @@
         </ul>
         <div class="offer_status">В наличии</div>
         <div class="offer_cost">84 999 ₽</div>
-        <a href="./product.html" class="offer_to_cart">В корзину</a>
+        <a href="/site/product" class="offer_to_cart">В корзину</a>
       </div>
       <!-- 11 offer -->
       <div class="img_carusel">
@@ -418,7 +418,7 @@
         </ul>
         <div class="offer_status">В наличии</div>
         <div class="offer_cost">84 999 ₽</div>
-        <a href="./product.html" class="offer_to_cart">В корзину</a>
+        <a href="/site/product" class="offer_to_cart">В корзину</a>
       </div>
       <!-- 12 offer -->
       <div class="img_carusel">
@@ -438,7 +438,7 @@
         </ul>
         <div class="offer_status">В наличии</div>
         <div class="offer_cost">84 999 ₽</div>
-        <a href="./product.html" class="offer_to_cart">В корзину</a>
+        <a href="/site/product" class="offer_to_cart">В корзину</a>
       </div>
 
     </div>
@@ -540,7 +540,7 @@
           </ul>
           <div class="offer_status">В наличии</div>
           <div class="offer_cost">84 999 ₽</div>
-          <a href="./product.html" class="offer_to_cart">В корзину</a>
+          <a href="/site/product" class="offer_to_cart">В корзину</a>
         </div>
         <!-- 2 offer -->
         <div class="img_carusel1">
@@ -560,7 +560,7 @@
           </ul>
           <div class="offer_status">В наличии</div>
           <div class="offer_cost">84 999 ₽</div>
-          <a href="./product.html" class="offer_to_cart">В корзину</a>
+          <a href="/site/product" class="offer_to_cart">В корзину</a>
         </div>
         <!-- 3 offer -->
         <div class="img_carusel1">
@@ -581,7 +581,7 @@
           </ul>
           <div class="offer_status">В наличии</div>
           <div class="offer_cost">84 999 ₽</div>
-          <a href="./product.html" class="offer_to_cart">В корзину</a>
+          <a href="/site/product" class="offer_to_cart">В корзину</a>
         </div>
         <!-- 4 offer -->
         <div class="img_carusel1">
@@ -601,7 +601,7 @@
           </ul>
           <div class="offer_status">В наличии</div>
           <div class="offer_cost">84 999 ₽</div>
-          <a href="./product.html" class="offer_to_cart">В корзину</a>
+          <a href="/site/product" class="offer_to_cart">В корзину</a>
         </div>
         <!-- 5 offer -->
         <div class="img_carusel1">
@@ -621,7 +621,7 @@
           </ul>
           <div class="offer_status">В наличии</div>
           <div class="offer_cost">84 999 ₽</div>
-          <a href="./product.html" class="offer_to_cart">В корзину</a>
+          <a href="/site/product" class="offer_to_cart">В корзину</a>
         </div>
         <!-- 6 offer -->
         <div class="img_carusel1">
@@ -641,7 +641,7 @@
           </ul>
           <div class="offer_status">В наличии</div>
           <div class="offer_cost">84 999 ₽</div>
-          <a href="./product.html" class="offer_to_cart">В корзину</a>
+          <a href="/site/product" class="offer_to_cart">В корзину</a>
         </div>
         <!-- 7 offer -->
         <div class="img_carusel1">
@@ -661,7 +661,7 @@
           </ul>
           <div class="offer_status">В наличии</div>
           <div class="offer_cost">84 999 ₽</div>
-          <a href="./product.html" class="offer_to_cart">В корзину</a>
+          <a href="/site/product" class="offer_to_cart">В корзину</a>
         </div>
         <!-- 8 offer -->
         <div class="img_carusel1">
@@ -681,7 +681,7 @@
           </ul>
           <div class="offer_status">В наличии</div>
           <div class="offer_cost">84 999 ₽</div>
-          <a href="./product.html" class="offer_to_cart">В корзину</a>
+          <a href="/site/product" class="offer_to_cart">В корзину</a>
         </div>
         <!-- 9 offer -->
         <div class="img_carusel1">
@@ -701,7 +701,7 @@
           </ul>
           <div class="offer_status">В наличии</div>
           <div class="offer_cost">84 999 ₽</div>
-          <a href="./product.html" class="offer_to_cart">В корзину</a>
+          <a href="/site/product" class="offer_to_cart">В корзину</a>
         </div>
         <!-- 10 offer -->
         <div class="img_carusel1">
@@ -721,7 +721,7 @@
           </ul>
           <div class="offer_status">В наличии</div>
           <div class="offer_cost">84 999 ₽</div>
-          <a href="./product.html" class="offer_to_cart">В корзину</a>
+          <a href="/site/product" class="offer_to_cart">В корзину</a>
         </div>
         <!-- 11 offer -->
         <div class="img_carusel1">
@@ -741,7 +741,7 @@
           </ul>
           <div class="offer_status">В наличии</div>
           <div class="offer_cost">84 999 ₽</div>
-          <a href="./product.html" class="offer_to_cart">В корзину</a>
+          <a href="/site/product" class="offer_to_cart">В корзину</a>
         </div>
         <!-- 12 offer -->
         <div class="img_carusel1">
@@ -761,7 +761,7 @@
           </ul>
           <div class="offer_status">В наличии</div>
           <div class="offer_cost">84 999 ₽</div>
-          <a href="./product.html" class="offer_to_cart">В корзину</a>
+          <a href="/site/product" class="offer_to_cart">В корзину</a>
         </div>
         <!-- 13 offer -->
         <div class="img_carusel1">
@@ -781,7 +781,7 @@
           </ul>
           <div class="offer_status">В наличии</div>
           <div class="offer_cost">84 999 ₽</div>
-          <a href="./product.html" class="offer_to_cart">В корзину</a>
+          <a href="/site/product" class="offer_to_cart">В корзину</a>
         </div>
 
       </div>
@@ -797,7 +797,7 @@
       </div>
     </div>
     <div class="buttons_container_carusel">
-      <a href="./product" class="obective_href">Все ФОТОКАМЕРЫ
+      <a href="/site/product" class="obective_href">Все ФОТОКАМЕРЫ
       </a>
     </div>
 
@@ -869,7 +869,7 @@
           </ul>
           <div class="offer_status">В наличии</div>
           <div class="offer_cost">84 999 ₽</div>
-          <a href="./product.html" class="offer_to_cart">В корзину</a>
+          <a href="/site/product" class="offer_to_cart">В корзину</a>
         </div>
         <!-- 2 offer -->
         <div class="img_carusel2">
@@ -889,7 +889,7 @@
           </ul>
           <div class="offer_status">В наличии</div>
           <div class="offer_cost">84 999 ₽</div>
-          <a href="./product.html" class="offer_to_cart">В корзину</a>
+          <a href="/site/product" class="offer_to_cart">В корзину</a>
         </div>
         <!-- 3 offer -->
         <div class="img_carusel2">
@@ -910,7 +910,7 @@
           </ul>
           <div class="offer_status">В наличии</div>
           <div class="offer_cost">84 999 ₽</div>
-          <a href="./product.html" class="offer_to_cart">В корзину</a>
+          <a href="/site/product" class="offer_to_cart">В корзину</a>
         </div>
         <!-- 4 offer -->
         <div class="img_carusel2">
@@ -930,7 +930,7 @@
           </ul>
           <div class="offer_status">В наличии</div>
           <div class="offer_cost">84 999 ₽</div>
-          <a href="./product.html" class="offer_to_cart">В корзину</a>
+          <a href="/site/product" class="offer_to_cart">В корзину</a>
         </div>
         <!-- 5 offer -->
         <div class="img_carusel2">
@@ -950,7 +950,7 @@
           </ul>
           <div class="offer_status">В наличии</div>
           <div class="offer_cost">84 999 ₽</div>
-          <a href="./product.html" class="offer_to_cart">В корзину</a>
+          <a href="/site/product" class="offer_to_cart">В корзину</a>
         </div>
         <!-- 6 offer -->
         <div class="img_carusel2">
@@ -970,7 +970,7 @@
           </ul>
           <div class="offer_status">В наличии</div>
           <div class="offer_cost">84 999 ₽</div>
-          <a href="./product.html" class="offer_to_cart">В корзину</a>
+          <a href="/site/product" class="offer_to_cart">В корзину</a>
         </div>
         <!-- 7 offer -->
         <div class="img_carusel2">
@@ -990,7 +990,7 @@
           </ul>
           <div class="offer_status">В наличии</div>
           <div class="offer_cost">84 999 ₽</div>
-          <a href="./product.html" class="offer_to_cart">В корзину</a>
+          <a href="/site/product" class="offer_to_cart">В корзину</a>
         </div>
         <!-- 8 offer -->
         <div class="img_carusel2">
@@ -1010,7 +1010,7 @@
           </ul>
           <div class="offer_status">В наличии</div>
           <div class="offer_cost">84 999 ₽</div>
-          <a href="./product.html" class="offer_to_cart">В корзину</a>
+          <a href="/site/product" class="offer_to_cart">В корзину</a>
         </div>
         <!-- 9 offer -->
         <div class="img_carusel2">
@@ -1030,7 +1030,7 @@
           </ul>
           <div class="offer_status">В наличии</div>
           <div class="offer_cost">84 999 ₽</div>
-          <a href="./product.html" class="offer_to_cart">В корзину</a>
+          <a href="/site/product" class="offer_to_cart">В корзину</a>
         </div>
         <!-- 10 offer -->
         <div class="img_carusel2">
@@ -1050,7 +1050,7 @@
           </ul>
           <div class="offer_status">В наличии</div>
           <div class="offer_cost">84 999 ₽</div>
-          <a href="./product.html" class="offer_to_cart">В корзину</a>
+          <a href="/site/product" class="offer_to_cart">В корзину</a>
         </div>
         <!-- 11 offer -->
         <div class="img_carusel2">
@@ -1070,7 +1070,7 @@
           </ul>
           <div class="offer_status">В наличии</div>
           <div class="offer_cost">84 999 ₽</div>
-          <a href="./product.html" class="offer_to_cart">В корзину</a>
+          <a href="/site/product" class="offer_to_cart">В корзину</a>
         </div>
         <!-- 12 offer -->
         <div class="img_carusel2">
@@ -1090,7 +1090,7 @@
           </ul>
           <div class="offer_status">В наличии</div>
           <div class="offer_cost">84 999 ₽</div>
-          <a href="./product.html" class="offer_to_cart">В корзину</a>
+          <a href="/site/product" class="offer_to_cart">В корзину</a>
         </div>
         <!-- 13 offer -->
         <div class="img_carusel2">
@@ -1110,7 +1110,7 @@
           </ul>
           <div class="offer_status">В наличии</div>
           <div class="offer_cost">84 999 ₽</div>
-          <a href="./product.html" class="offer_to_cart">В корзину</a>
+          <a href="/site/product" class="offer_to_cart">В корзину</a>
         </div>
 
       </div>
@@ -1126,7 +1126,7 @@
       </div>
     </div>
     <div class="buttons_container_carusel">
-      <a href="./product" class="obective_href">Все объективы
+      <a href="/site/product" class="obective_href">Все объективы
       </a>
     </div>
 
@@ -1157,7 +1157,7 @@
           <img src="<?=Yii::getAlias('@web'); ?>/images/home_img/add_img.png" alt="" width="50%">
         </div>
         <div class="product_info">
-          <a href="./product.html" class="product_info_href">Подробнее о товаре</a>
+          <a href="/site/product" class="product_info_href">Подробнее о товаре</a>
         </div>
       </div>
     </div>
@@ -1223,7 +1223,7 @@
             </ul>
             <div class="offer_status">В наличии</div>
             <div class="offer_cost">84 999 ₽</div>
-            <a href="./product.html" class="offer_to_cart">В корзину</a>
+            <a href="/site/product" class="offer_to_cart">В корзину</a>
           </div>
           <!-- 2 offer -->
           <div class="img_carusel3">
@@ -1243,7 +1243,7 @@
             </ul>
             <div class="offer_status">В наличии</div>
             <div class="offer_cost">84 999 ₽</div>
-            <a href="./product.html" class="offer_to_cart">В корзину</a>
+            <a href="/site/product" class="offer_to_cart">В корзину</a>
           </div>
           <!-- 3 offer -->
           <div class="img_carusel3">
@@ -1264,7 +1264,7 @@
             </ul>
             <div class="offer_status">В наличии</div>
             <div class="offer_cost">84 999 ₽</div>
-            <a href="./product.html" class="offer_to_cart">В корзину</a>
+            <a href="/site/product" class="offer_to_cart">В корзину</a>
           </div>
           <!-- 4 offer -->
           <div class="img_carusel3">
@@ -1284,7 +1284,7 @@
             </ul>
             <div class="offer_status">В наличии</div>
             <div class="offer_cost">84 999 ₽</div>
-            <a href="./product.html" class="offer_to_cart">В корзину</a>
+            <a href="/site/product" class="offer_to_cart">В корзину</a>
           </div>
           <!-- 5 offer -->
           <div class="img_carusel3">
@@ -1304,7 +1304,7 @@
             </ul>
             <div class="offer_status">В наличии</div>
             <div class="offer_cost">84 999 ₽</div>
-            <a href="./product.html" class="offer_to_cart">В корзину</a>
+            <a href="/site/product" class="offer_to_cart">В корзину</a>
           </div>
           <!-- 6 offer -->
           <div class="img_carusel3">
@@ -1324,7 +1324,7 @@
             </ul>
             <div class="offer_status">В наличии</div>
             <div class="offer_cost">84 999 ₽</div>
-            <a href="./product.html" class="offer_to_cart">В корзину</a>
+            <a href="/site/product" class="offer_to_cart">В корзину</a>
           </div>
           <!-- 7 offer -->
           <div class="img_carusel3">
@@ -1344,7 +1344,7 @@
             </ul>
             <div class="offer_status">В наличии</div>
             <div class="offer_cost">84 999 ₽</div>
-            <a href="./product.html" class="offer_to_cart">В корзину</a>
+            <a href="/site/product" class="offer_to_cart">В корзину</a>
           </div>
           <!-- 8 offer -->
           <div class="img_carusel3">
@@ -1364,7 +1364,7 @@
             </ul>
             <div class="offer_status">В наличии</div>
             <div class="offer_cost">84 999 ₽</div>
-            <a href="./product.html" class="offer_to_cart">В корзину</a>
+            <a href="/site/product" class="offer_to_cart">В корзину</a>
           </div>
           <!-- 9 offer -->
           <div class="img_carusel3">
@@ -1384,7 +1384,7 @@
             </ul>
             <div class="offer_status">В наличии</div>
             <div class="offer_cost">84 999 ₽</div>
-            <a href="./product.html" class="offer_to_cart">В корзину</a>
+            <a href="/site/product" class="offer_to_cart">В корзину</a>
           </div>
           <!-- 10 offer -->
           <div class="img_carusel3">
@@ -1404,7 +1404,7 @@
             </ul>
             <div class="offer_status">В наличии</div>
             <div class="offer_cost">84 999 ₽</div>
-            <a href="./product.html" class="offer_to_cart">В корзину</a>
+            <a href="/site/product" class="offer_to_cart">В корзину</a>
           </div>
           <!-- 11 offer -->
           <div class="img_carusel3">
@@ -1424,7 +1424,7 @@
             </ul>
             <div class="offer_status">В наличии</div>
             <div class="offer_cost">84 999 ₽</div>
-            <a href="./product.html" class="offer_to_cart">В корзину</a>
+            <a href="/site/product" class="offer_to_cart">В корзину</a>
           </div>
           <!-- 12 offer -->
           <div class="img_carusel3">
@@ -1444,7 +1444,7 @@
             </ul>
             <div class="offer_status">В наличии</div>
             <div class="offer_cost">84 999 ₽</div>
-            <a href="./product.html" class="offer_to_cart">В корзину</a>
+            <a href="/site/product" class="offer_to_cart">В корзину</a>
           </div>
           <!-- 13 offer -->
           <div class="img_carusel3">
@@ -1464,7 +1464,7 @@
             </ul>
             <div class="offer_status">В наличии</div>
             <div class="offer_cost">84 999 ₽</div>
-            <a href="./product.html" class="offer_to_cart">В корзину</a>
+            <a href="/site/product" class="offer_to_cart">В корзину</a>
           </div>
           <!-- 14 offer -->
           <div class="img_carusel3">
@@ -1484,7 +1484,7 @@
             </ul>
             <div class="offer_status">В наличии</div>
             <div class="offer_cost">84 999 ₽</div>
-            <a href="./product.html" class="offer_to_cart">В корзину</a>
+            <a href="/site/product" class="offer_to_cart">В корзину</a>
           </div>
           <!-- 15 offer -->
           <div class="img_carusel3">
@@ -1504,7 +1504,7 @@
             </ul>
             <div class="offer_status">В наличии</div>
             <div class="offer_cost">84 999 ₽</div>
-            <a href="./product.html" class="offer_to_cart">В корзину</a>
+            <a href="/site/product" class="offer_to_cart">В корзину</a>
           </div>
           <!-- 16 offer -->
           <div class="img_carusel3">
@@ -1524,7 +1524,7 @@
             </ul>
             <div class="offer_status">В наличии</div>
             <div class="offer_cost">84 999 ₽</div>
-            <a href="./product.html" class="offer_to_cart">В корзину</a>
+            <a href="/site/product" class="offer_to_cart">В корзину</a>
           </div>
 
         </div>
@@ -1542,7 +1542,7 @@
 
     </div>
     <div class="buttons_container_carusel">
-      <a href="./product" class="obective_href">Все аксессуары
+      <a href="/site/product" class="obective_href">Все аксессуары
       </a>
     </div>
   </div>
@@ -1599,7 +1599,7 @@
   </div>
 
   <div class="buttons_container_carusel">
-    <a href="./product" class="obective_href">
+    <a href="/site/product" class="obective_href">
       Все фото
     </a>
   </div>
@@ -1654,7 +1654,7 @@
   </div>
 
   <div class="buttons_container_carusel">
-    <a href="./product" class="obective_href">
+    <a href="/site/product" class="obective_href">
       Все новости
     </a>
   </div>

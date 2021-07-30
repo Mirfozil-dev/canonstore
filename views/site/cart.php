@@ -100,7 +100,7 @@
             <div class="delivery_cost">Да</div>
         </div>
         <div class="order_btn">
-            <a href="./order.html">Оформить заказ</a>
+            <a href="/site/order">Оформить заказ</a>
         </div>
         <p id="order_info">Быстрый заказ</p>
 
