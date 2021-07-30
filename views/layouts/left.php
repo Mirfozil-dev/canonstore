@@ -33,6 +33,7 @@
                     ['label' => 'Menu Yii2', 'options' => ['class' => 'header']],
                     ['label' => 'Gii', 'icon' => 'file-code-o', 'url' => ['/gii']],
                     ['label' => 'Debug', 'icon' => 'dashboard', 'url' => ['/debug']],
+                    ['label' => 'Login', 'url' => ['admin/login'], 'visible' => Yii::$app->user->isGuest],
                     ['label' => 'Users', 'url' => ['/users'],],
                     ['label' => 'Categories', 'url' => ['/categories'],],
                     ['label' => 'Products', 'url' => ['/products'],],
@@ -45,7 +46,6 @@
                     ['label' => 'Order Products', 'url' => ['/order_products'],],
                     ['label' => 'News', 'url' => ['/news'],],
                     ['label' => 'Carousel', 'url' => ['/carousel'],],
-//                    ['label' => 'Login', 'url' => ['site/login'], 'visible' => Yii::$app->user->isGuest],
 //                    [
 //                        'label' => 'Some tools',
 //                        'icon' => 'share',
