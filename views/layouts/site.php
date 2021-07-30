@@ -1,9 +1,9 @@
 <?php
 
 use yii\helpers\Html;
-use app\assets\AppAsset;
+use app\assets\FrontendAsset;
 
-AppAsset::register($this);
+FrontendAsset::register($this);
 ?>
 
 <?php $this->beginPage() ?>
