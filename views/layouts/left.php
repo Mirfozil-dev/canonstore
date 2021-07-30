@@ -33,33 +33,45 @@
                     ['label' => 'Menu Yii2', 'options' => ['class' => 'header']],
                     ['label' => 'Gii', 'icon' => 'file-code-o', 'url' => ['/gii']],
                     ['label' => 'Debug', 'icon' => 'dashboard', 'url' => ['/debug']],
-                    ['label' => 'Login', 'url' => ['site/login'], 'visible' => Yii::$app->user->isGuest],
-                    [
-                        'label' => 'Some tools',
-                        'icon' => 'share',
-                        'url' => '#',
-                        'items' => [
-                            ['label' => 'Gii', 'icon' => 'file-code-o', 'url' => ['/gii'],],
-                            ['label' => 'Debug', 'icon' => 'dashboard', 'url' => ['/debug'],],
-                            [
-                                'label' => 'Level One',
-                                'icon' => 'circle-o',
-                                'url' => '#',
-                                'items' => [
-                                    ['label' => 'Level Two', 'icon' => 'circle-o', 'url' => '#',],
-                                    [
-                                        'label' => 'Level Two',
-                                        'icon' => 'circle-o',
-                                        'url' => '#',
-                                        'items' => [
-                                            ['label' => 'Level Three', 'icon' => 'circle-o', 'url' => '#',],
-                                            ['label' => 'Level Three', 'icon' => 'circle-o', 'url' => '#',],
-                                        ],
-                                    ],
-                                ],
-                            ],
-                        ],
-                    ],
+                    ['label' => 'Users', 'url' => ['/users'],],
+                    ['label' => 'Categories', 'url' => ['/categories'],],
+                    ['label' => 'Products', 'url' => ['/products'],],
+                    ['label' => 'Product Images', 'url' => ['/product_images'],],
+                    ['label' => 'Option Groups', 'url' => ['/option_groups'],],
+                    ['label' => 'Options', 'url' => ['/options'],],
+                    ['label' => 'Discount', 'url' => ['/discount'],],
+                    ['label' => 'Order', 'url' => ['/order'],],
+                    ['label' => 'Reviews', 'url' => ['/reviews'],],
+                    ['label' => 'Order Products', 'url' => ['/order_products'],],
+                    ['label' => 'News', 'url' => ['/news'],],
+                    ['label' => 'Carousel', 'url' => ['/carousel'],],
+//                    ['label' => 'Login', 'url' => ['site/login'], 'visible' => Yii::$app->user->isGuest],
+//                    [
+//                        'label' => 'Some tools',
+//                        'icon' => 'share',
+//                        'url' => '#',
+//                        'items' => [
+//                            ['label' => 'Gii', 'icon' => 'file-code-o', 'url' => ['/gii'],],
+//                            ['label' => 'Debug', 'icon' => 'dashboard', 'url' => ['/debug'],],
+//                            [
+//                                'label' => 'Level One',
+//                                'icon' => 'circle-o',
+//                                'url' => '#',
+//                                'items' => [
+//                                    ['label' => 'Level Two', 'icon' => 'circle-o', 'url' => '#',],
+//                                    [
+//                                        'label' => 'Level Two',
+//                                        'icon' => 'circle-o',
+//                                        'url' => '#',
+//                                        'items' => [
+//                                            ['label' => 'Level Three', 'icon' => 'circle-o', 'url' => '#',],
+//                                            ['label' => 'Level Three', 'icon' => 'circle-o', 'url' => '#',],
+//                                        ],
+//                                    ],
+//                                ],
+//                            ],
+//                        ],
+//                    ],
                 ],
             ]
         ) ?>
