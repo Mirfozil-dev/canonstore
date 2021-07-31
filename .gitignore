@@ -31,3 +31,7 @@ tests/_support/_generated
 
 #vagrant folder
 /.vagrant
+
+/web/uploads/products
+/web/uploads/news
+/web/uploads/carousel
