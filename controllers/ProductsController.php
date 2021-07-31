@@ -2,17 +2,18 @@
 
 namespace app\controllers;
 
+use app\models\Categories;
 use Yii;
-use app\models\Users;
-use app\models\search\UsersSearch;
+use app\models\Products;
+use app\models\search\ProductsSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * UsersController implements the CRUD actions for Users model.
+ * ProductsController implements the CRUD actions for Products model.
  */
-class UsersController extends Controller
+class ProductsController extends Controller
 {
     /**
      * {@inheritdoc}
@@ -30,12 +31,12 @@ class UsersController extends Controller
     }
 
     /**
-     * Lists all Users models.
+     * Lists all Products models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new UsersSearch();
+        $searchModel = new ProductsSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -45,7 +46,7 @@ class UsersController extends Controller
     }
 
     /**
-     * Displays a single Users model.
+     * Displays a single Products model.
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
@@ -58,25 +59,27 @@ class UsersController extends Controller
     }
 
     /**
-     * Creates a new Users model.
+     * Creates a new Products model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Users();
-
+        $model = new Products();
+        $model->status = 1;
+        $categories = Categories::find()->where(['status' => 1])->all();
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
         return $this->render('create', [
             'model' => $model,
+            'categories' => $categories
         ]);
     }
 
     /**
-     * Updates an existing Users model.
+     * Updates an existing Products model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -85,18 +88,19 @@ class UsersController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-
+        $categories = Categories::find()->where(['status' => 1])->all();
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
         return $this->render('update', [
             'model' => $model,
+            'categories' => $categories
         ]);
     }
 
     /**
-     * Deletes an existing Users model.
+     * Deletes an existing Products model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -110,15 +114,15 @@ class UsersController extends Controller
     }
 
     /**
-     * Finds the Users model based on its primary key value.
+     * Finds the Products model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Users the loaded model
+     * @return Products the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Users::findOne($id)) !== null) {
+        if (($model = Products::findOne($id)) !== null) {
             return $model;
         }
 

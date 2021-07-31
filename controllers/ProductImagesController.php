@@ -2,17 +2,19 @@
 
 namespace app\controllers;
 
+use app\models\Products;
 use Yii;
-use app\models\Users;
-use app\models\search\UsersSearch;
+use app\models\ProductImages;
+use app\models\search\ProductImagesSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\UploadedFile;
 
 /**
- * UsersController implements the CRUD actions for Users model.
+ * ProductImagesController implements the CRUD actions for ProductImages model.
  */
-class UsersController extends Controller
+class ProductImagesController extends Controller
 {
     /**
      * {@inheritdoc}
@@ -30,12 +32,12 @@ class UsersController extends Controller
     }
 
     /**
-     * Lists all Users models.
+     * Lists all ProductImages models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new UsersSearch();
+        $searchModel = new ProductImagesSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -45,7 +47,7 @@ class UsersController extends Controller
     }
 
     /**
-     * Displays a single Users model.
+     * Displays a single ProductImages model.
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
@@ -58,25 +60,33 @@ class UsersController extends Controller
     }
 
     /**
-     * Creates a new Users model.
+     * Creates a new ProductImages model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Users();
+        $model = new ProductImages();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        $products = Products::find()->where(['status' => 1])->all();
+
+        if ($model->load(Yii::$app->request->post())) {
+            $instance = UploadedFile::getInstance($model, 'img');
+            $instance->saveAs('uploads/products/'.$model->id.' '.$instance->baseName.'.'.$instance->extension);
+            $model->img = 'uploads/products/'.$model->id.' '.$instance->baseName.'.'.$instance->extension;
+
+            $model->save();
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
         return $this->render('create', [
             'model' => $model,
+            'products' => $products
         ]);
     }
 
     /**
-     * Updates an existing Users model.
+     * Updates an existing ProductImages model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -86,17 +96,21 @@ class UsersController extends Controller
     {
         $model = $this->findModel($id);
 
+        $products = Products::find()->where(['status' => 1])->all();
+
+
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
         return $this->render('update', [
             'model' => $model,
+            'products' => $products
         ]);
     }
 
     /**
-     * Deletes an existing Users model.
+     * Deletes an existing ProductImages model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -104,21 +118,23 @@ class UsersController extends Controller
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
+        $model = $this->findModel($id);
+        unlink(Yii::getAlias('@web').$model->img);
+        $model->delete();
 
         return $this->redirect(['index']);
     }
 
     /**
-     * Finds the Users model based on its primary key value.
+     * Finds the ProductImages model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Users the loaded model
+     * @return ProductImages the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Users::findOne($id)) !== null) {
+        if (($model = ProductImages::findOne($id)) !== null) {
             return $model;
         }
 

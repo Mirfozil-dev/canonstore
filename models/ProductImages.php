@@ -2,7 +2,6 @@
 
 namespace app\models;
 
-use Yii;
 
 /**
  * This is the model class for table "product_images".
@@ -15,9 +14,11 @@ use Yii;
  */
 class ProductImages extends \yii\db\ActiveRecord
 {
+
     /**
      * {@inheritdoc}
      */
+
     public static function tableName()
     {
         return 'product_images';
@@ -30,8 +31,8 @@ class ProductImages extends \yii\db\ActiveRecord
     {
         return [
             [['product_id'], 'integer'],
-            [['img'], 'string', 'max' => 255],
             [['product_id'], 'exist', 'skipOnError' => true, 'targetClass' => Products::className(), 'targetAttribute' => ['product_id' => 'id']],
+            [['img'], 'file', 'skipOnEmpty' => true, 'extensions' => 'png, jpg'],
         ];
     }
 
@@ -43,7 +44,7 @@ class ProductImages extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'product_id' => 'Product ID',
-            'img' => 'Img',
+            'img ' => 'Img',
         ];
     }
 
