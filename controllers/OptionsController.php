@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\OptionGroups;
 use Yii;
 use app\models\Options;
 use app\models\search\OptionsSearch;
@@ -65,6 +66,8 @@ class OptionsController extends Controller
     public function actionCreate()
     {
         $model = new Options();
+        $model->status = 1;
+        $optionGroups = OptionGroups::find()->where(['status' => 1])->all();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -72,6 +75,7 @@ class OptionsController extends Controller
 
         return $this->render('create', [
             'model' => $model,
+            'optionGroups' => $optionGroups
         ]);
     }
 
@@ -85,6 +89,7 @@ class OptionsController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+        $optionGroups = OptionGroups::find()->where(['status' => 1])->all();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -92,6 +97,7 @@ class OptionsController extends Controller
 
         return $this->render('update', [
             'model' => $model,
+            'optionGroups' => $optionGroups
         ]);
     }
 

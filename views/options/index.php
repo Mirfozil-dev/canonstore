@@ -29,7 +29,6 @@ $this->params['breadcrumbs'][] = $this->title;
             'id',
             'title',
             'option_group_id',
-            'status',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

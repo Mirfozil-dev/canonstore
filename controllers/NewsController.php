@@ -8,6 +8,7 @@ use app\models\search\NewsSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\UploadedFile;
 
 /**
  * NewsController implements the CRUD actions for News model.
@@ -66,7 +67,12 @@ class NewsController extends Controller
     {
         $model = new News();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post())) {
+            $instance = UploadedFile::getInstance($model, 'img');
+            $instance->saveAs('uploads/news/'.$model->id.' '.$instance->baseName.'.'.$instance->extension);
+            $model->img = 'uploads/news/'.$model->id.' '.$instance->baseName.'.'.$instance->extension;
+
+            $model->save();
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
@@ -86,7 +92,12 @@ class NewsController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post())) {
+            $instance = UploadedFile::getInstance($model, 'img');
+            $instance->saveAs('uploads/news/'.$model->id.' '.$instance->baseName.'.'.$instance->extension);
+            $model->img = 'uploads/news/'.$model->id.' '.$instance->baseName.'.'.$instance->extension;
+
+            $model->save();
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
@@ -104,7 +115,9 @@ class NewsController extends Controller
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
+        $model = $this->findModel($id);
+        unlink(Yii::getAlias('@web').$model->img);
+        $model->delete();
 
         return $this->redirect(['index']);
     }

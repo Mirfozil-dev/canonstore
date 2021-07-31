@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use yii\helpers\ArrayHelper;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\OrderProducts */
@@ -12,15 +13,13 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'order_id')->textInput() ?>
+    <?= $form->field($model, 'order_id')->dropDownList(ArrayHelper::map($orders, 'id', 'id'), ['prompt' => 'Choose Order ID']) ?>
 
-    <?= $form->field($model, 'product_id')->textInput() ?>
+    <?= $form->field($model, 'product_id')->dropDownList(ArrayHelper::map($products, 'id', 'title'), ['prompt' => 'Choose Product']) ?>
 
     <?= $form->field($model, 'quantity')->textInput() ?>
 
     <?= $form->field($model, 'sum')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'status')->textInput() ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>

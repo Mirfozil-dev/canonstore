@@ -99,7 +99,12 @@ class ProductImagesController extends Controller
         $products = Products::find()->where(['status' => 1])->all();
 
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post())) {
+            $instance = UploadedFile::getInstance($model, 'img');
+            $instance->saveAs('uploads/products/'.$model->id.' '.$instance->baseName.'.'.$instance->extension);
+            $model->img = 'uploads/products/'.$model->id.' '.$instance->baseName.'.'.$instance->extension;
+
+            $model->save();
             return $this->redirect(['view', 'id' => $model->id]);
         }
 

@@ -50,8 +50,7 @@ class Orders extends \yii\db\ActiveRecord
             'city' => 'City',
             'address' => 'Address',
             'address_comment' => 'Address Comment',
-            'user_id' => 'User ID',
-            'status' => 'Status',
+            'user_id' => 'User',
         ];
     }
 

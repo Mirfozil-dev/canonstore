@@ -29,7 +29,7 @@ class News extends \yii\db\ActiveRecord
     {
         return [
             [['content'], 'string'],
-            [['img'], 'string', 'max' => 255],
+            [['img'], 'file', 'skipOnEmpty' => true, 'extensions' => 'png, jpg'],
             [['title'], 'string', 'max' => 100],
         ];
     }
@@ -41,7 +41,7 @@ class News extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'img' => 'Img',
+            'img' => 'Image',
             'title' => 'Title',
             'content' => 'Content',
         ];

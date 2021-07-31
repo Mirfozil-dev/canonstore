@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\Products;
 use Yii;
 use app\models\Discount;
 use app\models\search\DiscountSearch;
@@ -65,6 +66,8 @@ class DiscountController extends Controller
     public function actionCreate()
     {
         $model = new Discount();
+        $model->status = 1;
+        $products = Products::find()->where(['status' => 1])->all();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -72,6 +75,7 @@ class DiscountController extends Controller
 
         return $this->render('create', [
             'model' => $model,
+            'products' => $products
         ]);
     }
 
@@ -85,6 +89,7 @@ class DiscountController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+        $products = Products::find()->where(['status' => 1])->all();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -92,6 +97,7 @@ class DiscountController extends Controller
 
         return $this->render('update', [
             'model' => $model,
+            'products' => $products
         ]);
     }
 

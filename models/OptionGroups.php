@@ -45,7 +45,7 @@ class OptionGroups extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'title' => 'Title',
-            'category_id' => 'Category ID',
+            'category_id' => 'Category',
             'status' => 'Status',
         ];
     }

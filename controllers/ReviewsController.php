@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\Users;
 use Yii;
 use app\models\Reviews;
 use app\models\search\ReviewsSearch;
@@ -65,6 +66,7 @@ class ReviewsController extends Controller
     public function actionCreate()
     {
         $model = new Reviews();
+        $users = Users::find()->where(['status' => 1])->all();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -72,6 +74,7 @@ class ReviewsController extends Controller
 
         return $this->render('create', [
             'model' => $model,
+            'users' => $users
         ]);
     }
 
@@ -85,6 +88,7 @@ class ReviewsController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+        $users = Users::find()->where(['status' => 1])->all();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -92,6 +96,7 @@ class ReviewsController extends Controller
 
         return $this->render('update', [
             'model' => $model,
+            'users' => $users
         ]);
     }
 

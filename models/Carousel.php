@@ -48,8 +48,8 @@ class Carousel extends \yii\db\ActiveRecord
             'id' => 'ID',
             'title' => 'Title',
             'body' => 'Body',
-            'product_id' => 'Product ID',
-            'img' => 'Img',
+            'product_id' => 'Product',
+            'img' => 'Image',
         ];
     }
 

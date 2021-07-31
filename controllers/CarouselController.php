@@ -2,12 +2,14 @@
 
 namespace app\controllers;
 
+use app\models\Products;
 use Yii;
 use app\models\Carousel;
 use app\models\search\CarouselSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\UploadedFile;
 
 /**
  * CarouselController implements the CRUD actions for Carousel model.
@@ -65,13 +67,20 @@ class CarouselController extends Controller
     public function actionCreate()
     {
         $model = new Carousel();
+        $products = Products::find()->where(['status' => 1])->all();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post())) {
+            $instance = UploadedFile::getInstance($model, 'img');
+            $instance->saveAs('uploads/carousel/'.$model->id.' '.$instance->baseName.'.'.$instance->extension);
+            $model->img = 'uploads/carousel/'.$model->id.' '.$instance->baseName.'.'.$instance->extension;
+
+            $model->save();
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
         return $this->render('create', [
             'model' => $model,
+            'products' => $products
         ]);
     }
 
@@ -85,13 +94,20 @@ class CarouselController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+        $products = Products::find()->where(['status' => 1])->all();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post())) {
+            $instance = UploadedFile::getInstance($model, 'img');
+            $instance->saveAs('uploads/carousel/'.$model->id.' '.$instance->baseName.'.'.$instance->extension);
+            $model->img = 'uploads/carousel/'.$model->id.' '.$instance->baseName.'.'.$instance->extension;
+
+            $model->save();
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
         return $this->render('update', [
             'model' => $model,
+            'products' => $products
         ]);
     }
 
@@ -104,7 +120,9 @@ class CarouselController extends Controller
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
+        $model = $this->findModel($id);
+        unlink(Yii::getAlias('@web').$model->img);
+        $model->delete();
 
         return $this->redirect(['index']);
     }

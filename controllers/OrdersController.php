@@ -2,6 +2,8 @@
 
 namespace app\controllers;
 
+use app\models\User;
+use app\models\Users;
 use Yii;
 use app\models\Orders;
 use app\models\search\OrdersSearch;
@@ -65,6 +67,8 @@ class OrdersController extends Controller
     public function actionCreate()
     {
         $model = new Orders();
+        $model->status = 1;
+        $users = Users::find()->where(['status' => 1])->all();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -72,6 +76,7 @@ class OrdersController extends Controller
 
         return $this->render('create', [
             'model' => $model,
+            'users' => $users
         ]);
     }
 
@@ -85,6 +90,7 @@ class OrdersController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+        $users = Users::find()->where(['status' => 1])->all();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -92,6 +98,7 @@ class OrdersController extends Controller
 
         return $this->render('update', [
             'model' => $model,
+            'users' => $users
         ]);
     }
 

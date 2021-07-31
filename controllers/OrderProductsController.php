@@ -2,6 +2,8 @@
 
 namespace app\controllers;
 
+use app\models\Orders;
+use app\models\Products;
 use Yii;
 use app\models\OrderProducts;
 use app\models\search\OrderProductsSearch;
@@ -65,6 +67,9 @@ class OrderProductsController extends Controller
     public function actionCreate()
     {
         $model = new OrderProducts();
+        $model->status = 1;
+        $products = Products::find()->where(['status' => 1])->all();
+        $orders = Orders::find()->where(['status' => 1])->all();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -72,6 +77,8 @@ class OrderProductsController extends Controller
 
         return $this->render('create', [
             'model' => $model,
+            'products' => $products,
+            'orders' => $orders
         ]);
     }
 
@@ -85,6 +92,8 @@ class OrderProductsController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+        $products = Products::find()->where(['status' => 1])->all();
+        $orders = Orders::find()->where(['status' => 1])->all();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -92,6 +101,8 @@ class OrderProductsController extends Controller
 
         return $this->render('update', [
             'model' => $model,
+            'products' => $products,
+            'orders' => $orders
         ]);
     }
 

@@ -51,7 +51,7 @@ class Categories extends \yii\db\ActiveRecord
             'title_ru' => 'Title Ru',
             'title_en' => 'Title En',
             'icon' => 'Icon',
-            'parent_id' => 'Parent ID',
+            'parent_id' => 'Parent Category',
             'status' => 'Status',
         ];
     }
