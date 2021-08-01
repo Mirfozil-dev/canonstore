@@ -59,7 +59,7 @@ class AdminController extends \yii\web\Controller
 
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            return $this->goBack();
+            return $this->redirect('/web/administrators/index');
         }
 
         $model->password = '';
@@ -83,7 +83,10 @@ class AdminController extends \yii\web\Controller
 
     public function actionIndex()
     {
+        if (Yii::$app->user->isGuest){
+            return $this->redirect('/web/admin/login');
+        }
+
         return $this->render('index');
     }
-
 }

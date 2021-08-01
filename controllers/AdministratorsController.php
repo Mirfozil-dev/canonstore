@@ -3,30 +3,20 @@
 namespace app\controllers;
 
 use Yii;
-use app\models\Users;
-use app\models\search\UsersSearch;
+use app\models\Administrators;
+use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * UsersController implements the CRUD actions for Users model.
+ * AdministratorsController implements the CRUD actions for Administrators model.
  */
-class UsersController extends Controller
+class AdministratorsController extends Controller
 {
     /**
      * {@inheritdoc}
      */
-
-    public function init()
-    {
-        parent::init();
-
-        if(Yii::$app->user->isGuest){
-            return $this->redirect('/web/admin/login');
-        }
-    }
-
     public function behaviors()
     {
         return [
@@ -40,22 +30,22 @@ class UsersController extends Controller
     }
 
     /**
-     * Lists all Users models.
+     * Lists all Administrators models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new UsersSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $dataProvider = new ActiveDataProvider([
+            'query' => Administrators::find(),
+        ]);
 
         return $this->render('index', [
-            'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
     }
 
     /**
-     * Displays a single Users model.
+     * Displays a single Administrators model.
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
@@ -68,14 +58,13 @@ class UsersController extends Controller
     }
 
     /**
-     * Creates a new Users model.
+     * Creates a new Administrators model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Users();
-        $model->status = 1;
+        $model = new Administrators();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -87,7 +76,7 @@ class UsersController extends Controller
     }
 
     /**
-     * Updates an existing Users model.
+     * Updates an existing Administrators model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -107,7 +96,7 @@ class UsersController extends Controller
     }
 
     /**
-     * Deletes an existing Users model.
+     * Deletes an existing Administrators model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -121,15 +110,15 @@ class UsersController extends Controller
     }
 
     /**
-     * Finds the Users model based on its primary key value.
+     * Finds the Administrators model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Users the loaded model
+     * @return Administrators the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Users::findOne($id)) !== null) {
+        if (($model = Administrators::findOne($id)) !== null) {
             return $model;
         }
 
