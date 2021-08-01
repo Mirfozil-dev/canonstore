@@ -5,125 +5,35 @@
     class="container-fluid carousel slide"
     data-bs-ride="carousel">
   <div class="carousel-indicators">
-    <button
-        type="button"
-        data-bs-target="#carouselExampleIndicators"
-        data-bs-slide-to="0"
-        class="active"
-        aria-current="true"
-        aria-label="Slide 1"></button>
-    <button
-        type="button"
-        data-bs-target="#carouselExampleIndicators"
-        data-bs-slide-to="1"
-        aria-label="Slide 2"></button>
-    <button
-        type="button"
-        data-bs-target="#carouselExampleIndicators"
-        data-bs-slide-to="2"
-        aria-label="Slide 3"></button>
-    <button
-        type="button"
-        data-bs-target="#carouselExampleIndicators"
-        data-bs-slide-to="3"
-        aria-label="Slide 4"></button>
-    <button
-        type="button"
-        data-bs-target="#carouselExampleIndicators"
-        data-bs-slide-to="4"
-        aria-label="Slide 5"></button>
-    <button
-        type="button"
-        data-bs-target="#carouselExampleIndicators"
-        data-bs-slide-to="5"
-        aria-label="Slide 6"></button>
+      <?php
+      foreach ($carousel as $key => $item) {
+      ?>
+        <button
+            type="button"
+            data-bs-target="#carouselExampleIndicators"
+            data-bs-slide-to="<?= $key ?>"
+            class="<?php if ($carousel[0] === $item) echo 'active'?>"
+            aria-current="<?php if ($carousel[0] === $item) echo 'true'?>"
+            aria-label="<?= $item['title'] ?>"></button>
+      <?php
+      }
+      ?>
   </div>
   <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img src="<?=Yii::getAlias('@web'); ?>/images/home_img/carusel/1.jpg" class="d-block w-100" alt="...">
-      <div class="carusel-items">
-        <p class="carusel_header1">СКИДКА НА КОМПЛЕКТ</p>
-        <p class="caruse_name1">ДАРИМ СКИДКУ НА
-          <br>
-          КОМПЛЕКТЫ</p>
-        <p class="carusel_info1">Собери свой собственный комплект со
-          <br>
-          скидкой 10%!</p>
-        <a class="carusel_btn1">Условия акции</a>
-      </div>
-    </div>
-    <div class="carousel-item">
-      <img src="<?=Yii::getAlias('@web'); ?>/images/home_img/carusel/2.jpg" class="d-block w-100" alt="...">
-      <div class="carusel-items">
-        <p class="carusel_header">БЕЗГРАНИЧНЫЕ ВОЗМОЖНОСТИ</p>
-        <p class="caruse_name">РАССРОЧКА БЕЗ
-          <br>
-          ПЕРЕПЛАТ</p>
-        <p class="carusel_info">На всю* технику от 100 000 до 200 000 руб.
-          <br>
-          На Спортивную оптику от 20 000 до
-          <br>
-          300 000 руб.</p>
-        <a class="carusel_btn">Условия акции</a>
-      </div>
-    </div>
-    <div class="carousel-item">
-      <img src="<?=Yii::getAlias('@web'); ?>/images/home_img/carusel/3.jpg" class="d-block w-100" alt="...">
-      <div class="carusel-items">
-        <p class="carusel_header">В РАССРОЧКУ</p>
-        <p class="caruse_name">ESSENTIAL MOVIE KIT Z
-          <br>
-          6II В РАССРОЧКУ</p>
-        <p class="carusel_info">Зачем откладывать на потом, если можно<br>
-          купить уже сейчас! Рассрочка на 2 года уже
-          <br>
-          стартовала!</p>
-        <a class="carusel_btn">Подробнее</a>
-      </div>
-    </div>
-    <div class="carousel-item">
-      <img src="<?=Yii::getAlias('@web'); ?>/images/home_img/carusel/4.jpg" class="d-block w-100" alt="...">
-
-      <div class="carusel-items">
-        <p class="carusel_header">ВСЕ ДЛЯ БЛОГЕРА</p>
-        <p class="caruse_name">НАБОР Z 50 BLOGGER
-          <br>
-          KIT ПО ВЫГОДНОЙ ЦЕНЕ</p>
-        <p class="carusel_info">Готовое решение для начинающих и
-          <br>
-          продвинутых блогеров. Все самое
-          <br>
-          необходимое уже в комплекте!</p>
-        <a class="carusel_btn">Узнать больше</a>
-      </div>
-    </div>
-    <div class="carousel-item">
-      <img src="<?=Yii::getAlias('@web'); ?>/images/home_img/carusel/5.jpg" class="d-block w-100" alt="...">
-
-      <div class="carusel-items">
-        <p class="carusel_header">В РАССРОЧКУ</p>
-        <p class="caruse_name">ЛЕТНЯЯ РАССРОЧКА НА
-          <br>
-          СПОРТИВНУЮ ОПТИКУ</p>
-        <p class="carusel_info">Спортивная оптика в рассрочку от 20 000 руб.<br>
-          до 300 000 руб. на один или два года.</p>
-        <a class="carusel_btn">Подробнее</a>
-      </div>
-    </div>
-    <div class="carousel-item">
-      <img src="<?=Yii::getAlias('@web'); ?>/images/home_img/carusel/6.jpg" class="d-block w-100" alt="...">
-
-      <div class="carusel-items">
-        <p class="carusel_header">УЖЕ В ПРОДАЖЕ</p>
-        <p class="caruse_name">ПРЕДСТАВЛЯЕМ
-          <br>
-          НОВИНКИ ОТ NIKON</p>
-        <p class="carusel_info">Раскройте красоту деталей с новыми
-          <br>
-          макрообъективами серии NIKKOR Z</p>
-        <a class="carusel_btn">Посмотреть</a>
-      </div>
-    </div>
+    <?php
+      foreach ($carousel as $item) {
+        ?>
+          <div class="carousel-item <?php if ($carousel[0] === $item) echo 'active'?>">
+            <img src="<?=Yii::getAlias('@web'); ?>/<?= $item['img'] ?>" class="d-block w-100" alt="...">
+            <div class="carusel-items">
+              <p class="carusel_header1"><?= $item['title'] ?></p>
+              <p class="caruse_name1"><?= $item['body'] ?></p>
+              <a class="carusel_btn1" href="/site/product/<?= $item['product_id'] ?>">Подробнее</a>
+            </div>
+          </div>
+        <?php
+      }
+    ?>
   </div>
   <button
       class="carousel-control-prev"

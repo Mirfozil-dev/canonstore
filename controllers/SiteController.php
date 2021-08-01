@@ -2,6 +2,8 @@
 
 namespace app\controllers;
 
+use app\models\Carousel;
+use app\models\Categories;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -17,11 +19,16 @@ class SiteController extends Controller
      */
 
     public $layout;
+    public $categories;
+
+
+
 
     public function init()
     {
-    parent::init();
+        parent::init();
         $this->layout = 'site';
+        $this->categories = Categories::find()->where(['status' => 1, 'parent_id' => null])->with('categories.categories')->all();
     }
 
     public function behaviors()
@@ -70,7 +77,10 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        $carousel = Carousel::find()->all();
+        return $this->render('index', [
+            'carousel' => $carousel
+        ]);
     }
 
 //    /**
