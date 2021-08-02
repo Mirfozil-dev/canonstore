@@ -7,7 +7,6 @@ return [
     'password' => 'postgres',
     'charset' => 'utf8',
 
-    'charset' => 'utf8',
     'schemaMap' => [
         'pgsql' => [
             'class' => 'yii\db\pgsql\Schema',

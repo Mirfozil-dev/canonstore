@@ -21,36 +21,48 @@
   </div>
   <div class="carousel-inner">
     <?php
-      foreach ($carousel as $item) {
-        ?>
-          <div class="carousel-item <?php if ($carousel[0] === $item) echo 'active'?>">
-            <img src="<?=Yii::getAlias('@web'); ?>/<?= $item['img'] ?>" class="d-block w-100" alt="...">
-            <div class="carusel-items">
-              <p class="carusel_header1"><?= $item['title'] ?></p>
-              <p class="caruse_name1"><?= $item['body'] ?></p>
-              <a class="carusel_btn1" href="/site/product/<?= $item['product_id'] ?>">Подробнее</a>
-            </div>
-          </div>
-        <?php
-      }
+    if (count($carousel) > 0) {
+        foreach ($carousel as $item) {
+            ?>
+              <div class="carousel-item <?php if ($carousel[0] === $item) echo 'active'?>">
+                <img src="<?=Yii::getAlias('@web'); ?>/<?= $item['img'] ?>" class="d-block w-100" alt="...">
+                <div class="carusel-items">
+                  <p class="carusel_header1"><?= $item['title'] ?></p>
+                  <p class="caruse_name1"><?= $item['body'] ?></p>
+                  <a class="carusel_btn1" href="/site/product/<?= $item['product_id'] ?>">Подробнее</a>
+                </div>
+              </div>
+            <?php
+        }
+    } else {
+      ?>
+        <div class="carousel-item active">
+          <img src="<?=Yii::getAlias('@web'); ?>/images/carousel_bg.jpg" class="d-block w-100" alt="...">
+        </div>
+      <?php
+    }
     ?>
   </div>
-  <button
-      class="carousel-control-prev"
-      type="button"
-      data-bs-target="#carouselExampleIndicators"
-      data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-  <button
-      class="carousel-control-next"
-      type="button"
-      data-bs-target="#carouselExampleIndicators"
-      data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </button>
+  <?php if (count($carousel) > 0) { ?>
+    <button
+        class="carousel-control-prev"
+        type="button"
+        data-bs-target="#carouselExampleIndicators"
+        data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button
+        class="carousel-control-next"
+        type="button"
+        data-bs-target="#carouselExampleIndicators"
+        data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  <?php
+  }
+  ?>
 </div>
 
 <!-- Carusel Section End -->
