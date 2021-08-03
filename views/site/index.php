@@ -1532,54 +1532,33 @@
 
 <!-- Все новости Section -->
 
-
-<div class="container-xl">
-  <div class="discount_header">
-    #CANONSTORE
-    <br><br> </div>
-  <div class="row" style="margin-left: 0px; padding: 0;" >
-    <div class="col-sm-4">
-      <div class="photo_img" style="background-image: url(<?=Yii::getAlias('@web'); ?>/images/home_img/carusel/photo_section3_files/navosti.jpg);">
-                            <span class="photo_img_after1">
-                                <span class="tangle_top"></span>
-                                <br>
-                                <p><br><br>
-                                    Летние рассрочки без переплат на товары Nikon										</p>
-                                <span class="tangle_bottom"></span>
-
-                            </span>
-      </div>
+<?php if (count($news) > 0): ?>
+  <div class="container-xl">
+    <div class="discount_header">
+      #CANONSTORE
+      <br><br> </div>
+    <div class="row" style="margin-left: 0px; padding: 0;" >
+        <?php foreach ($news as $item): ?>
+          <div class="col-sm-4">
+            <div class="photo_img" style="background-image: url(<?=Yii::getAlias('@web').'/'.$item['img'] ?>);">
+        <span class="photo_img_after1">
+            <span class="tangle_top"></span>
+            <br>
+            <p><br><br>
+                <?= $item['title'] ?></p>
+            <span class="tangle_bottom"></span>
+        </span>
+            </div>
+          </div>
+        <?php endforeach; ?>
     </div>
-    <div class="col-sm-4">
-      <div class="photo_img" style="background-image: url(<?=Yii::getAlias('@web'); ?>/images/home_img/carusel/photo_section3_files/navosti1.jpg);">
-                            <span class="photo_img_after1">
-                                <span class="tangle_top"></span>
-                                <br><br><br>
-                                <p>
-                                    Летние рассрочки без переплат на товары Nikon										</p>
-                                <span class="tangle_bottom"></span>
 
-                            </span>
-      </div>
+    <div class="buttons_container_carusel">
+      <a href="/site/news" class="obective_href">
+        Все новости
+      </a>
     </div>
-    <div class="col-sm-4" >
-      <div class="photo_img" style="background-image: url(<?=Yii::getAlias('@web'); ?>/images/home_img/carusel/photo_section3_files/navosti2.png);">
-                            <span class="photo_img_after1">
-                                <span class="tangle_top"></span>
-                                <br><br><br>
-                                <p>
-                                    Летние рассрочки без переплат на товары Nikon										</p>
-                                <span class="tangle_bottom"></span>
-                            </span>
-      </div>
-    </div>
-  </div>
-
-  <div class="buttons_container_carusel">
-    <a href="/site/product" class="obective_href">
-      Все новости
-    </a>
-  </div>
-</div><br><br><br><br>
+  </div><br><br><br><br>
+<?php endif; ?>
 
 <!-- Все новости Section End -->

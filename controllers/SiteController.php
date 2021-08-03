@@ -4,13 +4,19 @@ namespace app\controllers;
 
 use app\models\Carousel;
 use app\models\Categories;
+use app\models\Discount;
+use app\models\News;
+use app\models\Products;
 use Yii;
+use yii\db\Expression;
 use yii\filters\AccessControl;
 use yii\web\Controller;
+use yii\web\Request;
 use yii\web\Response;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
+use PHPMailer\PHPMailer\PHPMailer;
 
 class SiteController extends Controller
 {
@@ -78,8 +84,11 @@ class SiteController extends Controller
     public function actionIndex()
     {
         $carousel = Carousel::find()->all();
+        $discountProducts = Discount::find()->where(['status' => 1])->with('product')->all();
+        $news = News::find()->orderBy('date DESC')->limit(3)->all();
         return $this->render('index', [
-            'carousel' => $carousel
+            'carousel' => $carousel,
+            'news' => $news
         ]);
     }
 
@@ -188,5 +197,44 @@ class SiteController extends Controller
     public function actionWishlist()
     {
         return $this->render('wishlist');
+    }
+    public function actionSendEmail(Request $request) {
+        if (isset($request['email'])) {
+//            $name = $request['name'];
+            $email = $request['email'];
+//            $subject = $request['subject'];
+//            $body = $request['body'];
+
+            require_once "../vendor/PHPMailer/phpmailer/src/PHPMailer.php";
+            require_once "../vendor/PHPMailer/phpmailer/src/SMTP.php";
+            require_once "../vendor/PHPMailer/phpmailer/src/Exception.php";
+
+            $mail = new PHPMailer();
+
+            //smtp settings
+            $mail->isSMTP();
+            $mail->Host = "smtp.gmail.com";
+            $mail->SMTPAuth = true;
+            //  EMAIL YOZW KERE
+            $mail->Username = "myexample897@gmail.com";
+            //  EMAIL PAROL
+            $mail->Password = 'Mypass123';
+            $mail->Port = 465;
+            $mail->SMTPSecure = "ssl";
+
+            //email settings
+            $mail->isHTML(true);
+            $mail->setFrom($email);
+            //  QAYSI EMAILGA BORWI KERE
+            $mail->addAddress("mirfozil48@gmail.com");
+            $mail->Subject = ("Canonstore");
+            $mail->Body = $email;
+
+            if ($mail->send()) {
+                return 'Email sent!';
+            } else {
+                return $mail->ErrorInfo;
+            }
+        }
     }
 }

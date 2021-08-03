@@ -14,6 +14,7 @@ use Yii;
  * @property string|null $video_link
  * @property string|null $price
  * @property int|null $instock
+ * @property string|null $date
  * @property int|null $status
  *
  * @property Carousel[] $carousels
@@ -47,6 +48,7 @@ class Products extends \yii\db\ActiveRecord
             [['title'], 'string', 'max' => 45],
             [['video_link'], 'string', 'max' => 255],
             [['price'], 'string', 'max' => 100],
+            [['date'], 'date'],
             [['category_id'], 'exist', 'skipOnError' => true, 'targetClass' => Categories::className(), 'targetAttribute' => ['category_id' => 'id']],
         ];
     }
@@ -64,6 +66,7 @@ class Products extends \yii\db\ActiveRecord
             'video_link' => 'Video Link',
             'price' => 'Price',
             'instock' => 'Instock',
+            'date' => 'Date',
             'status' => 'Status',
         ];
     }

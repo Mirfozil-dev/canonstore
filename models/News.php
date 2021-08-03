@@ -11,6 +11,7 @@ use Yii;
  * @property string|null $img
  * @property string|null $title
  * @property string|null $content
+ * @property string|null $date
  */
 class News extends \yii\db\ActiveRecord
 {
@@ -31,6 +32,7 @@ class News extends \yii\db\ActiveRecord
             [['content'], 'string'],
             [['img'], 'file', 'skipOnEmpty' => true, 'extensions' => 'png, jpg'],
             [['title'], 'string', 'max' => 100],
+            [['date'], 'date']
         ];
     }
 
@@ -44,6 +46,7 @@ class News extends \yii\db\ActiveRecord
             'img' => 'Image',
             'title' => 'Title',
             'content' => 'Content',
+            'date' => 'Date'
         ];
     }
 }

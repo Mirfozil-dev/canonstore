@@ -23,6 +23,7 @@ class m210710_104013_create_products_table extends Migration
             'video_link' => $this->string(255),
             'price' => $this->string(100),
             'instock' => $this->smallInteger(1),
+            'date' => $this->date()->defaultValue(date('d-m-Y H:i:s')),
             'status' => $this->smallInteger(1),
         ]);
 

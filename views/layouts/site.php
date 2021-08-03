@@ -627,15 +627,18 @@ FrontendAsset::register($this);
 <?php echo $content;?>
 
 <!-- ----------------  beginning of Footer  ------------------- -->
+<div class="sent-notification alert-dismissible fade show" class="alert alert-success" role="alert">
+  Отправлено!
+</div>
 <footer class="footer">
     <div class="footer-container1">
         <div class="footer_top">
             <div class="footer-subscribe-section col-7">
                 <div class="footer-subscribe-title footer-top-title footer-first-column col-4">Подпишитесь: новинки, скидки, полезные статьи</div>
                 <div class="footer-subscribe-form col-8" id="footer-sender-subscribe">
-                    <form  class="footer-subscribe-form1">
-                        <input type="email" class="footer-subscribe-form-input" placeholder="Введите ваш e-mail">
-                        <button class="footer-subscribe-form-btn">Подписаться</button>
+                    <form id="myForm" class="footer-subscribe-form1">
+                        <input type="text" name="email" id="email" class="footer-subscribe-form-input" placeholder="Введите ваш e-mail">
+                        <button type="button" onclick="sendEmail()" value="Send An Email" class="footer-subscribe-form-btn">Подписаться</button>
                     </form>
                     <div class="footer-subscribe-form-check">
                         <input type="checkbox" id="footer-checkbox" />
@@ -825,9 +828,31 @@ FrontendAsset::register($this);
 
 <!-------------------------------- End of  Modal ----------------------------------->
 
-
-
 <script>
+    function sendEmail() {
+        const email = document.querySelector('#email').value;
+
+        if (email !== '') {
+            fetch('/site/send-email', {
+                method: 'POST',
+                mode: 'cors',
+                cache: 'no-cache',
+                credentials: 'same-origin',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    email: email,
+                })
+            }).then((res) => res.json())
+            .then(data => {
+                console.log(data)
+                document.querySelector('#email').value = ''
+                document.querySelector('.sent-notification').innerHTML = 'Message Sent Successfully.'
+            })
+            .catch(er => console.log(er))
+        }
+    }
     var secondModal = document.getElementById("mySecondModal");
 
     var popUpBtn = document.getElementById("popUpShow");
@@ -883,13 +908,6 @@ FrontendAsset::register($this);
 
 </script>
 
-
-
-
-<!-- --------------------- Beginning of Search ---------------------- -->
-<script>
-
-</script>
 <!-- --------------------- End of Search ---------------------- -->
 <?php $this->endBody() ?>
 </body>
