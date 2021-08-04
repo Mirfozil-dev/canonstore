@@ -125,7 +125,7 @@
       <?php foreach ($discountProducts as $discountProduct): ?>
         <div style="width: 300px" class="img_carusel">
           <img style="width: 100%;height: 100%; object-fit: cover" src="<?=Yii::getAlias('@web').'/'.$discountProduct['product']['productImages'][0]['img'] ?>" alt="">
-          <div class="skitka">
+          <div class="skitka mt-2">
             <div class="skitka_item">В скидке</div>
           </div>
           <div class="offer_name"><?= $discountProduct['product']['title']?></div>
@@ -137,7 +137,10 @@
           <?php if ($discountProduct['product']['instock'] === 1): ?>
             <div class="offer_status">В наличии</div>
           <?php endif; ?>
-          <div class="offer_cost"><?= $discountProduct['product']['price'] ?></div>
+          <div class="d-flex">
+            <div class="offer_cost mt-0"><?= $discountProduct['discount_price'] ?></div>
+            <p class="text-muted px-3" style="text-decoration: line-through"><?= $discountProduct['product']['price'] ?></p>
+          </div>
           <a href="/site/product" class="offer_to_cart">В корзину</a>
         </div>
       <?php endforeach; ?>
