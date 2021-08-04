@@ -4,14 +4,14 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\OptionGroups */
+/* @var $model app\models\ProductOptions */
 
-$this->title = $model->title_ru;
-$this->params['breadcrumbs'][] = ['label' => 'Option Groups', 'url' => ['index']];
+$this->title = $model->id;
+$this->params['breadcrumbs'][] = ['label' => 'Product Options', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
-<div class="option-groups-view">
+<div class="product-options-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
@@ -30,10 +30,8 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'id',
-            'title_ru',
-            'title_en',
-            'category_id',
-            'status',
+            'product_id',
+            'option_id',
         ],
     ]) ?>
 

@@ -18,7 +18,7 @@ class OptionsSearch extends Options
     {
         return [
             [['id', 'option_group_id', 'status'], 'integer'],
-            [['title'], 'safe'],
+            [['title_ru', 'title_en'], 'safe'],
         ];
     }
 
@@ -63,7 +63,8 @@ class OptionsSearch extends Options
             'status' => $this->status,
         ]);
 
-        $query->andFilterWhere(['like', 'title', $this->title]);
+        $query->andFilterWhere(['like', 'title', $this->title_ru]);
+        $query->andFilterWhere(['like', 'title_en', $this->title_en]);
 
         return $dataProvider;
     }

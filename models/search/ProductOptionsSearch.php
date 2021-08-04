@@ -4,12 +4,12 @@ namespace app\models\search;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\OptionGroups;
+use app\models\ProductOptions;
 
 /**
- * OptionGroupsSearch represents the model behind the search form of `app\models\OptionGroups`.
+ * ProductOptionsSearch represents the model behind the search form of `app\models\ProductOptions`.
  */
-class OptionGroupsSearch extends OptionGroups
+class ProductOptionsSearch extends ProductOptions
 {
     /**
      * {@inheritdoc}
@@ -17,8 +17,7 @@ class OptionGroupsSearch extends OptionGroups
     public function rules()
     {
         return [
-            [['id', 'category_id', 'status'], 'integer'],
-            [['title_ru', 'title_en'], 'safe'],
+            [['id', 'product_id', 'option_id'], 'integer'],
         ];
     }
 
@@ -40,7 +39,7 @@ class OptionGroupsSearch extends OptionGroups
      */
     public function search($params)
     {
-        $query = OptionGroups::find();
+        $query = ProductOptions::find();
 
         // add conditions that should always apply here
 
@@ -59,12 +58,9 @@ class OptionGroupsSearch extends OptionGroups
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'category_id' => $this->category_id,
-            'status' => $this->status,
+            'product_id' => $this->product_id,
+            'option_id' => $this->option_id,
         ]);
-
-        $query->andFilterWhere(['like', 'title', $this->title_ru]);
-        $query->andFilterWhere(['like', 'title', $this->title_en]);
 
         return $dataProvider;
     }

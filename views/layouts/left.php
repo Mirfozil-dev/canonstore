@@ -41,6 +41,7 @@
                     ['label' => 'Product Images', 'url' => ['/product-images'],],
                     ['label' => 'Option Groups', 'url' => ['/option-groups'],],
                     ['label' => 'Options', 'url' => ['/options'],],
+                    ['label' => 'Product Options', 'url' => ['/product-options'],],
                     ['label' => 'Discount', 'url' => ['/discount'],],
                     ['label' => 'Orders', 'url' => ['/orders'],],
                     ['label' => 'Reviews', 'url' => ['/reviews'],],

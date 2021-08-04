@@ -84,11 +84,16 @@ class SiteController extends Controller
     public function actionIndex()
     {
         $carousel = Carousel::find()->all();
-        $discountProducts = Discount::find()->where(['status' => 1])->with('product')->all();
+        $discountProducts = Discount::find()->where(['status' => 1])->with('product.productOptions.option')->with('product.productImages')->all();
+//        echo '<pre>';
+//        print_r($discountProducts);
+//        die();
         $news = News::find()->orderBy('date DESC')->limit(3)->all();
         return $this->render('index', [
             'carousel' => $carousel,
-            'news' => $news
+            'news' => $news,
+            'discountProducts' => $discountProducts,
+            'lang' => Yii::$app->language
         ]);
     }
 

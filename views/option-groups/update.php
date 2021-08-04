@@ -5,9 +5,9 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\OptionGroups */
 
-$this->title = 'Update Option Groups: ' . $model->title;
+$this->title = 'Update Option Groups: ' . $model->title_ru;
 $this->params['breadcrumbs'][] = ['label' => 'Option Groups', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->title, 'url' => ['view', 'id' => $model->id]];
+$this->params['breadcrumbs'][] = ['label' => $model->title_ru, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = 'Update';
 ?>
 <div class="option-groups-update">
