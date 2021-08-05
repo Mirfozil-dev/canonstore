@@ -48,6 +48,7 @@
                     ['label' => 'Order Products', 'url' => ['/order-products'],],
                     ['label' => 'News', 'url' => ['/news'],],
                     ['label' => 'Carousel', 'url' => ['/carousel'],],
+                    ['label' => 'Product Carousel', 'url' => ['/product-carousel'],],
 //                    [
 //                        'label' => 'Some tools',
 //                        'icon' => 'share',

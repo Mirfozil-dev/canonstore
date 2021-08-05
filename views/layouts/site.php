@@ -49,12 +49,13 @@ FrontendAsset::register($this);
                         <span class="number_offer">0</span>
                     </div>
                 </a>
-                <a href="/site/cart">
-                    <div class="nav_items_cart">
-                        <img src="<?=Yii::getAlias('@web'); ?>/images/cart.png" alt="" width="30px">
-                        <span class="number_offer">0</span>
-                    </div>
-                </a>
+<!--                <a href="/site/cart">-->
+<!--                    <div class="nav_items_cart">-->
+<!--                        <img src="--><?//=Yii::getAlias('@web'); ?><!--/images/cart.png" alt="" width="30px">-->
+<!--                        <span class="number_offer">0</span>-->
+<!--                    </div>-->
+<!--                </a>-->
+              <?= \app\components\CartWidget::widget() ?>
                 <a href="#popup">
                     <div class="nav_items_user" id="contact">
                         <img src="<?=Yii::getAlias('@web'); ?>/images/username.png" alt="" width="30px">

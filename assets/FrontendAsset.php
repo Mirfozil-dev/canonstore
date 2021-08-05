@@ -23,15 +23,16 @@ class FrontendAsset extends AssetBundle
 
     ];
     public $js = [
+        "./js/jquery.js",
         "./js/function.carusel.js",
         "./js/bootstrap.js",
         "./js/bootstrap.min.js",
         "./js/menu.js",
         "./js/popup.js",
-        "./js/jquery.js",
         "./js/owl.carousel.js",
         "./js/carusel.offers.js",
-        "./js/search.event.js"
+        "./js/search.event.js",
+        './js/main.js'
     ];
     public $depends = [
         'yii\web\YiiAsset',

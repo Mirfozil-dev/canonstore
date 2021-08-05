@@ -6,6 +6,7 @@ use app\models\Carousel;
 use app\models\Categories;
 use app\models\Discount;
 use app\models\News;
+use app\models\ProductCarousel;
 use app\models\Products;
 use Yii;
 use yii\db\Expression;
@@ -85,15 +86,17 @@ class SiteController extends Controller
     {
         $carousel = Carousel::find()->all();
         $discountProducts = Discount::find()->where(['status' => 1])->with('product.productOptions.option')->with('product.productImages')->all();
+        $productCarousels = ProductCarousel::find()->where(['status' => 1])->with('category.products.discounts')->with('category.products.productImages')->all();
 //        echo '<pre>';
-//        print_r($discountProducts);
+//        print_r($productCarousels);
 //        die();
         $news = News::find()->orderBy('date DESC')->limit(3)->all();
         return $this->render('index', [
             'carousel' => $carousel,
             'news' => $news,
             'discountProducts' => $discountProducts,
-            'lang' => Yii::$app->language
+            'lang' => Yii::$app->language,
+            'productCarousels' => $productCarousels
         ]);
     }
 
@@ -161,7 +164,16 @@ class SiteController extends Controller
 
     public function actionCart()
     {
-        return $this->render('cart');
+        $session = Yii::$app->session;
+        $session->open();
+        $cart = [];
+
+        if ($session->has('cart')) {
+            $cart = $session->has('cart');
+        }
+        return $this->render('cart', [
+            'session' => $session
+        ]);
     }
 
     public function actionCatalog()
