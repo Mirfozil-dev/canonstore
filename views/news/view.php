@@ -33,6 +33,14 @@ $this->params['breadcrumbs'][] = $this->title;
             'img',
             'title',
             'content:ntext',
+            [
+                'attribute' => 'created_at',
+                'value' => gmdate("Y-m-d H:i:s", $model->created_at),
+            ],
+            [
+                'attribute' => 'updated_at',
+                'value' => gmdate("Y-m-d H:i:s", $model->updated_at),
+            ],
         ],
     ]) ?>
 

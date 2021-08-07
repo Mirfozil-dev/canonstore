@@ -87,10 +87,7 @@ class SiteController extends Controller
         $carousel = Carousel::find()->all();
         $discountProducts = Discount::find()->where(['status' => 1])->with('product.productOptions.option')->with('product.productImages')->all();
         $productCarousels = ProductCarousel::find()->where(['status' => 1])->with('category.products.discounts')->with('category.products.productImages')->all();
-//        echo '<pre>';
-//        print_r($productCarousels);
-//        die();
-        $news = News::find()->orderBy('date DESC')->limit(3)->all();
+        $news = News::find()->orderBy('updated_at DESC')->limit(3)->all();
         return $this->render('index', [
             'carousel' => $carousel,
             'news' => $news,

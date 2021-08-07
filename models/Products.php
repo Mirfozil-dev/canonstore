@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\behaviors\TimestampBehavior;
 
 /**
  * This is the model class for table "products".
@@ -14,7 +15,8 @@ use Yii;
  * @property string|null $video_link
  * @property string|null $price
  * @property int|null $instock
- * @property string|null $date
+ * @property int|null $created_at
+ * @property int|null $updated_at
  * @property int|null $status
  *
  * @property Carousel[] $carousels
@@ -32,6 +34,13 @@ class Products extends \yii\db\ActiveRecord
     /**
      * {@inheritdoc}
      */
+    public function behaviors()
+    {
+        return [
+            TimestampBehavior::class,
+        ];
+    }
+
     public static function tableName()
     {
         return 'products';
@@ -48,7 +57,6 @@ class Products extends \yii\db\ActiveRecord
             [['title'], 'string', 'max' => 45],
             [['video_link'], 'string', 'max' => 255],
             [['price'], 'string', 'max' => 100],
-            [['date'], 'date'],
             [['category_id'], 'exist', 'skipOnError' => true, 'targetClass' => Categories::className(), 'targetAttribute' => ['category_id' => 'id']],
         ];
     }
@@ -66,7 +74,8 @@ class Products extends \yii\db\ActiveRecord
             'video_link' => 'Video Link',
             'price' => 'Price',
             'instock' => 'Instock',
-            'date' => 'Date',
+            'created_at' => 'Created Date',
+            'updated_at' => 'Updated Date',
             'status' => 'Status',
         ];
     }
@@ -159,5 +168,11 @@ class Products extends \yii\db\ActiveRecord
     public function getWishlists()
     {
         return $this->hasMany(Wishlist::className(), ['product_id' => 'id']);
+    }
+    public function getCreatedDate() {
+        return gmdate("Y-m-d H:i:s", $this->created_at);
+    }
+    public function getUpdatedDate() {
+        return gmdate("Y-m-d H:i:s", $this->updated_at);
     }
 }
