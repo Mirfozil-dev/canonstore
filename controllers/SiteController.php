@@ -6,6 +6,7 @@ use app\models\Carousel;
 use app\models\Categories;
 use app\models\Discount;
 use app\models\News;
+use app\models\OptionGroups;
 use app\models\ProductCarousel;
 use app\models\Products;
 use Yii;
@@ -84,16 +85,18 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        $carousel = Carousel::find()->all();
-        $discountProducts = Discount::find()->where(['status' => 1])->with('product.productOptions.option')->with('product.productImages')->all();
-        $productCarousels = ProductCarousel::find()->where(['status' => 1])->with('category.products.discounts')->with('category.products.productImages')->all();
+        $carousel = Carousel::find()->limit(5)->all();
+        $discountProducts = Discount::find()->where(['status' => 1])->with('product.productOptions.option')->with('product.productImages')->limit(15)->all();
+        $productCarousels = ProductCarousel::find()->where(['status' => 1])->with('category.products.productOptions.option')->with('category.products.discounts')->with('category.products.productImages')->all();
         $news = News::find()->orderBy('updated_at DESC')->limit(3)->all();
+        $newProducts = Products::find()->where(['status' => 1])->with('productOptions.option')->with('productImages')->with('discounts')->orderBy('updated_at DESC')->limit(15)->all();
         return $this->render('index', [
             'carousel' => $carousel,
             'news' => $news,
             'discountProducts' => $discountProducts,
             'lang' => Yii::$app->language,
-            'productCarousels' => $productCarousels
+            'productCarousels' => $productCarousels,
+            'newProducts' => $newProducts
         ]);
     }
 
@@ -200,7 +203,17 @@ class SiteController extends Controller
 
     public function actionProduct()
     {
-        return $this->render('product');
+        $id = Yii::$app->request->get('id');
+        $product = Products::find()->where(['id' => $id, 'status' => 1])->with('category.parent.parent')->with('productOptions.option.optionGroup')->with('productImages')->with('discounts')->one();
+        $optionGroupsIds = [];
+        foreach ($product['productOptions'] as $option) {
+            $optionGroupsIds[] = $option['option']['optionGroup']['id'];
+        }
+        $optionGroups = OptionGroups::find()->where(['status' => 1, 'id' => $optionGroupsIds])->with('options')->all();
+        return $this->render('product', [
+            'product' => $product,
+            'optionGroups' => $optionGroups
+        ]);
     }
 
     public function actionWarranty()

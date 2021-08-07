@@ -124,15 +124,16 @@ use yii\helpers\Url;
 
   <div class="container_carusel">
     <div class="img_container_carusel" id="images_carusel">
-      <!-- 1 offer -->
       <?php foreach ($discountProducts as $discountProduct): ?>
         <div style="width: 300px" class="img_carusel">
-          <?php if (count($discountProduct['product']['productImages']) > 0): ?>
-            <img style="width: 100%;height: 100%; object-fit: cover" src="<?=Yii::getAlias('@web').'/'.$discountProduct['product']['productImages'][0]['img'] ?>" alt="">
-          <?php endif; ?>
-          <?php if (count($discountProduct['product']['productImages']) == 0 || $discountProduct['product']['productImages'] == null): ?>
-            <img src="<?=Yii::getAlias('@web');?>/images/product_placeholder.jpg" alt="">
-          <?php endif; ?>
+          <a href="/site/product?id=<?= $discountProduct['product']['id'] ?>">
+              <?php if (count($discountProduct['product']['productImages']) > 0): ?>
+                <img style="width: 100%;height: 100%; object-fit: cover" src="<?=Yii::getAlias('@web').'/'.$discountProduct['product']['productImages'][0]['img'] ?>" alt="">
+              <?php endif; ?>
+              <?php if (count($discountProduct['product']['productImages']) == 0 || $discountProduct['product']['productImages'] == null): ?>
+                <img src="<?=Yii::getAlias('@web');?>/images/product_placeholder.jpg" alt="">
+              <?php endif; ?>
+          </a>
           <div class="skitka mt-2">
             <div class="skitka_item">В скидке</div>
           </div>
@@ -166,8 +167,115 @@ use yii\helpers\Url;
   </div>
 
 </div>
-
 <!-- Discount End -->
+
+<!-- New Products -->
+<div class="container-xl">
+  <div class="discount">
+    <div class="discount_header">
+      Новинки
+    </div>
+    <button class="choose_tovars_btn1">
+      все товары
+      <span class="icon_down">
+                    <i class="fas fa-chevron-down"></i>
+                </span>
+      <ul id="" class="choose_tovars">
+        <li class="choose_tovar">
+          <a href="#">все товары</a>
+        </li>
+        <li class="choose_tovar">
+          <a href="#">Фотокамеры</a>
+        </li>
+        <li class="choose_tovar">
+          <a href="#">Спортивная оптика</a>
+        </li>
+        <li class="choose_tovar">
+          <a href="#">Объективы</a>
+        </li>
+      </ul>
+    </button>
+    <div class="discount_menu">
+      <a href="#" class="discount_href active">Все товары</a>
+      <a href="#" class="discount_href1">Фотокамеры</a>
+      <a href="#" class="discount_href2">Спортивная оптика</a>
+      <a href="#" class="discount_href3">Объективы</a>
+      <div href="#" class="drop_discount_hiddens"><img
+            src="<?=Yii::getAlias('@web'); ?>/images/line-angle-right.png"
+            width="10px"
+            style="transform: rotate(90deg);"
+            alt="">
+        <div class="hidden_items">
+          <div class="hidden_item1">
+            <a href="#" class="hidden_item_a1">Фотокамеры</a>
+          </div>
+          <div class="hidden_item2">
+            <a href="#" class="hidden_item_a2">Спортивная оптика</a>
+          </div>
+          <div class="hidden_item3">
+            <a href="#" class="hidden_item_a3">Объективы</a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container_carusel">
+    <div class="img_container_carusel" id="images_carusel">
+        <?php foreach ($newProducts as $newProduct): ?>
+          <div style="width: 300px" class="img_carusel">
+            <a href="/site/product?id=<?= $newProduct['id'] ?>">
+                <?php if (count($newProduct['productImages']) > 0): ?>
+                  <img style="width: 100%;height: 100%; object-fit: cover" src="<?=Yii::getAlias('@web').'/'.$newProduct['productImages'][0]['img'] ?>" alt="">
+                <?php endif; ?>
+                <?php if (count($newProduct['productImages']) == 0 || $newProduct['productImages'] == null): ?>
+                  <img src="<?=Yii::getAlias('@web');?>/images/product_placeholder.jpg" alt="">
+                <?php endif; ?>
+            </a>
+              <?php if (count($newProduct['discounts']) > 0): ?>
+                <div class="skitka mt-2">
+                  <div class="skitka_item">В скидке</div>
+                </div>
+              <?php endif; ?>
+            <div class="offer_name"><?= $newProduct['title']?></div>
+            <ul class="offer_infos">
+                <?php foreach ($newProduct['productOptions'] as $option): ?>
+                  <li class="offer_info"><?= $lang === 'ru' ? $option['option']['title_ru'] : $option['option']['title_en'] ?></li>
+                <?php endforeach; ?>
+            </ul>
+              <?php if ($newProduct['instock'] === 1): ?>
+                <div class="offer_status">В наличии</div>
+              <?php endif; ?>
+            <div class="d-flex">
+                <?php if (count($newProduct['discounts']) > 0): ?>
+                <div class="d-flex">
+                  <div class="offer_cost m-0"><?= $newProduct['discounts'][0]['discount_price'] ?></div>
+                  <p class="text-muted px-3" style="text-decoration: line-through"><?= $newProduct['price'] ?></p>
+                </div>
+                <?php endif; ?>
+                <?php if (count($newProduct['discounts']) == 0):?>
+                  <div class="offer_cost"><?= $product['price'] ?></div>
+                <?php endif; ?>
+            </div>
+            <a href="<?= Url::to(['cart/add', 'id' => $newProduct['id']]) ?>" data-id="<?= $newProduct['id'] ?>" class="offer_to_cart add_to_cart">В корзину</a>
+          </div>
+        <?php endforeach; ?>
+    </div>
+  </div>
+  <div class="buttons_container_carusel">
+    <div class="btn_carusel" id="left_carusel" onclick="minusOffer()">
+      <i class="fa fa-arrow-left"></i>
+    </div>
+    <p class="offerNum" style="margin-left: 30px;" id="offerNum">1</p>
+    <span class="offerNum" style="margin-right: 30px;">/ <?= count($newProducts) ?></span>
+    <div class="btn_carusel" id="right_carusel" onclick="plusOffer()">
+      <i class="fa fa-arrow-right"></i>
+    </div>
+  </div>
+
+</div>
+<!-- New Products End -->
 
 <!-- Category Products -->
 <?php foreach ($productCarousels as $productCarousel): ?>
@@ -233,15 +341,17 @@ use yii\helpers\Url;
       </div>
 
       <div class="container_carusel">
-        <div class="img_container_carusel" id="images_carusel1">
+        <div class="img_container_carusel" id="images_carusel">
           <?php foreach ($productCarousel['category']['products'] as $product): ?>
-          <div style="width: 300px" class="img_carusel1">
-            <?php if (count($product['productImages']) > 0): ?>
-              <img style="width: 100%;height: 100%; object-fit: cover" src="<?=Yii::getAlias('@web').'/'.$product['productImages'][0]['img']; ?>" alt="">
-            <?php endif; ?>
-            <?php if (count($product['productImages']) == 0 || $product['productImages'] == null): ?>
-              <img style="width: 100%;height: 100%; object-fit: cover" src="<?=Yii::getAlias('@web');?>/images/product_placeholder.jpg" alt="">
-            <?php endif; ?>
+          <div style="width: 300px" class="img_carusel">
+            <a href="/site/product?id=<?= $product['id'] ?>">
+                <?php if (count($product['productImages']) > 0): ?>
+                  <img style="width: 100%;height: 100%; object-fit: cover" src="<?=Yii::getAlias('@web').'/'.$product['productImages'][0]['img']; ?>" alt="">
+                <?php endif; ?>
+                <?php if (count($product['productImages']) == 0 || $product['productImages'] == null): ?>
+                  <img style="width: 100%;height: 100%; object-fit: cover" src="<?=Yii::getAlias('@web');?>/images/product_placeholder.jpg" alt="">
+                <?php endif; ?>
+            </a>
             <div class="skitka">
                 <?php if (count($product['discounts']) > 0): ?>
                   <div class="skitka_item">В скидке</div>
@@ -257,7 +367,13 @@ use yii\helpers\Url;
               <div class="offer_status">В наличии</div>
             <?php endif; ?>
             <?php if (count($product['discounts']) > 0): ?>
-              <div class="offer_cost"><?= $product['discounts'][0]['discount_price'] ?></div>
+            <div class="d-flex">
+              <div class="offer_cost m-0"><?= $product['discounts'][0]['discount_price'] ?></div>
+              <p class="text-muted px-3" style="text-decoration: line-through"><?= $product['price'] ?></p>
+            </div>
+            <?php endif; ?>
+            <?php if (count($product['discounts']) == 0):?>
+              <div class="offer_cost"><?= $product['price'] ?></div>
             <?php endif; ?>
             <a href="/site/product" class="offer_to_cart">В корзину</a>
           </div>
