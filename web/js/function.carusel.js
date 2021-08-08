@@ -49,6 +49,7 @@ function plusOffer() {
         value = img.length - 1;
     }
     value++;
+    console.log(value);
     document
         .getElementById('offerNum')
         .innerHTML = value
@@ -59,6 +60,7 @@ function minusOffer() {
     } else if (value < 0) {
         value = img.length - 1;}
     value--;
+    console.log(value);
     document
         .getElementById('offerNum')
         .innerHTML = value;
@@ -125,6 +127,7 @@ function plusOffer1() {
     } else if (value1 < 0) {
         value1 = img1.length - 1;}
     value1++;
+    console.log(value1);
     document
         .getElementById('offerNum1')
         .innerHTML = value1;
@@ -135,6 +138,7 @@ function minusOffer1() {
     } else if (value1 < 0) {
         value1 = img1.length - 1;}
     value1--;
+    console.log(value1);
     document
         .getElementById('offerNum1')
         .innerHTML = value1;
@@ -203,6 +207,7 @@ function plusOffer2() {
     } else if (value2 < 0) {
         value2 = img2.length - 1;}
     value2++;
+    console.log(value2);
     document
         .getElementById('offerNum2')
         .innerHTML = value2;
@@ -213,6 +218,7 @@ function minusOffer2() {
     } else if (value2 < 0) {
         value2 = img2.length - 1;}
     value2--;
+    console.log(value2);
     document
         .getElementById('offerNum2')
         .innerHTML = value2;
@@ -279,6 +285,7 @@ function plusOffer3() {
     } else if (value3 < 0) {
         value3 = img3.length - 1;}
     value3++;
+    console.log(value3);
     document
         .getElementById('offerNum3')
         .innerHTML = value3;
@@ -289,6 +296,7 @@ function minusOffer3() {
     } else if (value3 < 0) {
         value3 = img3.length - 1;}
     value3--;
+    console.log(value3);
     document
         .getElementById('offerNum3')
         .innerHTML = value3;

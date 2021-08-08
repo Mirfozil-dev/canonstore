@@ -169,6 +169,10 @@ class Products extends \yii\db\ActiveRecord
     {
         return $this->hasMany(Wishlist::className(), ['product_id' => 'id']);
     }
+    public function getReviews()
+    {
+        return $this->hasMany(Reviews::className(), ['product_id' => 'id']);
+    }
     public function getCreatedDate() {
         return gmdate("Y-m-d H:i:s", $this->created_at);
     }

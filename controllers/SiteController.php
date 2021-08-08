@@ -12,6 +12,7 @@ use app\models\Products;
 use Yii;
 use yii\db\Expression;
 use yii\filters\AccessControl;
+use yii\helpers\ArrayHelper;
 use yii\web\Controller;
 use yii\web\Request;
 use yii\web\Response;
@@ -204,15 +205,40 @@ class SiteController extends Controller
     public function actionProduct()
     {
         $id = Yii::$app->request->get('id');
-        $product = Products::find()->where(['id' => $id, 'status' => 1])->with('category.parent.parent')->with('productOptions.option.optionGroup')->with('productImages')->with('discounts')->one();
+        $product = Products::find()->where(['id' => $id, 'status' => 1])->with('category.parent.parent')->with('reviews')->with('productOptions.option.optionGroup')->with('productImages')->with('discounts')->one();
+        $reviewsCount = count($product['reviews']);
+        $totalRating = 0;
+        $rating = $totalRating == 0 ? 0 : $totalRating/$reviewsCount;
+        foreach ($product['reviews'] as $review) {
+            $totalRating += $review['rating'];
+        };
         $optionGroupsIds = [];
         foreach ($product['productOptions'] as $option) {
             $optionGroupsIds[] = $option['option']['optionGroup']['id'];
         }
-        $optionGroups = OptionGroups::find()->where(['status' => 1, 'id' => $optionGroupsIds])->with('options')->all();
+        $query = OptionGroups::find()->with('options')->where(['status' => 1, 'id' => $optionGroupsIds])->all();
+        $optionGroups = [];
+        $i = 0;
+        foreach ($query as $optionGroup) {
+            $optionGroups[$i]['id'] = $optionGroup['id'];
+            $optionGroups[$i]['title_ru'] = $optionGroup['title_ru'];
+            $optionGroups[$i]['title_en'] = $optionGroup['title_en'];
+            $optionGroups[$i]['category_id'] = $optionGroup['category_id'];
+            $optionGroups[$i]['status'] = $optionGroup['status'];
+            $result = [];
+
+            foreach ($product['productOptions'] as $productOption) {
+                $result[] = $productOption['option'];
+            }
+            $optionGroups[$i]['options'] = $result;
+            $i++;
+        }
         return $this->render('product', [
             'product' => $product,
-            'optionGroups' => $optionGroups
+            'optionGroups' => $optionGroups,
+            'lang' => Yii::$app->language,
+            'reviewsCount' => $reviewsCount,
+            'rating' => $rating,
         ]);
     }
 
