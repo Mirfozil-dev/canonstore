@@ -1661,3 +1661,50 @@
 </div><br><br><br><br>
 
 <!-- Все новости Section End -->
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    $(document).on('click','.sign_up_user',function(){
+        var name = $('.sign_up_name').val()
+        var surname = $('.sign_up_surname').val()
+        var email = $('.sign_up_email').val()
+        var code = $('#country_code').val()
+        var phone = $('.sign_up_number').val()
+        var password = $('.sign_up_pass').val()
+        var password_confirm = $('.sign_up_pass2').val()
+        $.ajax({
+            url: '/web/site/registration',
+            type: 'GET',
+            dataType: 'json',
+            data: {
+                name: name,
+                surname: surname,
+                email: email,
+                phone: phone,
+                password: password,
+                password_confirm: password_confirm,
+                code: code
+            },
+            success: function(response){
+                if (response.status == 'success'){
+                    window.location.reload()
+                }
+                if (response.status == 'error_name'){
+                    $('.sign_up_name').addClass('input_border')
+                    $('.error_name').removeClass('hidden');
+                }
+                if (response.status == 'error_surname'){
+                    $('.sign_up_surname').addClass('input_border')
+                    $('.error_surname').removeClass('hidden');
+                }
+                if (response.status == 'error_name'){
+                    $('.sign_up_name').addClass('input_border')
+                    $('.error_email').removeClass('hidden');
+                }
+            },
+            error: function (request, status, error) {
+                console.log(error);
+            }
+        });
+    })
+</script>
