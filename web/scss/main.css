@@ -1214,21 +1214,6 @@ input[type=checkbox]:checked:after {
   left: 0px;
   top: 18px;
 }
-.product-status-red {
-  color: red;
-  margin-left: 20px;
-}
-
-.product-status-red > span::before {
-  content: " ";
-  width: 6px;
-  height: 6px;
-  position: absolute;
-  border-radius: 50%;
-  background-color: red;
-  left: 0px;
-  top: 18px;
-}
 
 .product-price {
   margin-bottom: 20px;

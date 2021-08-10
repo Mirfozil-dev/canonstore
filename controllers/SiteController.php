@@ -10,6 +10,7 @@ use app\models\OptionGroups;
 use app\models\ProductCarousel;
 use app\models\Products;
 use Yii;
+use yii\db\Exception;
 use yii\db\Expression;
 use yii\filters\AccessControl;
 use yii\helpers\ArrayHelper;
@@ -288,6 +289,18 @@ class SiteController extends Controller
             } else {
                 return $mail->ErrorInfo;
             }
+        }
+    }
+    public function actionSearchProduct() {
+        $query = Yii::$app->request->get('query');
+        if (isset($query)) {
+            try {
+                $products = Yii::$app->db->createCommand("SELECT products.id, products.price, products.instock, products.title, product_images.img, discount.discount_price FROM products LEFT JOIN product_images on products.id = product_images.product_id LEFT JOIN discount on products.id = discount.product_id where lower(title) like '%".strtolower($query)."%'")->queryAll();
+            } catch (Exception $e) {
+                return json_encode($e);
+            }
+
+            return json_encode($products);
         }
     }
 }

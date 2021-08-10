@@ -23,7 +23,7 @@ class UsersController extends Controller
         parent::init();
 
         if(Yii::$app->user->isGuest){
-            return $this->redirect('/web/admin/login');
+            return $this->redirect('/admin/login');
         }
     }
 

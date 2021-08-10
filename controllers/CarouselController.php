@@ -19,6 +19,15 @@ class CarouselController extends Controller
     /**
      * {@inheritdoc}
      */
+    public function init()
+    {
+        parent::init();
+
+        if(Yii::$app->user->isGuest){
+            return $this->redirect('/admin/login');
+        }
+    }
+
     public function behaviors()
     {
         return [

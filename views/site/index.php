@@ -70,6 +70,7 @@ use yii\helpers\Url;
 
 <!-- Carusel Section End -->
 
+<?php if ($discountProducts): ?>
 <!-- Discount -->
 <div class="container-xl">
   <div class="discount">
@@ -168,7 +169,9 @@ use yii\helpers\Url;
 
 </div>
 <!-- Discount End -->
+<?php endif; ?>
 
+<?php if ($newProducts): ?>
 <!-- New Products -->
 <div class="container-xl">
   <div class="discount">
@@ -276,7 +279,9 @@ use yii\helpers\Url;
 
 </div>
 <!-- New Products End -->
+<?php endif; ?>
 
+<?php if ($productCarousels): ?>
 <!-- Category Products -->
 <?php foreach ($productCarousels as $productCarousel): ?>
   <div class="container-xl" style="margin-top: 100px;">
@@ -397,7 +402,7 @@ use yii\helpers\Url;
     </div>
   </div>
 <?php endforeach; ?>
-
+<?php endif; ?>
 
 <!-- Category Products End -->
 
@@ -860,7 +865,7 @@ use yii\helpers\Url;
 
 <!-- Все новости Section -->
 
-<?php if (count($news) > 0): ?>
+<?php if ($news && count($news) > 0): ?>
   <div class="container-xl">
     <div class="discount_header">
       #CANONSTORE
