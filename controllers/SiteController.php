@@ -2,14 +2,29 @@
 
 namespace app\controllers;
 
+<<<<<<< HEAD
 use app\models\Users;
+=======
+use app\models\Carousel;
+use app\models\Categories;
+use app\models\Discount;
+use app\models\News;
+use app\models\OptionGroups;
+use app\models\ProductCarousel;
+use app\models\Products;
+>>>>>>> d49abe73fe8bab4bffb9ae34452253bfb1f4a1f6
 use Yii;
+use yii\db\Exception;
+use yii\db\Expression;
 use yii\filters\AccessControl;
+use yii\helpers\ArrayHelper;
 use yii\web\Controller;
+use yii\web\Request;
 use yii\web\Response;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
+use PHPMailer\PHPMailer\PHPMailer;
 
 class SiteController extends Controller
 {
@@ -18,11 +33,16 @@ class SiteController extends Controller
      */
 
     public $layout;
+    public $categories;
+
+
+
 
     public function init()
     {
-    parent::init();
+        parent::init();
         $this->layout = 'site';
+        $this->categories = Categories::find()->where(['status' => 1, 'parent_id' => null])->with('categories.categories')->all();
     }
 
     public function behaviors()
@@ -71,7 +91,19 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        $carousel = Carousel::find()->limit(5)->all();
+        $discountProducts = Discount::find()->where(['status' => 1])->with('product.productOptions.option')->with('product.productImages')->limit(15)->all();
+        $productCarousels = ProductCarousel::find()->where(['status' => 1])->with('category.products.productOptions.option')->with('category.products.discounts')->with('category.products.productImages')->all();
+        $news = News::find()->orderBy('updated_at DESC')->limit(3)->all();
+        $newProducts = Products::find()->where(['status' => 1])->with('productOptions.option')->with('productImages')->with('discounts')->orderBy('updated_at DESC')->limit(15)->all();
+        return $this->render('index', [
+            'carousel' => $carousel,
+            'news' => $news,
+            'discountProducts' => $discountProducts,
+            'lang' => Yii::$app->language,
+            'productCarousels' => $productCarousels,
+            'newProducts' => $newProducts
+        ]);
     }
 
     public function actionRegistration()
@@ -257,7 +289,16 @@ class SiteController extends Controller
 
     public function actionCart()
     {
-        return $this->render('cart');
+        $session = Yii::$app->session;
+        $session->open();
+        $cart = [];
+
+        if ($session->has('cart')) {
+            $cart = $session->has('cart');
+        }
+        return $this->render('cart', [
+            'session' => $session
+        ]);
     }
 
     public function actionCatalog()
@@ -287,7 +328,42 @@ class SiteController extends Controller
 
     public function actionProduct()
     {
-        return $this->render('product');
+        $id = Yii::$app->request->get('id');
+        $product = Products::find()->where(['id' => $id, 'status' => 1])->with('category.parent.parent')->with('reviews')->with('productOptions.option.optionGroup')->with('productImages')->with('discounts')->one();
+        $reviewsCount = count($product['reviews']);
+        $totalRating = 0;
+        $rating = $totalRating == 0 ? 0 : $totalRating/$reviewsCount;
+        foreach ($product['reviews'] as $review) {
+            $totalRating += $review['rating'];
+        };
+        $optionGroupsIds = [];
+        foreach ($product['productOptions'] as $option) {
+            $optionGroupsIds[] = $option['option']['optionGroup']['id'];
+        }
+        $query = OptionGroups::find()->with('options')->where(['status' => 1, 'id' => $optionGroupsIds])->all();
+        $optionGroups = [];
+        $i = 0;
+        foreach ($query as $optionGroup) {
+            $optionGroups[$i]['id'] = $optionGroup['id'];
+            $optionGroups[$i]['title_ru'] = $optionGroup['title_ru'];
+            $optionGroups[$i]['title_en'] = $optionGroup['title_en'];
+            $optionGroups[$i]['category_id'] = $optionGroup['category_id'];
+            $optionGroups[$i]['status'] = $optionGroup['status'];
+            $result = [];
+
+            foreach ($product['productOptions'] as $productOption) {
+                $result[] = $productOption['option'];
+            }
+            $optionGroups[$i]['options'] = $result;
+            $i++;
+        }
+        return $this->render('product', [
+            'product' => $product,
+            'optionGroups' => $optionGroups,
+            'lang' => Yii::$app->language,
+            'reviewsCount' => $reviewsCount,
+            'rating' => $rating,
+        ]);
     }
 
     public function actionWarranty()
@@ -298,5 +374,56 @@ class SiteController extends Controller
     public function actionWishlist()
     {
         return $this->render('wishlist');
+    }
+    public function actionSendEmail(Request $request) {
+        if (isset($request['email'])) {
+//            $name = $request['name'];
+            $email = $request['email'];
+//            $subject = $request['subject'];
+//            $body = $request['body'];
+
+            require_once "../vendor/PHPMailer/phpmailer/src/PHPMailer.php";
+            require_once "../vendor/PHPMailer/phpmailer/src/SMTP.php";
+            require_once "../vendor/PHPMailer/phpmailer/src/Exception.php";
+
+            $mail = new PHPMailer();
+
+            //smtp settings
+            $mail->isSMTP();
+            $mail->Host = "smtp.gmail.com";
+            $mail->SMTPAuth = true;
+            //  EMAIL YOZW KERE
+            $mail->Username = "myexample897@gmail.com";
+            //  EMAIL PAROL
+            $mail->Password = 'Mypass123';
+            $mail->Port = 465;
+            $mail->SMTPSecure = "ssl";
+
+            //email settings
+            $mail->isHTML(true);
+            $mail->setFrom($email);
+            //  QAYSI EMAILGA BORWI KERE
+            $mail->addAddress("mirfozil48@gmail.com");
+            $mail->Subject = ("Canonstore");
+            $mail->Body = $email;
+
+            if ($mail->send()) {
+                return 'Email sent!';
+            } else {
+                return $mail->ErrorInfo;
+            }
+        }
+    }
+    public function actionSearchProduct() {
+        $query = Yii::$app->request->get('query');
+        if (isset($query)) {
+            try {
+                $products = Yii::$app->db->createCommand("SELECT products.id, products.price, products.instock, products.title, product_images.img, discount.discount_price FROM products LEFT JOIN product_images on products.id = product_images.product_id LEFT JOIN discount on products.id = discount.product_id where lower(title) like '%".strtolower($query)."%'")->queryAll();
+            } catch (Exception $e) {
+                return json_encode($e);
+            }
+
+            return json_encode($products);
+        }
     }
 }

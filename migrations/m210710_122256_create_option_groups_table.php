@@ -17,7 +17,8 @@ class m210710_122256_create_option_groups_table extends Migration
     {
         $this->createTable('{{%option_groups}}', [
             'id' => $this->primaryKey(),
-            'title' => $this->string(45),
+            'title_ru' => $this->string(45),
+            'title_en' => $this->string(45),
             'category_id' => $this->integer(11),
             'status' => $this->smallInteger(1),
         ]);

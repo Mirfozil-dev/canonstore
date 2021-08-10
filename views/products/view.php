@@ -37,6 +37,14 @@ $this->params['breadcrumbs'][] = $this->title;
             'price',
             'instock',
             'status',
+            [
+                'attribute' => 'created_at',
+                'value' => gmdate("Y-m-d H:i:s", $model->created_at),
+            ],
+            [
+                'attribute' => 'updated_at',
+                'value' => gmdate("Y-m-d H:i:s", $model->updated_at),
+            ],
         ],
     ]) ?>
 

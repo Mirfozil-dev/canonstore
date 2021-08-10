@@ -8,7 +8,8 @@ use Yii;
  * This is the model class for table "option_groups".
  *
  * @property int $id
- * @property string|null $title
+ * @property string|null $title_ru
+ * @property string|null $title_en
  * @property int|null $category_id
  * @property int|null $status
  *
@@ -32,7 +33,7 @@ class OptionGroups extends \yii\db\ActiveRecord
     {
         return [
             [['category_id', 'status'], 'integer'],
-            [['title'], 'string', 'max' => 45],
+            [['title_ru', 'title_en'], 'string', 'max' => 45],
             [['category_id'], 'exist', 'skipOnError' => true, 'targetClass' => Categories::className(), 'targetAttribute' => ['category_id' => 'id']],
         ];
     }
@@ -44,7 +45,8 @@ class OptionGroups extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'title' => 'Title',
+            'title_ru' => 'Title RU',
+            'title_en' => 'Title EN',
             'category_id' => 'Category',
             'status' => 'Status',
         ];

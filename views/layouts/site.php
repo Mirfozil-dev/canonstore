@@ -33,8 +33,33 @@ FrontendAsset::register($this);
                 </div>
                 <div class="right_nav" id="right_nav">
 
+<<<<<<< HEAD
                     <div class="nav_items_search">
                         <i class="fas fa-search"></i>
+=======
+                <a href="/site/compare">
+                    <div class="nav_items">
+                        <img src="<?=Yii::getAlias('@web'); ?>/images/scale.png" alt="" width="30px">
+                        <span class="number_offer">0</span>
+                    </div>
+                </a>
+                <a href="/site/wishlist">
+                    <div class="nav_items">
+                        <img src="<?=Yii::getAlias('@web'); ?>/images/heart.png" alt="" width="32px">
+                        <span class="number_offer">0</span>
+                    </div>
+                </a>
+                <a href="/site/cart">
+                    <div class="nav_items_cart">
+                        <img src="<?=Yii::getAlias('@web'); ?>/images/cart.png" alt="" width="30px">
+                        <span class="number_offer">0</span>
+                    </div>
+                </a>
+<!--              --><?//= \app\components\CartWidget::widget() ?>
+                <a href="#popup">
+                    <div class="nav_items_user" id="contact">
+                        <img src="<?=Yii::getAlias('@web'); ?>/images/username.png" alt="" width="30px">
+>>>>>>> d49abe73fe8bab4bffb9ae34452253bfb1f4a1f6
                     </div>
 
                     <a href="/site/compare">
@@ -68,6 +93,7 @@ FrontendAsset::register($this);
                 </div>
             </div>
 
+<<<<<<< HEAD
             <div class="catalog-mobile">
                 <h5 style="font-size: 16px; font-weight: 400; color: #fff;">КАТАЛОГ
 
@@ -330,6 +356,48 @@ FrontendAsset::register($this);
                             width="23px"
                             style="margin-right: 10px;"><a class="href_catalog" href="/site/catalog">СПОРТИВНАЯ
                         ОПТИКА</a>
+=======
+        <div class="catalog-mobile">
+            <h5 style="font-size: 16px; font-weight: 400; color: #fff;">КАТАЛОГ
+                <div class="drop_down_catalog_items">
+                    <div class="drop_down_catalog_item">
+                        <img src="<?=Yii::getAlias('@web'); ?>/images/drop_down_items/percentage.png" alt="" width="16px"><a class="href_catalog" href="/site/catalog">АКЦИЯ</a>
+                    </div>
+                    <?php
+                      foreach ($this->context->categories as $category) {
+                          ?>
+                        <div class="drop_down_catalog_item" id="camera_navbar">
+                          <i class="<?= $category['icon'] ?>" width="16px"></i><a class="href_catalog" href="/site/catalog/<?= $category['id'] ?>"><?= $category['title_ru'] ?></a>
+                          <img
+                              class="angle-right"
+                              src="<?=Yii::getAlias('@web'); ?>/images/line-angle-right.png"
+                              alt=""
+                              width="6px"
+                              style="position: absolute; right: 1px;">
+
+                          <div class="drop_camera_scroll row">
+                            <?php
+                            foreach ($category['categories'] as $subcategory) {
+                                ?>
+                                  <div class="drop_camera_item_scroll col-md-5">
+                                    <h6 class="camera_header_scroll"><a class="href_catalog1" href="/site/catalog/<?= $subcategory['id'] ?>"><?= $subcategory['title_ru'] ?></a></h6>
+                                    <?php
+                                    foreach ($subcategory['categories'] as $seccategory) {
+                                        ?>
+                                          <p><a class="href_catalog1" href="/site/catalog/<?= $seccategory['id'] ?>"><?= $seccategory['title_ru'] ?></a></p>
+                                        <?php
+                                      }
+                                    ?>
+                                  </div>
+                                <?php
+                              }
+                            ?>
+                          </div>
+                        </div>
+                          <?php
+                      }
+                    ?>
+>>>>>>> d49abe73fe8bab4bffb9ae34452253bfb1f4a1f6
                 </div>
             </div>
             <div class="click_info"><a class="href_catalog" href="/site/catalog">ИНФОРМАЦИЯ</a>
@@ -350,6 +418,48 @@ FrontendAsset::register($this);
                 </div>
                 <div class="col-md-12 click_cotalog_item"><a class="href_catalog1" href="/site/faq">FAQ</a></div>
             </div>
+<<<<<<< HEAD
+=======
+
+        </div>
+        <div class="click_cotalog">КАТАЛОГ
+            <img src="<?=Yii::getAlias('@web'); ?>/images/line-angle-right.png" alt=""></div>
+        <div class="row click_cotalog_row">
+            <div class="col-md-12 click_cotalog_item">
+                <img
+                    src="<?=Yii::getAlias('@web'); ?>/images/drop_down_items/percentage.png"
+                    alt=""
+                    width="16px"
+                    style="margin-right: 14px;"><a class="href_catalog" href="/site/catalog">АКЦИЯ</a></div>
+            <?php
+              foreach ($this->context->categories as $category) {
+                ?>
+                  <div class="col-md-12 click_cotalog_item">
+                    <img
+                        src="<?=Yii::getAlias('@web'); ?>/images/drop_down_items/black-camera.png"
+                        alt=""
+                        width="16px"
+                        style="margin-right: 14px;">
+                    <a class="href_catalog" href="/site/catalog/<?= $category['id'] ?>"><?= $category['title_ru'] ?></a>
+                  </div>
+                <?php
+              }
+            ?>
+        </div>
+        <div class="click_info"><a class="href_catalog" href="/site/catalog">ИНФОРМАЦИЯ</a>
+            <img
+                src="<?=Yii::getAlias('@web'); ?>/images/line-angle-right.png"
+                alt=""
+                style="transform: rotate(90deg);"
+                width="10px"></div>
+        <div class="row click_info_row">
+            <div class="col-md-12 click_cotalog_item"><a class="href_catalog1" href="/site/about">О магазине</a></div>
+            <div class="col-md-12 click_cotalog_item"><a class="href_catalog1" href="/site/news">Новости</a></div>
+            <div class="col-md-12 click_cotalog_item"><a class="href_catalog1" href="/site/delivery">Доставка и оплата</a></div>
+            <div class="col-md-12 click_cotalog_item"><a class="href_catalog1" href="/site/warranty">Гарантия и сервис</a></div>
+            <div class="col-md-12 click_cotalog_item"><a class="href_catalog1" href="/site/contact">Контакты</a></div>
+            <div class="col-md-12 click_cotalog_item"><a class="href_catalog1" href="/site/faq">FAQ</a></div>
+>>>>>>> d49abe73fe8bab4bffb9ae34452253bfb1f4a1f6
         </div>
     </div>
 
@@ -367,6 +477,7 @@ FrontendAsset::register($this);
                     <div class="nav_items_search1">
                         <i class="fas fa-search"></i>
                     </div>
+<<<<<<< HEAD
 
                     <a href="/site/compare">
                         <div class="nav_items">
@@ -614,6 +725,64 @@ FrontendAsset::register($this);
                         <div class="info-drop-down-item"><a class="href_catalog" href="/site/contact">Контакты</a></div>
                         <div class="info-drop-down-item"><a class="href_catalog" href="/site/faq">FAQ</a></div>
                     </div>
+=======
+                    <?php
+                    foreach ($this->context->categories as $category) {
+                        ?>
+                      <div class="dropDownItem2">
+                        <i class="<?= $category['icon'] ?>" style="padding-right: 5px;margin-bottom: 3px;"></i><a class="href_catalog" href="/site/catalog/<?= $category['id'] ?>"><?= $category['title_ru'] ?></a>
+                        <img
+                            src="<?=Yii::getAlias('@web'); ?>/images/line-angle-right.png"
+                            alt=""
+                            width="6px"
+                            style="position: absolute; right: 1px;">
+                        <div class="drop_camera row">
+                            <?php
+                            foreach ($category['categories'] as $subcategory) {
+                                ?>
+                              <div class="drop_camera_item col-md-6">
+                                <h6 class="camera_header"><a class="href_catalog1" href="/site/catalog/<?= $subcategory['id'] ?>"><?= $subcategory['title_ru'] ?></a></h6>
+                                  <?php
+                                  foreach ($subcategory['categories'] as $seccategory) {
+                                      ?>
+                                    <p><a class="href_catalog1" href="/site/catalog/<?= $seccategory['id'] ?>"><?= $seccategory['title_ru'] ?></a></p>
+                                      <?php
+                                  }
+                                  ?>
+                              </div>
+                                <?php
+                            }
+                            ?>
+                        </div>
+                      </div>
+                        <?php
+                    }
+                    ?>
+                </div>
+            </div>
+            <div class="info_middle" id="info_middle">
+                <div class="info_left">
+                </div>
+<!--                <div class="info_right">-->
+<!--                    <img src="--><?//=Yii::getAlias('@web'); ?><!--/images/like.png" alt="" width="24px"><a class="href_catalog" href="/site/cart"></a>Оставить отзыв-->
+<!--                </div>-->
+            </div>
+            <div class="info" id="info">
+                <a class="href_catalog" href="/site/cart">ИНФОРМАЦИЯ</a>
+                <img
+                    src="<?=Yii::getAlias('@web'); ?>/images/line-angle-right.png"
+                    alt=""
+                    width="6px"
+                    style="transform: rotate(90deg);">
+
+                <div class="info-drop-down">
+                    <div class="info-drop-down-item"><a class="href_catalog" href="/site/about">О магазине</a></div>
+                    <div class="info-drop-down-item"><a class="href_catalog" href="/site/news">Новости</a></div>
+                    <div class="info-drop-down-item"><a class="href_catalog" href="/site/delivery">Доставка и оплата</a></div>
+                    <div class="info-drop-down-item"><a class="href_catalog" href="/site/warranty">Гарантия и сервис</a></div>
+                    <div class="info-drop-down-item"><a class="href_catalog" href="/site/contact">Контакты</a></div>
+                    <div class="info-drop-down-item"><a class="href_catalog" href="/site/faq">FAQ</a></div>
+>>>>>>> d49abe73fe8bab4bffb9ae34452253bfb1f4a1f6
                 </div>
             </div>
         </div>
@@ -762,6 +931,7 @@ FrontendAsset::register($this);
     <div class="search-wrapper">
         <div class="search-container">
 
+<<<<<<< HEAD
             <div class="search-close-icon">&times;</div>
 
             <div class="search-div">
@@ -967,6 +1137,49 @@ FrontendAsset::register($this);
                     <div class="footer-school-section-logo">
                         <img src="images/logo-footer.png" class="footer-school-section-logo-img" alt=""/>
                     </div>
+=======
+        <div class="search-close-icon">&times;</div>
+
+        <div class="search-div">
+            <input type="text" placeholder="Поиск" class="search-input" id="search-input" onkeyup="searchItem()" title="name" >
+            <i class="fas fa-search search-side"></i>
+        </div>
+        <div class="d-flex flex-wrap" id="tableRecord">
+        </div>
+
+
+    </div>
+</div>
+<!-- ----------------------- End of Search ------------------------- -->
+<?php echo $content;?>
+
+<!-- ----------------  beginning of Footer  ------------------- -->
+<div class="sent-notification alert-dismissible fade show" class="alert alert-success" role="alert">
+  Отправлено!
+</div>
+<footer class="footer">
+    <div class="footer-container1">
+        <div class="footer_top">
+            <div class="footer-subscribe-section col-7">
+                <div class="footer-subscribe-title footer-top-title footer-first-column col-4">Подпишитесь: новинки, скидки, полезные статьи</div>
+                <div class="footer-subscribe-form col-8" id="footer-sender-subscribe">
+                    <form id="myForm" class="footer-subscribe-form1">
+                        <input type="text" name="email" id="email" class="footer-subscribe-form-input" placeholder="Введите ваш e-mail">
+                        <button type="button" onclick="sendEmail()" value="Send An Email" class="footer-subscribe-form-btn">Подписаться</button>
+                    </form>
+                    <div class="footer-subscribe-form-check">
+                        <input type="checkbox" id="footer-checkbox" />
+                        <label for="footer-checkbox" class="footer-check-label">Я принимаю условия Политики о конфиденциальности.</label>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-school-section col-4">
+                <div class="footer-school-section-title">
+                    Пройдите обучение на курсах фотографии в нашей школе
+                </div>
+                <div class="footer-school-section-logo">
+                    <img src="<?=Yii::getAlias('@web'); ?>/images/logo-footer.png" class="footer-school-section-logo-img" alt="" />
+>>>>>>> d49abe73fe8bab4bffb9ae34452253bfb1f4a1f6
                 </div>
             </div>
         </div>
@@ -1022,6 +1235,7 @@ FrontendAsset::register($this);
 
                 <div class="col"></div>
 
+<<<<<<< HEAD
                 <div class="footer-main-3 col-xl-auto">
                     <div class="footer-title footer-title1"><span>Другие проекты Nikon</span></div>
                     <a class="footer-projects-link" href="" target="_blank"><img src="images/my-nikon.png" alt
@@ -1034,6 +1248,16 @@ FrontendAsset::register($this);
                                                                                   width="100"></a>
                         <div class="canon-school-section__title">Пройдите обучение курсам фотографии в нашей школе</div>
                     </div>
+=======
+            <div class="footer-main-3 col-xl-auto">
+                <div class="footer-title footer-title1"><span>Другие проекты Nikon</span></div>
+                <a class="footer-projects-link" href="" target="_blank"><img src="<?=Yii::getAlias('@web'); ?>/images/my-nikon.png" alt width="175"></a>
+                <a class="footer-projects-link img-nps" href="" target="_blank"><img src="<?=Yii::getAlias('@web'); ?>/images/nps.png" alt width="160"></a>
+
+                <div class="canon-school-section">
+                    <a class="canon-school-logo" href="" target="_blank"><img src="<?=Yii::getAlias('@web'); ?>/images/nikon-school.png" alt width="100"></a>
+                    <div class="canon-school-section__title">Пройдите обучение курсам фотографии в нашей школе </div>
+>>>>>>> d49abe73fe8bab4bffb9ae34452253bfb1f4a1f6
                 </div>
 
 
@@ -1075,6 +1299,14 @@ FrontendAsset::register($this);
                     </a>
                 </div>
 
+<<<<<<< HEAD
+=======
+            <div class="ns-footer_infospice">
+                Разработка сайта -
+                <a href="https://www.infospice.ru/" target="_blank">infospice.ru
+                    <img src="<?=Yii::getAlias('@web'); ?>/images/infospise-icon.png" alt="img">
+                </a>
+>>>>>>> d49abe73fe8bab4bffb9ae34452253bfb1f4a1f6
             </div>
         </div>
     </footer>
@@ -1170,6 +1402,7 @@ FrontendAsset::register($this);
             </div>
         </div>
 
+<<<<<<< HEAD
     </div>
 
     <style>
@@ -1184,6 +1417,34 @@ FrontendAsset::register($this);
     </style>
 
     <!-------------------------------- End of  Modal ----------------------------------->
+=======
+<script>
+    function sendEmail() {
+        const email = document.querySelector('#email').value;
+
+        if (email !== '') {
+            fetch('/site/send-email', {
+                method: 'POST',
+                mode: 'cors',
+                cache: 'no-cache',
+                credentials: 'same-origin',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    email: email,
+                })
+            }).then((res) => res.json())
+            .then(data => {
+                console.log(data)
+                document.querySelector('#email').value = ''
+                document.querySelector('.sent-notification').innerHTML = 'Message Sent Successfully.'
+            })
+            .catch(er => console.log(er))
+        }
+    }
+    var secondModal = document.getElementById("mySecondModal");
+>>>>>>> d49abe73fe8bab4bffb9ae34452253bfb1f4a1f6
 
     <script>
         var secondModal = document.getElementById("mySecondModal");
@@ -1237,6 +1498,7 @@ FrontendAsset::register($this);
             }
         }
 
+<<<<<<< HEAD
 
     </script>
 
@@ -1250,3 +1512,10 @@ FrontendAsset::register($this);
     </body>
     </html>
 <?php $this->endPage() ?>
+=======
+<!-- --------------------- End of Search ---------------------- -->
+<?php $this->endBody() ?>
+</body>
+</html>
+<?php $this->endPage() ?>
+>>>>>>> d49abe73fe8bab4bffb9ae34452253bfb1f4a1f6

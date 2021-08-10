@@ -6,7 +6,7 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model app\models\OptionGroups */
 
-$this->title = $model->title;
+$this->title = $model->title_ru;
 $this->params['breadcrumbs'][] = ['label' => 'Option Groups', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
@@ -30,7 +30,8 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'id',
-            'title',
+            'title_ru',
+            'title_en',
             'category_id',
             'status',
         ],

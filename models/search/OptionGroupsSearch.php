@@ -18,7 +18,7 @@ class OptionGroupsSearch extends OptionGroups
     {
         return [
             [['id', 'category_id', 'status'], 'integer'],
-            [['title'], 'safe'],
+            [['title_ru', 'title_en'], 'safe'],
         ];
     }
 
@@ -63,7 +63,8 @@ class OptionGroupsSearch extends OptionGroups
             'status' => $this->status,
         ]);
 
-        $query->andFilterWhere(['like', 'title', $this->title]);
+        $query->andFilterWhere(['like', 'title', $this->title_ru]);
+        $query->andFilterWhere(['like', 'title', $this->title_en]);
 
         return $dataProvider;
     }

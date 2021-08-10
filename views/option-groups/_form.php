@@ -13,7 +13,8 @@ use yii\helpers\ArrayHelper;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'title_ru')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'title_en')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'category_id')->dropDownList(ArrayHelper::map($categories, 'id', 'title_ru'), ['prompt' => 'Choose Category']) ?>
 

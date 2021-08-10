@@ -13,9 +13,10 @@ use yii\helpers\ArrayHelper;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'title_ru')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'title_en')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'option_group_id')->dropDownList(ArrayHelper::map($optionGroups, 'id', 'title'), ['prompt' => 'Choose Option Group']) ?>
+    <?= $form->field($model, 'option_group_id')->dropDownList(ArrayHelper::map($optionGroups, 'id', 'title_ru'), ['prompt' => 'Choose Option Group']) ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>

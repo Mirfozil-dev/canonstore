@@ -18,6 +18,15 @@ class ProductsController extends Controller
     /**
      * {@inheritdoc}
      */
+    public function init()
+    {
+        parent::init();
+
+        if(Yii::$app->user->isGuest){
+            return $this->redirect('/admin/login');
+        }
+    }
+
     public function behaviors()
     {
         return [
@@ -67,6 +76,7 @@ class ProductsController extends Controller
     {
         $model = new Products();
         $model->status = 1;
+
         $categories = Categories::find()->where(['status' => 1])->all();
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -88,6 +98,7 @@ class ProductsController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+
         $categories = Categories::find()->where(['status' => 1])->all();
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);

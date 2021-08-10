@@ -17,7 +17,8 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'id') ?>
 
-    <?= $form->field($model, 'title') ?>
+    <?= $form->field($model, 'title_ru') ?>
+    <?= $form->field($model, 'title_en') ?>
 
     <?= $form->field($model, 'option_group_id') ?>
 
