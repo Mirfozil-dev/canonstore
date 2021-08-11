@@ -2,7 +2,10 @@
 
 namespace app\controllers;
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 22b2151df545945e7907bac25ca68adf4fecbe12
 use app\models\Users;
 use app\models\Carousel;
 use app\models\Categories;
@@ -14,12 +17,10 @@ use app\models\Products;
 use Yii;
 use yii\db\Exception;
 use yii\filters\AccessControl;
-use yii\helpers\ArrayHelper;
 use yii\web\Controller;
 use yii\web\Request;
 use yii\web\Response;
 use yii\filters\VerbFilter;
-use app\models\LoginForm;
 use app\models\ContactForm;
 use PHPMailer\PHPMailer\PHPMailer;
 
@@ -31,9 +32,6 @@ class SiteController extends Controller
 
     public $layout;
     public $categories;
-
-
-
 
     public function init()
     {
@@ -88,6 +86,7 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
+
         $carousel = Carousel::find()->limit(5)->all();
         $discountProducts = Discount::find()->where(['status' => 1])->with('product.productOptions.option')->with('product.productImages')->limit(15)->all();
         $productCarousels = ProductCarousel::find()->where(['status' => 1])->with('category.products.productOptions.option')->with('category.products.discounts')->with('category.products.productImages')->all();
