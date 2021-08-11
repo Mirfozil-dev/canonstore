@@ -40,31 +40,32 @@ function searchItem() {
   let searchInput = document.querySelector('#search-input');
   let table = document.querySelector('#tableRecord');
   table.innerHTML = ''
-  $.ajax({
-    type: 'GET',
-    url: '/en/site/search-product',
-    contentType: "application/json",
-    data: {
-      query: searchInput.value,
-    },
-    success: (res) => {
-      console.log(res)
-      JSON.parse(res).map(product => {
-        let skidka = ''
-        let instock = ''
-        let price = ''
-        if (product.discount_price) {
-          skidka = `<div class="skitka">
+  if (searchInput.value !== '') {
+    $.ajax({
+      type: 'GET',
+      url: '/en/site/search-product',
+      contentType: "application/json",
+      data: {
+        query: searchInput.value,
+      },
+      success: (res) => {
+        if (res.length > 0) {
+          JSON.parse(res).map(product => {
+            let skidka = ''
+            let instock = ''
+            let price = ''
+            if (product.discount_price) {
+              skidka = `<div class="skitka">
                             <div class="skitka_item">В скидке</div>
                         </div>`
-          price = `<div class="offer_cost">` + product.discount_price + `</div>`
-        } else {
-          price = `<div class="offer_cost">` + product.price + `</div>`
-        }
-        if (product.instock === 1) {
-          instock = `<div class="offer_status">В наличии</div>`
-        }
-        table.innerHTML += `<a href="/site/product?id=` + product.id + `">
+              price = `<div class="offer_cost">` + product.discount_price + `</div>`
+            } else {
+              price = `<div class="offer_cost">` + product.price + `</div>`
+            }
+            if (product.instock === 1) {
+              instock = `<div class="offer_status">В наличии</div>`
+            }
+            table.innerHTML += `<a href="/site/product?id=` + product.id + `">
                        <div class="img_carusel" style="max-width: 300px">
                         <img style="width: 100%; object-fit: cover" src="../` + product.img + `" alt="">
                         ` + skidka + `
@@ -73,16 +74,14 @@ function searchItem() {
                         <a href="/site/product" class="offer_to_cart">В корзину</a>
                        </div>
                       </a>`
-      })
-    },
-    error: (res) => {
-      console.log('error', res)
-    }
-  })
-
-
-
-
+          })
+        }
+      },
+      error: (res) => {
+        console.log('error', res)
+      }
+    })
+  }
 }
 
 

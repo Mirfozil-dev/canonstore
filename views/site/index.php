@@ -258,7 +258,7 @@ use yii\helpers\Url;
                 </div>
                 <?php endif; ?>
                 <?php if (count($newProduct['discounts']) == 0):?>
-                  <div class="offer_cost"><?= $product['price'] ?></div>
+                  <div class="offer_cost"><?= $newProduct['price'] ?></div>
                 <?php endif; ?>
             </div>
             <a href="<?= Url::to(['cart/add', 'id' => $newProduct['id']]) ?>" data-id="<?= $newProduct['id'] ?>" class="offer_to_cart add_to_cart">В корзину</a>
@@ -893,8 +893,6 @@ use yii\helpers\Url;
     </div>
   </div><br><br><br><br>
 <?php endif; ?>
-
-<<<<<<< HEAD
 <!-- Все новости Section End -->
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -943,6 +941,4 @@ use yii\helpers\Url;
         });
     })
 </script>
-=======
 <!-- Все новости Section End -->
->>>>>>> d49abe73fe8bab4bffb9ae34452253bfb1f4a1f6

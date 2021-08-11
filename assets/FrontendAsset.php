@@ -13,7 +13,7 @@ class FrontendAsset extends AssetBundle
     public $baseUrl = '@web';
 
     public $css = [
-        'css/site.css',
+//        'css/site.css',
         'https://unpkg.com/swiper/swiper-bundle.css',
         'https://unpkg.com/swiper/swiper-bundle.min.css',
         "./css/bootstrap.css",
