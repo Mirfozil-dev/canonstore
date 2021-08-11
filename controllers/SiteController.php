@@ -2,10 +2,6 @@
 
 namespace app\controllers;
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 22b2151df545945e7907bac25ca68adf4fecbe12
 use app\models\Users;
 use app\models\Carousel;
 use app\models\Categories;

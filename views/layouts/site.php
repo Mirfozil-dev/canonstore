@@ -228,6 +228,11 @@ FrontendAsset::register($this);
                     <div class="nav_items_user" id="contact3">
                         <img src="<?=Yii::getAlias('@web'); ?>/images/username.png" alt="" width="32px">
                     </div>
+                    <?php
+                        if(isset($_SESSION['account']) and !empty($_SESSION['account'])){
+                            echo "<h2>".$_SESSION['account']['name']."</h2>";
+                        }
+                    ?>
                 </a>
 
                 <a href="#click_navbar">
@@ -388,39 +393,39 @@ FrontendAsset::register($this);
             <div class="row">
                 <div class="col-md-6 contact-left">
                     <div class="contact-left-header">Войти на сайт</div>
-                    <input type="text" name="" id="" placeholder="Имя*" class="contact-input">
-                    <input type="text" name="" id="" placeholder="Фамилия*" class="contact-input">
-                    <input type="email" name="" id="" placeholder="E-mail*" class="contact-input">
+                    <input type="text" name="" id="" placeholder="Имя*" class="contact-input sign_up_name">
+                    <input type="text" name="" id="" placeholder="Фамилия*" class="contact-input sign_up_surname">
+                    <input type="email" name="" id="" placeholder="E-mail*" class="contact-input sign_up_email">
                 </div>
                 <div class="col-md-6 contact-right">
                     <div class="contact-right-header">Единая авторизация Nikon</div>
                     <div class="choose-flag">
-                        <select name="" id="" class="choose-flag-items">
+                        <select name="" id="country_code" class="choose-flag-items">
                             <option value="RU"><!--<img src="<?=Yii::getAlias('@web'); ?>/images/contact/ru.png" alt="" width="1000px">-->RU</option>
                             <option value="UZ"><!--<img src="<?=Yii::getAlias('@web'); ?>/images/contact/uz.jpg" alt="" width="20px">-->UZ</option>
                             <option value="KZ"><!--<img src="<?=Yii::getAlias('@web'); ?>/images/contact/kz.jpg" alt="" width="20px">-->KZ</option>
                         </select>
-                        <input type="text" name="" id="" placeholder="Телефон*" class="contact-input">
+                        <input type="text" name="" id="" placeholder="Телефон*" class="contact-input sign_up_number">
                     </div>
                     <input
                         type="password"
                         name=""
                         id=""
                         placeholder="Пароль*"
-                        class="contact-input">
+                        class="contact-input sign_up_pass">
                     <input
                         type="password"
                         name=""
                         id=""
                         placeholder="Подтверждение пароля*"
-                        class="contact-input">
+                        class="contact-input sign_up_pass2">
                 </div>
             </div>
             <div class="sign_up_box">
                 <input type="checkbox" name="" id="" class="contact-checkbox">
                 <span class="checkeds">
                             Я принимаю условия Политики о конфиденциальности.</span>
-                <a href="#" class="popup-submit">Войти</a><br>
+                <a href="#" class="popup-submit sign_up_user">Войти</a><br>
                 <div class="logout">
                     <span class="forget-password" id="forget-password2">Восстановить пароль</span><span class="sign-up" id="contact5">Войти</span>
                 </div>

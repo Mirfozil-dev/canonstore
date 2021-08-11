@@ -893,11 +893,6 @@ use yii\helpers\Url;
     </div>
   </div><br><br><br><br>
 <?php endif; ?>
-<<<<<<< HEAD
-
-=======
-<!-- Все новости Section End -->
->>>>>>> 22b2151df545945e7907bac25ca68adf4fecbe12
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
@@ -945,7 +940,3 @@ use yii\helpers\Url;
         });
     })
 </script>
-<<<<<<< HEAD
-=======
-<!-- Все новости Section End -->
->>>>>>> 22b2151df545945e7907bac25ca68adf4fecbe12
