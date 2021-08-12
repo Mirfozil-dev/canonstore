@@ -235,7 +235,7 @@ FrontendAsset::register($this);
                 </a>
                 <a href="#popup">
                     <div class="nav_items_user" id="contact3">
-                        <img src="<?=Yii::getAlias('@web'); ?>/images/username.png" alt="" width="32px">
+                      <i class="fas fa-user" style="color: #000;"></i>
                     </div>
                     <?php
                         if(isset($_SESSION['account']) and !empty($_SESSION['account'])){
