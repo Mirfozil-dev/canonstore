@@ -52,7 +52,7 @@ FrontendAsset::register($this);
                 <a href="/site/cart">
                     <div class="nav_items_cart">
                         <img src="<?=Yii::getAlias('@web'); ?>/images/cart.png" alt="" width="30px">
-                        <span class="number_offer">0</span>
+                        <span class="number_offer cart-items-count"><?= $this->context->cartItems ?></span>
                     </div>
                 </a>
 <!--              --><?//= \app\components\CartWidget::widget() ?>
@@ -114,6 +114,14 @@ FrontendAsset::register($this);
         </div>
     </div>
 </div>
+<div class="alert position-fixed fade show cart-alert" style="z-index: 999; top:10px;left: 30%; right: 30%" role="alert">
+</div>
+<?php if(Yii::$app->session->hasFlash('notification')):?>
+  <div class="info position-fixed" style="z-index: 999; top:10px;left: 40%; right: 40%">
+      <?php echo Yii::$app->session->getFlash('notification'); ?>
+  </div>
+<?php endif; ?>
+
 
 <div class="click_navbar" id="click_navbar">
     <div class="container-xl">
@@ -221,7 +229,7 @@ FrontendAsset::register($this);
                 <a href="/site/cart">
                     <div class="nav_items_cart">
                         <img src="<?=Yii::getAlias('@web'); ?>/images/cart.png" alt="" width="30px">
-                        <span class="number_offer">0</span>
+                        <span class="number_offer cart-items-count"><?= $this->context->cartItems ?></span>
                     </div>
                 </a>
                 <a href="#popup">
@@ -733,7 +741,7 @@ FrontendAsset::register($this);
             modal.style.display = "none";
         }
     }
-
+    $(".info").animate({opacity: 1.0}, 3000).fadeOut("slow")
 
 </script>
 

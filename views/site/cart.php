@@ -1,4 +1,4 @@
-<?php print_r($session);die();?>
+<?php //echo '<pre>';print_r($cartItems);die();?>
 <!-- Body -->
 
 <!-- Like Address -->
@@ -17,7 +17,7 @@
     </div>
 </div>
 
-<div class="container-sm cart_body">
+<div class="container-sm cart_body" style="margin-bottom: 300px;">
     <div class="cart_left_box">
         <div class="delivery">
             <i class="fas fa-truck"></i>
@@ -29,42 +29,47 @@
 
         <h6 style="margin-top: 50px;">ДОСТУПНО ДЛЯ ЗАКАЗА:</h6><br><br>
         <!-- offer div -->
-
-        <!-- 1 offer -->
+        <?php foreach ($cartItems as $cartItem): ?>
         <div class="cart_offer">
             <div class="img_place">
                 <img
                     class="img_place_item"
-                    src="<?=Yii::getAlias('@web'); ?>/images/home_img/carusel_item.jpg"
+                    src="<?=Yii::getAlias('@web').'/'.$cartItem['product']['productImages'][0]['img'] ?>"
                     alt=""
                     width="100%">
             </div>
             <div class="offer_details">
-                <h6 style="font-size: 16px; font-weight: 700;">Z50 Blogger Kit</h6><br><br>
+                <h6 style="font-size: 16px; font-weight: 700;"><?= $cartItem['product']['title'] ?></h6><br><br>
                 <div class="plus_minus_box">
-                    <div class="minus">
+                    <div class="minus cart-minus-quantity" data-id="<?= $cartItem['id'] ?>">
                         <i class="fas fa-minus"></i>
                     </div>
-                    <div class="order_status">1</div>
-                    <div class="plus">
+                    <div class="order_status"><?= $cartItem['quantity'] ?></div>
+                    <div class="plus cart-plus-quantity" data-id="<?= $cartItem['id'] ?>">
                         <i class="fas fa-plus"></i>
                     </div>
                 </div><br><br>
-                <div class="saved_box">
-                    <div class="bank_icon">
-                        <i class="fas fa-piggy-bank"></i>
-                    </div>
-                    <p class="piggy_title">За покупку Вы получаете от 2550 бонусных баллов</p>
-                </div>
+<!--                <div class="saved_box">-->
+<!--                    <div class="bank_icon">-->
+<!--                        <i class="fas fa-piggy-bank"></i>-->
+<!--                    </div>-->
+<!--                    <p class="piggy_title">За покупку Вы получаете от 2550 бонусных баллов</p>-->
+<!--                </div>-->
             </div>
             <div class="price_order">
                 <br><br><br>
-                <h6 class="cart_cost">84 999 ₽</h6>
+                <?php if (count($cartItem['product']['discounts']) > 0): ?>
+                  <h6 class="cart_cost"><?= $cartItem['product']['discounts']['discount_price'] ?></h6>
+                <?php endif; ?>
+                <?php if (count($cartItem['product']['discounts']) == 0):?>
+                  <h6 class="cart_cost"><?= $cartItem['product']['price'] ?></h6>
+                <?php endif; ?>
+
                 <p>за штуку</p><br>
-                <div class="skitka_place">
-                    <i class="fas fa-percent precentt"></i>
-                    <p class="skitka_type">Доступен в кредит</p>
-                </div>
+<!--                <div class="skitka_place">-->
+<!--                    <i class="fas fa-percent precentt"></i>-->
+<!--                    <p class="skitka_type">Доступен в кредит</p>-->
+<!--                </div>-->
 
             </div>
 
@@ -73,12 +78,19 @@
                     <div class="like_btn">
                         <i class="fas fa-heart"></i>
                     </div>
-                    <div class="delete_btn">
+                    <div class="cart_delete_btn delete_btn" data-id="<?= $cartItem['id'] ?>">
                         <i class="fas fa-times"></i>
                     </div>
-                </div><br>84 999 ₽</div>
+                </div><br>
+                <?php if (count($cartItem['product']['discounts']) > 0): ?>
+                 <?= $cartItem['product']['discounts'][0]['discount_price'] ?>
+                <?php endif; ?>
+                <?php if (count($cartItem['product']['discounts']) == 0):?>
+                 <?= $cartItem['product']['price'] ?>
+                <?php endif; ?>
+            </div>
         </div>
-
+        <?php endforeach; ?>
 
 
 
@@ -88,12 +100,12 @@
     </div>
     <div class="cart_right_box">
         <h3 class="cart_right_box_header">ЗАКАЗ</h3>
-        <input type="text" class="cart_input" placeholder="Скидочный купон">
-        <a href="#" class="btn_send">Применить</a>
+<!--        <input type="text" class="cart_input" placeholder="Скидочный купон">-->
+<!--        <a href="#" class="btn_send">Применить</a>-->
         <div class="summ">
             <div class="summ_name">Общая сумма</div>
             <div class="summ_cost">
-                98 989 руб
+                <?= $totalSum ?>
             </div>
         </div>
         <div class="delivery_cart">

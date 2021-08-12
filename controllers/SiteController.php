@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\Cart;
 use app\models\Users;
 use app\models\Carousel;
 use app\models\Categories;
@@ -28,12 +29,18 @@ class SiteController extends Controller
 
     public $layout;
     public $categories;
+    public $cartItems = 0;
 
     public function init()
     {
         parent::init();
         $this->layout = 'site';
         $this->categories = Categories::find()->where(['status' => 1, 'parent_id' => null])->with('categories.categories')->all();
+
+
+        if ($_SESSION['account']) {
+            $this->cartItems = Cart::find()->where(['user_id' => $_SESSION['account']['client_id']])->count();
+        }
     }
 
     public function behaviors()
@@ -281,16 +288,18 @@ class SiteController extends Controller
 
     public function actionCart()
     {
-        $session = Yii::$app->session;
-        $session->open();
-        $cart = [];
-
-        if ($session->has('cart')) {
-            $cart = $session->has('cart');
+        if (!$_SESSION['account']) {
+            Yii::$app->session->setFlash('notification','Вы не авторизованы!');
+            return $this->redirect(['site/index']);
         }
-        return $this->render('cart', [
-            'session' => $session
-        ]);
+
+        $cartItems = Cart::find()->where(['product_id' => $_SESSION['account']['client_id']])->with('product.discounts')->with('product.productImages')->all();
+
+        $totalSum = 0;
+        foreach ($cartItems as $item) {
+            $totalSum += $item['product']['discounts'] ? $item['product']['discounts'][0]['discount_price'] * $item['quantity'] : $item['product']['price'] * $item['quantity'];
+        }
+        return $this->render('cart', ['cartItems' => $cartItems, 'totalSum' => $totalSum]);
     }
 
     public function actionCatalog()

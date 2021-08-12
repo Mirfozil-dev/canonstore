@@ -905,7 +905,7 @@ use yii\helpers\Url;
         var password = $('.sign_up_pass').val()
         var password_confirm = $('.sign_up_pass2').val()
         $.ajax({
-            url: '/web/site/registration',
+            url: '/en/site/registration',
             type: 'GET',
             dataType: 'json',
             data: {
@@ -933,6 +933,13 @@ use yii\helpers\Url;
                     $('.sign_up_name').addClass('input_border')
                     $('.error_email').removeClass('hidden');
                 }
+                if (response.status == 'error_password') {
+                    $('.sign_up_pass').addClass('input_border')
+                    $('.sign_up_pass2').addClass('input_border')
+                }
+                if (response.status == 'error_code') {
+                    $('#country_code').addClass('input_border')
+                }
             },
             error: function (request, status, error) {
                 console.log(error);
@@ -940,3 +947,8 @@ use yii\helpers\Url;
         });
     })
 </script>
+<style>
+  .input_border {
+      border: solid 2px red;
+  }
+</style>
