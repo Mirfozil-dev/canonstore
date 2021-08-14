@@ -387,6 +387,8 @@ class SiteController extends Controller
                     }
                 break;
             }
+        } else {
+            $products = Products::find()->where(['status' => 1, 'category_id' => $category_id])->with(['discounts', 'productImages', 'productOptions'])->all();
         }
 
         if (!empty($request->get())) {
