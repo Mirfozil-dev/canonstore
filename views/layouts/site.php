@@ -41,7 +41,7 @@ FrontendAsset::register($this);
                 <a href="/site/compare">
                     <div class="nav_items">
                         <i class="fas fa-balance-scale" style="color: #000;"></i>
-                        <span class="number_offer">0</span>
+                        <span class="number_offer compare_items_count"><?= $this->context->compareItems ?></span>
                     </div>
                 </a>
                 <a href="/site/wishlist">
@@ -115,7 +115,7 @@ FrontendAsset::register($this);
         </div>
     </div>
 </div>
-<div class="alert position-fixed fade show cart-alert" style="z-index: 999; top:10px;left: 30%; right: 30%" role="alert">
+<div class="alert position-fixed fade show site-alert" style="z-index: 999; top:10px;left: 30%; right: 30%" role="alert">
 </div>
 <?php if(Yii::$app->session->hasFlash('notification')):?>
   <div class="info position-fixed" style="z-index: 999; top:10px;left: 40%; right: 40%">
@@ -219,7 +219,7 @@ FrontendAsset::register($this);
                 <a href="/site/compare">
                     <div class="nav_items">
                         <i class="fas fa-balance-scale" style="color: #000;"></i>
-                        <span class="number_offer">0</span>
+                        <span class="number_offer compare_items_count"><?= $this->context->compareItems ?></span>
                     </div>
                 </a>
                 <a href="/site/wishlist">

@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use app\models\Cart;
+use app\models\Compare;
 use app\models\Reviews;
 use app\models\Users;
 use app\models\Carousel;
@@ -32,6 +33,7 @@ class SiteController extends Controller
     public $layout;
     public $categories;
     public $cartItems = 0;
+    public $compareItems = 0;
 
     public function init()
     {
@@ -42,6 +44,7 @@ class SiteController extends Controller
 
         if ($_SESSION['account']) {
             $this->cartItems = Cart::find()->where(['user_id' => $_SESSION['account']['client_id']])->count();
+            $this->compareItems = Compare::find()->where(['user_id' => $_SESSION['account']['client_id']])->count();
         }
     }
 
@@ -445,7 +448,54 @@ class SiteController extends Controller
 
     public function actionCompare()
     {
-        return $this->render('compare');
+        if (!$_SESSION['account']) {
+            Yii::$app->session->setFlash('notification','Вы не авторизованы!');
+            return $this->redirect(['site/index']);
+        }
+
+        $compareItems = Compare::find()->where(['user_id' => $_SESSION['account']['client_id']])->with('product.discounts')->with('product.productOptions.option.optionGroup')->with('product.productImages')->all();
+        $productOptionGroupIds = [];
+        foreach ($compareItems as $compareItem) {
+            foreach ($compareItem['product']['productOptions'] as $productOption) {
+                $productOptionGroupIds[] = $productOption['option']['optionGroup']['id'];
+            }
+        }
+        $productOptionGroupIds = array_unique($productOptionGroupIds);
+        $productOptionGroups = OptionGroups::find()->where(['id' => $productOptionGroupIds])->all();
+        $optionGroups = [];
+        $i = 0;
+        foreach ($productOptionGroups as $optionGroup) {
+            $optionGroups[$i]['id'] = $optionGroup['id'];
+            $optionGroups[$i]['title_ru'] = $optionGroup['title_ru'];
+            $optionGroups[$i]['title_en'] = $optionGroup['title_en'];
+            $optionGroups[$i]['category_id'] = $optionGroup['category_id'];
+            $optionGroups[$i]['status'] = $optionGroup['status'];
+            foreach ($compareItems as $item) {
+                $productOptions = [];
+                foreach ($item['product']['productOptions'] as $productOption) {
+                    if ($productOption['option']->option_group_id === $optionGroup['id']) {
+                        $productOptions[][] = [
+                            'title_ru' => $productOption['option']['title_ru'],
+                            'title_en' => $productOption['option']['title_en']
+                        ];
+                    }
+                }
+                if ($productOptions === []) {
+                    $productOptions[][] = [
+                        'title_ru' => 'Нет',
+                        'title_en' => 'None',
+                    ];
+                }
+                $optionGroups[$i]['options'][$item['product']['id']] = $productOptions;
+            }
+            $i++;
+        }
+//        echo '<pre>';
+//        print_r($optionGroups);
+//        die();
+
+
+        return $this->render('compare', ['compareItems' => $compareItems, 'lang' => Yii::$app->language, 'optionGroups' => $optionGroups]);
     }
 
     public function actionDelivery()
