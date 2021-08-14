@@ -23,7 +23,8 @@ class FrontendAsset extends AssetBundle
         "./css/owl.carousel.css",
         "./css/owl.theme.default.css",
         "./css/aaaa.css",
-        './css/catalog.css'
+        './css/catalog.css',
+        "./css/product.css"
 
     ];
     public $js = [

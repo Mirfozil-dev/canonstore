@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use app\models\Cart;
+use app\models\Reviews;
 use app\models\Users;
 use app\models\Carousel;
 use app\models\Categories;
@@ -222,6 +223,12 @@ class SiteController extends Controller
                     pre($user->errors);
                 }
             }
+        }
+    }
+
+    public function actionLogin(Request $request) {
+        if (!empty($request->get())) {
+
         }
     }
 
@@ -460,7 +467,7 @@ class SiteController extends Controller
     public function actionProduct()
     {
         $id = Yii::$app->request->get('id');
-        $product = Products::find()->where(['id' => $id, 'status' => 1])->with('category.parent.parent')->with('reviews')->with('productOptions.option.optionGroup')->with('productImages')->with('discounts')->one();
+        $product = Products::find()->where(['id' => $id, 'status' => 1])->with('category.parent.parent')->with('reviews.user')->with('productOptions.option.optionGroup')->with('productImages')->with('discounts')->one();
         $reviewsCount = count($product['reviews']);
         $totalRating = 0;
         $rating = $totalRating == 0 ? 0 : $totalRating/$reviewsCount;
@@ -555,6 +562,26 @@ class SiteController extends Controller
             }
 
             return json_encode($products);
+        }
+    }
+    public function actionAddReview(Request $request) {
+        if (!empty(($request->get())) && isset($_SESSION['account'])) {
+            $rating = $request->get('rate');
+            $text = $request->get('comment');
+            $user_id =  $_SESSION['account']['client_id'];
+            $product_id = $request->get('product_id');
+            $review = new Reviews();
+            $review->user_id = $user_id;
+            $review->rating = $rating;
+            $review->text = $text;
+            $review->product_id = $product_id;
+            if ($review->save()) {
+                Yii::$app->session->setFlash('notification','Отзыв Добавлен!');
+                return $this->redirect('/site/product?id='.$product_id);
+            } else {
+                Yii::$app->session->setFlash('notification','Не удалось добавить отзыв!');
+                return $this->redirect('/site/product?id='.$product_id);
+            }
         }
     }
 }
