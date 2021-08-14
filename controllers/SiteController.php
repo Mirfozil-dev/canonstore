@@ -301,8 +301,7 @@ class SiteController extends Controller
             return $this->redirect(['site/index']);
         }
 
-        $cartItems = Cart::find()->where(['product_id' => $_SESSION['account']['client_id']])->with('product.discounts')->with('product.productImages')->all();
-
+        $cartItems = Cart::find()->where(['user_id' => $_SESSION['account']['client_id']])->with('product.discounts')->with('product.productImages')->all();
         $totalSum = 0;
         foreach ($cartItems as $item) {
             $totalSum += $item['product']['discounts'] ? $item['product']['discounts'][0]['discount_price'] * $item['quantity'] : $item['product']['price'] * $item['quantity'];

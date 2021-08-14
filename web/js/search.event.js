@@ -54,6 +54,7 @@ function searchItem() {
             let skidka = ''
             let instock = ''
             let price = ''
+            let img = ''
             if (product.discount_price) {
               skidka = `<div class="skitka">
                             <div class="skitka_item">В скидке</div>
@@ -65,10 +66,14 @@ function searchItem() {
             if (product.instock === 1) {
               instock = `<div class="offer_status">В наличии</div>`
             }
+            if (product.img) {
+              img = '<img style="width: 100%; object-fit: cover" src="../' + product.img + '" alt="">'
+            } else {
+              img = '<img style="width: 100%; object-fit: cover" src="../images/product_placeholder.png" alt="">'
+            }
             table.innerHTML += `<a href="/site/product?id=` + product.id + `">
                        <div class="img_carusel" style="max-width: 300px">
-                        <img style="width: 100%; object-fit: cover" src="../` + product.img + `" alt="">
-                        ` + skidka + `
+                        ` + img + skidka + `
                         <div class="offer_name">` + product.title + `</div>
                         ` + instock + price + `
                         <a href="/site/product" class="offer_to_cart">В корзину</a>

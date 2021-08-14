@@ -113,7 +113,7 @@
               <i class="far fa-heart"></i>
               <i class="fas fa-heart fasheart"></i>
             </div>
-            <div class="rating-sec-right-div">
+            <div class="rating-sec-right-div add_to_compare" data-id="<?= $product->id ?>">
               <i class="fas fa-balance-scale"></i>
               <div class="speech-bubble1">Сравнение</div>
             </div>

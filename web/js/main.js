@@ -1,6 +1,6 @@
 $('.add_to_cart').on('click', (e) => {
     e.preventDefault()
-    let id = $('.add_to_cart').data('id')
+    let id = e.target.closest('.add_to_cart').getAttribute('data-id')
     $.ajax({
         type: 'GET',
         url: '/en/cart/add',
@@ -95,4 +95,7 @@ $('.cart-plus-quantity').on('click', (e) => {
         }
     })
 })
-
+$('.add_to_compare').on('click', (e) => {
+    e.preventDefault();
+    console.log(true)
+})
