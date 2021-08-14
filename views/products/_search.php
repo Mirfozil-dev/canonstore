@@ -21,7 +21,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'category_id') ?>
 
-    <?= $form->field($model, 'description') ?>
+    <?= $form->field($model, 'description_ru') ?>
 
     <?= $form->field($model, 'video_link') ?>
 

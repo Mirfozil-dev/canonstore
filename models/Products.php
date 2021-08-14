@@ -11,7 +11,8 @@ use yii\behaviors\TimestampBehavior;
  * @property int $id
  * @property string|null $title
  * @property int|null $category_id
- * @property string|null $description
+ * @property string|null $description_ru
+ * @property string|null $description_en
  * @property string|null $video_link
  * @property string|null $price
  * @property int|null $instock
@@ -53,7 +54,7 @@ class Products extends \yii\db\ActiveRecord
     {
         return [
             [['category_id', 'instock', 'status'], 'integer'],
-            [['description'], 'string'],
+            [['description_ru', 'description_en'], 'string'],
             [['title'], 'string', 'max' => 45],
             [['video_link'], 'string', 'max' => 255],
             [['price'], 'string', 'max' => 100],
@@ -70,7 +71,8 @@ class Products extends \yii\db\ActiveRecord
             'id' => 'ID',
             'title' => 'Title',
             'category_id' => 'Category',
-            'description' => 'Description',
+            'description_ru' => 'Description RU',
+            'description_en' => 'Description EN',
             'video_link' => 'Video Link',
             'price' => 'Price',
             'instock' => 'Instock',

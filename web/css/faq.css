@@ -1,0 +1,26 @@
+.faq-container {
+  margin: 0 auto !important;
+  max-width: 1250px !important;
+}
+
+.faq-holder {
+  width: 100%;
+}
+@media screen and (max-width: 1024px) {
+  .faq-holder {
+    width: 100%;
+    padding: 0 40px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .faq-holder {
+    width: 100%;
+    padding: 0 25px;
+  }
+}
+@media screen and (max-width: 440px) {
+  .faq-holder {
+    width: 100%;
+    padding: 0 10px;
+  }
+}

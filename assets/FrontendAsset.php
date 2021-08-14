@@ -23,6 +23,7 @@ class FrontendAsset extends AssetBundle
         "./css/owl.carousel.css",
         "./css/owl.theme.default.css",
         "./css/aaaa.css",
+        './css/catalog.css'
 
     ];
     public $js = [
@@ -37,7 +38,10 @@ class FrontendAsset extends AssetBundle
         "./js/owl.carousel.js",
         "./js/carusel.offers.js",
         "./js/search.event.js",
-        './js/main.js'
+        './js/main.js',
+        './js/active.toggle.js',
+        './js/jquery-ui.js',
+        './js/catalog.js'
     ];
     public $depends = [
         'yii\web\YiiAsset',

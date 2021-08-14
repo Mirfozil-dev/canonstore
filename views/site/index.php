@@ -132,7 +132,7 @@ use yii\helpers\Url;
                     <img style="width: 100%;height: 100%; object-fit: cover" src="<?=Yii::getAlias('@web').'/'.$discountProduct['product']['productImages'][0]['img'] ?>" alt="">
                   <?php endif; ?>
                   <?php if (count($discountProduct['product']['productImages']) == 0 || $discountProduct['product']['productImages'] == null): ?>
-                    <img src="<?=Yii::getAlias('@web');?>/images/product_placeholder.jpg" alt="">
+                    <img src="<?=Yii::getAlias('@web');?>/images/product_placeholder.png" alt="">
                   <?php endif; ?>
               </a>
               <div class="skitka mt-2">
@@ -233,7 +233,7 @@ use yii\helpers\Url;
                     <img style="width: 100%;height: 100%; object-fit: cover" src="<?=Yii::getAlias('@web').'/'.$newProduct['productImages'][0]['img'] ?>" alt="">
                   <?php endif; ?>
                   <?php if (count($newProduct['productImages']) == 0 || $newProduct['productImages'] == null): ?>
-                    <img src="<?=Yii::getAlias('@web');?>/images/product_placeholder.jpg" alt="">
+                    <img src="<?=Yii::getAlias('@web');?>/images/product_placeholder.png" alt="">
                   <?php endif; ?>
               </a>
                 <?php if (count($newProduct['discounts']) > 0): ?>
@@ -354,7 +354,7 @@ use yii\helpers\Url;
                         <img style="width: 100%;height: 100%; object-fit: cover" src="<?=Yii::getAlias('@web').'/'.$product['productImages'][0]['img']; ?>" alt="">
                       <?php endif; ?>
                       <?php if (count($product['productImages']) == 0 || $product['productImages'] == null): ?>
-                        <img style="width: 100%;height: 100%; object-fit: cover" src="<?=Yii::getAlias('@web');?>/images/product_placeholder.jpg" alt="">
+                        <img style="width: 100%;height: 100%; object-fit: cover" src="<?=Yii::getAlias('@web');?>/images/product_placeholder.png" alt="">
                       <?php endif; ?>
                   </a>
                   <div class="skitka">

@@ -79,7 +79,7 @@ FrontendAsset::register($this);
                       foreach ($this->context->categories as $category) {
                           ?>
                         <div class="drop_down_catalog_item" id="camera_navbar">
-                          <i class="<?= $category['icon'] ?>" width="16px"></i><a class="href_catalog" href="/site/catalog/<?= $category['id'] ?>"><?= $category['title_ru'] ?></a>
+                          <i class="<?= $category['icon'] ?>" width="16px"></i><a class="href_catalog" href="/site/catalog?category_id=<?= $category['id'] ?>"><?= $category['title_ru'] ?></a>
                           <img
                               class="angle-right"
                               src="<?=Yii::getAlias('@web'); ?>/images/line-angle-right.png"
@@ -92,11 +92,11 @@ FrontendAsset::register($this);
                             foreach ($category['categories'] as $subcategory) {
                                 ?>
                                   <div class="drop_camera_item_scroll col-md-5">
-                                    <h6 class="camera_header_scroll"><a class="href_catalog1" href="/site/catalog/<?= $subcategory['id'] ?>"><?= $subcategory['title_ru'] ?></a></h6>
+                                    <h6 class="camera_header_scroll"><a class="href_catalog1" href="/site/catalog?category_id=<?= $subcategory['id'] ?>"><?= $subcategory['title_ru'] ?></a></h6>
                                     <?php
                                     foreach ($subcategory['categories'] as $seccategory) {
                                         ?>
-                                          <p><a class="href_catalog1" href="/site/catalog/<?= $seccategory['id'] ?>"><?= $seccategory['title_ru'] ?></a></p>
+                                          <p><a class="href_catalog1" href="/site/catalog?category_id=<?= $seccategory['id'] ?>"><?= $seccategory['title_ru'] ?></a></p>
                                         <?php
                                       }
                                     ?>
@@ -177,7 +177,7 @@ FrontendAsset::register($this);
                         alt=""
                         width="16px"
                         style="margin-right: 14px;">
-                    <a class="href_catalog" href="/site/catalog/<?= $category['id'] ?>"><?= $category['title_ru'] ?></a>
+                    <a class="href_catalog" href="/site/catalog?category_id=<?= $category['id'] ?>"><?= $category['title_ru'] ?></a>
                   </div>
                 <?php
               }
@@ -263,7 +263,7 @@ FrontendAsset::register($this);
                     foreach ($this->context->categories as $category) {
                         ?>
                       <div class="dropDownItem2">
-                        <i class="<?= $category['icon'] ?>" style="padding-right: 5px;margin-bottom: 3px;"></i><a class="href_catalog" href="/site/catalog/<?= $category['id'] ?>"><?= $category['title_ru'] ?></a>
+                        <i class="<?= $category['icon'] ?>" style="padding-right: 5px;margin-bottom: 3px;"></i><a class="href_catalog" href="/site/catalog?category_id=<?= $category['id'] ?>"><?= $category['title_ru'] ?></a>
                         <img
                             src="<?=Yii::getAlias('@web'); ?>/images/line-angle-right.png"
                             alt=""
@@ -274,11 +274,11 @@ FrontendAsset::register($this);
                             foreach ($category['categories'] as $subcategory) {
                                 ?>
                               <div class="drop_camera_item col-md-6">
-                                <h6 class="camera_header"><a class="href_catalog1" href="/site/catalog/<?= $subcategory['id'] ?>"><?= $subcategory['title_ru'] ?></a></h6>
+                                <h6 class="camera_header"><a class="href_catalog1" href="/site/catalog?category_id=<?= $subcategory['id'] ?>"><?= $subcategory['title_ru'] ?></a></h6>
                                   <?php
                                   foreach ($subcategory['categories'] as $seccategory) {
                                       ?>
-                                    <p><a class="href_catalog1" href="/site/catalog/<?= $seccategory['id'] ?>"><?= $seccategory['title_ru'] ?></a></p>
+                                    <p><a class="href_catalog1" href="/site/catalog?category_id=<?= $seccategory['id'] ?>"><?= $seccategory['title_ru'] ?></a></p>
                                       <?php
                                   }
                                   ?>

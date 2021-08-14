@@ -17,7 +17,9 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'category_id')->dropDownList(ArrayHelper::map($categories,'id','title_ru'), ['prompt' => 'Choose Category']) ?>
 
-    <?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
+    <?= $form->field($model, 'description_ru')->textarea(['rows' => 6]) ?>
+
+    <?= $form->field($model, 'description_en')->textarea(['rows' => 6]) ?>
 
     <?= $form->field($model, 'video_link')->textInput(['maxlength' => true]) ?>
 
