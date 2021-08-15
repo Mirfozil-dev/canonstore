@@ -348,7 +348,7 @@ FrontendAsset::register($this);
                     alt=""
                     width="30px">
             <div class="row">
-                <div class="col-md-6 contact-left" style="border-right: solid 1px #ccc;">
+                <div class="col-md-12 contact-left">
                     <div class="contact-left-header">Войти на сайт</div>
                     <input style="margin-bottom: 0 !important" type="email" name="" id="" placeholder="E-mail*" class="contact-input sign_in_email">
                     <small class="error_email text-danger hidden">Поле не может быть пустым!</small>
@@ -370,12 +370,6 @@ FrontendAsset::register($this);
                         <span class="forget-password" id="forget-password">Восстановить пароль</span><span class="sign-up" id="sign-up">Зарегистрироваться</span>
                     </div>
 
-                </div>
-                <div class="col-md-6 contact-right">
-                    <div class="contact-right-header">Единая авторизация Nikon</div>
-                    <div class="contact-right-title">Для вашего удобства мы разработали систему единой авторизации на сайтах:</div>
-                    <div class="img_contact" style="margin: 10px;"><img src="<?=Yii::getAlias('@web'); ?>/images/pop up/popup.png" alt="" width="100%"></div>
-                    <div class="contact-left-footer">Теперь вход в личный кабинет возможен под одним и тем же паролем.</div>
                 </div>
             </div>
         </div>
