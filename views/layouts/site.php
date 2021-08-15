@@ -220,13 +220,13 @@ FrontendAsset::register($this);
                         <span class="number_offer">0</span>
                     </div>
                 </a>
-                <a href="/site/wishlist">
+                <a href="/web/site/wishlist">
                     <div class="nav_items">
                         <img src="<?=Yii::getAlias('@web'); ?>/images/heart.png" alt="" width="32px">
-                        <span class="number_offer">0</span>
+                        <span class="number_offer wishlist_count">0</span>
                     </div>
                 </a>
-                <a href="/site/cart">
+                <a href="/web/site/cart">
                     <div class="nav_items_cart">
                         <img src="<?=Yii::getAlias('@web'); ?>/images/cart.png" alt="" width="30px">
                         <span class="number_offer cart-items-count"><?= $this->context->cartItems ?></span>
@@ -239,9 +239,11 @@ FrontendAsset::register($this);
                     <?php
                         if(isset($_SESSION['account']) and !empty($_SESSION['account'])){
                             echo "<h2>".$_SESSION['account']['name']."</h2>";
+                            echo "<a href='#' id='exit'><i class='fas fa-sign-out-alt fa-3x'></i></a>";
                         }
                     ?>
                 </a>
+
 
                 <a href="#click_navbar">
                     <div class="nav_items_bar1">
@@ -337,17 +339,22 @@ FrontendAsset::register($this);
             <div class="row">
                 <div class="col-md-6 contact-left" style="border-right: solid 1px #ccc;">
                     <div class="contact-left-header">Войти на сайт</div>
-                    <input type="email" name="" id="" placeholder="E-mail*" class="contact-input">
+                    <input style="margin-bottom: 0 !important" type="email" name="" id="" placeholder="E-mail*" class="contact-input sign_in_email">
+                    <small class="error_email text-danger hidden">Поле не может быть пустым!</small>
+                    <small class="error_email_format text-danger hidden">Неверный почта!</small>
                     <input
+                        style="margin-top: 10px !important; margin-bottom: 0 !important"
                         type="password"
                         name=""
                         id=""
                         placeholder="Пароль*"
-                        class="contact-input">
-                    <input type="checkbox" name="" id="" class="contact-checkbox">
+                        class="contact-input sign_in_password">
+                    <small class="error_password text-danger hidden">Поле не может быть пустым!</small><br>
+                    <small class="user_fail hidden text-danger">Почта или пароль неверный!</small><br>
+                    <input type="checkbox" name="" id="checkbox1" class="contact-checkbox">
                     <span class="checkeds">
                                 Я принимаю условия Политики о конфиденциальности.</span>
-                    <a href="#" class="popup-submit">Войти</a><br>
+                    <button disabled class="popup-submit sign_in_button">Войти</button><br>
                     <div class="logout">
                         <span class="forget-password" id="forget-password">Восстановить пароль</span><span class="sign-up" id="sign-up">Зарегистрироваться</span>
                     </div>
@@ -662,6 +669,15 @@ FrontendAsset::register($this);
     </div>
 
 </div>
+
+<style>
+    .border_input {
+        border: solid 1px red;
+    }
+    .hidden {
+        display: none;
+    }
+</style>
 
 <!-------------------------------- End of  Modal ----------------------------------->
 
