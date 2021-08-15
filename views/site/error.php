@@ -9,7 +9,8 @@ use yii\helpers\Html;
 
 $this->title = $name;
 ?>
-<section class="content container mb-5" style="margin-top: 150px;">
+<div style="height: 180px;"></div>
+<section class="content container mb-5" style="">
 
     <div class="error-page">
         <h2 class="headline text-info"><i class="fa fa-warning text-yellow"></i></h2>

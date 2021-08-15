@@ -20,8 +20,8 @@ class FrontendAsset extends AssetBundle
         "./css/all.min.css",
         "./css/main.css",
         "./scss/main.css",
-        "./css/owl.carousel.css",
-        "./css/owl.theme.default.css",
+//        "./css/owl.carousel.css",
+//        "./css/owl.theme.default.css",
         "./css/aaaa.css",
         './css/catalog.css',
         "./css/product.css"

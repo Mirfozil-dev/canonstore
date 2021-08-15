@@ -2,8 +2,9 @@
 <!-- Body -->
 
 <!-- Like Address -->
-<div class="container">
-    <div class="scale" style="position: relative; top: 180px;">
+<div style="height: 180px;"></div>
+<div class="container-sm">
+    <div class="scale" style="position: relative;">
         <div class="product-wrapper">
             <ul class="breadcrumbs-list">
                 <li>
@@ -17,7 +18,7 @@
     </div>
 </div>
 
-<div class="container-sm cart_body" style="margin-bottom: 300px;">
+<div class="container-sm cart_body" style="margin-bottom: 300px;top:0;">
     <div class="cart_left_box">
         <div class="delivery">
             <i class="fas fa-truck"></i>

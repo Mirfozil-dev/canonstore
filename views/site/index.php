@@ -127,7 +127,7 @@ use yii\helpers\Url;
     <div class="container_carusel">
       <div class="img_container_carusel" id="images_carusel">
           <?php foreach ($discountProducts as $discountProduct): ?>
-            <div style="width: 300px" class="img_carusel">
+            <div style="width: 300px; margin-right: 45px;" class="img_carusel">
               <a href="/site/product?id=<?= $discountProduct['product']['id'] ?>">
                   <?php if (count($discountProduct['product']['productImages']) > 0): ?>
                     <img style="width: 100%;height: 260px; object-fit: cover" src="<?=Yii::getAlias('@web').'/'.$discountProduct['product']['productImages'][0]['img'] ?>" alt="">
@@ -228,7 +228,7 @@ use yii\helpers\Url;
     <div class="container_carusel">
       <div class="img_container_carusel" id="images_carusel">
           <?php foreach ($newProducts as $newProduct): ?>
-            <div style="width: 300px" class="img_carusel">
+            <div style="width: 300px; margin-right: 45px;" class="img_carusel">
               <a href="/site/product?id=<?= $newProduct['id'] ?>">
                   <?php if (count($newProduct['productImages']) > 0): ?>
                     <img style="width: 100%;height: 260px; object-fit: cover" src="<?=Yii::getAlias('@web').'/'.$newProduct['productImages'][0]['img'] ?>" alt="">
@@ -349,7 +349,7 @@ use yii\helpers\Url;
         <div class="container_carusel">
           <div class="img_container_carusel" id="images_carusel">
               <?php foreach ($productCarousel['category']['products'] as $product): ?>
-                <div style="width: 300px" class="img_carusel">
+                <div style="width: 300px; margin-right: 45px;" class="img_carusel">
                   <a href="/site/product?id=<?= $product['id'] ?>">
                       <?php if (count($product['productImages']) > 0): ?>
                         <img style="width: 100%;height: 260px; object-fit: cover" src="<?=Yii::getAlias('@web').'/'.$product['productImages'][0]['img']; ?>" alt="">

@@ -1,4 +1,5 @@
 <!------------------- beginning of body --------------------->
+<div style="height: 180px;"></div>
 <div class="news">
   <div class="container">
     <div class="news-wrapper">
@@ -43,7 +44,7 @@
         <div class="contacts-section">
           <div class="ns-content-width">
             <div class="contacts-section__holder">
-              <div class="contacts-section__left">
+              <div style="padding-left: 20px;" class="contacts-section__left">
                 <div class="contacts-section__title">Фирменный магазин Canon</div>
                 <div class="contacts-section__list contacts-section__column same-height-left" style="height: 444px;">
                   <div class="contacts-section__list-holder">
@@ -101,7 +102,7 @@
                   </div>
                 </div>
               </div>
-              <div class="contacts-section__right">
+              <div style="padding-right: 20px; class="contacts-section__right">
                 <div class="contacts-section__title contacts-section__title1">
                   Схема проезда
                 </div>

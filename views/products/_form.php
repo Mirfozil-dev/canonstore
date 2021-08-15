@@ -1,5 +1,6 @@
 <?php
 
+use vova07\imperavi\Widget;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
@@ -17,9 +18,25 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'category_id')->dropDownList(ArrayHelper::map($categories,'id','title_ru'), ['prompt' => 'Choose Category']) ?>
 
-    <?= $form->field($model, 'description_ru')->textarea(['rows' => 6]) ?>
+    <?= $form->field($model, 'description_ru')->widget(Widget::className(), [
+        'settings' => [
+            'lang' => 'ru',
+            'minHeight' => 200,
+            'plugins' => [
+                'fullscreen',
+            ],
+        ],
+    ]); ?>
 
-    <?= $form->field($model, 'description_en')->textarea(['rows' => 6]) ?>
+    <?= $form->field($model, 'description_en')->widget(Widget::className(), [
+        'settings' => [
+            'lang' => 'en',
+            'minHeight' => 200,
+            'plugins' => [
+                'fullscreen',
+            ],
+        ],
+    ]); ?>
 
     <?= $form->field($model, 'video_link')->textInput(['maxlength' => true]) ?>
 

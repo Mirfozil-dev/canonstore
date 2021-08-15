@@ -1,4 +1,5 @@
 <!------------------- beginning of body --------------------->
+<div style="height: 180px;"></div>
 <div class="news">
     <div class="container">
         <div class="news-wrapper">
@@ -27,7 +28,25 @@
                 </ul>
             </div>
 
-
+            <?php if ($news && count($news) > 0): ?>
+              <div class="container-xl">
+                <div class="row" style="margin-left: 0px; padding: 0;" >
+                    <?php foreach ($news as $item): ?>
+                      <div class="col-sm-4">
+                        <div class="photo_img" style="background-image: url(<?=Yii::getAlias('@web').'/'.$item['img'] ?>);">
+                          <span class="photo_img_after1">
+                              <span class="tangle_top"></span>
+                              <br>
+                              <p><br><br>
+                                  <?= $item['title'] ?></p>
+                              <span class="tangle_bottom"></span>
+                          </span>
+                        </div>
+                      </div>
+                    <?php endforeach; ?>
+                </div>
+              </div><br><br><br><br>
+            <?php endif; ?>
 
         </div>
     </div>

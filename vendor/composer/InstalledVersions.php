@@ -852,6 +852,15 @@ private static $installed = array (
       ),
       'reference' => '75a63c33a8577608444246075ea0af0d052e452a',
     ),
+    'vova07/yii2-imperavi-widget' => 
+    array (
+      'pretty_version' => '2.0.11',
+      'version' => '2.0.11.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'c4fe4a9f64a4c53d9686c80b8744e2c1366184e5',
+    ),
     'webmozart/assert' => 
     array (
       'pretty_version' => '1.10.0',

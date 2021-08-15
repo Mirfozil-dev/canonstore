@@ -510,7 +510,8 @@ class SiteController extends Controller
 
     public function actionNews()
     {
-        return $this->render('news');
+        $news = News::find()->orderBy('updated_at DESC')->all();
+        return $this->render('news', ['news' => $news]);
     }
 
     public function actionProduct()
@@ -632,5 +633,8 @@ class SiteController extends Controller
                 return $this->redirect('/site/product?id='.$product_id);
             }
         }
+    }
+    public function actionOrder() {
+        return $this->render('order');
     }
 }
