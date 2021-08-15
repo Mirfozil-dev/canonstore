@@ -231,7 +231,6 @@ class SiteController extends Controller
         }
     }
 
-<<<<<<< HEAD
     public function actionSignInUser()
     {
         if (Yii::$app->request->isAjax) {
@@ -289,17 +288,12 @@ class SiteController extends Controller
                 unset($_SESSION['account']);
 
                 return ['status' => 'success'];
-            }
-            else{
+            } else {
                 return ['status' => 'failure'];
             }
-=======
-    public function actionLogin(Request $request) {
-        if (!empty($request->get())) {
->>>>>>> 410530ac678f10d7b95761338e8ca7d1f1299418
-
         }
     }
+
 
 //    /**
 //     * Login action.

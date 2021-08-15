@@ -224,13 +224,10 @@ FrontendAsset::register($this);
                 </a>
                 <a href="/web/site/wishlist">
                     <div class="nav_items">
-<<<<<<< HEAD
                         <img src="<?=Yii::getAlias('@web'); ?>/images/heart.png" alt="" width="32px">
                         <span class="number_offer wishlist_count">0</span>
-=======
                         <i class="far fa-heart" style="color: #000; font-size: 36px;"></i>
                         <span class="number_offer">0</span>
->>>>>>> 410530ac678f10d7b95761338e8ca7d1f1299418
                     </div>
                 </a>
                 <a href="/web/site/cart">
@@ -333,17 +330,16 @@ FrontendAsset::register($this);
 
 <!-- Popup Contact -->
 
-<<<<<<< HEAD
 <div class="container-fluit">
     <div class="popup" id="popup">
 
         <div class="popup-content">
             <img
-                class="close_popup"
-                id="close_popup"
-                src="<?=Yii::getAlias('@web'); ?>/images/close.png"
-                alt=""
-                width="30px">
+                    class="close_popup"
+                    id="close_popup"
+                    src="<?=Yii::getAlias('@web'); ?>/images/close.png"
+                    alt=""
+                    width="30px">
             <div class="row">
                 <div class="col-md-6 contact-left" style="border-right: solid 1px #ccc;">
                     <div class="contact-left-header">Войти на сайт</div>
@@ -351,12 +347,12 @@ FrontendAsset::register($this);
                     <small class="error_email text-danger hidden">Поле не может быть пустым!</small>
                     <small class="error_email_format text-danger hidden">Неверный почта!</small>
                     <input
-                        style="margin-top: 10px !important; margin-bottom: 0 !important"
-                        type="password"
-                        name=""
-                        id=""
-                        placeholder="Пароль*"
-                        class="contact-input sign_in_password">
+                            style="margin-top: 10px !important; margin-bottom: 0 !important"
+                            type="password"
+                            name=""
+                            id=""
+                            placeholder="Пароль*"
+                            class="contact-input sign_in_password">
                     <small class="error_password text-danger hidden">Поле не может быть пустым!</small><br>
                     <small class="user_fail hidden text-danger">Почта или пароль неверный!</small><br>
                     <input type="checkbox" name="" id="checkbox1" class="contact-checkbox">
@@ -366,9 +362,19 @@ FrontendAsset::register($this);
                     <div class="logout">
                         <span class="forget-password" id="forget-password">Восстановить пароль</span><span class="sign-up" id="sign-up">Зарегистрироваться</span>
                     </div>
-=======
+
+                </div>
+                <div class="col-md-6 contact-right">
+                    <div class="contact-right-header">Единая авторизация Nikon</div>
+                    <div class="contact-right-title">Для вашего удобства мы разработали систему единой авторизации на сайтах:</div>
+                    <div class="img_contact" style="margin: 10px;"><img src="<?=Yii::getAlias('@web'); ?>/images/pop up/popup.png" alt="" width="100%"></div>
+                    <div class="contact-left-footer">Теперь вход в личный кабинет возможен под одним и тем же паролем.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <!-- Popup Contact -->
->>>>>>> 410530ac678f10d7b95761338e8ca7d1f1299418
 
 <div class="container-fluit">
   <div class="popup" id="popup">
