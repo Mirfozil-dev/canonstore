@@ -113,7 +113,7 @@
               <i class="far fa-heart"></i>
               <i class="fas fa-heart fasheart"></i>
             </div>
-            <div class="rating-sec-right-div">
+            <div class="rating-sec-right-div add_to_compare" data-id="<?= $product->id ?>">
               <i class="fas fa-balance-scale"></i>
               <div class="speech-bubble1">Сравнение</div>
             </div>
@@ -529,27 +529,132 @@
   </div>
 
   <!-- Discount End -->
-
   <div class="productRatingWrapper" id="productRatingWrapper">
     <div class="productRating">
       <div class="productRating1">
-        <div class="productRating1Heading">ОТЗЫВЫ</div>
-        <div class="productRating1StarDiv">
-          <div class="productRating1Stars">
-            <i class="far fa-star"></i>
-            <i class="far fa-star"></i>
-            <i class="far fa-star"></i>
-            <i class="far fa-star"></i>
-            <i class="far fa-star"></i>
+        <div class="productRating1Heading m-0">ОТЗЫВЫ</div>
+<!--        <div class="productRating1StarDiv">-->
+<!--          <div class="productRating1Stars">-->
+<!--            <i class="far fa-star"></i>-->
+<!--            <i class="far fa-star"></i>-->
+<!--            <i class="far fa-star"></i>-->
+<!--            <i class="far fa-star"></i>-->
+<!--            <i class="far fa-star"></i>-->
+<!--          </div>-->
+<!--        </div>-->
+      </div>
+      <div class="productRating2"></div>
+      <?php if (isset($_SESSION['account'])): ?>
+        <div class="productRating3">
+          <a class="productRatingBtn" href='#openModal-about'>Оставить отзыв</a>
+        </div>
+      <?php endif; ?>
+    </div>
+  </div>
+
+  <!-- ------------------------ Beginning of Rating Section ---------------------------- -->
+    <?php if (isset($_SESSION['account'])): ?>
+      <div id="openModal-about" class="modalDialogRating">
+    <div>
+      <a href="#close" title="Close" class="close">&times;</a>
+      <div class="rating_class_title">Please rate us!</div>
+      <!-- ------- POST --------- -->
+      <div class="post">
+        <div class="text">
+          Thanks for rating us!
+        </div>
+        <div class="edit">EDIT</div>
+      </div>
+      <!-- ------- POST --------- -->
+      <!-- ------------------ modal content ------------------------ -->
+
+      <form id="review_form" action="/site/add-review" method="get">
+        <input type="text" hidden name="product_id" value="<?= $product->id ?>">
+        <div class="containerRatingModal">
+          <div class="star-widget">
+            <div class="input-div"></div>
+
+            <input form="review_form" type="radio" name="rate" id="rate-5" value="5">
+            <label for="rate-5" class="fas fa-star"></label>
+            <input form="review_form" type="radio" name="rate" id="rate-4"  value="4">
+            <label for="rate-4" class="fas fa-star"></label>
+            <input form="review_form" type="radio" name="rate" id="rate-3"  value="3">
+            <label for="rate-3" class="fas fa-star"></label>
+            <input form="review_form" type="radio" name="rate" id="rate-2"  value="2">
+            <label for="rate-2" class="fas fa-star"></label>
+            <input form="review_form" type="radio" name="rate" id="rate-1"  value="1">
+            <label for="rate-1" class="fas fa-star"></label>
           </div>
-          <div class="productRating1Link"><a href="">Оставить отзыв</a></div>
+        </div>
+        <textarea class="form-control w-100" style="resize: none;height: 100px" placeholder="Describe your experience.." name="comment" cols="30"></textarea>
+        <div class="rating-btn">
+          <button type="submit">Post</button>
+        </div>
+      </form>
+      <!-- ------------------ modal content ------------------------ -->
+    </div>
+  </div>
+    <?php endif; ?>
+
+  <!-- ------------------------------- Comentary ------------------------------- -->
+  <div class="comentaryContainer">
+    <?php foreach ($product->reviews as $review):?>
+      <div class="comentaryTextDiv">
+        <div class="comentaryTextFirst">
+          <div class="comentaryTextFirstTitle"><?= $review->user->name ?></div>
+          <div class="comentaryTextSpaceBeetwen">
+            <div class="cometaryIconDiv">
+                <?php if ($review->rating == 5):?>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                <? endif; ?>
+                <?php if($review->rating == 4):?>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="far fa-star"></i>
+                <? endif; ?>
+                <?php if($review->rating == 3):?>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="far fa-star"></i>
+                  <i class="far fa-star"></i>
+                <? endif; ?>
+                <?php if($review->rating == 2):?>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="far fa-star"></i>
+                  <i class="far fa-star"></i>
+                  <i class="far fa-star"></i>
+                <? endif; ?>
+                <?php if($review->rating == 1):?>
+                  <i class="fas fa-star"></i>
+                  <i class="far fa-star"></i>
+                  <i class="far fa-star"></i>
+                  <i class="far fa-star"></i>
+                  <i class="far fa-star"></i>
+                <? endif; ?>
+                <?php if($review->rating == 0):?>
+                  <i class="far fa-star"></i>
+                  <i class="far fa-star"></i>
+                  <i class="far fa-star"></i>
+                  <i class="far fa-star"></i>
+                  <i class="far fa-star"></i>
+                <? endif; ?>
+            </div>
+            <div class="comentaryData"><?= gmdate("Y-m-d H:i:s", $review->created_at); ?></div>
+          </div>
+        </div>
+        <div class="comentaryTextSecond">
+        <?= $review->text ?>
         </div>
       </div>
-      <div class="productRating2">Пока нет отзывов. Вы можете добавить свой.</div>
-      <div class="productRating3">
-        <div class="productRatingBtn">Оставить отзыв</div>
-      </div>
-    </div>
+    <?php endforeach; ?>
   </div>
 
 </div>
@@ -586,4 +691,26 @@
             productVideoDetailTAble.style.height = '260px';
         }
     });
+
+    const ratingBtn = document.querySelector("button");
+    const post = document.querySelector(".post");
+    const widget = document.querySelector(".star-widget");
+    const editBtn = document.querySelector(".edit");
+    const firstTitle = document.getElementsByClassName("rating_class_title");
+
+    ratingBtn.onclick = () => {
+        if (rating_class_title.style.display = "block") {
+
+        } else {
+
+        }
+        widget.style.display = "none"
+        post.style.display = "block";
+
+        editBtn.onclick = () => {
+            widget.style.display = "block";
+            post.style.display = "none"
+        }
+        return false;
+    }
 </script>

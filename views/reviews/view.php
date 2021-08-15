@@ -33,6 +33,14 @@ $this->params['breadcrumbs'][] = $this->title;
             'user_id',
             'rating',
             'text:ntext',
+            [
+                'attribute' => 'created_at',
+                'value' => gmdate("Y-m-d H:i:s", $model->created_at),
+            ],
+            [
+                'attribute' => 'updated_at',
+                'value' => gmdate("Y-m-d H:i:s", $model->updated_at),
+            ],
         ],
     ]) ?>
 

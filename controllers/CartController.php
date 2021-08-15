@@ -45,7 +45,9 @@ class CartController extends \yii\web\Controller
         $id = Yii::$app->request->get('id');
         if (isset($id)) {
             $cartItem = Cart::findOne($id);
-            $cartItem->quantity -= 1;
+            if ($cartItem->quantity > 1) {
+                $cartItem->quantity -= 1;
+            }
             $cartItem->save();
             return json_encode(['status' => 'success']);
         }

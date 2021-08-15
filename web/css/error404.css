@@ -1,0 +1,89 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.error404-wrapper {
+  display: flex;
+  /* height: 100vh; */
+  width: 100%;
+  justify-content: center;
+}
+
+.error404-container {
+  width: 400px;
+  padding-top: 100px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+.oops {
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.error404-container h1 {
+  font-size: 180px;
+  font-weight: 800;
+  line-height: 150px;
+}
+
+.error404-container h5 {
+  font-size: 18px;
+  width: 400px;
+  text-align: center;
+  text-transform: capitalize;
+  font-weight: 800;
+  line-height: 25px;
+}
+
+.error404-container a button {
+  font-size: 18px;
+  width: 240px;
+  padding: 10px;
+  text-align: center;
+  color: #ef2c34;
+  margin-top: 30px;
+  cursor: pointer;
+  background-color: #fff;
+  border-radius: 10px;
+  border: 2px solid #ef2c34;
+  text-transform: capitalize;
+  font-weight: 700;
+  line-height: 25px;
+  transition: all ease .4s;
+}
+
+.error404-container a button:hover {
+  color: #fff;
+  background-color: #ef2c34;
+  transition: all ease .4s;
+}
+
+@media screen and (max-width: 600px) {
+  .oops {
+    font-weight: 600;
+    font-size: 14px;
+  }
+  .error404-container h1 {
+    font-size: 100px;
+    font-weight: 600;
+    line-height: 110px;
+  }
+  
+  .error404-container h5 {
+    font-size: 16px;
+    width: 330px;
+    line-height: 25px;
+  }
+  
+  .error404-container a button {
+    font-size: 14px;
+    width: 160px;
+    padding: 10px;
+    font-weight: 600;
+    line-height: 20px;
+  }
+}

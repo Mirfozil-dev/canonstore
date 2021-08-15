@@ -1,6 +1,6 @@
 $('.add_to_cart').on('click', (e) => {
     e.preventDefault()
-    let id = $('.add_to_cart').data('id')
+    let id = e.target.closest('.add_to_cart').getAttribute('data-id')
     $.ajax({
         type: 'GET',
         url: '/en/cart/add',
@@ -11,19 +11,19 @@ $('.add_to_cart').on('click', (e) => {
         },
         success: (res) => {
             if (JSON.parse(res).status === 'success') {
-                $('.cart-alert').addClass('alert-success in')
-                $('.cart-alert').html('Товар добавлен в корзину')
+                $('.site-alert').addClass('alert-success in')
+                $('.site-alert').html('Товар добавлен в корзину')
+                $('.cart-items-count').html(JSON.parse(res).quantity)
                 setTimeout(() => {
-                    $('.cart-alert').removeClass('alert-success in')
-                    $('.cart-items-count').html(JSON.parse(res).quantity)
+                    $('.site-alert').removeClass('alert-success in')
                 },1500)
                 $('.cart-items-count').text()
             } else if (JSON.parse(res).status === 'unauthorized') {
-                $('.cart-alert').addClass('alert-dander in')
-                $('.cart-alert').html('Вы не авторизованы!')
+                $('.site-alert').addClass('alert-dander in')
+                $('.site-alert').html('Вы не авторизованы!')
                 setTimeout(() => {
-                    $('.cart-alert').removeClass('alert-dander in')
-                    $('.cart-alert').html('')
+                    $('.site-alert').removeClass('alert-dander in')
+                    $('.site-alert').html('')
                 },1500)
             }
         },
@@ -34,7 +34,7 @@ $('.add_to_cart').on('click', (e) => {
 })
 $('.cart_delete_btn').on('click', (e) => {
     e.preventDefault()
-    let id = $('.cart_delete_btn').data('id')
+    let id = e.target.closest('.cart_delete_btn').getAttribute('data-id')
     $.ajax({
         type: 'GET',
         url: '/en/cart/delete',
@@ -55,7 +55,7 @@ $('.cart_delete_btn').on('click', (e) => {
 })
 $('.cart-minus-quantity').on('click', (e) => {
     e.preventDefault()
-    let id = $('.cart-minus-quantity').data('id')
+    let id = e.target.closest('.cart-minus-quantity').getAttribute('data-id')
     $.ajax({
         type: 'GET',
         url: '/en/cart/minus-quantity',
@@ -76,7 +76,7 @@ $('.cart-minus-quantity').on('click', (e) => {
 })
 $('.cart-plus-quantity').on('click', (e) => {
     e.preventDefault()
-    let id = $('.cart-plus-quantity').data('id')
+    let id = e.target.closest('.cart-plus-quantity').getAttribute('data-id')
     $.ajax({
         type: 'GET',
         url: '/en/cart/plus-quantity',
@@ -95,4 +95,60 @@ $('.cart-plus-quantity').on('click', (e) => {
         }
     })
 })
+$('.add_to_compare').on('click', (e) => {
+    e.preventDefault();
+    let id = e.target.closest('.add_to_compare').getAttribute('data-id')
+    $.ajax({
+        type: 'GET',
+        url: '/en/compare/add',
+        contentType: "application/json",
+        data: {
+            id: id,
+        },
+        success: (res) => {
+            if (JSON.parse(res).status === 'success') {
+                $('.site-alert').addClass('alert-success in')
+                $('.site-alert').html('Товар добавлен в сравнение')
+                $('.compare_items_count').html(JSON.parse(res).quantity)
+                console.log(JSON.parse(res).quantity)
+                setTimeout(() => {
+                    $('.site-alert').removeClass('alert-success in')
+                },1500)
+                $('.compare_items_count').text()
+            } else if (JSON.parse(res).status === 'unauthorized') {
+                $('.site-alert').addClass('alert-dander in')
+                $('.site-alert').html('Вы не авторизованы!')
+                setTimeout(() => {
+                    $('.site-alert').removeClass('alert-dander in')
+                    $('.site-alert').html('')
+                },1500)
+            }
+        },
+        error: (res) => {
+            console.log('error', res)
+        }
+    })
+})
 
+$('.compare_delete_btn').on('click', (e) => {
+    e.preventDefault()
+    let id = e.target.closest('.compare_delete_btn').getAttribute('data-id')
+    console.log(id)
+    $.ajax({
+        type: 'GET',
+        url: '/en/compare/delete',
+        contentType: "application/json",
+        data: {
+            id: id,
+        },
+        success: (res) => {
+            if (JSON.parse(res).status === 'success') {
+                window.location.reload()
+            }
+            console.log(res)
+        },
+        error: (res) => {
+            console.log(res)
+        }
+    })
+})

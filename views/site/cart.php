@@ -30,13 +30,24 @@
         <h6 style="margin-top: 50px;">ДОСТУПНО ДЛЯ ЗАКАЗА:</h6><br><br>
         <!-- offer div -->
         <?php foreach ($cartItems as $cartItem): ?>
-        <div class="cart_offer">
-            <div class="img_place">
+        <div style="height: 250px;" class="cart_offer">
+            <div class="img_place py-0">
+              <?php if ($cartItem['product']['productImages'] && count($cartItem['product']['productImages']) > 0): ?>
                 <img
                     class="img_place_item"
                     src="<?=Yii::getAlias('@web').'/'.$cartItem['product']['productImages'][0]['img'] ?>"
                     alt=""
+                    style="height: 100%;object-fit: cover"
                     width="100%">
+              <?php endif; ?>
+              <?php if (count($cartItem['product']['productImages']) == 0 || $cartItem['product']['productImages'] == null): ?>
+              <img
+                  class="img_place_item"
+                  src="<?=Yii::getAlias('@web') ?>/images/product_placeholder.png"
+                  alt=""
+                  style="height: 100%;object-fit: cover"
+                  width="100%">
+              <?php endif; ?>
             </div>
             <div class="offer_details">
                 <h6 style="font-size: 16px; font-weight: 700;"><?= $cartItem['product']['title'] ?></h6><br><br>

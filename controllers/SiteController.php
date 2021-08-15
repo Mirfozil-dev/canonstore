@@ -3,6 +3,8 @@
 namespace app\controllers;
 
 use app\models\Cart;
+use app\models\Compare;
+use app\models\Reviews;
 use app\models\Users;
 use app\models\Carousel;
 use app\models\Categories;
@@ -16,6 +18,7 @@ use http\Client;
 use Yii;
 use yii\db\Exception;
 use yii\filters\AccessControl;
+use yii\helpers\ArrayHelper;
 use yii\web\Controller;
 use yii\web\Request;
 use yii\web\Response;
@@ -32,6 +35,7 @@ class SiteController extends Controller
     public $layout;
     public $categories;
     public $cartItems = 0;
+    public $compareItems = 0;
 
     public function init()
     {
@@ -42,6 +46,7 @@ class SiteController extends Controller
 
         if ($_SESSION['account']) {
             $this->cartItems = Cart::find()->where(['user_id' => $_SESSION['account']['client_id']])->count();
+            $this->compareItems = Compare::find()->where(['user_id' => $_SESSION['account']['client_id']])->count();
         }
     }
 
@@ -226,6 +231,7 @@ class SiteController extends Controller
         }
     }
 
+<<<<<<< HEAD
     public function actionSignInUser()
     {
         if (Yii::$app->request->isAjax) {
@@ -287,6 +293,10 @@ class SiteController extends Controller
             else{
                 return ['status' => 'failure'];
             }
+=======
+    public function actionLogin(Request $request) {
+        if (!empty($request->get())) {
+>>>>>>> 410530ac678f10d7b95761338e8ca7d1f1299418
 
         }
     }
@@ -360,8 +370,7 @@ class SiteController extends Controller
             return $this->redirect(['/site/index']);
         }
 
-        $cartItems = Cart::find()->where(['product_id' => $_SESSION['account']['client_id']])->with('product.discounts')->with('product.productImages')->all();
-
+        $cartItems = Cart::find()->where(['user_id' => $_SESSION['account']['client_id']])->with('product.discounts')->with('product.productImages')->all();
         $totalSum = 0;
         foreach ($cartItems as $item) {
             $totalSum += $item['product']['discounts'] ? $item['product']['discounts'][0]['discount_price'] * $item['quantity'] : $item['product']['price'] * $item['quantity'];
@@ -369,14 +378,190 @@ class SiteController extends Controller
         return $this->render('cart', ['cartItems' => $cartItems, 'totalSum' => $totalSum]);
     }
 
-    public function actionCatalog()
+    public function actionCatalog(Request $request)
     {
-        return $this->render('catalog');
+        $category_id = $request->get('category_id');
+        $category = Categories::find()->where(['id' => $category_id])->with(['parent.parent', 'optionGroups.options.productOptions'])->one();
+        if (!empty($request->get('sort'))) {
+            switch ($request->get('sort')) {
+                case 'new':
+                    $products = Products::find()->where(['status' => 1, 'category_id' => $category_id])->with(['discounts', 'productImages', 'productOptions'])->orderBy(['updated_at' => SORT_DESC,])->all();
+                break;
+                case 'price_asc':
+                    $products = Products::find()->where(['status' => 1, 'category_id' => $category_id])->with(['discounts', 'productImages', 'productOptions'])->all();
+                    for ($outer = 0; $outer < count($products); $outer++) {
+                        for ($inner = 0; $inner < count($products); $inner++) {
+                            if (!empty($products[$inner]['discounts'])) {
+                                if (!empty($products[$outer]['discounts'])) {
+                                    if ($products[$outer]['discounts']['discount_price'] < $products[$inner]['discounts']['discount_price']) {
+                                        $tmp = $products[$outer];
+                                        $products[$outer] = $products[$inner];
+                                        $products[$inner] = $tmp;
+                                    }
+                                } else {
+                                    if ($products[$outer]['price'] < $products[$inner]['discounts']['discount_price']) {
+                                        $tmp = $products[$outer];
+                                        $products[$outer] = $products[$inner];
+                                        $products[$inner] = $tmp;
+                                    }
+                                }
+                            } else {
+                                if (!empty($products[$outer]['discounts'])) {
+                                    if ($products[$outer]['discounts']['discount_price'] < $products[$inner]['price']) {
+                                        $tmp = $products[$outer];
+                                        $products[$outer] = $products[$inner];
+                                        $products[$inner] = $tmp;
+                                    }
+                                } else {
+                                    if ($products[$outer]['price'] < $products[$inner]['price']) {
+                                        $tmp = $products[$outer];
+                                        $products[$outer] = $products[$inner];
+                                        $products[$inner] = $tmp;
+                                    }
+                                }
+                            }
+
+                        }
+                    }
+                break;
+                case 'price_desc':
+                    $products = Products::find()->where(['status' => 1, 'category_id' => $category_id])->with(['discounts', 'productImages', 'productOptions'])->all();
+                    for ($outer = 0; $outer < count($products); $outer++) {
+                        for ($inner = $outer + 1; $inner < count($products); $inner++) {
+                            if (!empty($products[$inner]['discounts'])) {
+                                if (!empty($products[$outer]['discounts'])) {
+                                    if ($products[$outer]['discounts']['discount_price'] > $products[$inner]['discounts']['discount_price']) {
+                                        $tmp = $products[$outer];
+                                        $products[$outer] = $products[$inner];
+                                        $products[$inner] = $tmp;
+                                    }
+                                } else {
+                                    if ($products[$outer]['price'] > $products[$inner]['discounts']['discount_price']) {
+                                        $tmp = $products[$outer];
+                                        $products[$outer] = $products[$inner];
+                                        $products[$inner] = $tmp;
+                                    }
+                                }
+                            } else {
+                                if (!empty($products[$outer]['discounts'])) {
+                                    if ($products[$outer]['discounts']['discount_price'] < $products[$inner]['price']) {
+                                        $tmp = $products[$outer];
+                                        $products[$outer] = $products[$inner];
+                                        $products[$inner] = $tmp;
+                                    }
+                                } else {
+                                    if ($products[$outer]['price'] < $products[$inner]['price']) {
+                                        $tmp = $products[$outer];
+                                        $products[$outer] = $products[$inner];
+                                        $products[$inner] = $tmp;
+                                    }
+                                }
+                            }
+
+                        }
+                    }
+                break;
+            }
+        } else {
+            $products = Products::find()->where(['status' => 1, 'category_id' => $category_id])->with(['discounts', 'productImages', 'productOptions'])->all();
+        }
+
+        if (!empty($request->get())) {
+            if (!empty($request->get('options'))) {
+                foreach ($products as $key => $product) {
+                    $hasOption = false;
+                    foreach ($product->productOptions as $option) {
+                        if (in_array($option->option_id, $request->get('options'))) {
+                            $hasOption = true;
+                        }
+                    }
+                    if (!$hasOption) {
+                        unset($products[$key]);
+                    }
+                }
+            }
+            if (!empty($request->get('price_min'))) {
+                foreach ($products as $key => $product) {
+                    if (count($product->discounts) > 0) {
+                        if ($product->discounts->discountPrice < $request->get('price_min')) {
+                            unset($products[$key]);
+                        }
+                    } else {}
+                    if ($product->price < $request->get('price_min')) {
+                        unset($products[$key]);
+                    }
+                }
+            }
+            if (!empty($request->get('price_max'))) {
+                foreach ($products as $key => $product) {
+                    if (count($product->discounts) > 0) {
+                        if ($product->discounts->discountPrice > $request->get('price_max')) {
+                            unset($products[$key]);
+                        }
+                    } else {}
+                    if ($product->price > $request->get('price_max')) {
+                        unset($products[$key]);
+                    }
+                }
+            }
+        }
+        return $this->render('catalog', [
+            'category' => $category,
+            'products' => $products,
+            'lang' => Yii::$app->language,
+        ]);
     }
 
     public function actionCompare()
     {
-        return $this->render('compare');
+        if (!$_SESSION['account']) {
+            Yii::$app->session->setFlash('notification','Вы не авторизованы!');
+            return $this->redirect(['site/index']);
+        }
+
+        $compareItems = Compare::find()->where(['user_id' => $_SESSION['account']['client_id']])->with('product.discounts')->with('product.productOptions.option.optionGroup')->with('product.productImages')->all();
+        $productOptionGroupIds = [];
+        foreach ($compareItems as $compareItem) {
+            foreach ($compareItem['product']['productOptions'] as $productOption) {
+                $productOptionGroupIds[] = $productOption['option']['optionGroup']['id'];
+            }
+        }
+        $productOptionGroupIds = array_unique($productOptionGroupIds);
+        $productOptionGroups = OptionGroups::find()->where(['id' => $productOptionGroupIds])->all();
+        $optionGroups = [];
+        $i = 0;
+        foreach ($productOptionGroups as $optionGroup) {
+            $optionGroups[$i]['id'] = $optionGroup['id'];
+            $optionGroups[$i]['title_ru'] = $optionGroup['title_ru'];
+            $optionGroups[$i]['title_en'] = $optionGroup['title_en'];
+            $optionGroups[$i]['category_id'] = $optionGroup['category_id'];
+            $optionGroups[$i]['status'] = $optionGroup['status'];
+            foreach ($compareItems as $item) {
+                $productOptions = [];
+                foreach ($item['product']['productOptions'] as $productOption) {
+                    if ($productOption['option']->option_group_id === $optionGroup['id']) {
+                        $productOptions[][] = [
+                            'title_ru' => $productOption['option']['title_ru'],
+                            'title_en' => $productOption['option']['title_en']
+                        ];
+                    }
+                }
+                if ($productOptions === []) {
+                    $productOptions[][] = [
+                        'title_ru' => 'Нет',
+                        'title_en' => 'None',
+                    ];
+                }
+                $optionGroups[$i]['options'][$item['product']['id']] = $productOptions;
+            }
+            $i++;
+        }
+//        echo '<pre>';
+//        print_r($optionGroups);
+//        die();
+
+
+        return $this->render('compare', ['compareItems' => $compareItems, 'lang' => Yii::$app->language, 'optionGroups' => $optionGroups]);
     }
 
     public function actionDelivery()
@@ -397,7 +582,7 @@ class SiteController extends Controller
     public function actionProduct()
     {
         $id = Yii::$app->request->get('id');
-        $product = Products::find()->where(['id' => $id, 'status' => 1])->with('category.parent.parent')->with('reviews')->with('productOptions.option.optionGroup')->with('productImages')->with('discounts')->one();
+        $product = Products::find()->where(['id' => $id, 'status' => 1])->with('category.parent.parent')->with('reviews.user')->with('productOptions.option.optionGroup')->with('productImages')->with('discounts')->one();
         $reviewsCount = count($product['reviews']);
         $totalRating = 0;
         $rating = $totalRating == 0 ? 0 : $totalRating/$reviewsCount;
@@ -515,6 +700,26 @@ class SiteController extends Controller
             }
 
             return json_encode($products);
+        }
+    }
+    public function actionAddReview(Request $request) {
+        if (!empty(($request->get())) && isset($_SESSION['account'])) {
+            $rating = $request->get('rate');
+            $text = $request->get('comment');
+            $user_id =  $_SESSION['account']['client_id'];
+            $product_id = $request->get('product_id');
+            $review = new Reviews();
+            $review->user_id = $user_id;
+            $review->rating = $rating;
+            $review->text = $text;
+            $review->product_id = $product_id;
+            if ($review->save()) {
+                Yii::$app->session->setFlash('notification','Отзыв Добавлен!');
+                return $this->redirect('/site/product?id='.$product_id);
+            } else {
+                Yii::$app->session->setFlash('notification','Не удалось добавить отзыв!');
+                return $this->redirect('/site/product?id='.$product_id);
+            }
         }
     }
 }

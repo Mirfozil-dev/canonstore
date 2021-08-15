@@ -4,6 +4,7 @@ use yii\helpers\Html;
 use app\assets\FrontendAsset;
 
 FrontendAsset::register($this);
+
 ?>
 
 <?php $this->beginPage() ?>
@@ -39,26 +40,26 @@ FrontendAsset::register($this);
 
                 <a href="/site/compare">
                     <div class="nav_items">
-                        <img src="<?=Yii::getAlias('@web'); ?>/images/scale.png" alt="" width="30px">
-                        <span class="number_offer">0</span>
+                        <i class="fas fa-balance-scale" style="color: #000;"></i>
+                        <span class="number_offer compare_items_count"><?= $this->context->compareItems ?></span>
                     </div>
                 </a>
                 <a href="/site/wishlist">
                     <div class="nav_items">
-                        <img src="<?=Yii::getAlias('@web'); ?>/images/heart.png" alt="" width="32px">
+                        <i class="far fa-heart" style="color: #000; font-size: 36px;"></i>
                         <span class="number_offer">0</span>
                     </div>
                 </a>
                 <a href="/site/cart">
                     <div class="nav_items_cart">
-                        <img src="<?=Yii::getAlias('@web'); ?>/images/cart.png" alt="" width="30px">
+                        <i class="fas fa-shopping-cart" style="color: #000;"></i>
                         <span class="number_offer cart-items-count"><?= $this->context->cartItems ?></span>
                     </div>
                 </a>
 <!--              --><?//= \app\components\CartWidget::widget() ?>
                 <a href="#popup">
                     <div class="nav_items_user" id="contact">
-                        <img src="<?=Yii::getAlias('@web'); ?>/images/username.png" alt="" width="30px">
+                        <i class="fas fa-user" style="color: #000;"></i>
                     </div>
                 </a>
                 <a href="/site/cart#click_navbar">
@@ -79,7 +80,7 @@ FrontendAsset::register($this);
                       foreach ($this->context->categories as $category) {
                           ?>
                         <div class="drop_down_catalog_item" id="camera_navbar">
-                          <i class="<?= $category['icon'] ?>" width="16px"></i><a class="href_catalog" href="/site/catalog/<?= $category['id'] ?>"><?= $category['title_ru'] ?></a>
+                          <i class="<?= $category['icon'] ?>" width="16px"></i><a class="href_catalog" href="/site/catalog?category_id=<?= $category['id'] ?>"><?= $category['title_ru'] ?></a>
                           <img
                               class="angle-right"
                               src="<?=Yii::getAlias('@web'); ?>/images/line-angle-right.png"
@@ -92,11 +93,11 @@ FrontendAsset::register($this);
                             foreach ($category['categories'] as $subcategory) {
                                 ?>
                                   <div class="drop_camera_item_scroll col-md-5">
-                                    <h6 class="camera_header_scroll"><a class="href_catalog1" href="/site/catalog/<?= $subcategory['id'] ?>"><?= $subcategory['title_ru'] ?></a></h6>
+                                    <h6 class="camera_header_scroll"><a class="href_catalog1" href="/site/catalog?category_id=<?= $subcategory['id'] ?>"><?= $subcategory['title_ru'] ?></a></h6>
                                     <?php
                                     foreach ($subcategory['categories'] as $seccategory) {
                                         ?>
-                                          <p><a class="href_catalog1" href="/site/catalog/<?= $seccategory['id'] ?>"><?= $seccategory['title_ru'] ?></a></p>
+                                          <p><a class="href_catalog1" href="/site/catalog?category_id=<?= $seccategory['id'] ?>"><?= $seccategory['title_ru'] ?></a></p>
                                         <?php
                                       }
                                     ?>
@@ -114,7 +115,7 @@ FrontendAsset::register($this);
         </div>
     </div>
 </div>
-<div class="alert position-fixed fade show cart-alert" style="z-index: 999; top:10px;left: 30%; right: 30%" role="alert">
+<div class="alert position-fixed fade show site-alert" style="z-index: 999; top:10px;left: 30%; right: 30%" role="alert">
 </div>
 <?php if(Yii::$app->session->hasFlash('notification')):?>
   <div class="info position-fixed" style="z-index: 999; top:10px;left: 40%; right: 40%">
@@ -127,26 +128,27 @@ FrontendAsset::register($this);
     <div class="container-xl">
         <div class="right_nav">
             <div class="click_left">
-                <a href="/site/wishlist">
-                    <div class="nav_items_like">
-                        <img src="<?=Yii::getAlias('@web'); ?>/images/like.png" alt="" width="30px">
-                    </div>
-                </a>
+              <a href="/site/cart">
+                <div class="nav_items_cart">
+                  <i class="fas fa-shopping-cart" style="color: #000;"></i>
+                  <span class="number_offer cart-items-count"><?= $this->context->cartItems ?></span>
+                </div>
+              </a>
                 <a href="/compare">
                     <div class="nav_items_scale">
-                        <img src="<?=Yii::getAlias('@web'); ?>/images/scale.png" alt="" width="30px">
+                        <i class="fas fa-balance-scale" style="color: #000;"></i>
                         <span class="number_offer">0</span>
                     </div>
                 </a>
                 <a href="/site/wishlist">
                     <div class="nav_items_heart">
-                        <img src="<?=Yii::getAlias('@web'); ?>/images/heart.png" alt="" width="32px">
+                        <i class="far fa-heart" style="color: #000; font-size: 36px;"></i>
                         <span class="number_offer">0</span>
                     </div>
                 </a>
                 <a href="#popup">
                     <div class="nav_items_user" id="contact2">
-                        <img src="<?=Yii::getAlias('@web'); ?>/images/username.png" alt="" width="30px">
+                        <i class="fas fa-user" style="color: #000;"></i>
                     </div>
                 </a>
             </div>
@@ -176,7 +178,7 @@ FrontendAsset::register($this);
                         alt=""
                         width="16px"
                         style="margin-right: 14px;">
-                    <a class="href_catalog" href="/site/catalog/<?= $category['id'] ?>"><?= $category['title_ru'] ?></a>
+                    <a class="href_catalog" href="/site/catalog?category_id=<?= $category['id'] ?>"><?= $category['title_ru'] ?></a>
                   </div>
                 <?php
               }
@@ -216,25 +218,30 @@ FrontendAsset::register($this);
 
                 <a href="/site/compare">
                     <div class="nav_items">
-                        <img src="<?=Yii::getAlias('@web'); ?>/images/scale.png" alt="" width="30px">
-                        <span class="number_offer">0</span>
+                        <i class="fas fa-balance-scale" style="color: #000;"></i>
+                        <span class="number_offer compare_items_count"><?= $this->context->compareItems ?></span>
                     </div>
                 </a>
                 <a href="/web/site/wishlist">
                     <div class="nav_items">
+<<<<<<< HEAD
                         <img src="<?=Yii::getAlias('@web'); ?>/images/heart.png" alt="" width="32px">
                         <span class="number_offer wishlist_count">0</span>
+=======
+                        <i class="far fa-heart" style="color: #000; font-size: 36px;"></i>
+                        <span class="number_offer">0</span>
+>>>>>>> 410530ac678f10d7b95761338e8ca7d1f1299418
                     </div>
                 </a>
                 <a href="/web/site/cart">
                     <div class="nav_items_cart">
-                        <img src="<?=Yii::getAlias('@web'); ?>/images/cart.png" alt="" width="30px">
+                        <i class="fas fa-shopping-cart" style="color: #000;"></i>
                         <span class="number_offer cart-items-count"><?= $this->context->cartItems ?></span>
                     </div>
                 </a>
                 <a href="#popup">
                     <div class="nav_items_user" id="contact3">
-                        <img src="<?=Yii::getAlias('@web'); ?>/images/username.png" alt="" width="32px">
+                      <i class="fas fa-user" style="color: #000;"></i>
                     </div>
                     <?php
                         if(isset($_SESSION['account']) and !empty($_SESSION['account'])){
@@ -264,7 +271,7 @@ FrontendAsset::register($this);
                     foreach ($this->context->categories as $category) {
                         ?>
                       <div class="dropDownItem2">
-                        <i class="<?= $category['icon'] ?>" style="padding-right: 5px;margin-bottom: 3px;"></i><a class="href_catalog" href="/site/catalog/<?= $category['id'] ?>"><?= $category['title_ru'] ?></a>
+                        <i class="<?= $category['icon'] ?>" style="padding-right: 5px;margin-bottom: 3px;"></i><a class="href_catalog" href="/site/catalog?category_id=<?= $category['id'] ?>"><?= $category['title_ru'] ?></a>
                         <img
                             src="<?=Yii::getAlias('@web'); ?>/images/line-angle-right.png"
                             alt=""
@@ -275,11 +282,11 @@ FrontendAsset::register($this);
                             foreach ($category['categories'] as $subcategory) {
                                 ?>
                               <div class="drop_camera_item col-md-6">
-                                <h6 class="camera_header"><a class="href_catalog1" href="/site/catalog/<?= $subcategory['id'] ?>"><?= $subcategory['title_ru'] ?></a></h6>
+                                <h6 class="camera_header"><a class="href_catalog1" href="/site/catalog?category_id=<?= $subcategory['id'] ?>"><?= $subcategory['title_ru'] ?></a></h6>
                                   <?php
                                   foreach ($subcategory['categories'] as $seccategory) {
                                       ?>
-                                    <p><a class="href_catalog1" href="/site/catalog/<?= $seccategory['id'] ?>"><?= $seccategory['title_ru'] ?></a></p>
+                                    <p><a class="href_catalog1" href="/site/catalog?category_id=<?= $seccategory['id'] ?>"><?= $seccategory['title_ru'] ?></a></p>
                                       <?php
                                   }
                                   ?>
@@ -326,6 +333,7 @@ FrontendAsset::register($this);
 
 <!-- Popup Contact -->
 
+<<<<<<< HEAD
 <div class="container-fluit">
     <div class="popup" id="popup">
 
@@ -358,96 +366,120 @@ FrontendAsset::register($this);
                     <div class="logout">
                         <span class="forget-password" id="forget-password">Восстановить пароль</span><span class="sign-up" id="sign-up">Зарегистрироваться</span>
                     </div>
+=======
+<!-- Popup Contact -->
+>>>>>>> 410530ac678f10d7b95761338e8ca7d1f1299418
 
-                </div>
-                <div class="col-md-6 contact-right">
-                    <div class="contact-right-header">Единая авторизация Nikon</div>
-                    <div class="contact-right-title">Для вашего удобства мы разработали систему единой авторизации на сайтах:</div>
-                    <div class="img_contact" style="margin: 10px;"><img src="<?=Yii::getAlias('@web'); ?>/images/pop up/popup.png" alt="" width="100%"></div>
-                    <div class="contact-left-footer">Теперь вход в личный кабинет возможен под одним и тем же паролем.</div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 <div class="container-fluit">
-    <div class="popup1">
-        <div class="popup-content1">
-            <img
-                class="close_popup1"
-                id="close_popup1"
-                src="<?=Yii::getAlias('@web'); ?>/images/close.png"
-                alt=""
-                width="30px">
-            <div class="row">
-                <div class="col-md-12 contact-left">
-                    <div class="contact-left-header">Войти на сайт</div>
-                    <input type="email" name="" id="" placeholder="E-mail*" class="contact-input">
-                    <a href="#" class="popup-submit">Войти</a><br>
-                    <div class="logout">
-                        <span class="forget-password" id="contact4">Войти</span><span class="sign-up" id="sign-up1">Зарегистрироваться</span>
-                    </div>
+  <div class="popup" id="popup">
 
-                </div>
-
-            </div>
-        </div>
-
-    </div>
-</div>
-<div class="container-fluit">
-    <div class="popup2">
-
-        <div class="popup-content2">
-            <img
-                class="close_popup2"
-                id="close_popup2"
-                src="<?=Yii::getAlias('@web'); ?>/images/close.png"
-                alt=""
-                width="30px">
-            <div class="row">
-                <div class="col-md-6 contact-left">
-                    <div class="contact-left-header">Войти на сайт</div>
-                    <input type="text" name="" id="" placeholder="Имя*" class="contact-input sign_up_name">
-                    <input type="text" name="" id="" placeholder="Фамилия*" class="contact-input sign_up_surname">
-                    <input type="email" name="" id="" placeholder="E-mail*" class="contact-input sign_up_email">
-                </div>
-                <div class="col-md-6 contact-right">
-                    <div class="contact-right-header">Единая авторизация Nikon</div>
-                    <div class="choose-flag">
-                        <select name="" id="country_code" class="choose-flag-items">
-                            <option value="RU"><!--<img src="<?=Yii::getAlias('@web'); ?>/images/contact/ru.png" alt="" width="1000px">-->RU</option>
-                            <option value="UZ"><!--<img src="<?=Yii::getAlias('@web'); ?>/images/contact/uz.jpg" alt="" width="20px">-->UZ</option>
-                            <option value="KZ"><!--<img src="<?=Yii::getAlias('@web'); ?>/images/contact/kz.jpg" alt="" width="20px">-->KZ</option>
-                        </select>
-                        <input type="text" name="" id="" placeholder="Телефон*" class="contact-input sign_up_number">
-                    </div>
-                    <input
-                        type="password"
-                        name=""
-                        id=""
-                        placeholder="Пароль*"
-                        class="contact-input sign_up_pass">
-                    <input
-                        type="password"
-                        name=""
-                        id=""
-                        placeholder="Подтверждение пароля*"
-                        class="contact-input sign_up_pass2">
-                </div>
-            </div>
-            <div class="sign_up_box">
-                <input type="checkbox" name="" id="" class="contact-checkbox">
-                <span class="checkeds">
+    <div class="popup-content">
+      <img
+          class="close_popup"
+          id="close_popup"
+          src="<?=Yii::getAlias('@web'); ?>/images/close.png"
+          alt=""
+          width="30px">
+      <div class="col-md-12 contact-left">
+        <div class="contact-left-header">Войти на сайт</div>
+        <input type="email" name="" id="" placeholder="E-mail*" class="contact-input">
+        <input
+            type="password"
+            name=""
+            id=""
+            placeholder="Пароль*"
+            class="contact-input">
+        <input type="checkbox" name="" id="" class="contact-checkbox">
+        <span class="checkeds">
                             Я принимаю условия Политики о конфиденциальности.</span>
-                <a href="#" class="popup-submit sign_up_user">Войти</a><br>
-                <div class="logout">
-                    <span class="forget-password" id="forget-password2">Восстановить пароль</span><span class="sign-up" id="contact5">Войти</span>
-                </div>
-            </div>
+        <a href="#" class="popup-submit">Войти</a><br>
+        <div class="logout">
+          <span class="forget-password" id="forget-password">Восстановить пароль</span><span class="sign-up" id="sign-up">Зарегистрироваться</span>
         </div>
+      </div>
     </div>
+  </div>
 </div>
+<div class="container-fluit">
+  <div class="popup1">
+    <div class="popup-content1">
+      <img
+          class="close_popup1"
+          id="close_popup1"
+          src="<?=Yii::getAlias('@web'); ?>/images/close.png"
+          alt=""
+          width="30px">
+      <div class="row">
+        <div class="col-md-12 contact-left">
+          <div class="contact-left-header">Войти на сайт</div>
+          <input type="email" name="" id="" placeholder="E-mail*" class="contact-input">
+          <a href="#" class="popup-submit">Войти</a><br>
+          <div class="logout">
+            <span class="forget-password" id="contact4">Войти</span><span class="sign-up" id="sign-up1">Зарегистрироваться</span>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+<div class="container-fluit">
+  <div class="popup2">
+
+    <div class="popup-content2">
+      <img
+          class="close_popup2"
+          id="close_popup2"
+          src="<?=Yii::getAlias('@web'); ?>/images/close.png"
+          alt=""
+          width="30px">
+      <div class="row">
+        <div class="col-md-6 contact-left">
+          <div class="contact-left-header">Войти на сайт</div>
+          <input type="text" name="" id="" placeholder="Имя*" class="contact-input sign_up_name">
+          <input type="text" name="" id="" placeholder="Фамилия*" class="contact-input sign_up_surname">
+          <input type="email" name="" id="" placeholder="E-mail*" class="contact-input sign_up_email">
+        </div>
+        <div class="col-md-6 contact-right">
+          <div class="contact-right-header">Единая авторизация Nikon</div>
+          <div class="choose-flag">
+            <select name="" id="country_code" class="choose-flag-items">
+              <option value="RU"><!--<img src="<?=Yii::getAlias('@web'); ?>/images/contact/ru.png" alt="" width="1000px">-->RU</option>
+              <option value="UZ"><!--<img src="<?=Yii::getAlias('@web'); ?>/images/contact/uz.jpg" alt="" width="20px">-->UZ</option>
+              <option value="KZ"><!--<img src="<?=Yii::getAlias('@web'); ?>/images/contact/kz.jpg" alt="" width="20px">-->KZ</option>
+            </select>
+            <input type="text" name="" id="" placeholder="Телефон*" class="contact-input sign_up_number">
+          </div>
+          <input
+              type="password"
+              name=""
+              id=""
+              placeholder="Пароль*"
+              class="contact-input sign_up_pass">
+          <input
+              type="password"
+              name=""
+              id=""
+              placeholder="Подтверждение пароля*"
+              class="contact-input sign_up_pass2">
+        </div>
+      </div>
+      <div class="sign_up_box">
+        <input type="checkbox" name="" id="" class="contact-checkbox">
+        <span class="checkeds">
+                            Я принимаю условия Политики о конфиденциальности.</span>
+        <a href="#" class="popup-submit sign_up_user">Войти</a><br>
+        <div class="logout">
+          <span class="forget-password" id="forget-password2">Восстановить пароль</span><span class="sign-up" id="contact5">Войти</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Popup Contact End -->
 
 <!-- Popup Contact End -->
 
