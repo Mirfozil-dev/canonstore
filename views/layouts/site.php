@@ -229,7 +229,7 @@ FrontendAsset::register($this);
                         <span class="number_offer compare_items_count"><?= $this->context->compareItems ?></span>
                     </div>
                 </a>
-                <a href="/web/site/wishlist">
+                <a href="/site/wishlist">
                     <div class="nav_items">
                       <i class="far fa-heart" style="color: #000; font-size: 36px;"></i>
                         <span class="number_offer wishlist_count">0</span>
@@ -237,7 +237,7 @@ FrontendAsset::register($this);
                         <span class="number_offer">0</span>
                     </div>
                 </a>
-                <a href="/web/site/cart">
+                <a href="/site/cart">
                     <div class="nav_items_cart">
                         <i class="fas fa-shopping-cart" style="color: #000;"></i>
                         <span class="number_offer cart-items-count"><?= $this->context->cartItems ?></span>

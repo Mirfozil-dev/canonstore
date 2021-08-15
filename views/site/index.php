@@ -900,7 +900,7 @@ use yii\helpers\Url;
     loadWishlist()
     function loadWishlist(){
         $.ajax({
-            url: '/web/wishlist/wishlist-count',
+            url: '/en/wishlist/wishlist-count',
             type: 'GET',
             dataType: 'json',
             success: function (response){
@@ -918,7 +918,7 @@ use yii\helpers\Url;
         var password = $('.sign_up_pass').val()
         var password_confirm = $('.sign_up_pass2').val()
         $.ajax({
-            url: '/web/site/registration',
+            url: '/en/site/registration',
             type: 'GET',
             dataType: 'json',
             data: {
@@ -986,7 +986,7 @@ use yii\helpers\Url;
         var password = $('.sign_in_password').val()
         if ($("#checkbox1").is(":checked")) {
             $.ajax({
-                url: '/web/site/sign-in-user',
+                url: '/en/site/sign-in-user',
                 type: 'GET',
                 dataType: 'json',
                 data: {
@@ -1024,7 +1024,7 @@ use yii\helpers\Url;
 
     $(document).on('click','#exit',function(){
         $.ajax({
-            url: '/web/site/exit',
+            url: '/en/site/exit',
             dataType: 'json',
             type: 'get',
             success: function(response) {
@@ -1039,7 +1039,7 @@ use yii\helpers\Url;
         event.preventDefault()
         var product_id = $(this).attr('data-id')
         $.ajax({
-            url: '/web/wishlist/insert',
+            url: '/en/wishlist/insert',
             dataType: 'json',
             type: 'get',
             data: {
