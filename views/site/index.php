@@ -224,7 +224,6 @@ use yii\helpers\Url;
         </div>
       </div>
     </div>
-
     <div class="container_carusel">
       <div class="img_container_carusel" id="images_carusel">
           <?php foreach ($newProducts as $newProduct): ?>
@@ -262,6 +261,7 @@ use yii\helpers\Url;
                     <div class="offer_cost"><?= $newProduct['price'] ?></div>
                   <?php endif; ?>
               </div>
+                <a href="#"><img src="<?=Yii::getAlias('@web'); ?>/images/heart.png" class="add_wishlist" data-id="<?= $newProduct['id'] ?>" alt="" width="16px"></a>
               <a href="<?= Url::to(['cart/add', 'id' => $newProduct['id']]) ?>" data-id="<?= $newProduct['id'] ?>" class="offer_to_cart add_to_cart">В корзину</a>
             </div>
           <?php endforeach; ?>
@@ -897,6 +897,18 @@ use yii\helpers\Url;
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
+    loadWishlist()
+    function loadWishlist(){
+        $.ajax({
+            url: '/web/wishlist/wishlist-count',
+            type: 'GET',
+            dataType: 'json',
+            success: function (response){
+                $('.wishlist_count').html('')
+                $('.wishlist_count').html(response.count)
+            },
+        })
+    }
     $(document).on('click','.sign_up_user',function(){
         var name = $('.sign_up_name').val()
         var surname = $('.sign_up_surname').val()
@@ -906,7 +918,7 @@ use yii\helpers\Url;
         var password = $('.sign_up_pass').val()
         var password_confirm = $('.sign_up_pass2').val()
         $.ajax({
-            url: '/en/site/registration',
+            url: '/web/site/registration',
             type: 'GET',
             dataType: 'json',
             data: {
@@ -946,6 +958,100 @@ use yii\helpers\Url;
                 console.log(error);
             }
         });
+    })
+
+    $(document).on("keyup",".sign_in_email",function(){
+        $(".sign_in_email").removeClass("border_input")
+        $(".error_email").addClass('hidden')
+        $(".error_email_format").addClass('hidden')
+    })
+
+    $(document).on("keyup",".sign_in_password",function(){
+        $(".sign_in_password").removeClass("border_input")
+        $(".error_password").addClass('hidden')
+        $(".user_fail").addClass('hidden')
+    })
+
+    $(document).on("change","#checkbox1",function(){
+        if($(this).is(":checked")){
+            $(".sign_in_button").prop("disabled",false)
+        }
+        else{
+            $(".sign_in_button").prop("disabled",true)
+        }
+    })
+
+    $(document).on('click','.sign_in_button',function(){
+        var email = $('.sign_in_email').val()
+        var password = $('.sign_in_password').val()
+        if ($("#checkbox1").is(":checked")) {
+            $.ajax({
+                url: '/web/site/sign-in-user',
+                type: 'GET',
+                dataType: 'json',
+                data: {
+                    email: email,
+                    password: password,
+                },
+                success: function (response) {
+                    if (response.status == 'success') {
+                        window.location.reload()
+                    }
+                    if (response.status == 'error_email') {
+                        $('.sign_in_email').addClass('border_input')
+                        $('.error_email').removeClass('hidden')
+                    }
+                    if (response.status == 'error_email_format') {
+                        $('.sign_in_email').addClass('border_input')
+                        $('.error_email_format').removeClass('hidden')
+                    }
+                    if (response.status == 'error_password') {
+                        $('.sign_in_password').addClass('border_input')
+                        $('.error_password').removeClass('hidden')
+                    }
+                    if (response.status == 'fail') {
+                        $(".sign_in_email").addClass("border_input")
+                        $(".sign_in_password").addClass("border_input")
+                        $(".user_fail").removeClass("hidden")
+                    }
+                },
+                error: function (request, status, error) {
+                    console.log(error);
+                }
+            });
+        }
+    })
+
+    $(document).on('click','#exit',function(){
+        $.ajax({
+            url: '/web/site/exit',
+            dataType: 'json',
+            type: 'get',
+            success: function(response) {
+                if (response.status == 'success') {
+                    location.reload()
+                }
+            }
+        })
+    })
+
+    $(document).on('click','.add_wishlist',function(event){
+        event.preventDefault()
+        var product_id = $(this).attr('data-id')
+        $.ajax({
+            url: '/web/wishlist/insert',
+            dataType: 'json',
+            type: 'get',
+            data: {
+                product: product_id,
+            },
+            success: function(response) {
+                if (response.status == 'success') {
+                    $('.wishlist_count').html('')
+                    $('.wishlist_count').html(response.count)
+                }
+            }
+        })
     })
 </script>
 <style>

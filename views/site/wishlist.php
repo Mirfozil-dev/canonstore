@@ -23,10 +23,10 @@
             <a href="#" class="discount_href2 active">Избранные товары</a>
             <a href="#" class="discount_href3">Управление подписками</a>
             <div href="#" class="drop_discount_hiddens"><img
-                    src="<?=Yii::getAlias('@web'); ?>/images/line-angle-right.png"
-                    width="10px"
-                    style="transform: rotate(90deg);"
-                    alt="">
+                        src="<?= Yii::getAlias('@web'); ?>/images/line-angle-right.png"
+                        width="10px"
+                        style="transform: rotate(90deg);"
+                        alt="">
                 <div class="hidden_items">
                     <div class="hidden_item1">
                         <a href="#" class="hidden_item_a1">История заказов</a>
@@ -46,87 +46,32 @@
 
 <div class="container" style="margin-top:  50px;">
     <div class="img_container_carusel_like">
-        <div class="img_carusel_like">
-            <img src="<?=Yii::getAlias('@web'); ?>/images/home_img/carusel_item.jpg" alt="">
-            <div class="skitka">
-                <div class="skitka_item">Скидка на комплект</div>
-
-            </div>
-            <div class="offer_name">Z50 Blogger Kit</div>
-            <ul class="offer_infos">
-                <li class="offer_info">Все самое необходимое уже в комплекте</li>
-                <li class="offer_info">Сенсорный откидной экран для селфи</li>
-                <li class="offer_info">11 кадров в секунду, 4K UHD видео.
-                </li>
-                <li class="offer_info">Компактный объектив Nikkor Z</li>
-                <li class="offer_info">Поддержка объективов Nikkor F</li>
-            </ul>
-            <div class="offer_status">В наличии</div>
-            <div class="offer_cost">84 999 ₽</div>
-            <a href="/site/product" class="offer_to_cart">В корзину</a>
-        </div>
-        <!-- 2 offer -->
-        <div class="img_carusel_like">
-            <img src="<?=Yii::getAlias('@web'); ?>/images/home_img/carusel_item.jpg" alt="">
-            <div class="skitka">
-
-                <div class="skitka_item">В кредит</div>
-            </div>
-            <div class="offer_name">Z50 Blogger Kit</div>
-            <ul class="offer_infos">
-                <li class="offer_info">Все самое необходимое уже в комплекте</li>
-                <li class="offer_info">Сенсорный откидной экран для селфи</li>
-                <li class="offer_info">11 кадров в секунду, 4K UHD видео.
-                </li>
-                <li class="offer_info">Компактный объектив Nikkor Z</li>
-                <li class="offer_info">Поддержка объективов Nikkor F</li>
-            </ul>
-            <div class="offer_status">В наличии</div>
-            <div class="offer_cost">84 999 ₽</div>
-            <a href="/site/product" class="offer_to_cart">В корзину</a>
-        </div>
-        <!-- 3 offer -->
-        <div class="img_carusel_like">
-            <img src="<?=Yii::getAlias('@web'); ?>/images/home_img/carusel_item.jpg" alt="">
-            <div class="skitka">
-                <div class="skitka_item">Скидка на комплект</div>
-
-            </div>
-            <div class="offer_name">Z50 Blogger Kit</div>
-            <ul class="offer_infos">
-                <li class="offer_info">Все самое необходимое уже в комплекте</li>
-                <li class="offer_info">Сенсорный откидной экран для селфи</li>
-                <li class="offer_info">11 кадров в секунду, 4K UHD видео.
-                </li>
-                <li class="offer_info">Компактный объектив Nikkor Z</li>
-                <li class="offer_info">Поддержка объективов Nikkor F</li>
-
-            </ul>
-            <div class="offer_status">В наличии</div>
-            <div class="offer_cost">84 999 ₽</div>
-            <a href="/site/product" class="offer_to_cart">В корзину</a>
-        </div>
-        <!-- 4 offer -->
-        <div class="img_carusel_like">
-            <img src="<?=Yii::getAlias('@web'); ?>/images/home_img/carusel_item.jpg" alt="">
-            <div class="skitka">
-
-                <div class="skitka_item">В кредит</div>
-            </div>
-            <div class="offer_name">Z50 Blogger Kit</div>
-            <ul class="offer_infos">
-                <li class="offer_info">Все самое необходимое уже в комплекте</li>
-                <li class="offer_info">Сенсорный откидной экран для селфи</li>
-                <li class="offer_info">11 кадров в секунду, 4K UHD видео.
-                </li>
-                <li class="offer_info">Компактный объектив Nikkor Z</li>
-                <li class="offer_info">Поддержка объективов Nikkor F</li>
-            </ul>
-            <div class="offer_status">В наличии</div>
-            <div class="offer_cost">84 999 ₽</div>
-            <a href="/site/product" class="offer_to_cart">В корзину</a>
-        </div>
-    </div>            </div>
+        <?php
+            if (isset($model) and !empty($model)){
+                foreach ($model as $value){ ?>
+                    <div class="img_carusel_like">
+                        <img src="<?=Yii::getAlias('@web').'/'.$value['img'] ?>" alt="">
+                        <div class="skitka" style="margin-top: 10px;">
+                            <div class="skitka_item">Скидка на комплект</div>
+                        </div>
+                        <div class="offer_name"><?= $value['title'] ?></div>
+                        <ul class="offer_infos">
+                            <li class="offer_info">Все самое необходимое уже в комплекте</li>
+                            <li class="offer_info">Сенсорный откидной экран для селфи</li>
+                            <li class="offer_info">11 кадров в секунду, 4K UHD видео.
+                            </li>
+                            <li class="offer_info">Компактный объектив Nikkor Z</li>
+                            <li class="offer_info">Поддержка объективов Nikkor F</li>
+                        </ul>
+                        <div class="offer_status">В наличии</div>
+                        <div class="offer_cost"><?= $value['price'] ?></div>
+                        <a href="/site/product" class="offer_to_cart">В корзину</a>
+                    </div>
+                <?php }
+            }
+        ?>
+    </div>
+</div>
 
 <!-- Like Address End -->
 

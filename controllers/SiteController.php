@@ -13,6 +13,8 @@ use app\models\News;
 use app\models\OptionGroups;
 use app\models\ProductCarousel;
 use app\models\Products;
+use app\models\Wishlist;
+use http\Client;
 use Yii;
 use yii\db\Exception;
 use yii\filters\AccessControl;
@@ -203,7 +205,7 @@ class SiteController extends Controller
                 $surname = $_GET['surname'];
                 $email = $_GET['email'];
                 $phone = $_GET['phone'];
-                $password = $_GET['password'];
+                $password = sha1($_GET['password']);
 
                 $user = new Users();
                 $user->name = $name;
@@ -229,8 +231,72 @@ class SiteController extends Controller
         }
     }
 
+<<<<<<< HEAD
+    public function actionSignInUser()
+    {
+        if (Yii::$app->request->isAjax) {
+            \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+            $error = false;
+
+            if (!(isset($_GET['email']) and !empty($_GET['email']))) {
+                $error = true;
+                return ['status' => 'error_email'];
+            } else {
+                if (!filter_var($_GET['email'], FILTER_VALIDATE_EMAIL)) {
+                    $error = true;
+                    return ['status' => 'error_email_format'];
+                }
+            }
+
+            if (!(isset($_GET['password']) and !empty($_GET['password']))) {
+                $error = true;
+                return ['status' => 'error_password'];
+            }
+
+            $pass = sha1($_GET['password']);
+            $model = Users::find()
+            ->where([
+                'email' => $_GET['email'],
+                'status' => 1
+            ])
+            ->one();
+
+            if (!isset($model) || $model->password != $pass) {
+                return ['status' => 'fail'];
+            }
+
+            $_SESSION['account'] = [
+                'client_id' => $model->id,
+                'phone' => $model->phone,
+                'name' => $model->name,
+                'pass' => $model->password,
+            ];
+
+            if (!$error){
+                if (isset($_SESSION['account']) && !empty($_SESSION['account'])) {
+                    return ['status' => 'success'];
+                }
+            }
+        }
+    }
+
+    public function actionExit()
+    {
+        if (Yii::$app->request->isAjax) {
+            \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+
+            if (isset($_SESSION['account'])) {
+                unset($_SESSION['account']);
+
+                return ['status' => 'success'];
+            }
+            else{
+                return ['status' => 'failure'];
+            }
+=======
     public function actionLogin(Request $request) {
         if (!empty($request->get())) {
+>>>>>>> 410530ac678f10d7b95761338e8ca7d1f1299418
 
         }
     }
@@ -301,7 +367,7 @@ class SiteController extends Controller
     {
         if (!$_SESSION['account']) {
             Yii::$app->session->setFlash('notification','Вы не авторизованы!');
-            return $this->redirect(['site/index']);
+            return $this->redirect(['/site/index']);
         }
 
         $cartItems = Cart::find()->where(['user_id' => $_SESSION['account']['client_id']])->with('product.discounts')->with('product.productImages')->all();
@@ -561,6 +627,29 @@ class SiteController extends Controller
 
     public function actionWishlist()
     {
+        if (!$_SESSION['account']) {
+            Yii::$app->session->setFlash('notification', 'Вы не авторизованы!');
+                return $this->redirect(['/web/site/index']);
+        }
+        $client_id = $_SESSION['account']['client_id'];
+        $sql = "
+            SELECT 
+                   w.id, 
+                   w.user_id, 
+                   w.product_id, 
+                   i.img, p.title, 
+                   p.category_id, 
+                   p.price, 
+                   p.status 
+            FROM wishlist AS w 
+            INNER JOIN product_images AS i ON w.product_id = i.product_id
+            INNER JOIN products AS p ON w.product_id = p.id
+            WHERE p.status = 1 and w.user_id = ".$client_id;
+        $selectProducts = Yii::$app->db->createCommand($sql)->queryAll();
+        return $this->render('wishlist', [
+            'model' => $selectProducts,
+        ]);
+
         return $this->render('wishlist');
     }
     public function actionSendEmail(Request $request) {
