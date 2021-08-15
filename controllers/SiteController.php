@@ -623,7 +623,7 @@ class SiteController extends Controller
     {
         if (!$_SESSION['account']) {
             Yii::$app->session->setFlash('notification', 'Вы не авторизованы!');
-                return $this->redirect(['/web/site/index']);
+                return $this->redirect(['/site/index']);
         }
         $client_id = $_SESSION['account']['client_id'];
         $sql = "
@@ -643,8 +643,6 @@ class SiteController extends Controller
         return $this->render('wishlist', [
             'model' => $selectProducts,
         ]);
-
-        return $this->render('wishlist');
     }
     public function actionSendEmail(Request $request) {
         if (isset($request['email'])) {
