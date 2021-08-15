@@ -23,6 +23,7 @@
         "kartik-v/yii2-widget-datetimepicker": "dev-master",
         "kartik-v/yii2-widget-select2": "@dev",
         "phpmailer/phpmailer": "^6.5",
+        "vova07/yii2-imperavi-widget": "^2.0",
       "ext-json": "*"
     },
     "require-dev": {

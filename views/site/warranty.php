@@ -1,4 +1,5 @@
 <!------------------- beginning of body --------------------->
+<div style="height: 180px;"></div>
 <div class="warranty">
     <div class="container">
         <div class="warranty-wrapper">

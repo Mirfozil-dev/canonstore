@@ -1,5 +1,6 @@
 <!---------------------------- Body ---------------------------------->
-<div class="product" style="position: relative; top: 180px;">
+<div style="height: 180px;"></div>
+<div class="product" style="position: relative;">
   <div class="container">
     <div class="product-wrapper">
       <ul class="breadcrumbs-list">
@@ -136,7 +137,7 @@
         </div>
         <div class="product-buy-sec-left">
           <div class="product-buy-sec-left-btn product-buy-sec-left-top-btn">
-            <a href="#product-in-cart">
+            <a class="add_to_cart" data-id="<?= $product['id'] ?>" href="#">
               <button>В корзину</button>
             </a>
           </div>

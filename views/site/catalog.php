@@ -1,5 +1,6 @@
 <!------------------- beginning of body --------------------->
-<div class="catalog" style="margin-top: 150px;padding: 0 40px; display: flex; justify-content: center;">
+<div style="height: 180px;"></div>
+<div class="catalog" style="padding: 0 40px; display: flex; justify-content: center;">
   <div class="container" style="max-width: 1200px; margin: 0;">
 
     <!-- ------------------------ beginning of navbar path ----------------------- -->

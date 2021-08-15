@@ -1,6 +1,7 @@
 <!-- Scale Body -->
 <!-- Scale Address -->
-<div class="scale" style="position: relative; top: 180px;margin-bottom: 180px;">
+<div style="height: 180px;"></div>
+<div class="scale" style="position: relative;margin-bottom: 180px;">
     <!-- Scale Address End -->
     <!-- Main -->
           <?php if ($compareItems && count($compareItems) > 0): ?>

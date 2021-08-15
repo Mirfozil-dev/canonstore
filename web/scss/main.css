@@ -515,7 +515,7 @@ input[type=checkbox]:checked:after {
   display: flex;
   transition: transform 0.5s ease-in-out;
   transform: translateX(0);
-  justify-content: space-between;
+  /*justify-content: space-between;*/
 }
 
 .buttons_container_carusel {
@@ -6062,7 +6062,7 @@ body {
   position: absolute;
   width: 835px;
   background: #fff;
-  left: 292px;
+  left: 288px;
   top: 0px;
   padding: 20px;
   z-index: 1;
@@ -6690,7 +6690,7 @@ input[type=checkbox]:checked:after {
   transform: translateX(0);
   -webkit-box-pack: justify;
   -ms-flex-pack: justify;
-  justify-content: space-between;
+  /*justify-content: space-between;*/
 }
 
 .buttons_container_carusel {

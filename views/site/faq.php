@@ -1,4 +1,5 @@
 <!-- FAQ section start -->
+<div style="height: 180px;"></div>
 <div class="container container-md">
     <div class="faq-holder">
         <div class="b-aside-left">

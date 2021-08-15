@@ -1,8 +1,9 @@
 <!-- Body -->
 
 <!-- Like Address -->
+<div style="height: 180px;"></div>
 <div class="container">
-    <div class="scale" style="position: relative; top: 180px;">
+    <div class="scale" style="position: relative;">
         <div class="product-wrapper">
             <ul class="breadcrumbs-list">
                 <li>
@@ -43,7 +44,7 @@
     </div>
 </div>
 
-<div class="container" style="margin-top:  250px;">
+<div class="container" style="margin-top:  50px;">
     <div class="img_container_carusel_like">
         <?php
             if (isset($model) and !empty($model)){
