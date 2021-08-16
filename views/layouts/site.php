@@ -231,7 +231,6 @@ FrontendAsset::register($this);
                 </a>
                 <a href="/site/wishlist">
                     <div class="nav_items">
-                      <i class="far fa-heart" style="color: #000; font-size: 36px;"></i>
                         <span class="number_offer wishlist_count">0</span>
                         <i class="far fa-heart" style="color: #000; font-size: 36px;"></i>
                     </div>

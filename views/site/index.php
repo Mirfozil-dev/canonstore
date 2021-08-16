@@ -897,18 +897,6 @@ use yii\helpers\Url;
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
-    loadWishlist()
-    function loadWishlist(){
-        $.ajax({
-            url: '/en/wishlist/wishlist-count',
-            type: 'GET',
-            dataType: 'json',
-            success: function (response){
-                $('.wishlist_count').html('')
-                $('.wishlist_count').html(response.count)
-            },
-        })
-    }
     $(document).on('click','.sign_up_user',function(){
         var name = $('.sign_up_name').val()
         var surname = $('.sign_up_surname').val()
