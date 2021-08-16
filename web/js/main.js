@@ -29,8 +29,8 @@ $('.add_to_cart').on('click', (e) => {
                 $('.cart-items-count').html(JSON.parse(res).quantity)
                 setTimeout(() => {
                     $('.site-alert').removeClass('alert-success in')
+                    $('.site-alert').html('')
                 },1500)
-                $('.cart-items-count').text()
             } else if (JSON.parse(res).status === 'unauthorized') {
                 $('.site-alert').addClass('alert-dander in')
                 $('.site-alert').html('Вы не авторизованы!')
@@ -123,11 +123,10 @@ $('.add_to_compare').on('click', (e) => {
                 $('.site-alert').addClass('alert-success in')
                 $('.site-alert').html('Товар добавлен в сравнение')
                 $('.compare_items_count').html(JSON.parse(res).quantity)
-                console.log(JSON.parse(res).quantity)
                 setTimeout(() => {
                     $('.site-alert').removeClass('alert-success in')
+                    $('.site-alert').html('')
                 },1500)
-                $('.compare_items_count').text()
             } else if (JSON.parse(res).status === 'unauthorized') {
                 $('.site-alert').addClass('alert-dander in')
                 $('.site-alert').html('Вы не авторизованы!')
@@ -150,6 +149,62 @@ $('.compare_delete_btn').on('click', (e) => {
     $.ajax({
         type: 'GET',
         url: '/en/compare/delete',
+        contentType: "application/json",
+        data: {
+            id: id,
+        },
+        success: (res) => {
+            if (JSON.parse(res).status === 'success') {
+                window.location.reload()
+            }
+            console.log(res)
+        },
+        error: (res) => {
+            console.log(res)
+        }
+    })
+})
+
+$('.add_to_wishlist').on('click', (e) => {
+    e.preventDefault();
+    let id = e.target.closest('.add_to_wishlist').getAttribute('data-id')
+    $.ajax({
+        type: 'GET',
+        url: '/en/wishlist/add',
+        contentType: "application/json",
+        data: {
+            id: id,
+        },
+        success: (res) => {
+            if (JSON.parse(res).status === 'success') {
+                $('.site-alert').addClass('alert-success in')
+                $('.site-alert').html('Товар добавлен в Избранное')
+                $('.wishlist_items_count').html(JSON.parse(res).quantity)
+                setTimeout(() => {
+                    $('.site-alert').removeClass('alert-success in')
+                    $('.site-alert').html('')
+                },1500)
+            } else if (JSON.parse(res).status === 'unauthorized') {
+                $('.site-alert').addClass('alert-dander in')
+                $('.site-alert').html('Вы не авторизованы!')
+                setTimeout(() => {
+                    $('.site-alert').removeClass('alert-dander in')
+                    $('.site-alert').html('')
+                },1500)
+            }
+        },
+        error: (res) => {
+            console.log('error', res)
+        }
+    })
+})
+
+$('.wishlist_delete_btn').on('click', (e) => {
+    e.preventDefault()
+    let id = e.target.closest('.wishlist_delete_btn').getAttribute('data-id')
+    $.ajax({
+        type: 'GET',
+        url: '/en/wishlist/delete',
         contentType: "application/json",
         data: {
             id: id,

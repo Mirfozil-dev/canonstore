@@ -49,7 +49,7 @@ function searchItem() {
         query: searchInput.value,
       },
       success: (res) => {
-        if (res.length > 0) {
+        if (JSON.parse(res).length > 0) {
           JSON.parse(res).map(product => {
             let skidka = ''
             let instock = ''
@@ -76,7 +76,7 @@ function searchItem() {
                         ` + img + skidka + `
                         <div class="offer_name">` + product.title + `</div>
                         ` + instock + price + `
-                        <a href="/site/product" class="offer_to_cart">В корзину</a>
+                        <a data-id="` + product.id + `" class="offer_to_cart add_to_cart">В корзину</a>
                        </div>
                       </a>`
           })

@@ -47,7 +47,7 @@ FrontendAsset::register($this);
                 <a href="/site/wishlist">
                     <div class="nav_items">
                         <i class="far fa-heart" style="color: #000; font-size: 36px;"></i>
-                        <span class="number_offer wishlist_count">0</span>
+                      <span class="number_offer wishlist_items_count"><?= $this->context->wishlistItems ?></span>
                     </div>
                 </a>
                 <a href="/site/cart">
@@ -74,13 +74,14 @@ FrontendAsset::register($this);
             <h5 style="font-size: 16px; font-weight: 400; color: #fff;">КАТАЛОГ
                 <div class="drop_down_catalog_items">
                     <div class="drop_down_catalog_item">
-                        <img src="<?=Yii::getAlias('@web'); ?>/images/drop_down_items/percentage.png" alt="" width="16px"><a class="href_catalog" href="/site/catalog">АКЦИЯ</a>
+                        <i class="fas fa-border-all" style="margin-right: 10px"></i>
+                        <a class="href_catalog" href="/site/catalog">Все товары</a>
                     </div>
                     <?php
                       foreach ($this->context->categories as $category) {
                           ?>
                         <div class="drop_down_catalog_item" id="camera_navbar">
-                          <i class="<?= $category['icon'] ?>" width="16px"></i><a class="href_catalog" href="/site/catalog?category_id=<?= $category['id'] ?>"><?= $category['title_ru'] ?></a>
+                          <i style="margin-right: 10px"class="<?= $category['icon'] ?>" width="16px"></i><a class="href_catalog" href="/site/catalog?category_id=<?= $category['id'] ?>"><?= $category['title_ru'] ?></a>
                           <img
                               class="angle-right"
                               src="<?=Yii::getAlias('@web'); ?>/images/line-angle-right.png"
@@ -143,7 +144,7 @@ FrontendAsset::register($this);
                 <a href="/site/wishlist">
                     <div class="nav_items_heart">
                         <i class="far fa-heart" style="color: #000; font-size: 36px;"></i>
-                        <span class="number_offer wishlist_count">0</span>
+                      <span class="number_offer wishlist_items_count"><?= $this->context->wishlistItems ?></span>
                     </div>
                 </a>
                 <a href="#popup">
@@ -163,12 +164,10 @@ FrontendAsset::register($this);
         <div class="click_cotalog">КАТАЛОГ
             <img src="<?=Yii::getAlias('@web'); ?>/images/line-angle-right.png" alt=""></div>
         <div class="row click_cotalog_row">
-<!--            <div class="col-md-12 click_cotalog_item">-->
-<!--                <img-->
-<!--                    src="--><?//=Yii::getAlias('@web'); ?><!--/images/drop_down_items/percentage.png"-->
-<!--                    alt=""-->
-<!--                    width="16px"-->
-<!--                    style="margin-right: 14px;"><a class="href_catalog" href="/site/catalog">АКЦИЯ</a></div>-->
+            <div class="col-md-12 click_cotalog_item">
+                <i class="fas fa-border-all" style="margin-right: 10px"></i>
+              <a class="href_catalog" href="/site/catalog">Все товары</a>
+            </div>
             <?php
               foreach ($this->context->categories as $category) {
                 ?>
@@ -231,8 +230,13 @@ FrontendAsset::register($this);
                 </a>
                 <a href="/site/wishlist">
                     <div class="nav_items">
+<<<<<<< HEAD
                         <span class="number_offer wishlist_count">0</span>
                         <i class="far fa-heart" style="color: #000; font-size: 36px;"></i>
+=======
+                      <i class="far fa-heart" style="color: #000; font-size: 36px;"></i>
+                      <span class="number_offer wishlist_items_count"><?= $this->context->wishlistItems ?></span>
+>>>>>>> 1a86a7e14a828bd24ff45d958d0da7f3b974077c
                     </div>
                 </a>
                 <a href="/site/cart">
@@ -266,9 +270,10 @@ FrontendAsset::register($this);
                 КАТАЛОГ
                 <span class="img_angle"><i class="fas fa-angle-right line-angle-right"></i> </span>
                 <div class="dropDownItems" id="dropDownItems">
-<!--                    <div class="dropDownItem">-->
-<!--                        <img src="--><?//=Yii::getAlias('@web'); ?><!--/images/drop_down_items/percentage.png" alt="" width="16px"><a class="href_catalog" href="/site/catalog?discount">АКЦИЯ</a>-->
-<!--                    </div>-->
+                    <div class="dropDownItem">
+                      <i style="margin-right: 10px" class="fas fa-border-all"></i>
+                      <a href="/site/catalog" class="href_catalog">Все товары</a>
+                    </div>
                     <?php
                     foreach ($this->context->categories as $category) {
                         ?>
