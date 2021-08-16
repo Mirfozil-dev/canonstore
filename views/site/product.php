@@ -31,26 +31,35 @@
               class="swiper-container mySwiper2"
           >
             <div class="swiper-wrapper">
-              <?php foreach ( $product['productImages'] as $image ): ?>
+            <?php if (!empty($product['productImages'])): ?>
+              <?php foreach ($product['productImages'] as $image ): ?>
                 <div class="swiper-slide">
                   <img src="<?=Yii::getAlias('@web').'/'.$image['img'] ?>" />
                 </div>
               <?php endforeach; ?>
+            <?php endif; ?>
+            <?php if (empty($product['productImages'])): ?>
+              <div class="swiper-slide">
+                <img src="<?=Yii::getAlias('@web'); ?>/images/product_placeholder.png" />
+              </div>
+            <?php endif; ?>
             </div>
-            <div class="swiper-button-next"></div>
-            <div class="swiper-button-prev"></div>
+            <?php if (count($product['productImages']) > 1): ?>
+              <div class="swiper-button-next"></div>
+              <div class="swiper-button-prev"></div>
+            <?php endif; ?>
           </div>
-          <div thumbsSlider="" class="swiper-container mySwiper">
+          <?php if (!empty($product['productImages'])): ?>
+            <div thumbsSlider="" class="swiper-container mySwiper">
             <div class="swiper-wrapper">
                 <?php foreach ( $product['productImages'] as $image ): ?>
-
                   <div class="swiper-slide">
                     <img src="<?=Yii::getAlias('@web').'/'.$image['img'] ?>" />
                   </div>
                 <?php endforeach; ?>
-
             </div>
           </div>
+          <?php endif; ?>
         </div>
         <!----------------------- Swiper --------------------------->
       </div>
@@ -109,10 +118,9 @@
               </a>
             </div>
           </div>
-          <div class="rating-sec-right">
-            <div class="rating-sec-right-div">
+          <div class="rating-sec-right add_wishlist">
+            <div class="rating-sec-right-div add_to_wishlist" data-id="<?= $product->id ?>">
               <i class="far fa-heart"></i>
-              <i class="fas fa-heart fasheart"></i>
             </div>
             <div class="rating-sec-right-div add_to_compare" data-id="<?= $product->id ?>">
               <i class="fas fa-balance-scale"></i>
@@ -141,11 +149,11 @@
               <button>В корзину</button>
             </a>
           </div>
-          <div class="product-buy-sec-left-btn product-buy-sec-left-bottom-btn">
-            <a href="#fast-buy-popup">
-              <button>Заказ в 1 клик</button>
-            </a>
-          </div>
+<!--          <div class="product-buy-sec-left-btn product-buy-sec-left-bottom-btn">-->
+<!--            <a href="#fast-buy-popup">-->
+<!--              <button>Заказ в 1 клик</button>-->
+<!--            </a>-->
+<!--          </div>-->
         </div>
         <div class="product-delivery">
           <div class="product-deliv-top">
@@ -212,8 +220,6 @@
       <?php endforeach; ?>
 
     </div>
-
-    <div class="productShowMoreBtn" onclick="showBtn()">Все характеристики</div>
   </div>
 
 

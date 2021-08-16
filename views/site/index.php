@@ -127,7 +127,7 @@ use yii\helpers\Url;
     <div class="container_carusel">
       <div class="img_container_carusel" id="images_carusel">
           <?php foreach ($discountProducts as $discountProduct): ?>
-            <div style="width: 300px; margin-right: 45px;" class="img_carusel">
+            <div style="min-width: 340px; width: 100%; margin-right: 10px;" class="img_carusel">
               <a href="/site/product?id=<?= $discountProduct['product']['id'] ?>">
                   <?php if (count($discountProduct['product']['productImages']) > 0): ?>
                     <img style="width: 100%;height: 260px; object-fit: cover" src="<?=Yii::getAlias('@web').'/'.$discountProduct['product']['productImages'][0]['img'] ?>" alt="">
@@ -152,7 +152,7 @@ use yii\helpers\Url;
                 <div class="offer_cost mt-0"><?= $discountProduct['discount_price'] ?></div>
                 <p class="text-muted px-3" style="text-decoration: line-through"><?= $discountProduct['product']['price'] ?></p>
               </div>
-              <a href="<?= Url::to(['cart/add', 'id' => $discountProduct['product']['id']]) ?>" data-id="<?= $discountProduct['product']['id'] ?>" class="offer_to_cart add_to_cart">В корзину</a>
+              <a href="#" data-id="<?= $discountProduct['product']['id'] ?>" class="offer_to_cart add_to_cart">В корзину</a>
             </div>
           <?php endforeach; ?>
       </div>
@@ -227,7 +227,7 @@ use yii\helpers\Url;
     <div class="container_carusel">
       <div class="img_container_carusel" id="images_carusel">
           <?php foreach ($newProducts as $newProduct): ?>
-            <div style="width: 300px; margin-right: 45px;" class="img_carusel">
+            <div style="min-width: 340px; width: 100%; margin-right: 10px;" class="img_carusel">
               <a href="/site/product?id=<?= $newProduct['id'] ?>">
                   <?php if (count($newProduct['productImages']) > 0): ?>
                     <img style="width: 100%;height: 260px; object-fit: cover" src="<?=Yii::getAlias('@web').'/'.$newProduct['productImages'][0]['img'] ?>" alt="">
@@ -261,8 +261,7 @@ use yii\helpers\Url;
                     <div class="offer_cost"><?= $newProduct['price'] ?></div>
                   <?php endif; ?>
               </div>
-                <a href="#"><img src="<?=Yii::getAlias('@web'); ?>/images/heart.png" class="add_wishlist" data-id="<?= $newProduct['id'] ?>" alt="" width="16px"></a>
-              <a href="<?= Url::to(['cart/add', 'id' => $newProduct['id']]) ?>" data-id="<?= $newProduct['id'] ?>" class="offer_to_cart add_to_cart">В корзину</a>
+              <a href="#" data-id="<?= $newProduct['id'] ?>" class="offer_to_cart add_to_cart">В корзину</a>
             </div>
           <?php endforeach; ?>
       </div>
@@ -349,7 +348,7 @@ use yii\helpers\Url;
         <div class="container_carusel">
           <div class="img_container_carusel" id="images_carusel">
               <?php foreach ($productCarousel['category']['products'] as $product): ?>
-                <div style="width: 300px; margin-right: 45px;" class="img_carusel">
+                <div style="min-width: 340px; width: 100%; margin-right: 10px;" class="img_carusel">
                   <a href="/site/product?id=<?= $product['id'] ?>">
                       <?php if (count($product['productImages']) > 0): ?>
                         <img style="width: 100%;height: 260px; object-fit: cover" src="<?=Yii::getAlias('@web').'/'.$product['productImages'][0]['img']; ?>" alt="">
@@ -381,7 +380,7 @@ use yii\helpers\Url;
                     <?php if (count($product['discounts']) == 0):?>
                       <div class="offer_cost"><?= $product['price'] ?></div>
                     <?php endif; ?>
-                  <a href="/site/product" class="offer_to_cart">В корзину</a>
+                  <a href="#" data-id="<?= $product['id'] ?>" class="offer_to_cart add_to_cart">В корзину</a>
                 </div>
               <?php endforeach; ?>
           </div>
@@ -897,18 +896,6 @@ use yii\helpers\Url;
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
-    loadWishlist()
-    function loadWishlist(){
-        $.ajax({
-            url: '/en/wishlist/wishlist-count',
-            type: 'GET',
-            dataType: 'json',
-            success: function (response){
-                $('.wishlist_count').html('')
-                $('.wishlist_count').html(response.count)
-            },
-        })
-    }
     $(document).on('click','.sign_up_user',function(){
         var name = $('.sign_up_name').val()
         var surname = $('.sign_up_surname').val()
@@ -1030,25 +1017,6 @@ use yii\helpers\Url;
             success: function(response) {
                 if (response.status == 'success') {
                     location.reload()
-                }
-            }
-        })
-    })
-
-    $(document).on('click','.add_wishlist',function(event){
-        event.preventDefault()
-        var product_id = $(this).attr('data-id')
-        $.ajax({
-            url: '/en/wishlist/insert',
-            dataType: 'json',
-            type: 'get',
-            data: {
-                product: product_id,
-            },
-            success: function(response) {
-                if (response.status == 'success') {
-                    $('.wishlist_count').html('')
-                    $('.wishlist_count').html(response.count)
                 }
             }
         })

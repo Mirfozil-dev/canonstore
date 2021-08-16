@@ -11,7 +11,7 @@ use Yii;
  * @property int|null $order_id
  * @property int|null $product_id
  * @property int|null $quantity
- * @property string|null $sum
+ * @property int|null $sum
  * @property int|null $status
  *
  * @property Orders $order
@@ -33,8 +33,7 @@ class OrderProducts extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['order_id', 'product_id', 'quantity', 'status'], 'integer'],
-            [['sum'], 'string', 'max' => 100],
+            [['order_id', 'product_id', 'quantity', 'status', 'sum'], 'integer'],
             [['order_id'], 'exist', 'skipOnError' => true, 'targetClass' => Orders::className(), 'targetAttribute' => ['order_id' => 'id']],
             [['product_id'], 'exist', 'skipOnError' => true, 'targetClass' => Products::className(), 'targetAttribute' => ['product_id' => 'id']],
         ];

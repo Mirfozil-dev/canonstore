@@ -4,6 +4,8 @@ namespace app\controllers;
 
 use app\models\Cart;
 use app\models\Compare;
+use app\models\OrderProducts;
+use app\models\Orders;
 use app\models\Reviews;
 use app\models\Users;
 use app\models\Carousel;
@@ -36,6 +38,7 @@ class SiteController extends Controller
     public $categories;
     public $cartItems = 0;
     public $compareItems = 0;
+    public $wishlistItems = 0;
 
     public function init()
     {
@@ -47,6 +50,7 @@ class SiteController extends Controller
         if ($_SESSION['account']) {
             $this->cartItems = Cart::find()->where(['user_id' => $_SESSION['account']['client_id']])->count();
             $this->compareItems = Compare::find()->where(['user_id' => $_SESSION['account']['client_id']])->count();
+            $this->wishlistItems = Wishlist::find()->where(['user_id' => $_SESSION['account']['client_id']])->count();
         }
     }
 
@@ -723,7 +727,9 @@ class SiteController extends Controller
             $result = [];
 
             foreach ($product['productOptions'] as $productOption) {
-                $result[] = $productOption['option'];
+                if ($productOption['option']['optionGroup']['id'] === $optionGroup['id']) {
+                    $result[] = $productOption['option'];
+                }
             }
             $optionGroups[$i]['options'] = $result;
             $i++;
@@ -745,26 +751,13 @@ class SiteController extends Controller
     public function actionWishlist()
     {
         if (!$_SESSION['account']) {
-            Yii::$app->session->setFlash('notification', 'Вы не авторизованы!');
-                return $this->redirect(['/site/index']);
+            Yii::$app->session->setFlash('notification','Вы не авторизованы!');
+            return $this->redirect(['site/index']);
         }
-        $client_id = $_SESSION['account']['client_id'];
-        $sql = "
-            SELECT 
-                   w.id, 
-                   w.user_id, 
-                   w.product_id, 
-                   i.img, p.title, 
-                   p.category_id, 
-                   p.price, 
-                   p.status 
-            FROM wishlist AS w 
-            INNER JOIN product_images AS i ON w.product_id = i.product_id
-            INNER JOIN products AS p ON w.product_id = p.id
-            WHERE p.status = 1 and w.user_id = ".$client_id;
-        $selectProducts = Yii::$app->db->createCommand($sql)->queryAll();
+
+        $wishlistItems = Wishlist::find()->where(['user_id' => $_SESSION['account']['client_id']])->with('product.discounts')->with('product.productOptions.option.optionGroup')->with('product.productImages')->all();
         return $this->render('wishlist', [
-            'model' => $selectProducts,
+            'wishlistItems' => $wishlistItems,
         ]);
     }
     public function actionSendEmail(Request $request) {
@@ -838,7 +831,54 @@ class SiteController extends Controller
             }
         }
     }
-    public function actionOrder() {
-        return $this->render('order');
+    public function actionOrder(Request $request) {
+        $cartItems = Cart::find()->where(['user_id' => $_SESSION['account']['client_id']])->with('product.discounts')->with('product.productImages')->all();
+        $totalSum = 0;
+        foreach ($cartItems as $item) {
+            $totalSum += $item['product']['discounts'] ? $item['product']['discounts'][0]['discount_price'] * $item['quantity'] : $item['product']['price'] * $item['quantity'];
+        }
+        return $this->render('order', ['cartItems' => $cartItems, 'totalSum' => $totalSum]);
+    }
+    public function actionCreateOrder(Request $request) {
+        if (!$_SESSION['account']) {
+            Yii::$app->session->setFlash('notification','Вы не авторизованы!');
+            return $this->redirect(['site/index']);
+        }
+
+        $city = $request->get('city');
+        $address = $request->get('address');
+        $address_comment = $request->get('address_comment');
+        $user_id = $_SESSION['account']['client_id'];
+        $cartItems = Cart::find()->where(['user_id' => $_SESSION['account']['client_id']])->with('product.discounts')->all();
+
+        $order = new Orders();
+
+        $order->city = $city;
+        $order->address = $address;
+        $order->address_comment = $address_comment;
+        $order->user_id = $user_id;
+        $order->status = 1;
+
+        if ($order->save()) {
+            if (!empty($cartItems)) {
+                foreach ($cartItems as $cartItem) {
+                    $orderProduct = new OrderProducts();
+                    $orderProduct->order_id = $order->id;
+                    $orderProduct->product_id = $cartItem->product->id;
+                    $orderProduct->quantity = $cartItem->quantity;
+                    if ($cartItem->product->discounts && !empty($cartItem->product->discounts)) {
+                        $orderProduct->sum = $cartItem->quantity*$cartItem->product->discounts[0]->discount_price;
+                    } else {
+                        $orderProduct->sum = $cartItem->quantity*$cartItem->product->price;
+                    }
+                    $orderProduct->status = 1;
+                    $orderProduct->save();
+
+                }
+            }
+        }
+
+        Yii::$app->session->setFlash('notification','Заказ принят!');
+        return $this->redirect(['site/index']);
     }
 }
