@@ -10,12 +10,10 @@
         <?php if ($category['parent']['parent']): ?>
         <li><?= $lang === 'ru' ? $category['parent']['parent']['title_ru'] : $category['parent']['parent']['title_en'] ?></li>
         <?php endif; ?>
-        <?php if ($category['parent']['parent']): ?>
-          /
+        <?php if ($category['parent']): ?>
           <li><?= $lang === 'ru' ? $category['parent']['title_ru'] : $category['parent']['title_en'] ?></li>
         <?php endif; ?>
-        <?php if ($category['parent']['parent']): ?>
-          /
+        <?php if ($category): ?>
           <li><?= $lang === 'ru' ? $category['title_ru'] : $category['title_en'] ?></li>
         <?php endif; ?>
       </ul>
@@ -36,14 +34,13 @@
           <input type="number" hidden value="<?= $category->id ?>" name="category_id">
           <div class="catalog-body-left-top">
             <div class="catalog-body-left-div-1">
-              <div class="filter-up-down-sec">
+              <div class="filter-up-down-sec filter-button">
                 <h3>ЦЕНА:</h3>
                 <div class="icon">
-                  <i class="fas fa-caret-down iconDownArrow1"></i>
-                  <i class="fas fa-caret-up iconUpArrow1"></i>
+                  <i class="fas fa-caret-down"></i>
                 </div>
               </div>
-              <div class="catalog-filter1-price">
+              <div style="visibility: hidden;height: 0;" class="catalog-filter">
                 <div class="catalog-filter1-top">
                   <div class="filter1-price-box1">
                     <input type="text" id="filter-min-amount" name="price_min" class="filter-price-input1" placeholder="10090">
@@ -64,16 +61,15 @@
                 </div>
               </div>
             </div>
-            <?php foreach ($category->optionGroups as $optionGroup): ?>
+            <?php foreach ($category['optionGroups'] as $optionGroup): ?>
             <div class="catalog-body-left-div-1">
-              <div class="filter-up-down-sec">
+              <div class="filter-up-down-sec filter-button">
                 <h3><?= $lang === 'ru' ? $optionGroup['title_ru'] : $optionGroup['title_en'] ?></h3>
                 <div class="icon">
-                  <i class="fas fa-caret-down iconDownArrow4"></i>
-                  <i class="fas fa-caret-up iconUpArrow4"></i>
+                  <i class="fas fa-caret-down"></i>
                 </div>
               </div>
-              <div class="catalog-filter4-ВОДОЗАЩИТА">
+              <div style="visibility: hidden;height: 0;" class="catalog-filter">
                   <?php foreach ($optionGroup->options as $option): ?>
                     <div class="catalog-filter2-box1 catalog-filter2-box1-1">
                         <span>
@@ -393,48 +389,45 @@
 </script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/simplePagination.js/1.6/jquery.simplePagination.min.js"></script>
-<script>
-    var items = $('.catalog-pagination-list-item');
-    var numItems = items.length;
-    var perPage = 9;
-
-    items.slice(perPage).hide();
-
-    $('#catalog-pagination-pagination-container').pagination({
-        items: numItems,
-        itemsOnPage: perPage,
-        prevText: "<",
-        nextText: ">",
-        onPageClick : function (pageNumber) {
-            var showFrom = perPage * (pageNumber - 1);
-            var showTo = showFrom + perPage;
-            items.hide().slice(showFrom, showTo).show();
-        }
-    });
-</script>
-
-
-
-<script>
-    var items2 = $('.catalog-pagination-list-item2');
-    var numItems2 = items2.length;
-    var perPage2 = 6;
-
-    items2.slice(perPage2).hide();
-
-    $('#catalog-pagination-pagination-container2').pagination({
-        items: numItems2,
-        itemsOnPage: perPage2,
-        prevText: "<",
-        nextText: ">",
-        onPageClick : function (pageNumber2) {
-            var showFrom2 = perPage2 * (pageNumber2 - 1);
-            var showTo2 = showFrom2 + perPage2;
-            items2.hide().slice(showFrom2, showTo2).show();
-        }
-    });
-
-</script>
+<!--<script>-->
+<!--    var items = $('.catalog-pagination-list-item');-->
+<!--    var numItems = items.length;-->
+<!--    var perPage = 9;-->
+<!---->
+<!--    items.slice(perPage).hide();-->
+<!---->
+<!--    $('#catalog-pagination-pagination-container').pagination({-->
+<!--        items: numItems,-->
+<!--        itemsOnPage: perPage,-->
+<!--        prevText: "<",-->
+<!--        nextText: ">",-->
+<!--        onPageClick : function (pageNumber) {-->
+<!--            var showFrom = perPage * (pageNumber - 1);-->
+<!--            var showTo = showFrom + perPage;-->
+<!--            items.hide().slice(showFrom, showTo).show();-->
+<!--        }-->
+<!--    });-->
+<!--</script>-->
+<!--<script>-->
+<!--    var items2 = $('.catalog-pagination-list-item2');-->
+<!--    var numItems2 = items2.length;-->
+<!--    var perPage2 = 6;-->
+<!---->
+<!--    items2.slice(perPage2).hide();-->
+<!---->
+<!--    $('#catalog-pagination-pagination-container2').pagination({-->
+<!--        items: numItems2,-->
+<!--        itemsOnPage: perPage2,-->
+<!--        prevText: "<",-->
+<!--        nextText: ">",-->
+<!--        onPageClick : function (pageNumber2) {-->
+<!--            var showFrom2 = perPage2 * (pageNumber2 - 1);-->
+<!--            var showTo2 = showFrom2 + perPage2;-->
+<!--            items2.hide().slice(showFrom2, showTo2).show();-->
+<!--        }-->
+<!--    });-->
+<!---->
+<!--</script>-->
 <!-- -------------------------- End of Pagination ---------------------------- -->
 
 <!-- ------------------------------ Filter ------------------------ -->
@@ -530,3 +523,8 @@
 </script>
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <link rel="stylesheet" href="/resources/demos/style.css">
+<style>
+  .filter-active {
+      transform: scaleY(-1);
+  }
+</style>
