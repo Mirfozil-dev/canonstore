@@ -47,7 +47,7 @@ class SiteController extends Controller
         $this->categories = Categories::find()->where(['status' => 1, 'parent_id' => null])->with('categories.categories')->all();
 
 
-        if ($_SESSION['account']) {
+        if (isset($_SESSION['account'])) {
             $this->cartItems = Cart::find()->where(['user_id' => $_SESSION['account']['client_id']])->count();
             $this->compareItems = Compare::find()->where(['user_id' => $_SESSION['account']['client_id']])->count();
             $this->wishlistItems = Wishlist::find()->where(['user_id' => $_SESSION['account']['client_id']])->count();
@@ -363,7 +363,7 @@ class SiteController extends Controller
 
     public function actionCart()
     {
-        if (!$_SESSION['account']) {
+        if (!isset($_SESSION['account'])) {
             Yii::$app->session->setFlash('notification','Вы не авторизованы!');
             return $this->redirect(['/site/index']);
         }
@@ -635,7 +635,7 @@ class SiteController extends Controller
 
     public function actionCompare()
     {
-        if (!$_SESSION['account']) {
+        if (!isset($_SESSION['account'])) {
             Yii::$app->session->setFlash('notification','Вы не авторизованы!');
             return $this->redirect(['site/index']);
         }
@@ -750,7 +750,7 @@ class SiteController extends Controller
 
     public function actionWishlist()
     {
-        if (!$_SESSION['account']) {
+        if (!isset($_SESSION['account'])) {
             Yii::$app->session->setFlash('notification','Вы не авторизованы!');
             return $this->redirect(['site/index']);
         }
@@ -840,7 +840,7 @@ class SiteController extends Controller
         return $this->render('order', ['cartItems' => $cartItems, 'totalSum' => $totalSum]);
     }
     public function actionCreateOrder(Request $request) {
-        if (!$_SESSION['account']) {
+        if (!isset($_SESSION['account'])) {
             Yii::$app->session->setFlash('notification','Вы не авторизованы!');
             return $this->redirect(['site/index']);
         }

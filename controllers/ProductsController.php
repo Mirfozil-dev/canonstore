@@ -78,6 +78,7 @@ class ProductsController extends Controller
         $model->status = 1;
 
         $categories = Categories::find()->where(['status' => 1])->all();
+
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         }

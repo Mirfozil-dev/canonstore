@@ -7,7 +7,7 @@ use yii\helpers\Url;
 <div
     id="carouselExampleIndicators"
     class="container-fluid carousel slide"
-    data-bs-ride="carousel">
+    data-bs-ride="carousel" style="padding: 0 !important; margin: 0 !important;">
   <div class="carousel-indicators">
       <?php
       foreach ($carousel as $key => $item) {
@@ -69,8 +69,6 @@ use yii\helpers\Url;
     ?>
 </div>
 
-<!-- Carusel Section End -->
-
 <?php if ($discountProducts): ?>
   <!-- Discount -->
   <div class="container-xl">
@@ -130,13 +128,14 @@ use yii\helpers\Url;
             <div style="min-width: 340px; width: 100%; margin-right: 10px;" class="img_carusel">
               <a href="/site/product?id=<?= $discountProduct['product']['id'] ?>">
                   <?php if (count($discountProduct['product']['productImages']) > 0): ?>
-                    <img style="width: 100%;height: 260px; object-fit: cover" src="<?=Yii::getAlias('@web').'/'.$discountProduct['product']['productImages'][0]['img'] ?>" alt="">
+                    <img style="width: 100%;height: 260px; object-fit: contain" src="<?=Yii::getAlias('@web').'/'.$discountProduct['product']['productImages'][0]['img'] ?>" alt="">
                   <?php endif; ?>
                   <?php if (count($discountProduct['product']['productImages']) == 0 || $discountProduct['product']['productImages'] == null): ?>
-                    <img style="width: 100%;height: 260px; object-fit: cover" src="<?=Yii::getAlias('@web');?>/images/product_placeholder.png" alt="">
+                    <img style="width: 100%;height: 260px; object-fit: contain" src="<?=Yii::getAlias('@web');?>/images/product_placeholder.png" alt="">
                   <?php endif; ?>
               </a>
-              <div class="skitka mt-2">
+              <div class="px-4">
+                  <div class="skitka mt-2">
                 <div class="skitka_item">В скидке</div>
               </div>
               <div class="offer_name"><?= $discountProduct['product']['title']?></div>
@@ -152,7 +151,8 @@ use yii\helpers\Url;
                 <div class="offer_cost mt-0"><?= $discountProduct['discount_price'] ?></div>
                 <p class="text-muted px-3" style="text-decoration: line-through"><?= $discountProduct['product']['price'] ?></p>
               </div>
-              <a href="#" data-id="<?= $discountProduct['product']['id'] ?>" class="offer_to_cart add_to_cart">В корзину</a>
+              <a href="#" data-id="<?= $discountProduct['product']['id'] ?>" class="offer_to_cart add_to_cart mb-5">В корзину</a>
+              </div>
             </div>
           <?php endforeach; ?>
       </div>
@@ -174,54 +174,54 @@ use yii\helpers\Url;
 
 <?php if ($newProducts): ?>
   <!-- New Products -->
-  <div class="container-xl">
+  <div class="container-xl finder_carusel">
     <div class="discount">
       <div class="discount_header">
         Новинки
       </div>
       <button class="choose_tovars_btn1">
         все товары
-        <span class="icon_down">
-                    <i class="fas fa-chevron-down"></i>
-                </span>
-        <ul id="" class="choose_tovars">
-          <li class="choose_tovar">
-            <a href="#">все товары</a>
-          </li>
-          <li class="choose_tovar">
-            <a href="#">Фотокамеры</a>
-          </li>
-          <li class="choose_tovar">
-            <a href="#">Спортивная оптика</a>
-          </li>
-          <li class="choose_tovar">
-            <a href="#">Объективы</a>
-          </li>
-        </ul>
+        <!--<span class="icon_down">-->
+        <!--            <i class="fas fa-chevron-down"></i>-->
+        <!--        </span>-->
+        <!--<ul id="" class="choose_tovars">-->
+        <!--  <li class="choose_tovar">-->
+        <!--    <a href="#">все товары</a>-->
+        <!--  </li>-->
+        <!--  <li class="choose_tovar">-->
+        <!--    <a href="#">Фотокамеры</a>-->
+        <!--  </li>-->
+        <!--  <li class="choose_tovar">-->
+        <!--    <a href="#">Спортивная оптика</a>-->
+        <!--  </li>-->
+        <!--  <li class="choose_tovar">-->
+        <!--    <a href="#">Объективы</a>-->
+        <!--  </li>-->
+        <!--</ul>-->
       </button>
       <div class="discount_menu">
         <a href="#" class="discount_href active">Все товары</a>
-        <a href="#" class="discount_href1">Фотокамеры</a>
-        <a href="#" class="discount_href2">Спортивная оптика</a>
-        <a href="#" class="discount_href3">Объективы</a>
-        <div href="#" class="drop_discount_hiddens"><img
-              src="<?=Yii::getAlias('@web'); ?>/images/line-angle-right.png"
-              width="10px"
-              style="transform: rotate(90deg);"
-              alt="">
-          <div class="hidden_items">
-            <div class="hidden_item1">
-              <a href="#" class="hidden_item_a1">Фотокамеры</a>
-            </div>
-            <div class="hidden_item2">
-              <a href="#" class="hidden_item_a2">Спортивная оптика</a>
-            </div>
-            <div class="hidden_item3">
-              <a href="#" class="hidden_item_a3">Объективы</a>
-            </div>
+        <!--<a href="#" class="discount_href1">Фотокамеры</a>-->
+        <!--<a href="#" class="discount_href2">Спортивная оптика</a>-->
+        <!--<a href="#" class="discount_href3">Объективы</a>-->
+        <!--<div href="#" class="drop_discount_hiddens"><img-->
+        <!--      src="<?=Yii::getAlias('@web'); ?>/images/line-angle-right.png"-->
+        <!--      width="10px"-->
+        <!--      style="transform: rotate(90deg);"-->
+        <!--      alt="">-->
+        <!--  <div class="hidden_items">-->
+        <!--    <div class="hidden_item1">-->
+        <!--      <a href="#" class="hidden_item_a1">Фотокамеры</a>-->
+        <!--    </div>-->
+        <!--    <div class="hidden_item2">-->
+        <!--      <a href="#" class="hidden_item_a2">Спортивная оптика</a>-->
+        <!--    </div>-->
+        <!--    <div class="hidden_item3">-->
+        <!--      <a href="#" class="hidden_item_a3">Объективы</a>-->
+        <!--    </div>-->
 
-          </div>
-        </div>
+        <!--  </div>-->
+        <!--</div>-->
       </div>
     </div>
     <div class="container_carusel">
@@ -229,13 +229,14 @@ use yii\helpers\Url;
           <?php foreach ($newProducts as $newProduct): ?>
             <div style="min-width: 340px; width: 100%; margin-right: 10px;" class="img_carusel">
               <a href="/site/product?id=<?= $newProduct['id'] ?>">
-                  <?php if (count($newProduct['productImages']) > 0): ?>
-                    <img style="width: 100%;height: 260px; object-fit: cover" src="<?=Yii::getAlias('@web').'/'.$newProduct['productImages'][0]['img'] ?>" alt="">
-                  <?php endif; ?>
-                  <?php if (count($newProduct['productImages']) == 0 || $newProduct['productImages'] == null): ?>
-                    <img style="width: 100%;height: 260px; object-fit: cover" src="<?=Yii::getAlias('@web');?>/images/product_placeholder.png" alt="">
-                  <?php endif; ?>
+                <?php if (count($newProduct['productImages']) > 0): ?>
+                  <img style="width: 100%;height: 260px; object-fit: contain" src="<?=Yii::getAlias('@web').'/'.$newProduct['productImages'][0]['img'] ?>" alt="">
+                <?php endif; ?>
+                <?php if (count($newProduct['productImages']) == 0 || $newProduct['productImages'] == null): ?>
+                  <img style="width: 100%;height: 260px; object-fit: contain" src="<?=Yii::getAlias('@web');?>/images/product_placeholder.png" alt="">
+                <?php endif; ?>
               </a>
+                <div class="px-4">
                 <?php if (count($newProduct['discounts']) > 0): ?>
                   <div class="skitka mt-2">
                     <div class="skitka_item">В скидке</div>
@@ -261,18 +262,20 @@ use yii\helpers\Url;
                     <div class="offer_cost"><?= $newProduct['price'] ?></div>
                   <?php endif; ?>
               </div>
-              <a href="#" data-id="<?= $newProduct['id'] ?>" class="offer_to_cart add_to_cart">В корзину</a>
+              <a href="#" data-id="<?= $newProduct['id'] ?>" class="offer_to_cart add_to_cart mb-5">В корзину</a>
+                </div>
             </div>
           <?php endforeach; ?>
       </div>
     </div>
-    <div class="buttons_container_carusel">
-      <div class="btn_carusel" id="left_carusel" onclick="minusOffer()">
+    <div class="buttons_container_carusel btns_carusel">
+      <div class="btn_carusel" id="left_carusel">
         <i class="fa fa-arrow-left"></i>
       </div>
-      <p class="offerNum" style="margin-left: 30px;" id="offerNum">1</p>
-      <span class="offerNum" style="margin-right: 30px;">/ <?= count($newProducts) ?></span>
-      <div class="btn_carusel" id="right_carusel" onclick="plusOffer()">
+      <p class="offerNum" style="margin-left: 30px;" id="offerNum1">1</p>
+      <span class="offerNum" style="margin-right: 30px;">/</span>
+      <span class="offerNum" id="allOfferNum1" style="margin-right: 30px;">12</span>
+      <div class="btn_carusel" id="right_carusel">
         <i class="fa fa-arrow-right"></i>
       </div>
     </div>
@@ -284,65 +287,16 @@ use yii\helpers\Url;
 <?php if ($productCarousels): ?>
   <!-- Category Products -->
     <?php foreach ($productCarousels as $productCarousel): ?>
-    <div class="container-xl" style="margin-top: 100px;">
+    <div class="container-xl finder_carusel" style="margin-top: 100px;">
       <div class="discount">
         <div class="discount_header">
             <?= $lang === 'ru' ? $productCarousel['category']['title_ru'] : $productCarousel['category']['title_en'] ?>
         </div>
         <button class="choose_tovars_btn1">
           все товары
-          <span class="icon_down">
-                    <i class="fas fa-chevron-down"></i>
-                </span>
-          <ul id="" class="choose_tovars">
-            <li class="choose_tovar">
-              <a href="#">все товары</a>
-            </li>
-            <li class="choose_tovar">
-              <a href="#">#выгодное_предложение</a>
-            </li>
-            <li class="choose_tovar">
-              <a href="#">#отличный_подарок</a>
-            </li>
-            <li class="choose_tovar">
-              <a href="#">Объективы</a>
-            </li>
-          </ul>
         </button>
         <div class="discount_menu">
-          <a href="#" class="discount_href active">Все товары</a>
-          <a href="#" class="discount_href1">#выгодное_предложение</a>
-          <a href="#" class="discount_href2">#отличный_подарок</a>
-          <a href="#" class="discount_href3">#люди_и_события</a>
-          <div href="#" class="drop_discount_hiddens"><img
-                src="<?=Yii::getAlias('@web'); ?>/images/line-angle-right.png"
-                width="10px"
-                style="transform: rotate(90deg);"
-                alt="">
-            <div class="hidden_items">
-              <div class="hidden_item1">
-                <a href="#" class="hidden_item_a1">#выгодное_предложение</a>
-              </div>
-              <div class="hidden_item2">
-                <a href="#" class="hidden_item_a2">#отличный_подарок</a>
-              </div>
-              <div class="hidden_item3">
-                <a href="#" class="hidden_item_a3">#люди_и_события</a>
-              </div>
-              <div class="hidden_item">
-                <a href="#" class="hidden_item_a">#дом_и_семья</a><br>
-              </div>
-              <div class="hidden_item">
-                <a href="#" class="hidden_item_a">#фоторепортаж</a><br>
-              </div>
-              <div class="hidden_item">
-                <a href="#" class="hidden_item_a">#видеосъемка</a><br>
-              </div>
-              <div class="hidden_item">
-                <a href="#" class="hidden_item_a">#коммерческая фотография</a><br>
-              </div>
-            </div>
-          </div>
+          <a href="<?= $productCarousel['category']['id'] ?>" class="discount_href active">Все товары</a>
         </div>
 
         <div class="container_carusel">
@@ -351,13 +305,14 @@ use yii\helpers\Url;
                 <div style="min-width: 340px; width: 100%; margin-right: 10px;" class="img_carusel">
                   <a href="/site/product?id=<?= $product['id'] ?>">
                       <?php if (count($product['productImages']) > 0): ?>
-                        <img style="width: 100%;height: 260px; object-fit: cover" src="<?=Yii::getAlias('@web').'/'.$product['productImages'][0]['img']; ?>" alt="">
+                        <img style="width: 100%;height: 260px; object-fit: contain" src="<?=Yii::getAlias('@web').'/'.$product['productImages'][0]['img']; ?>" alt="">
                       <?php endif; ?>
                       <?php if (count($product['productImages']) == 0 || $product['productImages'] == null): ?>
-                        <img style="width: 100%;height: 260px; object-fit: cover" src="<?=Yii::getAlias('@web');?>/images/product_placeholder.png" alt="">
+                        <img style="width: 100%;height: 260px; object-fit: contain" src="<?=Yii::getAlias('@web');?>/images/product_placeholder.png" alt="">
                       <?php endif; ?>
                   </a>
-                  <div class="skitka">
+                  <div class="px-4">
+                      <div class="skitka">
                       <?php if (count($product['discounts']) > 0): ?>
                         <div class="skitka_item">В скидке</div>
                       <?php endif; ?>
@@ -380,18 +335,20 @@ use yii\helpers\Url;
                     <?php if (count($product['discounts']) == 0):?>
                       <div class="offer_cost"><?= $product['price'] ?></div>
                     <?php endif; ?>
-                  <a href="#" data-id="<?= $product['id'] ?>" class="offer_to_cart add_to_cart">В корзину</a>
+                  <a href="#" data-id="<?= $product['id'] ?>" class="offer_to_cart add_to_cart mb-5">В корзину</a>
+                  </div>
                 </div>
               <?php endforeach; ?>
           </div>
         </div>
-        <div class="buttons_container_carusel">
-          <div class="btn_carusel" id="left_carusel1" onclick="minusOffer1()">
+        <div class="buttons_container_carusel btns_carusel">
+          <div class="btn_carusel" id="left_carusel">
             <i class="fa fa-arrow-left"></i>
           </div>
           <p class="offerNum" style="margin-left: 30px;" id="offerNum1">1</p>
-          <span class="offerNum" style="margin-right: 30px;">/ <?= count($productCarousel['category']['products']) ?></span>
-          <div class="btn_carusel" id="right_carusel1" onclick="plusOffer1()">
+          <span class="offerNum" style="margin-right: 30px;">/</span>
+          <span class="offerNum" id="allOfferNum1" style="margin-right: 30px;">12</span>
+          <div class="btn_carusel" id="right_carusel">
             <i class="fa fa-arrow-right"></i>
           </div>
         </div>
@@ -809,13 +766,13 @@ use yii\helpers\Url;
 
 <div class="container-xl pt-5">
   <div class="discount_header">
-    ВДОХНОВЛЯЙТЕСЬ МОМЕНТАМИ, СНЯТЫМИ NIKON!
+    ВДОХНОВЛЯЙТЕСЬ МОМЕНТАМИ, СНЯТЫМИ CANON!
     <br><br>
-    <h6>Отмечайте @nikonrussia на фото, сделанных с Nikon, и мы разместим ваше фото
+    <h6>Отмечайте @canonstore на фото, сделанных с Canon, и мы разместим ваше фото
       на сайте. Чтобы узнать подробнее о модели фотоаппарата или сделать заказ,
       кликайте по фото.</h6> </div>
   <div class="row" style="margin-left: 0px; padding: 0;" >
-    <div class="col-sm-4">
+    <div class="col-sm-4 centeredImg">
       <div class="photo_img" style="background-image: url(<?=Yii::getAlias('@web'); ?>/images/home_img/carusel/photo_section3_files/photo_img.jpg);">
                         <span class="photo_img_after"><br><br>
                             @photo_dary...<br><br>
@@ -827,7 +784,7 @@ use yii\helpers\Url;
                         </span>
       </div>
     </div>
-    <div class="col-sm-4">
+    <div class="col-sm-4 centeredImg">
       <div class="photo_img" style="background-image: url(<?=Yii::getAlias('@web'); ?>/images/home_img/carusel/photo_section3_files/photo_img1.jpg);">
                     <span class="photo_img_after"><br><br>
                         @tatti_dary...<br><br>
@@ -839,7 +796,7 @@ use yii\helpers\Url;
                     </span>
       </div>
     </div>
-    <div class="col-sm-4" >
+    <div class="col-sm-4 centeredImg" >
       <div class="photo_img" style="background-image: url(<?=Yii::getAlias('@web'); ?>/images/home_img/carusel/photo_section3_files/photo_img2.jpg);">
                         <span class="photo_img_after"><br><br>
                             @sowuschka...<br><br>

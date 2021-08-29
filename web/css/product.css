@@ -2,7 +2,7 @@
   .product-wrapper-2 {
       display: flex;
       margin-bottom: 60px;
-      height: 600px !important;
+      height: auto !important;
     }
     
     .product-left {
@@ -1080,7 +1080,6 @@
   /* -------------------- Comentary Css --------------------- */
   .comentaryContainer{
   display: flex;
-  padding: 50px;
   justify-content: center;
   background: #FFFFFF;
 }

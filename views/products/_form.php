@@ -12,7 +12,7 @@ use yii\widgets\ActiveForm;
 
 <div class="products-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
 
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 
@@ -41,6 +41,8 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'video_link')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'price')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($model->productImages, 'img')->fileInput(['multiple' => true,'accept' => 'image/*']) ?>
 
     <?= $form->field($model, 'instock')->radioList([0 => 'Not Available', 1 => 'In Stock']) ?>
 

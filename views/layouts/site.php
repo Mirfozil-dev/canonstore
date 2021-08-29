@@ -22,7 +22,6 @@ FrontendAsset::register($this);
 <body>
 <?php $this->beginBody() ?>
 <!-- Start Navbar -->
-
 <div class="navbar-for-scroll" id="navbar-for-scroll">
     <div class="container-sm">
         <div class="top_menu">
