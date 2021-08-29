@@ -3,12 +3,15 @@
 namespace app\controllers;
 
 use app\models\Categories;
+use app\models\Options;
+use app\models\ProductImages;
 use Yii;
 use app\models\Products;
 use app\models\search\ProductsSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\UploadedFile;
 
 /**
  * ProductsController implements the CRUD actions for Products model.
@@ -79,13 +82,31 @@ class ProductsController extends Controller
 
         $categories = Categories::find()->where(['status' => 1])->all();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        if (Yii::$app->request->isPost) {
+
+
+            $model->load(Yii::$app->request->post());
+
+            $model->options = serialize($_POST['Products']['options']);
+            $images = UploadedFile::getInstances($model, 'images');
+            $imageNames = [];
+            foreach ($images as $image) {
+                $imageName = rand(1000000000, 9999999999);
+                $image->saveAs('uploads/products/' . $imageName . '.' . $image->extension);
+                $imageNames[] = 'uploads/products/' . $imageName . '.' . $image->extension;
+            }
+            $model->images = serialize($imageNames);
+
+            if ($model->save()) {
+                return $this->redirect(['view', 'id' => $model->id]);
+            }
         }
+        $options = Options::find()->all();
 
         return $this->render('create', [
             'model' => $model,
-            'categories' => $categories
+            'categories' => $categories,
+            'options' => $options
         ]);
     }
 
@@ -101,13 +122,35 @@ class ProductsController extends Controller
         $model = $this->findModel($id);
 
         $categories = Categories::find()->where(['status' => 1])->all();
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        if (Yii::$app->request->isPost) {
+            foreach ($this->findModel($id)->getImages() as $image) {
+                if (file_exists(Yii::getAlias('@web').$image)) {
+                    unlink(Yii::getAlias('@web').$image);
+                }
+            }
+
+            $model->load(Yii::$app->request->post());
+
+            $model->options = serialize($_POST['Products']['options']);
+            $images = UploadedFile::getInstances($model, 'images');
+            $imageNames = [];
+            foreach ($images as $image) {
+                $imageName = rand(1000000000, 9999999999);
+                $image->saveAs('uploads/products/' . $imageName . '.' . $image->extension);
+                $imageNames[] = 'uploads/products/' . $imageName . '.' . $image->extension;
+            }
+            $model->images = serialize($imageNames);
+
+            if ($model->save()) {
+                return $this->redirect(['view', 'id' => $model->id]);
+            }
         }
+        $options = Options::find()->all();
 
         return $this->render('update', [
             'model' => $model,
-            'categories' => $categories
+            'categories' => $categories,
+            'options' => $options
         ]);
     }
 
@@ -120,7 +163,13 @@ class ProductsController extends Controller
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
+        $model = $this->findModel($id);
+        foreach ($model->getImages() as $image) {
+            if (file_exists(Yii::getAlias('@web').$image)) {
+                unlink(Yii::getAlias('@web').$image);
+            }
+        }
+        $model->delete();
 
         return $this->redirect(['index']);
     }

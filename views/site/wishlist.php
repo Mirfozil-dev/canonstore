@@ -53,10 +53,10 @@
                         <button data-id="<?= $item['id'] ?>" class="btn btn-danger position-absolute rounded-circle p-0 wishlist_delete_btn" style="width: 35px; height: 35px;right: -15px;top: -35px;">
                           <i class="fas fa-times fa-2x"></i>
                         </button>
-                        <?php if (count($item['product']['productImages']) > 0): ?>
-                          <img style="width: 100%;height: 260px; object-fit: cover" src="<?=Yii::getAlias('@web').'/'.$item['product']['productImages'][0]['img'] ?>" alt="">
+                        <?php if (count($item['product']->getImages()) > 0): ?>
+                          <img style="width: 100%;height: 260px; object-fit: cover" src="<?=Yii::getAlias('@web').'/'.$item['product']->getImages()[0] ?>" alt="">
                         <?php endif; ?>
-                        <?php if (count($item['product']['productImages']) == 0 || $item['product']['productImages'] == null): ?>
+                        <?php if (count($item['product']->getImages()) == 0 || $item['product']->getImages() == null): ?>
                           <img style="width: 100%;height: 260px; object-fit: cover" src="<?=Yii::getAlias('@web'); ?>/images/product_placeholder.png" alt="">
                         <?php endif; ?>
                         <?php if (count($item['product']['discounts']) > 0): ?>

@@ -16,7 +16,7 @@ use yii\helpers\ArrayHelper;
     <?= $form->field($model, 'title_ru')->textInput(['maxlength' => true]) ?>
     <?= $form->field($model, 'title_en')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'category_id')->dropDownList(ArrayHelper::map($categories, 'id', 'title_ru'), ['prompt' => 'Choose Category']) ?>
+    <?= $form->field($model, 'categories[]')->dropDownList(ArrayHelper::map($categories, 'id', 'title_ru'), ['multiple' => 'multiple']) ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>

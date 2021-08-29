@@ -42,7 +42,9 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'price')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model->productImages, 'img')->fileInput(['multiple' => true,'accept' => 'image/*']) ?>
+    <?= $form->field($model, 'images[]')->fileInput(['multiple' => true, 'accept' => 'image/*']) ?>
+
+    <?= $form->field($model, 'options[]')->dropDownList(ArrayHelper::map($options,'id','title_ru'), ['multiple'=>'multiple']) ?>
 
     <?= $form->field($model, 'instock')->radioList([0 => 'Not Available', 1 => 'In Stock']) ?>
 

@@ -127,10 +127,10 @@ use yii\helpers\Url;
           <?php foreach ($discountProducts as $discountProduct): ?>
             <div style="min-width: 340px; width: 100%; margin-right: 10px;" class="img_carusel">
               <a href="/site/product?id=<?= $discountProduct['product']['id'] ?>">
-                  <?php if (count($discountProduct['product']['productImages']) > 0): ?>
-                    <img style="width: 100%;height: 260px; object-fit: contain" src="<?=Yii::getAlias('@web').'/'.$discountProduct['product']['productImages'][0]['img'] ?>" alt="">
+                  <?php if (count($discountProduct['product']->getImages()) > 0): ?>
+                    <img style="width: 100%;height: 260px; object-fit: contain" src="<?=Yii::getAlias('@web').'/'. $discountProduct['product']->getImages()[0] ?>" alt="">
                   <?php endif; ?>
-                  <?php if (count($discountProduct['product']['productImages']) == 0 || $discountProduct['product']['productImages'] == null): ?>
+                  <?php if (count($discountProduct['product']->getImages()) == 0 || $discountProduct['product']->getImages()[0] == null): ?>
                     <img style="width: 100%;height: 260px; object-fit: contain" src="<?=Yii::getAlias('@web');?>/images/product_placeholder.png" alt="">
                   <?php endif; ?>
               </a>
@@ -140,8 +140,8 @@ use yii\helpers\Url;
               </div>
               <div class="offer_name"><?= $discountProduct['product']['title']?></div>
               <ul class="offer_infos">
-                  <?php foreach ($discountProduct['product']['productOptions'] as $option): ?>
-                    <li class="offer_info"><?= $lang === 'ru' ? $option['option']['title_ru'] : $option['option']['title_en'] ?></li>
+                  <?php foreach ($discountProduct['product']->getOptions() as $option): ?>
+                    <li class="offer_info"><?= $lang === 'ru' ? $option['title_ru'] : $option['title_en'] ?></li>
                   <?php endforeach; ?>
               </ul>
                 <?php if ($discountProduct['product']['instock'] === 1): ?>
@@ -229,10 +229,10 @@ use yii\helpers\Url;
           <?php foreach ($newProducts as $newProduct): ?>
             <div style="min-width: 340px; width: 100%; margin-right: 10px;" class="img_carusel">
               <a href="/site/product?id=<?= $newProduct['id'] ?>">
-                <?php if (count($newProduct['productImages']) > 0): ?>
-                  <img style="width: 100%;height: 260px; object-fit: contain" src="<?=Yii::getAlias('@web').'/'.$newProduct['productImages'][0]['img'] ?>" alt="">
+                <?php if (count($newProduct->getImages()) > 0): ?>
+                  <img style="width: 100%;height: 260px; object-fit: contain" src="<?=Yii::getAlias('@web').'/'.$newProduct->getImages()[0] ?>" alt="">
                 <?php endif; ?>
-                <?php if (count($newProduct['productImages']) == 0 || $newProduct['productImages'] == null): ?>
+                <?php if (count($newProduct->getImages()) == 0 || $newProduct->getImages()[0] == null): ?>
                   <img style="width: 100%;height: 260px; object-fit: contain" src="<?=Yii::getAlias('@web');?>/images/product_placeholder.png" alt="">
                 <?php endif; ?>
               </a>
@@ -244,8 +244,8 @@ use yii\helpers\Url;
                 <?php endif; ?>
               <div class="offer_name"><?= $newProduct['title']?></div>
               <ul class="offer_infos">
-                  <?php foreach ($newProduct['productOptions'] as $option): ?>
-                    <li class="offer_info"><?= $lang === 'ru' ? $option['option']['title_ru'] : $option['option']['title_en'] ?></li>
+                  <?php foreach ($newProduct->getOptions() as $option): ?>
+                    <li class="offer_info"><?= $lang === 'ru' ? $option['title_ru'] : $option['title_en'] ?></li>
                   <?php endforeach; ?>
               </ul>
                 <?php if ($newProduct['instock'] === 1): ?>
@@ -304,10 +304,10 @@ use yii\helpers\Url;
               <?php foreach ($productCarousel['category']['products'] as $product): ?>
                 <div style="min-width: 340px; width: 100%; margin-right: 10px;" class="img_carusel">
                   <a href="/site/product?id=<?= $product['id'] ?>">
-                      <?php if (count($product['productImages']) > 0): ?>
-                        <img style="width: 100%;height: 260px; object-fit: contain" src="<?=Yii::getAlias('@web').'/'.$product['productImages'][0]['img']; ?>" alt="">
+                      <?php if (count($product->getImages() > 0)): ?>
+                        <img style="width: 100%;height: 260px; object-fit: contain" src="<?=Yii::getAlias('@web').'/'.$product->getImages()[0] ?>" alt="">
                       <?php endif; ?>
-                      <?php if (count($product['productImages']) == 0 || $product['productImages'] == null): ?>
+                      <?php if (count($product->getImages()) == 0 || $product->getImages()[0] == null): ?>
                         <img style="width: 100%;height: 260px; object-fit: contain" src="<?=Yii::getAlias('@web');?>/images/product_placeholder.png" alt="">
                       <?php endif; ?>
                   </a>
@@ -319,8 +319,8 @@ use yii\helpers\Url;
                   </div>
                   <div class="offer_name"><?= $product['title'] ?></div>
                   <ul class="offer_infos">
-                      <?php foreach ($product['productOptions'] as $option): ?>
-                        <li class="offer_info"><?= $lang === 'ru' ? $option['option']['title_ru'] : $option['option']['title_en'] ?></li>
+                      <?php foreach ($product->getOptions() as $option): ?>
+                        <li class="offer_info"><?= $lang === 'ru' ? $option['title_ru'] : $option['title_en'] ?></li>
                       <?php endforeach; ?>
                   </ul>
                     <?php if ($product['instock'] === 1): ?>

@@ -7,15 +7,21 @@
         <li>
           <a href="/">Главная</a>
         </li>
+        <?php if (isset($product['category']['parent']['parent'])): ?>
         <li>
           <a href="/site/catalog?category_id=<?= $product['category']['parent']['parent']['id'] ?>"><?= $lang == 'ru' ? $product['category']['parent']['parent']['title_ru'] : $product['category']['parent']['parent']['title_en'] ?></a>
         </li>
+        <?php endif; ?>
+        <?php if (isset($product['category']['parent'])): ?>
         <li>
           <a href="/site/catalog?category_id=<?= $product['category']['parent']['id'] ?>"><?= $lang == 'ru' ? $product['category']['parent']['title_ru'] : $product['category']['parent']['title_en'] ?></a>
         </li>
+        <?php endif; ?>
+        <?php if (isset($product['category'])): ?>
         <li>
           <a href="/site/catalog?category_id=<?= $product['category']['id'] ?>"><?= $lang == 'ru' ? $product['category']['title_ru'] : $product['category']['title_en'] ?></a>
         </li>
+        <?php endif; ?>
         <li><?= $product['title'] ?></li>
       </ul>
       <h1 class="page-title"><?= $product['title'] ?></h1>
@@ -31,28 +37,28 @@
               class="swiper-container mySwiper2"
           >
             <div class="swiper-wrapper">
-            <?php if (!empty($product['productImages'])): ?>
-              <?php foreach ($product['productImages'] as $image ): ?>
+            <?php if (!empty($product->getImages())): ?>
+              <?php foreach ($product->getImages() as $image ): ?>
                 <div class="swiper-slide">
                   <img src="<?=Yii::getAlias('@web').'/'.$image['img'] ?>" />
                 </div>
               <?php endforeach; ?>
             <?php endif; ?>
-            <?php if (empty($product['productImages'])): ?>
+            <?php if (empty($product->getImages())): ?>
               <div class="swiper-slide">
                 <img src="<?=Yii::getAlias('@web'); ?>/images/product_placeholder.png" />
               </div>
             <?php endif; ?>
             </div>
-            <?php if (count($product['productImages']) > 1): ?>
+            <?php if (count($product->getImages()) > 1): ?>
               <div class="swiper-button-next"></div>
               <div class="swiper-button-prev"></div>
             <?php endif; ?>
           </div>
-          <?php if (!empty($product['productImages'])): ?>
+          <?php if (!empty($product->getImages())): ?>
             <div thumbsSlider="" class="swiper-container mySwiper">
             <div class="swiper-wrapper">
-                <?php foreach ( $product['productImages'] as $image ): ?>
+                <?php foreach ( $product->getImages() as $image ): ?>
                   <div class="swiper-slide">
                     <img src="<?=Yii::getAlias('@web').'/'.$image['img'] ?>" />
                   </div>
@@ -196,7 +202,6 @@
 
   <div class="productVideoTable" id="productVideoTable">
     <h3>ТЕХНИЧЕСКИЕ ХАРАКТЕРИСТИКИ</h3>
-    <!--
     <div class="productVideoDetailUnderscore"></div>
     <div class="productVideoDetailTAble">
       <?php foreach ($optionGroups as $optionGroup): ?>
@@ -214,7 +219,6 @@
       <?php endforeach; ?>
 
     </div>
-    -->
     <div class=videoTableDescription>
         <?= $lang == 'ru' ? $product['description_ru'] : $product['description_en'] ?>
     </div>

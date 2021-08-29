@@ -65,10 +65,25 @@ class Options extends \yii\db\ActiveRecord
     /**
      * Gets query for [[ProductOptions]].
      *
-     * @return \yii\db\ActiveQuery
+     * @return int
      */
-    public function getProductOptions()
+    public function getProductsCount()
     {
-        return $this->hasMany(ProductOptions::className(), ['option_id' => 'id']);
+       $products = Products::find()->where(['status' => 1])->all();
+       $count = 0;
+
+        foreach ($products as $product) {
+            if ($product) {
+
+                foreach ($product->getOptions() as $option) {
+                    if ($this->id === $option->id) {
+                        $count++;
+                    }
+                }
+            }
+       }
+
+        return $count;
+
     }
 }

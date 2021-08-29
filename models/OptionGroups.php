@@ -10,10 +10,9 @@ use Yii;
  * @property int $id
  * @property string|null $title_ru
  * @property string|null $title_en
- * @property int|null $category_id
+ * @property string|null $categories
  * @property int|null $status
  *
- * @property Categories $category
  * @property Options[] $options
  */
 class OptionGroups extends \yii\db\ActiveRecord
@@ -32,9 +31,7 @@ class OptionGroups extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['category_id', 'status'], 'integer'],
             [['title_ru', 'title_en'], 'string', 'max' => 45],
-            [['category_id'], 'exist', 'skipOnError' => true, 'targetClass' => Categories::className(), 'targetAttribute' => ['category_id' => 'id']],
         ];
     }
 
@@ -47,7 +44,6 @@ class OptionGroups extends \yii\db\ActiveRecord
             'id' => 'ID',
             'title_ru' => 'Title RU',
             'title_en' => 'Title EN',
-            'category_id' => 'Category',
             'status' => 'Status',
         ];
     }
@@ -55,11 +51,15 @@ class OptionGroups extends \yii\db\ActiveRecord
     /**
      * Gets query for [[Category]].
      *
-     * @return \yii\db\ActiveQuery
+     * @return array
      */
-    public function getCategory()
+    public function getCategories()
     {
-        return $this->hasOne(Categories::className(), ['id' => 'category_id']);
+        if (unserialize($this->categories) && !empty(unserialize($this->categories))) {
+            return Categories::findAll(unserialize($this->categories));
+        } else {
+            return [];
+        }
     }
 
     /**

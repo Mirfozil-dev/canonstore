@@ -22,6 +22,7 @@ FrontendAsset::register($this);
 <body>
 <?php $this->beginBody() ?>
 <!-- Start Navbar -->
+
 <div class="navbar-for-scroll" id="navbar-for-scroll">
     <div class="container-sm">
         <div class="top_menu">
@@ -61,6 +62,15 @@ FrontendAsset::register($this);
                         <i class="fas fa-user" style="color: #000;"></i>
                     </div>
                 </a>
+                <?php
+                        if(isset($_SESSION['account']) and !empty($_SESSION['account'])){
+                            echo "<a href='#' id='exit'>
+                                    <div class='nav_items_log-out'>
+                                        <i class='fas fa-sign-out-alt' style='font-size: 25px;'></i>
+                                </div>
+                            </a>";
+                        }
+                    ?>
                 <a href="/site/cart#click_navbar">
                     <div class="nav_items_bar">
                       <i class="fas fa-bars"></i>
@@ -93,7 +103,7 @@ FrontendAsset::register($this);
                             foreach ($category['categories'] as $subcategory) {
                                 ?>
                                   <div class="drop_camera_item_scroll col-md-5">
-                                    <h6 class="camera_header_scroll"><a class="href_catalog1" href="/site/catalog?category_id=<?= $subcategory['id'] ?>"><?= $subcategory['title_ru'] ?></a></h6>
+                                    <h6 class="camera_header"><a class="href_catalog1" href="/site/catalog?category_id=<?= $subcategory['id'] ?>"><?= $subcategory['title_ru'] ?></a></h6>
                                     <?php
                                     foreach ($subcategory['categories'] as $seccategory) {
                                         ?>
@@ -160,9 +170,10 @@ FrontendAsset::register($this);
             </div>
 
         </div>
-        <div class="click_cotalog">КАТАЛОГ
+        <div class="click_cotalog" id="toggle-btn" data-toggle="collapse"
+            data-target="#toggle-example">КАТАЛОГ
             <img src="<?=Yii::getAlias('@web'); ?>/images/line-angle-right.png" alt=""></div>
-        <div class="row click_cotalog_row">
+        <div class="row click_cotalog_row collapse in" id="toggle-example">
             <div class="col-md-12 click_cotalog_item">
                 <i class="fas fa-border-all" style="margin-right: 10px"></i>
               <a class="href_catalog" href="/site/catalog">Все товары</a>
@@ -170,32 +181,32 @@ FrontendAsset::register($this);
             <?php
               foreach ($this->context->categories as $category) {
                 ?>
-                  <div class="col-md-12 click_cotalog_item">
-                    <img
-                        src="<?=Yii::getAlias('@web'); ?>/images/drop_down_items/black-camera.png"
-                        alt=""
-                        width="16px"
-                        style="margin-right: 14px;">
+                  <div class="col-md-12 click_cotalog_item" id="toggle-btn" data-toggle="collapse"
+                            data-target="#toggle-example">
+                    <i class="<?= $category['icon'] ?>" style="padding-right: 5px;margin-bottom: 3px;"></i>
                     <a class="href_catalog" href="/site/catalog?category_id=<?= $category['id'] ?>"><?=  Yii::$app->language == 'ru' ? $category['title_ru'] : $category['title_en'] ?></a>
-                    <ul>
+                    
+                  </div>
+                  <ul class="navMobMenu collapse in" id="toggle-example">
                       <?php foreach ($category['categories'] as $subcategory): ?>
                         <a href="">
                           <li><?= Yii::$app->language == 'ru' ? $subcategory['title_ru'] : $subcategory['title_en'] ?></li>
                         </a>
                       <?php endforeach; ?>
                     </ul>
-                  </div>
                 <?php
               }
             ?>
         </div>
-        <div class="click_info"><a class="href_catalog" href="/site/catalog">ИНФОРМАЦИЯ</a>
+        <div class="click_info" id="toggle-btn" data-toggle="collapse"
+            data-target="#toggle-example">
+            <a class="href_catalog">ИНФОРМАЦИЯ</a>
             <img
                 src="<?=Yii::getAlias('@web'); ?>/images/line-angle-right.png"
                 alt=""
                 style="transform: rotate(90deg);"
                 width="10px"></div>
-        <div class="row click_info_row">
+        <div class="row click_info_row collapse in" id="toggle-example">
             <div class="col-md-12 click_cotalog_item"><a class="href_catalog1" href="/site/about">О магазине</a></div>
             <div class="col-md-12 click_cotalog_item"><a class="href_catalog1" href="/site/news">Новости</a></div>
             <div class="col-md-12 click_cotalog_item"><a class="href_catalog1" href="/site/delivery">Доставка и оплата</a></div>
@@ -229,13 +240,8 @@ FrontendAsset::register($this);
                 </a>
                 <a href="/site/wishlist">
                     <div class="nav_items">
-<<<<<<< HEAD
-                        <span class="number_offer wishlist_count">0</span>
-                        <i class="far fa-heart" style="color: #000; font-size: 36px;"></i>
-=======
                       <i class="far fa-heart" style="color: #000; font-size: 36px;"></i>
                       <span class="number_offer wishlist_items_count"><?= $this->context->wishlistItems ?></span>
->>>>>>> 1a86a7e14a828bd24ff45d958d0da7f3b974077c
                     </div>
                 </a>
                 <a href="/site/cart">
@@ -248,15 +254,16 @@ FrontendAsset::register($this);
                     <div class="nav_items_user" id="contact3">
                       <i class="fas fa-user" style="color: #000;"></i>
                     </div>
-                    <?php
+                </a>
+                <?php
                         if(isset($_SESSION['account']) and !empty($_SESSION['account'])){
-                            echo "<h2>".$_SESSION['account']['name']."</h2>";
-                            echo "<a href='#' id='exit'><i class='fas fa-sign-out-alt fa-3x'></i></a>";
+                            echo "<a href='#' id='exit'>
+                                    <div class='nav_items_log-out'>
+                                        <i class='fas fa-sign-out-alt' style='font-size: 25px;'></i>
+                                </div>
+                            </a>";
                         }
                     ?>
-                </a>
-
-
                 <a href="#click_navbar">
                     <div class="nav_items_bar1">
                       <i class="fas fa-bars"></i>
@@ -282,7 +289,7 @@ FrontendAsset::register($this);
                             src="<?=Yii::getAlias('@web'); ?>/images/line-angle-right.png"
                             alt=""
                             width="6px"
-                            style="position: absolute; right: 1px;">
+                            >
                         <div class="drop_camera row">
                             <?php
                             foreach ($category['categories'] as $subcategory) {
@@ -323,12 +330,12 @@ FrontendAsset::register($this);
                     style="transform: rotate(90deg);">
 
                 <div class="info-drop-down">
-                    <div class="info-drop-down-item"><a class="href_catalog" href="/site/about">О магазине</a></div>
-                    <div class="info-drop-down-item"><a class="href_catalog" href="/site/news">Новости</a></div>
-                    <div class="info-drop-down-item"><a class="href_catalog" href="/site/delivery">Доставка и оплата</a></div>
-                    <div class="info-drop-down-item"><a class="href_catalog" href="/site/warranty">Гарантия и сервис</a></div>
-                    <div class="info-drop-down-item"><a class="href_catalog" href="/site/contact">Контакты</a></div>
-                    <div class="info-drop-down-item"><a class="href_catalog" href="/site/faq">FAQ</a></div>
+                    <div class="info-drop-down-item"><a class="href_catalog href-info-box" href="/site/about">О магазине</a></div>
+                    <div class="info-drop-down-item"><a class="href_catalog href-info-box" href="/site/news">Новости</a></div>
+                    <div class="info-drop-down-item"><a class="href_catalog href-info-box" href="/site/delivery">Доставка и оплата</a></div>
+                    <div class="info-drop-down-item"><a class="href_catalog href-info-box" href="/site/warranty">Гарантия и сервис</a></div>
+                    <div class="info-drop-down-item"><a class="href_catalog href-info-box" href="/site/contact">Контакты</a></div>
+                    <div class="info-drop-down-item"><a class="href_catalog href-info-box" href="/site/faq">FAQ</a></div>
                 </div>
             </div>
         </div>
@@ -452,7 +459,7 @@ FrontendAsset::register($this);
           <input type="email" name="" id="" placeholder="E-mail*" class="contact-input sign_up_email">
         </div>
         <div class="col-md-6 contact-right">
-          <div class="contact-right-header">Единая авторизация Nikon</div>
+          <div class="contact-right-header">Единая авторизация Canon</div>
           <div class="choose-flag">
             <select name="" id="country_code" class="choose-flag-items">
               <option value="RU"><!--<img src="<?=Yii::getAlias('@web'); ?>/images/contact/ru.png" alt="" width="1000px">-->RU</option>

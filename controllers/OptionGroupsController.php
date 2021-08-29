@@ -78,9 +78,15 @@ class OptionGroupsController extends Controller
         $model->status = 1;
         $categories = Categories::find()->where(['status' => 1])->all();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        if (Yii::$app->request->isPost) {
+            $model->load(Yii::$app->request->post());
+            $model->categories = serialize($_POST['OptionGroups']['categories']);
+
+            if ($model->save()) {
+                return $this->redirect(['view', 'id' => $model->id]);
+            }
         }
+
 
         return $this->render('create', [
             'model' => $model,
@@ -101,8 +107,13 @@ class OptionGroupsController extends Controller
 
         $categories = Categories::find()->where(['status' => 1])->all();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        if (Yii::$app->request->isPost) {
+            $model->load(Yii::$app->request->post());
+            $model->categories = serialize($_POST['OptionGroups']['categories']);
+
+            if ($model->save()) {
+                return $this->redirect(['view', 'id' => $model->id]);
+            }
         }
 
         return $this->render('update', [

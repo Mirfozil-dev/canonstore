@@ -4,15 +4,15 @@
         <?php foreach ($cartItems as $cartItem): ?>
           <div style="height: 250px;margin-right: 10px; margin-left: 10px" class="cart_offer w-50">
             <div class="img_place py-0">
-                <?php if ($cartItem['product']['productImages'] && count($cartItem['product']['productImages']) > 0): ?>
+                <?php if ($cartItem['product']->getImages() && count($cartItem['product']->getImages()) > 0): ?>
                   <img
                       class="img_place_item"
-                      src="<?=Yii::getAlias('@web').'/'.$cartItem['product']['productImages'][0]['img'] ?>"
+                      src="<?=Yii::getAlias('@web').'/'.$cartItem['product']->getImages()[0] ?>"
                       alt=""
                       style="height: 100%;object-fit: cover"
                       width="100%">
                 <?php endif; ?>
-                <?php if (count($cartItem['product']['productImages']) == 0 || $cartItem['product']['productImages'] == null): ?>
+                <?php if (count($cartItem['product']->getImages()) == 0 || $cartItem['product']->getImages() == null): ?>
                   <img
                       class="img_place_item"
                       src="<?=Yii::getAlias('@web') ?>/images/product_placeholder.png"
