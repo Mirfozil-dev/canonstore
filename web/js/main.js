@@ -1,16 +1,3 @@
-loadWishlist()
-function loadWishlist(){
-    $.ajax({
-        url: '/en/wishlist/wishlist-count',
-        type: 'GET',
-        dataType: 'json',
-        success: function (response){
-            $('.wishlist_count').html('')
-            $('.wishlist_count').html(response.count)
-        },
-    })
-}
-
 $('.add_to_cart').on('click', (e) => {
     e.preventDefault()
     let id = e.target.closest('.add_to_cart').getAttribute('data-id')
