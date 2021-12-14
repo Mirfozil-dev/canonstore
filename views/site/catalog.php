@@ -1,5 +1,5 @@
 <!------------------- beginning of body --------------------->
-<div style="height: 180px;"></div>
+<div class="product_top_space"></div>
 <div class="catalog" style="padding: 0 40px; display: flex; justify-content: center;">
   <div class="container" style="max-width: 1200px; margin: 0;">
 
@@ -7,11 +7,11 @@
     <div class="about-wrapper">
       <ul class="breadcrumbs-list">
         <li><a href="/site">Главная</a></li>
-        <?php if ($category['parent']['parent']): ?>
-        <li><?= $lang === 'ru' ? $category['parent']['parent']['title_ru'] : $category['parent']['parent']['title_en'] ?></li>
+        <?php if (isset($category['parent']['parent']['id'])): ?>
+        <li><a href="<?= $category['parent']['parent']['id'] ?>"><?= $lang === 'ru' ? $category['parent']['parent']['title_ru'] : $category['parent']['parent']['title_en'] ?></a></li>
         <?php endif; ?>
-        <?php if ($category['parent']): ?>
-          <li><?= $lang === 'ru' ? $category['parent']['title_ru'] : $category['parent']['title_en'] ?></li>
+        <?php if (isset($category['parent']['id'])): ?>
+          <li><a href="<?= $category['parent']['id'] ?>"><?= $lang === 'ru' ? $category['parent']['title_ru'] : $category['parent']['title_en'] ?></a></li>
         <?php endif; ?>
         <?php if ($category): ?>
           <li><?= $lang === 'ru' ? $category['title_ru'] : $category['title_en'] ?></li>
@@ -31,7 +31,9 @@
         <div id="catalog-mobile-drop-down" class="catalog-mobile-drop-down"><span>Фильтры</span><i class="fas fa-filter"></i></div>
 
         <form id="catalog-filter-form" class="catalog-filter-form" action="/site/catalog" method="GET">
-          <input type="number" hidden value="<?= $category->id ?>" name="category_id">
+            <?php if (isset($category['id'])): ?>
+                <input type="number" hidden value="<?= $category['id'] ?>" name="category_id">
+            <?php endif; ?>
           <div class="catalog-body-left-top">
             <div class="catalog-body-left-div-1">
               <div class="filter-up-down-sec filter-button">
@@ -76,7 +78,7 @@
                           <input type="checkbox" name="options[]" value="<?= $option->id ?>">
                           <label for="ТИП-Беззеркальная"><?= $lang === 'ru' ? $option['title_ru'] : $option['title_en'] ?></label>
                         </span>
-                      <div>(<?= count($option->productOptions) ?>)</div>
+                      <div>(<?= $option->getProductsCount() ?>)</div>
                     </div>
                   <?php endforeach; ?>
               </div>
@@ -151,10 +153,10 @@
                   <a href="/site/product?id=<?= $product->id ?>" class="cat-card-link">
                   <div class="catalog-pagination-list-item catalog-pagination-grid-item">
                     <div class="cat-card-img-wrapper">
-                        <?php if (count($product->productImages) > 0): ?>
-                          <img style="width: 100%;object-fit: cover" src="<?=Yii::getAlias('@web').'/'.$product->productImages[0]->img?>" alt="">
+                        <?php if (count($product->getImages()) > 0): ?>
+                          <img style="width: 100%;object-fit: cover" src="<?=Yii::getAlias('@web').'/'.$product->getImages()[0]?>" alt="">
                         <?php endif; ?>
-                        <?php if (count($product->productImages) == 0 || $product->productImages == null): ?>
+                        <?php if (count($product->getImages()) == 0 || $product->getImages() == null): ?>
                           <img style="width: 100%;object-fit: cover" src="<?=Yii::getAlias('@web');?>/images/product_placeholder.png" alt="">
                         <?php endif; ?>
                       <?php if (count($product->discounts) > 0): ?>
@@ -202,13 +204,13 @@
               <div class="catalog-list-view">
                   <?php if ($products): ?>
                       <?php foreach ($products as $product): ?>
-                      <a href="/site/product?id=<?= $product->id ?>" class="cat-card-link-list">
-                        <div style="height: 240px;" class="catalog-pagination-list-item2 catalog-pagination-grid-item">
+                      <a href="/site/product?id=<?= $product->id ?>" class="cat-card-link-list list_product_info">
+                        <div class="catalog-pagination-list-item2 catalog-pagination-grid-item">
                           <div class="cat-card-img-wrapper-list">
-                              <?php if (count($product->productImages) > 0): ?>
-                                <img style="height: 100%;object-fit: cover" src="<?=Yii::getAlias('@web').'/'.$product->productImages[0]->img?>" alt="">
+                              <?php if (count($product->getImages()) > 0): ?>
+                                <img style="height: 100%;object-fit: cover" src="<?=Yii::getAlias('@web').'/'.$product->getImages()[0]?>" alt="">
                               <?php endif; ?>
-                              <?php if (count($product->productImages) == 0 || $product->productImages == null): ?>
+                              <?php if (count($product->getImages()) == 0 || $product->getImages() == null): ?>
                                 <img style="height: 100%;object-fit: cover" src="<?=Yii::getAlias('@web');?>/images/product_placeholder.png" alt="">
                               <?php endif; ?>
                               <?php if (count($product->discounts) > 0): ?>

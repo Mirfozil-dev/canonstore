@@ -3,19 +3,18 @@
 use yii\helpers\Html;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\ProductImages */
+/* @var $model app\models\Feedback */
 
-$this->title = 'Create Product Images';
-$this->params['breadcrumbs'][] = ['label' => 'Product Images', 'url' => ['index']];
+$this->title = 'Create Feedback';
+$this->params['breadcrumbs'][] = ['label' => 'Feedbacks', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="product-images-create">
+<div class="feedback-create">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
     <?= $this->render('_form', [
         'model' => $model,
-        'products' => $products
     ]) ?>
 
 </div>

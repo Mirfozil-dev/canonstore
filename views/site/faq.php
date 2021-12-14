@@ -38,7 +38,7 @@
                 <ul class="faq-list">
                     <li class="faq-item">
                         <div class="faq-item-opener">
-                            <span>СПОРТИВНАЯ ОПТИКА NIKON</span>
+                            <span>СПОРТИВНАЯ ОПТИКА Canon</span>
                         </div>
                         <div class="faq-item-drop">
                             <p>
@@ -50,21 +50,21 @@
                                 Здравствуйте. Спортивная оптика компании Никон на территории РФ реализуется через
                                 дилеров. Список дилеров можно найти на официальном
                                 <a target="_blank"
-                                   href="http://www.nikon.ru/ru_RU/where_to_buy/where_to_buy_landing.page?">сайте
+                                   href="http://www.canonstore.uz/ru_RU/where_to_buy/where_to_buy_landing.page?">сайте
                                     компании...</a>
 
                                 К сожалению в нашем магазине оптические прицелы не продаются, а&nbsp;из спортивной
                                 оптики у нас есть
                                 <a target="_blank"
-                                   href="https://nikonstore.ru/catalog/nikon-sport-optics/binokli/">бинокли</a>,
+                                   href="https://Canonstore.ru/catalog/Canon-sport-optics/binokli/">бинокли</a>,
                                 <a target="_blank"
-                                   href="https://nikonstore.ru/catalog/nikon-sport-optics/lazernye-dalnomery/">лазерные
+                                   href="https://Canonstore.ru/catalog/Canon-sport-optics/lazernye-dalnomery/">лазерные
                                     дальномеры</a>,
                                 <a target="_blank"
-                                   href="https://nikonstore.ru/catalog/nikon-sport-optics/zritelnye-truby/">зрительные
+                                   href="https://Canonstore.ru/catalog/Canon-sport-optics/zritelnye-truby/">зрительные
                                     трубы</a> и
                                 <a target="_blank"
-                                   href="https://nikonstore.ru/catalog/nikon-sport-optics/lupy/">лупы</a>.
+                                   href="https://Canonstore.ru/catalog/Canon-sport-optics/lupy/">лупы</a>.
                             </p>
                         </div>
                     </li>
@@ -95,7 +95,7 @@
                         </div>
                         <div class="faq-item-drop">
                             <p>
-                                <b>Вопрос:</b> Я сделал в магазине заказ и в упаковке находилась карта Nikon Store.
+                                <b>Вопрос:</b> Я сделал в магазине заказ и в упаковке находилась карта Canon Store.
                                 При
                                 проверке номера карты на сайте магазина,получен ответ,что номер не найден.
                                 <br>
@@ -113,7 +113,7 @@
                     </li>
                     <li class="faq-item">
                         <div class="faq-item-opener">
-                            <span>СОВМЕСТИМОСТЬ КАМЕР И ОБЪЕКТИВОВ NIKON</span>
+                            <span>СОВМЕСТИМОСТЬ КАМЕР И ОБЪЕКТИВОВ Canon</span>
                         </div>
                         <div class="faq-item-drop">
                             <p>
@@ -122,10 +122,10 @@
                                 <br>
                                 <b>Ответ: </b>
                                 Объективы бывают различных типов. Определить его можно, взглянув на маркировку:
-                                "AF" - полностью совместимы с камерами Nikon D90, серии D7xxx, D500, Df, D610, D750,
+                                "AF" - полностью совместимы с камерами Canon D90, серии D7xxx, D500, Df, D610, D750,
                                 D810/D810A, D4/D4s, D5
-                                "AF-S" - полностью совместимы со всеми зеркальными фотокамерами Nikon
-                                "AF-P" - полностью совместимы с камерами данной модели или новее, чем Nikon D3300,
+                                "AF-S" - полностью совместимы со всеми зеркальными фотокамерами Canon
+                                "AF-P" - полностью совместимы с камерами данной модели или новее, чем Canon D3300,
                                 D5200
                                 и D7100, а также D500. Обратите внимание на то, что может потребоваться обновление
                                 прошивки совместимых фотокамер.
@@ -152,18 +152,18 @@
                                 территорию
                                 РФ. В этом случае в комплекте с камерами не идёт гарантийный талон установленного
                                 образца, а следовательно в <a target="_blank"
-                                                              href="http://www.nikon.ru/ru_RU/service_support/nikon_warranty.page?ID=templatedata/ru_RU/taggable_content/data/service/warranty">установленного
+                                                              href="http://www.canonstore.uz/ru_RU/service_support/Canon_warranty.page?ID=templatedata/ru_RU/taggable_content/data/service/warranty">установленного
                                     образца</a> вам откажут.
                             </p>
                         </div>
                     </li>
                     <li class="faq-item">
                         <div class="faq-item-opener">
-                            <span>ПРО ПЛЁНОЧНУЮ КАМЕРУ NIKON FM10</span>
+                            <span>ПРО ПЛЁНОЧНУЮ КАМЕРУ Canon FM10</span>
                         </div>
                         <div class="faq-item-drop">
                             <p>
-                                <b>Вопрос: </b> Когда планируется появление пленочной камеры Nikon FM-10 35mm SLR
+                                <b>Вопрос: </b> Когда планируется появление пленочной камеры Canon FM-10 35mm SLR
                                 Camera
                                 Kit
                                 with 35-70mm F3.5-4.8?
@@ -218,7 +218,7 @@
                                 способов:
                             </p>
                             <ol class="faq-content-list-num">
-                                <li>по электронной почте shop@nikon.ru;</li>
+                                <li>по электронной почте shop@canonstore.uz;</li>
                                 <li>по телефону 8 (495) 662-3967, 8 (800) 700–7305;</li>
                                 <li>воспользовавшись функцией восстановления пароля и следуя дальнейшим инструкциям.
                                 </li>

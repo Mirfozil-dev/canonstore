@@ -207,3 +207,12 @@ $('.wishlist_delete_btn').on('click', (e) => {
         }
     })
 })
+
+const togglers = document.querySelectorAll("#toggle-btn").forEach(element=>{
+            $(document).ready(function () {
+                $(element).click(function () {
+                    console.log($(this)[0].nextElementSibling)
+                    $($(this)[0].nextElementSibling).collapse('toggle'); // toggle collapse
+                });
+            });
+        })

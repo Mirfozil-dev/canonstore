@@ -13,6 +13,8 @@ use yii\behaviors\TimestampBehavior;
  * @property int|null $category_id
  * @property string|null $description_ru
  * @property string|null $description_en
+ * @property string|null $images
+ * @property string|null $options
  * @property string|null $video_link
  * @property string|null $price
  * @property int|null $instock
@@ -25,8 +27,6 @@ use yii\behaviors\TimestampBehavior;
  * @property Compare[] $compares
  * @property Discount[] $discounts
  * @property OrderProducts[] $orderProducts
- * @property ProductImages[] $productImages
- * @property ProductOptions[] $productOptions
  * @property Categories $category
  * @property Wishlist[] $wishlists
  */
@@ -58,6 +58,7 @@ class Products extends \yii\db\ActiveRecord
             [['title'], 'string', 'max' => 45],
             [['video_link'], 'string', 'max' => 255],
             [['price'], 'string', 'max' => 100],
+            [['images'], 'file', 'extensions' => 'png, jpg', 'maxFiles' => 4],
             [['category_id'], 'exist', 'skipOnError' => true, 'targetClass' => Categories::className(), 'targetAttribute' => ['category_id' => 'id']],
         ];
     }
@@ -133,24 +134,10 @@ class Products extends \yii\db\ActiveRecord
     }
 
     /**
-     * Gets query for [[ProductImages]].
-     *
-     * @return \yii\db\ActiveQuery
-     */
-    public function getProductImages()
-    {
-        return $this->hasMany(ProductImages::className(), ['product_id' => 'id']);
-    }
-
-    /**
      * Gets query for [[ProductOptions]].
      *
      * @return \yii\db\ActiveQuery
      */
-    public function getProductOptions()
-    {
-        return $this->hasMany(ProductOptions::className(), ['product_id' => 'id']);
-    }
 
     /**
      * Gets query for [[Category]].
@@ -180,5 +167,20 @@ class Products extends \yii\db\ActiveRecord
     }
     public function getUpdatedDate() {
         return gmdate("Y-m-d H:i:s", $this->updated_at);
+    }
+    public function getImages() {
+        if (unserialize($this->images) && !empty(unserialize($this->images))) {
+            return unserialize($this->images);
+        } else {
+            return [];
+        }
+    }
+
+    public function getOptions() {
+        if (unserialize($this->options) && !empty(unserialize($this->options))) {
+            return Options::findAll(unserialize($this->options));
+        } else {
+            return [];
+        }
     }
 }

@@ -132,9 +132,9 @@
                 <div class="consultants-list__item-about">
                   <p> </p>
                   <div>
-                    Администратор Nikon Plaza.
+                    Администратор Canon Plaza.
                     <br>
-                    Специалист по технике Nikon.
+                    Специалист по технике Canon.
                     <br>
                     Фотограф Экспериментатор.
                     <br>
@@ -153,9 +153,9 @@
                 <div class="consultants-list__item-about">
                   <p> </p>
                   <div>
-                    Преподаватель Nikon School.
+                    Преподаватель Canon School.
                     <br>
-                    Гуру фотовспышек Nikon.
+                    Гуру фотовспышек Canon.
                     <br>
                     Практикующий фотограф.
                     <br>
@@ -176,7 +176,7 @@
                 <div class="consultants-list__item-about">
                   <p> </p>
                   <div>
-                    Специалист по технике Nikon.
+                    Специалист по технике Canon.
                     <br>
                     Эксперт по Спортивной оптике.
                     <br>

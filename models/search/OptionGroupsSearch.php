@@ -17,7 +17,7 @@ class OptionGroupsSearch extends OptionGroups
     public function rules()
     {
         return [
-            [['id', 'category_id', 'status'], 'integer'],
+            [['id', 'status'], 'integer'],
             [['title_ru', 'title_en'], 'safe'],
         ];
     }
@@ -59,7 +59,6 @@ class OptionGroupsSearch extends OptionGroups
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'category_id' => $this->category_id,
             'status' => $this->status,
         ]);
 

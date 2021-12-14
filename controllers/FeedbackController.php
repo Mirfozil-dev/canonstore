@@ -2,32 +2,21 @@
 
 namespace app\controllers;
 
-use app\models\Products;
 use Yii;
-use app\models\ProductImages;
-use app\models\search\ProductImagesSearch;
+use app\models\Feedback;
+use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-use yii\web\UploadedFile;
 
 /**
- * ProductImagesController implements the CRUD actions for ProductImages model.
+ * FeedbackController implements the CRUD actions for Feedback model.
  */
-class ProductImagesController extends Controller
+class FeedbackController extends Controller
 {
     /**
      * {@inheritdoc}
      */
-    public function init()
-    {
-        parent::init();
-
-        if(Yii::$app->user->isGuest){
-            return $this->redirect('/admin/login');
-        }
-    }
-
     public function behaviors()
     {
         return [
@@ -41,22 +30,22 @@ class ProductImagesController extends Controller
     }
 
     /**
-     * Lists all ProductImages models.
+     * Lists all Feedback models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new ProductImagesSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $dataProvider = new ActiveDataProvider([
+            'query' => Feedback::find(),
+        ]);
 
         return $this->render('index', [
-            'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
     }
 
     /**
-     * Displays a single ProductImages model.
+     * Displays a single Feedback model.
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
@@ -69,33 +58,25 @@ class ProductImagesController extends Controller
     }
 
     /**
-     * Creates a new ProductImages model.
+     * Creates a new Feedback model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new ProductImages();
+        $model = new Feedback();
 
-        $products = Products::find()->where(['status' => 1])->all();
-
-        if ($model->load(Yii::$app->request->post())) {
-            $instance = UploadedFile::getInstance($model, 'img');
-            $instance->saveAs('uploads/products/'.$model->id.' '.$instance->baseName.'.'.$instance->extension);
-            $model->img = 'uploads/products/'.$model->id.' '.$instance->baseName.'.'.$instance->extension;
-
-            $model->save();
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
         return $this->render('create', [
             'model' => $model,
-            'products' => $products
         ]);
     }
 
     /**
-     * Updates an existing ProductImages model.
+     * Updates an existing Feedback model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -105,26 +86,17 @@ class ProductImagesController extends Controller
     {
         $model = $this->findModel($id);
 
-        $products = Products::find()->where(['status' => 1])->all();
-
-
-        if ($model->load(Yii::$app->request->post())) {
-            $instance = UploadedFile::getInstance($model, 'img');
-            $instance->saveAs('uploads/products/'.$model->id.' '.$instance->baseName.'.'.$instance->extension);
-            $model->img = 'uploads/products/'.$model->id.' '.$instance->baseName.'.'.$instance->extension;
-
-            $model->save();
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
         return $this->render('update', [
             'model' => $model,
-            'products' => $products
         ]);
     }
 
     /**
-     * Deletes an existing ProductImages model.
+     * Deletes an existing Feedback model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -132,23 +104,21 @@ class ProductImagesController extends Controller
      */
     public function actionDelete($id)
     {
-        $model = $this->findModel($id);
-        unlink(Yii::getAlias('@web').$model->img);
-        $model->delete();
+        $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
     }
 
     /**
-     * Finds the ProductImages model based on its primary key value.
+     * Finds the Feedback model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return ProductImages the loaded model
+     * @return Feedback the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = ProductImages::findOne($id)) !== null) {
+        if (($model = Feedback::findOne($id)) !== null) {
             return $model;
         }
 

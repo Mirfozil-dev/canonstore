@@ -2,7 +2,7 @@
 <!-- Body -->
 
 <!-- Like Address -->
-<div style="height: 180px;"></div>
+<div class="product_top_space"></div>
 <div class="container-sm">
     <div class="scale" style="position: relative;">
         <div class="product-wrapper">
@@ -18,7 +18,7 @@
     </div>
 </div>
 
-<div class="container-sm cart_body" style="margin-bottom: 300px;top:0;">
+<div class="container-sm cart_body" style="top:0;">
     <div class="cart_left_box">
         <div class="delivery">
             <i class="fas fa-truck"></i>
@@ -31,17 +31,25 @@
         <h6 style="margin-top: 50px;">ДОСТУПНО ДЛЯ ЗАКАЗА:</h6><br><br>
         <!-- offer div -->
         <?php foreach ($cartItems as $cartItem): ?>
-        <div style="height: 250px;" class="cart_offer">
-            <div class="img_place py-0">
-              <?php if ($cartItem['product']['productImages'] && count($cartItem['product']['productImages']) > 0): ?>
+        <div class="cart_offer">
+            <div class="cart_like-times-wrapper cart_like-times-wrapper-mobile">
+                <div class="like_btn like_btn-mobile">
+                    <i class="fas fa-heart"></i>
+                </div>
+                <div class="cart_delete_btn delete_btn delete_btn-mobile" data-id="<?= $cartItem['id'] ?>">
+                    <i class="fas fa-times"></i>
+                </div>
+            </div>
+            <div class="img_place py-0 ">
+              <?php if ($cartItem['product']->getImages() && count($cartItem['product']->getImages()) > 0): ?>
                 <img
                     class="img_place_item"
-                    src="<?=Yii::getAlias('@web').'/'.$cartItem['product']['productImages'][0]['img'] ?>"
+                    src="<?=Yii::getAlias('@web').'/'.$cartItem['product']->getImages()[0] ?>"
                     alt=""
-                    style="height: 100%;object-fit: cover"
+                    style="height: 100%;object-fit: contain"
                     width="100%">
               <?php endif; ?>
-              <?php if (count($cartItem['product']['productImages']) == 0 || $cartItem['product']['productImages'] == null): ?>
+              <?php if (count($cartItem['product']->getImages()) == 0 || $cartItem['product']->getImages() == null): ?>
               <img
                   class="img_place_item"
                   src="<?=Yii::getAlias('@web') ?>/images/product_placeholder.png"
@@ -51,7 +59,7 @@
               <?php endif; ?>
             </div>
             <div class="offer_details">
-                <h6 style="font-size: 16px; font-weight: 700;"><?= $cartItem['product']['title'] ?></h6><br><br>
+                <h6 style="font-size: 16px; font-weight: 700;"><?= $cartItem['product']['title'] ?></h6>
                 <div class="plus_minus_box">
                     <div class="minus cart-minus-quantity" data-id="<?= $cartItem['id'] ?>">
                         <i class="fas fa-minus"></i>
@@ -69,7 +77,6 @@
 <!--                </div>-->
             </div>
             <div class="price_order">
-                <br><br><br>
                 <?php if (count($cartItem['product']['discounts']) > 0): ?>
                   <h6 class="cart_cost"><?= $cartItem['product']['discounts']['discount_price'] ?></h6>
                 <?php endif; ?>
@@ -77,7 +84,7 @@
                   <h6 class="cart_cost"><?= $cartItem['product']['price'] ?></h6>
                 <?php endif; ?>
 
-                <p>за штуку</p><br>
+                <p>за штуку</p>
 <!--                <div class="skitka_place">-->
 <!--                    <i class="fas fa-percent precentt"></i>-->
 <!--                    <p class="skitka_type">Доступен в кредит</p>-->
@@ -87,19 +94,25 @@
 
             <div class="price_order_big">
                 <div class="close_and_like">
-                    <div class="like_btn">
-                        <i class="fas fa-heart"></i>
+                    <div class="cart_like-times-wrapper">
+                        <div class="like_btn">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <div class="cart_delete_btn delete_btn" data-id="<?= $cartItem['id'] ?>">
+                            <i class="fas fa-times"></i>
+                        </div>
                     </div>
-                    <div class="cart_delete_btn delete_btn" data-id="<?= $cartItem['id'] ?>">
-                        <i class="fas fa-times"></i>
-                    </div>
-                </div><br>
+                </div>
+                <div class="cart_price">
+                    <span>
                 <?php if (count($cartItem['product']['discounts']) > 0): ?>
-                 <?= $cartItem['product']['discounts'][0]['discount_price'] ?>
+                <?= $cartItem['product']['discounts'][0]['discount_price'] ?>
                 <?php endif; ?>
                 <?php if (count($cartItem['product']['discounts']) == 0):?>
                  <?= $cartItem['product']['price'] ?>
                 <?php endif; ?>
+                    </span>
+                </div>
             </div>
         </div>
         <?php endforeach; ?>

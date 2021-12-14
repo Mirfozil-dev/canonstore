@@ -16,7 +16,6 @@ use Yii;
  *
  * @property Categories $parent
  * @property Categories[] $categories
- * @property OptionGroups[] $optionGroups
  * @property Products[] $products
  */
 class Categories extends \yii\db\ActiveRecord
@@ -79,11 +78,22 @@ class Categories extends \yii\db\ActiveRecord
     /**
      * Gets query for [[OptionGroups]].
      *
-     * @return \yii\db\ActiveQuery
+     * @return array
      */
     public function getOptionGroups()
     {
-        return $this->hasMany(OptionGroups::className(), ['category_id' => 'id']);
+        $allOptionGroups = OptionGroups::find()->where(['status' => 1])->with('options')->all();
+
+        $optionGroups = [];
+        foreach ($allOptionGroups as $optionGroup) {
+            foreach ($optionGroup->getCategories() as $category) {
+                if ($category->id === $this->id) {
+                    $optionGroups[] = $optionGroup;
+                }
+            }
+        }
+
+        return $optionGroups;
     }
 
     /**

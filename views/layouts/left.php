@@ -38,10 +38,8 @@
                     ['label' => 'Users', 'url' => ['/users'],],
                     ['label' => 'Categories', 'url' => ['/categories'],],
                     ['label' => 'Products', 'url' => ['/products'],],
-                    ['label' => 'Product Images', 'url' => ['/product-images'],],
                     ['label' => 'Option Groups', 'url' => ['/option-groups'],],
                     ['label' => 'Options', 'url' => ['/options'],],
-                    ['label' => 'Product Options', 'url' => ['/product-options'],],
                     ['label' => 'Discount', 'url' => ['/discount'],],
                     ['label' => 'Orders', 'url' => ['/orders'],],
                     ['label' => 'Reviews', 'url' => ['/reviews'],],
@@ -49,6 +47,7 @@
                     ['label' => 'News', 'url' => ['/news'],],
                     ['label' => 'Carousel', 'url' => ['/carousel'],],
                     ['label' => 'Product Carousel', 'url' => ['/product-carousel'],],
+                    ['label' => 'Feedback', 'url' => ['/feedback'],],
 //                    [
 //                        'label' => 'Some tools',
 //                        'icon' => 'share',

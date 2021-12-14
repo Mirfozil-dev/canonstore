@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use app\models\Cart;
 use app\models\Compare;
+use app\models\Feedback;
 use app\models\OrderProducts;
 use app\models\Orders;
 use app\models\Reviews;
@@ -46,8 +47,7 @@ class SiteController extends Controller
         $this->layout = 'site';
         $this->categories = Categories::find()->where(['status' => 1, 'parent_id' => null])->with('categories.categories')->all();
 
-
-        if ($_SESSION['account']) {
+        if (isset($_SESSION['account'])) {
             $this->cartItems = Cart::find()->where(['user_id' => $_SESSION['account']['client_id']])->count();
             $this->compareItems = Compare::find()->where(['user_id' => $_SESSION['account']['client_id']])->count();
             $this->wishlistItems = Wishlist::find()->where(['user_id' => $_SESSION['account']['client_id']])->count();
@@ -102,10 +102,10 @@ class SiteController extends Controller
     {
 
         $carousel = Carousel::find()->limit(5)->all();
-        $discountProducts = Discount::find()->where(['status' => 1])->with('product.productOptions.option')->with('product.productImages')->limit(15)->all();
-        $productCarousels = ProductCarousel::find()->where(['status' => 1])->with('category.products.productOptions.option')->with('category.products.discounts')->with('category.products.productImages')->all();
+        $discountProducts = Discount::find()->where(['status' => 1])->with('product')->limit(15)->all();
+        $productCarousels = ProductCarousel::find()->where(['status' => 1])->with('category.products.discounts')->all();
         $news = News::find()->orderBy('updated_at DESC')->limit(3)->all();
-        $newProducts = Products::find()->where(['status' => 1])->with('productOptions.option')->with('productImages')->with('discounts')->orderBy('updated_at DESC')->limit(15)->all();
+        $newProducts = Products::find()->where(['status' => 1])->with('discounts')->orderBy('updated_at DESC')->limit(15)->all();
         return $this->render('index', [
             'carousel' => $carousel,
             'news' => $news,
@@ -223,7 +223,7 @@ class SiteController extends Controller
                         'client_id' => $user->id,
                         'phone' => $user->phone,
                         'name' => $user->name,
-                        'pass' => $user->password,
+                        'pass' => $user->password
                     ];
                     return [
                         'status' => 'success'
@@ -290,10 +290,22 @@ class SiteController extends Controller
 
             if (isset($_SESSION['account'])) {
                 unset($_SESSION['account']);
-
                 return ['status' => 'success'];
+            }
+
+            return ['status' => 'failure'];
+        }
+    }
+
+    public function actionFeedback()
+    {
+        $model = new Feedback();
+        if ($model->load(Yii::$app->request->post())) {
+            if ($model->save()) {
+                return $this->redirect(['/site/index']);
             } else {
-                return ['status' => 'failure'];
+                echo "<pre>";
+                print_r($model->errors);
             }
         }
     }
@@ -363,12 +375,12 @@ class SiteController extends Controller
 
     public function actionCart()
     {
-        if (!$_SESSION['account']) {
+        if (!isset($_SESSION['account'])) {
             Yii::$app->session->setFlash('notification','Вы не авторизованы!');
             return $this->redirect(['/site/index']);
         }
 
-        $cartItems = Cart::find()->where(['user_id' => $_SESSION['account']['client_id']])->with('product.discounts')->with('product.productImages')->all();
+        $cartItems = Cart::find()->where(['user_id' => $_SESSION['account']['client_id']])->with('product.discounts')->with('product')->all();
         $totalSum = 0;
         foreach ($cartItems as $item) {
             $totalSum += $item['product']['discounts'] ? $item['product']['discounts'][0]['discount_price'] * $item['quantity'] : $item['product']['price'] * $item['quantity'];
@@ -380,15 +392,31 @@ class SiteController extends Controller
     {
         $category_id = $request->get('category_id');
         if (!empty($category_id)) {
-            $category = Categories::find()->where(['id' => $category_id])->with(['parent.parent', 'optionGroups.options.productOptions'])->one();
-            $products = Products::find()->where(['status' => 1, 'category_id' => $category_id])->with(['discounts', 'productImages', 'productOptions'])->all();
+            $query = Categories::find()->where(['id' => $category_id])->with(['parent.parent'])->one();
+            $category = [
+                'id' => $query['id'],
+                'title_ru' => $query['title_ru'],
+                'title_en' => $query['title_en'],
+                'optionGroups' => $query->getOptionGroups(),
+                'parent' => [
+                    'id' => $query['parent']['id'],
+                    'title_ru' => $query['parent']['title_ru'],
+                    'title_en' => $query['parent']['title_en'],
+                    'parent' => [
+                        'id' => $query['parent']['parent']['id'],
+                        'title_ru' => $query['parent']['parent']['title_ru'],
+                        'title_en' => $query['parent']['parent']['title_en'],
+                    ]
+                ]
+            ];
+            $products = Products::find()->where(['status' => 1, 'category_id' => $category_id])->with(['discounts'])->all();
             if (!empty($request->get('sort'))) {
                 switch ($request->get('sort')) {
                     case 'new':
-                        $products = Products::find()->where(['status' => 1, 'category_id' => $category_id])->with(['discounts', 'productImages', 'productOptions'])->orderBy(['updated_at' => SORT_DESC,])->all();
+                        $products = Products::find()->where(['status' => 1, 'category_id' => $category_id])->with(['discounts'])->orderBy(['updated_at' => SORT_DESC,])->all();
                         break;
                     case 'price_asc':
-                        $products = Products::find()->where(['status' => 1, 'category_id' => $category_id])->with(['discounts', 'productImages', 'productOptions'])->all();
+                        $products = Products::find()->where(['status' => 1, 'category_id' => $category_id])->with(['discounts'])->all();
                         for ($outer = 0; $outer < count($products); $outer++) {
                             for ($inner = 0; $inner < count($products); $inner++) {
                                 if (!empty($products[$inner]['discounts'])) {
@@ -425,7 +453,7 @@ class SiteController extends Controller
                         }
                         break;
                     case 'price_desc':
-                        $products = Products::find()->where(['status' => 1, 'category_id' => $category_id])->with(['discounts', 'productImages', 'productOptions'])->all();
+                        $products = Products::find()->where(['status' => 1, 'category_id' => $category_id])->with(['discounts'])->all();
                         for ($outer = 0; $outer < count($products); $outer++) {
                             for ($inner = $outer + 1; $inner < count($products); $inner++) {
                                 if (!empty($products[$inner]['discounts'])) {
@@ -466,8 +494,8 @@ class SiteController extends Controller
             if (!empty($request->get('options'))) {
                 foreach ($products as $key => $product) {
                     $hasOption = false;
-                    foreach ($product->productOptions as $option) {
-                        if (in_array($option->option_id, $request->get('options'))) {
+                    foreach ($product->getOptions() as $option) {
+                        if (in_array($option->id, $request->get('options'))) {
                             $hasOption = true;
                         }
                     }
@@ -501,11 +529,11 @@ class SiteController extends Controller
                 }
             }
         } else {
-            $products = Products::find()->where(['status' => 1])->with(['discounts', 'productImages', 'productOptions'])->all();
+            $products = Products::find()->where(['status' => 1])->with(['discounts'])->all();
             if (!empty($request->get('sort'))) {
                 switch ($request->get('sort')) {
                     case 'new':
-                        $products = Products::find()->where(['status' => 1])->with(['discounts', 'productImages', 'productOptions'])->orderBy(['updated_at' => SORT_DESC,])->all();
+                        $products = Products::find()->where(['status' => 1])->with(['discounts'])->orderBy(['updated_at' => SORT_DESC,])->all();
                     break;
                     case 'price_asc':
                         for ($outer = 0; $outer < count($products); $outer++) {
@@ -584,8 +612,8 @@ class SiteController extends Controller
             if (!empty($request->get('options'))) {
                 foreach ($products as $key => $product) {
                     $hasOption = false;
-                    foreach ($product->productOptions as $option) {
-                        if (in_array($option->option_id, $request->get('options'))) {
+                    foreach ($product->getOptions() as $option) {
+                        if (in_array($option->id, $request->get('options'))) {
                             $hasOption = true;
                         }
                     }
@@ -618,7 +646,7 @@ class SiteController extends Controller
                     }
                 }
             }
-            $optionGroups = OptionGroups::find()->where(['status' => 1])->with('options.productOptions')->all();
+            $optionGroups = OptionGroups::find()->where(['status' => 1])->with('options')->all();
             $category = [
                 'title_ru' => 'Все товары',
                 'title_en' => 'All Products',
@@ -635,16 +663,16 @@ class SiteController extends Controller
 
     public function actionCompare()
     {
-        if (!$_SESSION['account']) {
+        if (!isset($_SESSION['account'])) {
             Yii::$app->session->setFlash('notification','Вы не авторизованы!');
             return $this->redirect(['site/index']);
         }
 
-        $compareItems = Compare::find()->where(['user_id' => $_SESSION['account']['client_id']])->with('product.discounts')->with('product.productOptions.option.optionGroup')->with('product.productImages')->all();
+        $compareItems = Compare::find()->where(['user_id' => $_SESSION['account']['client_id']])->with('product.discounts')->all();
         $productOptionGroupIds = [];
         foreach ($compareItems as $compareItem) {
-            foreach ($compareItem['product']['productOptions'] as $productOption) {
-                $productOptionGroupIds[] = $productOption['option']['optionGroup']['id'];
+            foreach ($compareItem['product']->getOptions() as $productOption) {
+                $productOptionGroupIds[] = $productOption['option_group_id'];
             }
         }
         $productOptionGroupIds = array_unique($productOptionGroupIds);
@@ -659,11 +687,11 @@ class SiteController extends Controller
             $optionGroups[$i]['status'] = $optionGroup['status'];
             foreach ($compareItems as $item) {
                 $productOptions = [];
-                foreach ($item['product']['productOptions'] as $productOption) {
-                    if ($productOption['option']->option_group_id === $optionGroup['id']) {
+                foreach ($item['product']->getOptions() as $productOption) {
+                    if ($productOption['option_group_id'] === $optionGroup['id']) {
                         $productOptions[][] = [
-                            'title_ru' => $productOption['option']['title_ru'],
-                            'title_en' => $productOption['option']['title_en']
+                            'title_ru' => $productOption['title_ru'],
+                            'title_en' => $productOption['title_en']
                         ];
                     }
                 }
@@ -677,10 +705,6 @@ class SiteController extends Controller
             }
             $i++;
         }
-//        echo '<pre>';
-//        print_r($optionGroups);
-//        die();
-
 
         return $this->render('compare', ['compareItems' => $compareItems, 'lang' => Yii::$app->language, 'optionGroups' => $optionGroups]);
     }
@@ -704,7 +728,7 @@ class SiteController extends Controller
     public function actionProduct()
     {
         $id = Yii::$app->request->get('id');
-        $product = Products::find()->where(['id' => $id, 'status' => 1])->with('category.parent.parent')->with('reviews.user')->with('productOptions.option.optionGroup')->with('productImages')->with('discounts')->one();
+        $product = Products::find()->where(['id' => $id, 'status' => 1])->with('category.parent.parent')->with('reviews.user')->with('discounts')->one();
         $reviewsCount = count($product['reviews']);
         $totalRating = 0;
         $rating = $totalRating == 0 ? 0 : $totalRating/$reviewsCount;
@@ -712,8 +736,8 @@ class SiteController extends Controller
             $totalRating += $review['rating'];
         };
         $optionGroupsIds = [];
-        foreach ($product['productOptions'] as $option) {
-            $optionGroupsIds[] = $option['option']['optionGroup']['id'];
+        foreach ($product->getOptions() as $option) {
+            $optionGroupsIds[] = $option['option_group_id'];
         }
         $query = OptionGroups::find()->with('options')->where(['status' => 1, 'id' => $optionGroupsIds])->all();
         $optionGroups = [];
@@ -726,9 +750,9 @@ class SiteController extends Controller
             $optionGroups[$i]['status'] = $optionGroup['status'];
             $result = [];
 
-            foreach ($product['productOptions'] as $productOption) {
-                if ($productOption['option']['optionGroup']['id'] === $optionGroup['id']) {
-                    $result[] = $productOption['option'];
+            foreach ($product->getOptions() as $productOption) {
+                if ($productOption['option_group_id'] === $optionGroup['id']) {
+                    $result[] = $productOption;
                 }
             }
             $optionGroups[$i]['options'] = $result;
@@ -750,12 +774,12 @@ class SiteController extends Controller
 
     public function actionWishlist()
     {
-        if (!$_SESSION['account']) {
+        if (!isset($_SESSION['account'])) {
             Yii::$app->session->setFlash('notification','Вы не авторизованы!');
             return $this->redirect(['site/index']);
         }
 
-        $wishlistItems = Wishlist::find()->where(['user_id' => $_SESSION['account']['client_id']])->with('product.discounts')->with('product.productOptions.option.optionGroup')->with('product.productImages')->all();
+        $wishlistItems = Wishlist::find()->where(['user_id' => $_SESSION['account']['client_id']])->with('product.discounts')->with('product')->all();
         return $this->render('wishlist', [
             'wishlistItems' => $wishlistItems,
         ]);
@@ -832,7 +856,7 @@ class SiteController extends Controller
         }
     }
     public function actionOrder(Request $request) {
-        $cartItems = Cart::find()->where(['user_id' => $_SESSION['account']['client_id']])->with('product.discounts')->with('product.productImages')->all();
+        $cartItems = Cart::find()->where(['user_id' => $_SESSION['account']['client_id']])->with('product.discounts')->with('product')->all();
         $totalSum = 0;
         foreach ($cartItems as $item) {
             $totalSum += $item['product']['discounts'] ? $item['product']['discounts'][0]['discount_price'] * $item['quantity'] : $item['product']['price'] * $item['quantity'];
@@ -840,7 +864,7 @@ class SiteController extends Controller
         return $this->render('order', ['cartItems' => $cartItems, 'totalSum' => $totalSum]);
     }
     public function actionCreateOrder(Request $request) {
-        if (!$_SESSION['account']) {
+        if (!isset($_SESSION['account'])) {
             Yii::$app->session->setFlash('notification','Вы не авторизованы!');
             return $this->redirect(['site/index']);
         }

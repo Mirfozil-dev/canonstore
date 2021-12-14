@@ -263,6 +263,15 @@
       ),
       'reference' => 'dc960a912984efb74d0a90222870c72c87f10c91',
     ),
+    'kartik-v/bootstrap-fileinput' => 
+    array (
+      'pretty_version' => 'v5.2.3',
+      'version' => '5.2.3.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'a3340fd757a2a46fdeede677e366fce2e4f89d3a',
+    ),
     'kartik-v/yii2-krajee-base' => 
     array (
       'pretty_version' => 'v2.0.6',
